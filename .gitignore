@@ -26,4 +26,3 @@ tools/.geo_cache.json
 assets/gallery/tmp*
 *.tmp
 .cache/
-.github/workflows/

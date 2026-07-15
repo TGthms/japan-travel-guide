@@ -22,7 +22,7 @@
 | **Static multi-page** | No bundler. Classic `<script>` tags (not ES modules). |
 | **Layout** | `src/css/styles.css` · `src/js/app.js` · `src/js/data/*` |
 | **Serve** | `npm run serve` → http://127.0.0.1:8000/ |
-| **Deploy** | GitHub Pages via `.github/workflows/static.yml` (strips private `tools/`) |
+| **Deploy** | GitHub Pages from `main` (`https://tgthms.github.io/japan-travel-guide/`). Private `tools/` is gitignored and never published. |
 | **Preferences** | `safeStorage` + `jtg-preferences` (language, units, theme, motion) |
 | **Motion** | Full / Reduced / Off (+ OS `prefers-reduced-motion`) |
 | **i18n** | EN · 日本語 · 简体中文 via `src/js/data/i18n.js` |
