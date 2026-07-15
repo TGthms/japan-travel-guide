@@ -1,0 +1,29 @@
+/* Fukuoka — yatai night + coastal casual */
+body.city-fukuoka {
+  --deep-red-bright: #0077b6;
+  --sakura: #90e0ef;
+  --gold: #fcbf49;
+  --gradient-hero: linear-gradient(155deg, #e6f7fc, #caf0f8 40%, #fff6e8);
+  --surface-2: rgba(0,119,182,.06);
+  --radius: 16px;
+}
+body.city-fukuoka .card {
+  border-radius: 16px;
+  border: 1px solid rgba(0,119,182,.12);
+}
+body.city-fukuoka .btn--primary {
+  background: linear-gradient(135deg, #0077b6, #00b4d8 60%, #fcbf49);
+  border-radius: 999px;
+}
+body.city-fukuoka .img-ph {
+  border-radius: 16px 16px 4px 4px;
+  border-color: rgba(0,180,216,.35);
+  background: linear-gradient(180deg, rgba(144,224,239,.35), rgba(252,191,73,.12)), #eef9fc;
+}
+body.city-fukuoka .section__eyebrow { color: #0077b6; }
+body.city-fukuoka .city-hero {
+  background:
+    radial-gradient(ellipse at 10% 90%, rgba(252,191,73,.25), transparent 45%),
+    var(--gradient-hero);
+}
+body.city-fukuoka .chip { background: rgba(252,191,73,.2); color: #7a4e00; }

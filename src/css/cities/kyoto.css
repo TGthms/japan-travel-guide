@@ -1,0 +1,33 @@
+/* Kyoto — classical, vermilion, washi, temple elegance */
+body.city-kyoto {
+  --deep-red-bright: #9c2b1f;
+  --sakura: #e5c4a8;
+  --gold: #b8953d;
+  --gradient-hero: linear-gradient(170deg, #f4ebe0 0%, #ebe0d0 40%, #f7f0e6 100%);
+  --bg: #f3ebe1; --bg-elevated: #faf4ec; --card-solid: #faf6ef;
+  --surface-2: rgba(156,43,31,.06);
+  --font-display: "Noto Serif JP", "Hiragino Mincho ProN", Georgia, serif;
+  --radius: 2px; --radius-sm: 2px; --radius-lg: 4px;
+}
+body.city-kyoto .city-hero {
+  background:
+    url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L24 16L40 20L24 24L20 40L16 24L0 20L16 16Z' fill='%239c2b1f' fill-opacity='.03'/%3E%3C/svg%3E"),
+    var(--gradient-hero);
+}
+body.city-kyoto .card {
+  border-radius: 2px 12px 2px 12px;
+  border: 1px solid rgba(184,149,61,.35);
+  background: #faf6ef;
+  box-shadow: 4px 4px 0 rgba(156,43,31,.06);
+}
+body.city-kyoto .btn--primary {
+  background: linear-gradient(135deg, #7a281c, #b8953d);
+  border-radius: 2px;
+}
+body.city-kyoto .img-ph {
+  border-radius: 2px; border-style: solid; border-color: rgba(156,43,31,.28);
+  background: linear-gradient(145deg, rgba(229,196,168,.4), rgba(184,149,61,.1)), #f7f0e6;
+}
+body.city-kyoto .section__eyebrow { color: #9c2b1f; letter-spacing: .28em; }
+body.city-kyoto .city-hero__title { border-bottom: 2px solid rgba(184,149,61,.45); padding-bottom: .35rem; display: inline-block; }
+body.city-kyoto .chip { border-radius: 2px; background: rgba(156,43,31,.08); color: #7a281c; }

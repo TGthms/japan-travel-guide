@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Photo gallery from Japan — temples, cities, food, nature, and neon nights. Browse by city, season, and category." />
+  <meta name="theme-color" content="#8b1a2b" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Photo Gallery · Japan Travel Guide</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b1a2b'/%3E%3Ctext x='32' y='44' font-size='32' text-anchor='middle' fill='%23f8b4c4'%3E%E6%97%A5%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/styles.css" />
+  <script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem('jtg-preferences') || '{}');
+      var theme = p.theme || 'auto';
+      var resolved = theme === 'auto'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      var motion = p.motion || 'full';
+      if (motion !== 'full' && motion !== 'reduced' && motion !== 'off') motion = 'full';
+      document.documentElement.setAttribute('data-motion', motion);
+      var osReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var eff = motion === 'off' ? 'off' : ((motion === 'reduced' || osReduce) ? 'reduced' : 'full');
+      document.documentElement.setAttribute('data-motion-effective', eff);
+      if (p.lang) document.documentElement.lang = p.lang === 'zh-CN' ? 'zh-CN' : p.lang;
+    } catch (e) {}
+  })();
+  </script>
+
+</head>
+<body data-page="gallery" class="page-gallery">
+  <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
+  <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Gallery mini-app chrome -->
+  <header class="gallery-app-bar site-header" role="banner">
+    <div class="container gallery-app-bar__inner">
+      <a href="index.html" class="gallery-app-back">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span data-i18n="gallery.backToGuide">Back to the guide</span>
+      </a>
+      <div class="gallery-app-title" aria-current="page">
+        <span class="gallery-app-mark" aria-hidden="true">❀</span>
+        <span data-i18n="nav.gallery">Gallery</span>
+      </div>
+      <div class="gallery-app-actions">
+        <button type="button" class="btn btn--icon btn--ghost" data-open-settings data-i18n-aria="nav.settings" aria-label="Settings">⚙</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="gallery-page" tabindex="-1">
+    <div class="container">
+      <header class="gallery-app-header reveal">
+        <div>
+          <p class="section__eyebrow" data-i18n="gallery.eyebrow">Photo gallery</p>
+          <h1 class="section__title" data-i18n="gallery.heading">Moments from <em>Japan</em></h1>
+        </div>
+        <p class="section__desc" data-i18n="gallery.pageIntro">Browse by city, season, and category. Grid uses fast thumbs; open a photo for a sharp medium view, then load the original when you want full quality.</p>
+      </header>
+
+      <div class="gallery-toolbar reveal">
+        <label class="gallery-search-wrap">
+          <span class="sr-only" data-i18n="common.search">Search</span>
+          <input type="search" id="gallery-search" class="gallery-search" autocomplete="off"
+            data-i18n-placeholder="gallery.searchPlaceholder" placeholder="Search name, place, city, date…" />
+        </label>
+        <select id="gallery-city" aria-label="City">
+          <option value="" data-i18n="common.allCities">All cities</option>
+        </select>
+        <select id="gallery-sort" aria-label="Sort">
+          <option value="time-desc" selected data-i18n="common.sortTimeDesc">Time (newest)</option>
+          <option value="time-asc" data-i18n="common.sortTimeAsc">Time (oldest)</option>
+          <option value="name" data-i18n="common.sortName">Name</option>
+          <option value="location" data-i18n="gallery.sortLocation">Location</option>
+          <option value="city" data-i18n="gallery.sortCity">City</option>
+          <option value="category" data-i18n="gallery.sortCategory">Category</option>
+          <option value="order" data-i18n="common.sortOrder">Default order</option>
+        </select>
+        <div class="gallery-quality" role="group" aria-label="Lightbox quality">
+          <button type="button" class="gallery-quality__btn is-active" data-gallery-quality="medium" data-i18n="gallery.qualityMedium">Medium</button>
+          <button type="button" class="gallery-quality__btn" data-gallery-quality="full" data-i18n="gallery.qualityFull">Full</button>
+        </div>
+      </div>
+
+      <div class="gallery-filters reveal" id="gallery-filters" role="toolbar" aria-label="Filter by category">
+        <button type="button" class="gallery-filter is-active" data-filter="all" aria-pressed="true"><span data-i18n="gallery.filterAll">All</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="cities" aria-pressed="false"><span data-i18n="gallery.filterCities">Cities</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="temples" aria-pressed="false"><span data-i18n="gallery.filterTemples">Temples</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="shrines" aria-pressed="false"><span data-i18n="gallery.filterShrines">Shrines</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="nature" aria-pressed="false"><span data-i18n="gallery.filterNature">Nature</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="food" aria-pressed="false"><span data-i18n="gallery.filterFood">Food</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="neon" aria-pressed="false"><span data-i18n="gallery.filterNeon">Neon / Night</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="travel" aria-pressed="false"><span data-i18n="gallery.filterTravel">Travel</span> <span class="gallery-filter__count">0</span></button>
+        <button type="button" class="gallery-filter" data-filter="culture" aria-pressed="false"><span data-i18n="gallery.filterCulture">Culture</span> <span class="gallery-filter__count">0</span></button>
+      </div>
+
+      <p class="gallery-count" id="gallery-count" aria-live="polite"></p>
+
+      <div id="gallery-empty" class="gallery-empty">
+        <div class="gallery-empty__icon" aria-hidden="true">📷</div>
+        <h2 data-i18n="common.emptyGalleryTitle">Gallery is empty</h2>
+        <p data-i18n="common.emptyGalleryDesc"></p>
+        <p class="muted mt-2" data-i18n="gallery.managerHint">Add photos with the local Gallery Manager: double-click Add Photos.command or run python3 tools/gallery_manager.py</p>
+      </div>
+
+      <div class="gallery-masonry" id="gallery-grid" role="list" hidden></div>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo viewer">
+    <div class="lightbox__counter" data-lb-counter></div>
+    <button type="button" class="lightbox__close" data-lb-close data-i18n-aria="common.close" aria-label="Close">✕</button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" data-lb-prev data-i18n-aria="common.previous" aria-label="Previous">‹</button>
+    <button type="button" class="lightbox__nav lightbox__nav--next" data-lb-next data-i18n-aria="common.next" aria-label="Next">›</button>
+    <div class="lightbox__stage">
+      <div class="lightbox__img-wrap">
+        <img class="lightbox__img" alt="" decoding="async" fetchpriority="high" />
+        <div class="lightbox__progress">
+          <div class="lightbox__progress-track"><div class="lightbox__progress-bar"></div></div>
+          <div class="lightbox__progress-label">
+            <span data-lb-progress-msg>Loading…</span>
+            <span data-lb-progress-pct>0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="lightbox__caption">
+        <h3 data-lb-title></h3>
+        <p data-lb-meta></p>
+        <button type="button" class="btn btn--gold lightbox__hd" data-lb-hd hidden data-i18n="gallery.loadFull">Load full quality</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer gallery-footer">
+    <div class="container footer__bottom" style="border:0;padding-top:0">
+      <span data-i18n="common.copyright">© 2026 Japan Travel Guide.</span>
+      <a href="index.html" data-i18n="common.backHome">Back to home</a>
+    </div>
+    <div class="container footer-legal-links" style="padding-bottom:1rem">
+    <a href="tools.html" data-i18n="nav.tools">Tools</a>
+    <span class="footer-legal-sep">|</span>
+    <a href="privacy.html" data-i18n="legal.privacyLink">Privacy</a>
+    <span class="footer-legal-sep">|</span>
+    <a href="terms.html" data-i18n="legal.termsLink">Terms</a>
+  </div>
+</footer>
+
+  <div class="settings-overlay" id="settings-overlay" data-close-settings></div>
+  <aside class="settings-panel" id="settings-panel" aria-label="Settings">
+    <div class="settings-panel__header">
+      <h2 data-i18n="common.settingsTitle">Settings</h2>
+      <button type="button" class="btn btn--icon btn--ghost" data-close-settings aria-label="Close">✕</button>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.language">Language</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="lang" data-value="en" data-i18n="common.langEn">English</button>
+        <button type="button" data-setting="lang" data-value="ja" data-i18n="common.langJa">日本語</button>
+        <button type="button" data-setting="lang" data-value="zh-CN" data-i18n="common.langZh">简体中文</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.distanceUnit">Distance</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="distanceUnit" data-value="km">km</button>
+        <button type="button" data-setting="distanceUnit" data-value="mi">mi</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.tempUnit">Temperature</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="tempUnit" data-value="c">°C</button>
+        <button type="button" data-setting="tempUnit" data-value="f">°F</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.theme">Theme</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="theme" data-value="light" data-i18n="common.themeLight">Light</button>
+        <button type="button" data-setting="theme" data-value="dark" data-i18n="common.themeDark">Dark</button>
+        <button type="button" data-setting="theme" data-value="auto" data-i18n="common.themeAuto">Auto</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.animation">Animation</h3>
+      <div class="settings-options">
+              <button type="button" data-setting="motion" data-value="full" data-i18n="common.motionFull">Full</button>
+      <button type="button" data-setting="motion" data-value="reduced" data-i18n="common.motionReduced">Reduced</button>
+      <button type="button" data-setting="motion" data-value="off" data-i18n="common.motionOff">Off</button>
+      </div>
+    </div>
+  </aside>
+
+
+
+
+
+
+
+  <script src="src/js/data/i18n.js" defer></script>
+  <script src="src/js/settings.js" defer></script>
+  <script src="src/js/i18n.js" defer></script>
+  <script src="src/js/units.js" defer></script>
+  <script src="src/js/nav.js" defer></script>
+  <script src="src/js/animations.js" defer></script>
+  <script src="src/js/gallery.js" defer></script>
+  <script src="src/js/app.js" defer></script>
+
+</body>
+</html>

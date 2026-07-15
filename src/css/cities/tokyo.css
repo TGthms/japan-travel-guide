@@ -1,0 +1,42 @@
+/* Tokyo — neon metropolis, kabukicho / shibuya energy */
+body.city-tokyo {
+  --deep-red-bright: #ff2bd6;
+  --sakura: #ff6ec7;
+  --gold: #00f0ff;
+  --gradient-hero: radial-gradient(ellipse at 15% 10%, rgba(255,43,214,.28), transparent 48%),
+    radial-gradient(ellipse at 85% 0%, rgba(0,240,255,.22), transparent 42%),
+    linear-gradient(165deg, #05050f, #12081c 55%, #0a0a14);
+  color-scheme: dark;
+  --bg: #070714; --bg-elevated: #12121f; --text: #f2f4ff; --text-muted: #a8aec8;
+  --card: rgba(18,18,36,.82); --card-solid: #121228; --border: rgba(0,240,255,.16);
+  --glass: rgba(10,10,24,.88); --surface-2: rgba(255,43,214,.08);
+}
+body.city-tokyo .city-hero { position: relative; }
+body.city-tokyo .city-hero::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #ff2bd6, #00f0ff, transparent);
+  box-shadow: 0 0 16px rgba(0,240,255,.5);
+}
+body.city-tokyo .card {
+  border-radius: 4px; border: 1px solid rgba(255,43,214,.2);
+  box-shadow: 0 0 0 1px rgba(0,240,255,.08), 0 12px 40px rgba(0,0,0,.4);
+}
+body.city-tokyo .card:hover { box-shadow: 0 0 28px rgba(0,240,255,.22), 0 0 40px rgba(255,43,214,.12); }
+body.city-tokyo .btn--primary {
+  background: linear-gradient(135deg, #ff2bd6, #7b2fff 50%, #00f0ff);
+  border-radius: 4px; box-shadow: 0 0 20px rgba(255,43,214,.35);
+}
+body.city-tokyo .chip { background: rgba(0,240,255,.12); color: #00f0ff; border-color: rgba(0,240,255,.35); border-radius: 2px; }
+body.city-tokyo .img-ph {
+  border-radius: 2px; border-style: solid;
+  border-color: rgba(255,43,214,.4);
+  background: linear-gradient(145deg, rgba(255,43,214,.14), rgba(0,240,255,.08)), #10102a;
+}
+body.city-tokyo .neon-line {
+  height: 2px; margin: 1rem 0 1.5rem;
+  background: linear-gradient(90deg, transparent, #ff2bd6, #00f0ff, transparent);
+  box-shadow: 0 0 12px #00f0ff;
+}
+body.city-tokyo .city-stat strong { color: #00f0ff; text-shadow: 0 0 14px rgba(0,240,255,.55); }
+body.city-tokyo .section__eyebrow { letter-spacing: .22em; color: #ff6ec7; }
+body.city-tokyo .city-hero__title { text-shadow: 0 0 30px rgba(255,43,214,.35); }

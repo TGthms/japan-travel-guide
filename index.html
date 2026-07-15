@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Plan a Japan trip with city guides, routes, JR/IC transport tips, budgets, and tools. Cross-check with official JNTO (japan.travel) resources." />
+  <meta name="theme-color" content="#f5f2ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Japan Travel Guide — Plan multi-city trips</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b1a2b'/%3E%3Ctext x='32' y='44' font-size='32' text-anchor='middle' fill='%23f8b4c4'%3E%E6%97%A5%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/styles.css" />
+  <script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem('jtg-preferences') || '{}');
+      var theme = p.theme || 'auto';
+      var resolved = theme === 'auto'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      var motion = p.motion || 'full';
+      if (motion !== 'full' && motion !== 'reduced' && motion !== 'off') motion = 'full';
+      document.documentElement.setAttribute('data-motion', motion);
+      var osReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var eff = motion === 'off' ? 'off' : ((motion === 'reduced' || osReduce) ? 'reduced' : 'full');
+      document.documentElement.setAttribute('data-motion-effective', eff);
+      if (p.lang) document.documentElement.lang = p.lang === 'zh-CN' ? 'zh-CN' : p.lang;
+    } catch (e) {}
+  })();
+  </script>
+
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
+  <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__brand" href="index.html"><span class="nav__logo">日</span><span data-i18n="meta.siteName">Japan Travel Guide</span></a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#map" data-i18n="nav.map">Map</a>
+        <a href="#destinations" data-i18n="nav.destinations">Destinations</a>
+        <a href="#routes" data-i18n="nav.routes">Routes</a>
+        <a href="#food" data-i18n="nav.food">Food</a>
+        <a href="#transport" data-i18n="nav.transport">Transport</a>
+        <a href="#gallery-cta" data-i18n="nav.gallery">Gallery</a>
+        <a href="tools.html" data-i18n="nav.tools">Tools</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="nav__actions">
+        <button type="button" class="btn btn--secondary" data-open-settings data-i18n="nav.settings">Settings</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="container hero__grid">
+        <div class="reveal">
+          <div class="hero__eyebrow" data-i18n="hero.eyebrow">Independent Japan trip planner</div>
+          <h1 class="hero__title" data-i18n="hero.title">Plan Japan with confidence</h1>
+          <p class="hero__lead" data-i18n="hero.lead">Practical routes, city guides, transport, budgets, and tools — grounded in how people actually travel Japan. Cross-check schedules and passes on official sites before you go.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary btn--lg" href="#plan" data-i18n="hero.ctaPrimary">Start planning</a>
+            <a class="btn btn--secondary btn--lg" href="tools.html" data-i18n="hero.ctaSecondary">Open travel tools</a>
+          </div>
+          <div class="hero__stats">
+            <div class="hero__stat"><strong data-counter="14">0</strong><span data-i18n="hero.statCities">City guides</span></div>
+            <div class="hero__stat"><strong data-counter="11">0</strong><span data-i18n="hero.statRoutes">Itinerary styles</span></div>
+            <div class="hero__stat"><strong>24/7</strong><span data-i18n="hero.statTips">Planning tools</span></div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="img-ph img-ph--hero" role="img" aria-label="Japan landscape">
+            <span class="img-ph__label" data-i18n="hero.heroImage">Mount Fuji &amp; seasonal Japan</span>
+            <span class="img-ph__hint" data-i18n="common.photoSlot">Photo slot — add your trip photos in Gallery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAN FLOW -->
+    <section class="section" id="plan">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="plan.eyebrow">How to use this guide</p>
+          <h2 class="section__title" data-i18n="plan.title">Four steps to a solid trip</h2>
+          <p class="section__desc" data-i18n="plan.desc">Work top to bottom, then deepen each city page. Official Japan National Tourism Organization resources stay one click away.</p>
+        </header>
+        <div class="plan-strip">
+          <a class="plan-step reveal" href="#destinations">
+            <span class="plan-step__num">1</span>
+            <h3 data-i18n="plan.step1Title">Pick cities</h3>
+            <p data-i18n="plan.step1Text">Compare 14 destinations with distances from Tokyo, seasons, and stay length.</p>
+          </a>
+          <a class="plan-step reveal reveal-delay-1" href="#routes">
+            <span class="plan-step__num">2</span>
+            <h3 data-i18n="plan.step2Title">Shape a route</h3>
+            <p data-i18n="plan.step2Text">Use 5–14 day arcs or theme trips (food, nature, sakura) as a starting skeleton.</p>
+          </a>
+          <a class="plan-step reveal reveal-delay-2" href="#transport">
+            <span class="plan-step__num">3</span>
+            <h3 data-i18n="plan.step3Title">Solve transport</h3>
+            <p data-i18n="plan.step3Text">IC cards, shinkansen basics, and when a JR Pass or regional pass may make sense.</p>
+          </a>
+          <a class="plan-step reveal reveal-delay-3" href="tools.html">
+            <span class="plan-step__num">4</span>
+            <h3 data-i18n="plan.step4Title">Run the numbers</h3>
+            <p data-i18n="plan.step4Text">Currency, tax, rail estimates, and emergency numbers in Travel Tools.</p>
+          </a>
+        </div>
+        <p class="trust-note reveal" data-i18n="plan.trustNote">Fares, pass rules, and entry requirements change. Confirm with JR, airlines, and <a href="https://www.japan.travel/en/us/" target="_blank" rel="noopener">japan.travel (JNTO)</a> before booking.</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt" id="about">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="about.eyebrow">The archipelago</p>
+          <h2 class="section__title" data-i18n="about.title">About Japan</h2>
+          <p class="section__desc" data-i18n="about.desc"></p>
+        </header>
+        <div class="grid-3 mb-2">
+          <div class="img-ph img-ph--lg reveal"><span class="img-ph__label" data-i18n="about.photo1"></span></div>
+          <div class="img-ph img-ph--lg reveal reveal-delay-1"><span class="img-ph__label" data-i18n="about.photo2"></span></div>
+          <div class="img-ph img-ph--lg reveal reveal-delay-2"><span class="img-ph__label" data-i18n="about.photo3"></span></div>
+        </div>
+        <div class="about-grid">
+          
+          <article class="card reveal">
+            <div class="card__icon">🗺</div>
+            <h3 class="card__title" data-i18n="about.geoTitle"></h3>
+            <p class="card__text" data-i18n="about.geoText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🎎</div>
+            <h3 class="card__title" data-i18n="about.cultureTitle"></h3>
+            <p class="card__text" data-i18n="about.cultureText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">📜</div>
+            <h3 class="card__title" data-i18n="about.historyTitle"></h3>
+            <p class="card__text" data-i18n="about.historyText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🍱</div>
+            <h3 class="card__title" data-i18n="about.foodTitle"></h3>
+            <p class="card__text" data-i18n="about.foodText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🚅</div>
+            <h3 class="card__title" data-i18n="about.transportTitle"></h3>
+            <p class="card__text" data-i18n="about.transportText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">💴</div>
+            <h3 class="card__title" data-i18n="about.currencyTitle"></h3>
+            <p class="card__text" data-i18n="about.currencyText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🗣</div>
+            <h3 class="card__title" data-i18n="about.languageTitle"></h3>
+            <p class="card__text" data-i18n="about.languageText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">📶</div>
+            <h3 class="card__title" data-i18n="about.internetTitle"></h3>
+            <p class="card__text" data-i18n="about.internetText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🛡</div>
+            <h3 class="card__title" data-i18n="about.safetyTitle"></h3>
+            <p class="card__text" data-i18n="about.safetyText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🌦</div>
+            <h3 class="card__title" data-i18n="about.weatherTitle"></h3>
+            <p class="card__text" data-i18n="about.weatherText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🌸</div>
+            <h3 class="card__title" data-i18n="about.seasonsTitle"></h3>
+            <p class="card__text" data-i18n="about.seasonsText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🙇</div>
+            <h3 class="card__title" data-i18n="about.etiquetteTitle"></h3>
+            <p class="card__text" data-i18n="about.etiquetteText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">✨</div>
+            <h3 class="card__title" data-i18n="about.whyTitle"></h3>
+            <p class="card__text" data-i18n="about.whyText"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="section section--alt" id="map">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="map.eyebrow">Navigate</p>
+          <h2 class="section__title" data-i18n="map.title">Interactive map</h2>
+          <p class="section__desc" data-i18n="map.desc"></p>
+        </header>
+        <div class="map-wrap">
+        <div class="map-layout reveal">
+          <div class="map-canvas">
+            <svg id="japan-map" class="map-svg" viewBox="0 0 400 560" role="img" aria-label="Map of Japan with major cities">
+              <defs>
+                <linearGradient id="landFill" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#f8b4c4" stop-opacity="0.55"/>
+                  <stop offset="100%" stop-color="#e8d48b" stop-opacity="0.35"/>
+                </linearGradient>
+                <filter id="mapSoft" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-opacity="0.12"/>
+                </filter>
+              </defs>
+              <!-- Sea backdrop -->
+              <rect class="map-sea" x="0" y="0" width="400" height="560" rx="16"/>
+              <!-- Scale note -->
+              <text class="map-scale-note" x="20" y="540">Approx. positions · lat/lon projected</text>
+              <!-- Landmasses (geographically ordered) -->
+              <g class="map-land" filter="url(#mapSoft)">
+                <path class="map-island" d="M260.6 29.4 L287.5 31.6 L350.1 63.5 L364.4 79.4 L341.2 88.5 L317.9 111.2 L278.5 120.3 L260.6 118.0 L251.7 97.5 L257.1 63.5 L260.6 29.4 Z" data-region="hokkaido"/>
+                <path class="map-island" d="M276.7 122.5 L291.1 143.0 L294.6 177.1 L278.5 195.3 L276.7 222.5 L274.9 245.3 L276.7 252.1 L257.1 265.7 L242.7 270.3 L228.4 277.1 L206.9 277.1 L189.1 297.5 L171.2 302.1 L153.3 302.1 L135.4 304.4 L117.5 295.3 L99.6 290.7 L97.8 281.6 L108.5 272.5 L126.4 256.6 L144.3 254.4 L162.2 254.4 L180.1 252.1 L192.6 238.5 L205.2 218.0 L215.9 211.2 L228.4 204.4 L242.7 195.3 L251.7 165.7 L257.1 143.0 L266.0 127.1 L276.7 122.5 Z" data-region="honshu"/>
+                <path class="map-island" d="M144.3 281.6 L164.0 283.9 L165.8 302.1 L153.3 318.0 L135.4 318.0 L124.6 308.9 L126.4 293.0 L144.3 281.6 Z" data-region="shikoku"/>
+                <path class="map-island" d="M90.6 293.0 L108.5 299.8 L115.7 318.0 L108.5 349.8 L96.0 354.4 L76.3 349.8 L72.7 324.8 L76.3 308.9 L85.3 297.5 L90.6 293.0 Z" data-region="kyushu"/>
+                <path class="map-island" d="M38.7 452.1 L51.3 456.6 L53.1 470.3 L44.1 472.5 L36.9 468.0 L38.7 452.1 Z" data-region="okinawa"/>
+              </g>
+              <!-- Inset connector for Okinawa -->
+              <path class="map-inset-line" d="M70 420 L55 455" fill="none"/>
+              <!-- City markers (lat/lon accurate) -->
+            <g class="map-marker" data-city="sapporo" data-href="cities/sapporo.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="284.8" cy="84.8" r="5.5"/>
+              <circle class="map-marker__ring" cx="284.8" cy="84.8" r="9"/>
+              <text class="map-marker__label" x="294.8" y="88.8" text-anchor="start" data-i18n="cities.sapporo.name">Sapporo</text>
+            </g>
+            <g class="map-marker" data-city="nikko" data-href="cities/nikko.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="253.5" cy="228.2" r="5.5"/>
+              <circle class="map-marker__ring" cx="253.5" cy="228.2" r="9"/>
+              <text class="map-marker__label" x="263.5" y="232.2" text-anchor="start" data-i18n="cities.nikko.name">Nikko</text>
+            </g>
+            <g class="map-marker" data-city="tokyo" data-href="cities/tokyo.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="256.3" cy="252.5" r="5.5"/>
+              <circle class="map-marker__ring" cx="256.3" cy="252.5" r="9"/>
+              <text class="map-marker__label" x="266.3" y="246.5" text-anchor="start" data-i18n="cities.tokyo.name">Tokyo</text>
+            </g>
+            <g class="map-marker" data-city="yokohama" data-href="cities/yokohama.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="254.2" cy="258.0" r="5.5"/>
+              <circle class="map-marker__ring" cx="254.2" cy="258.0" r="9"/>
+              <text class="map-marker__label" x="264.2" y="270.0" text-anchor="start" data-i18n="cities.yokohama.name">Yokohama</text>
+            </g>
+            <g class="map-marker" data-city="hakone" data-href="cities/hakone.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="243.3" cy="262.8" r="5.5"/>
+              <circle class="map-marker__ring" cx="243.3" cy="262.8" r="9"/>
+              <text class="map-marker__label" x="233.3" y="266.8" text-anchor="end" data-i18n="cities.hakone.name">Hakone</text>
+            </g>
+            <g class="map-marker" data-city="kanazawa" data-href="cities/kanazawa.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="200.9" cy="232.5" r="5.5"/>
+              <circle class="map-marker__ring" cx="200.9" cy="232.5" r="9"/>
+              <text class="map-marker__label" x="210.9" y="236.5" text-anchor="start" data-i18n="cities.kanazawa.name">Kanazawa</text>
+            </g>
+            <g class="map-marker" data-city="kyoto" data-href="cities/kyoto.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="184.9" cy="267.8" r="5.5"/>
+              <circle class="map-marker__ring" cx="184.9" cy="267.8" r="9"/>
+              <text class="map-marker__label" x="174.9" y="263.8" text-anchor="end" data-i18n="cities.kyoto.name">Kyoto</text>
+            </g>
+            <g class="map-marker" data-city="osaka" data-href="cities/osaka.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="180.1" cy="275.0" r="5.5"/>
+              <circle class="map-marker__ring" cx="180.1" cy="275.0" r="9"/>
+              <text class="map-marker__label" x="170.1" y="287.0" text-anchor="end" data-i18n="cities.osaka.name">Osaka</text>
+            </g>
+            <g class="map-marker" data-city="nara" data-href="cities/nara.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="185.5" cy="275.0" r="5.5"/>
+              <circle class="map-marker__ring" cx="185.5" cy="275.0" r="9"/>
+              <text class="map-marker__label" x="195.5" y="287.0" text-anchor="start" data-i18n="cities.nara.name">Nara</text>
+            </g>
+            <g class="map-marker" data-city="kobe" data-href="cities/kobe.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="174.7" cy="275.0" r="5.5"/>
+              <circle class="map-marker__ring" cx="174.7" cy="275.0" r="9"/>
+              <text class="map-marker__label" x="164.7" y="273.0" text-anchor="end" data-i18n="cities.kobe.name">Kobe</text>
+            </g>
+            <g class="map-marker" data-city="hiroshima" data-href="cities/hiroshima.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="125.7" cy="281.9" r="5.5"/>
+              <circle class="map-marker__ring" cx="125.7" cy="281.9" r="9"/>
+              <text class="map-marker__label" x="135.7" y="285.9" text-anchor="start" data-i18n="cities.hiroshima.name">Hiroshima</text>
+            </g>
+            <g class="map-marker" data-city="fukuoka" data-href="cities/fukuoka.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="88.8" cy="300.0" r="5.5"/>
+              <circle class="map-marker__ring" cx="88.8" cy="300.0" r="9"/>
+              <text class="map-marker__label" x="98.8" y="304.0" text-anchor="start" data-i18n="cities.fukuoka.name">Fukuoka</text>
+            </g>
+            <g class="map-marker" data-city="nagasaki" data-href="cities/nagasaki.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="79.5" cy="319.1" r="5.5"/>
+              <circle class="map-marker__ring" cx="79.5" cy="319.1" r="9"/>
+              <text class="map-marker__label" x="69.5" y="323.1" text-anchor="end" data-i18n="cities.nagasaki.name">Nagasaki</text>
+            </g>
+            <g class="map-marker" data-city="okinawa" data-href="cities/okinawa.html" tabindex="0" role="link">
+              <circle class="map-marker__dot" cx="40.2" cy="467.8" r="5.5"/>
+              <circle class="map-marker__ring" cx="40.2" cy="467.8" r="9"/>
+              <text class="map-marker__label" x="50.2" y="471.8" text-anchor="start" data-i18n="cities.okinawa.name">Okinawa</text>
+            </g>
+            </svg>
+          </div>
+          <div class="map-panel">
+            <p class="map-panel__title" data-i18n="map.panelTitle">Jump to a city</p>
+            <p class="map-panel__hint" data-i18n="map.panelHint">Markers match real geography. Click a city below or on the map.</p>
+            <div class="map-city-list" id="map-city-list">
+              <div class="map-city-group">
+                <h4 class="map-city-group__title">Hokkaido</h4>
+                <div class="map-city-group__links">
+                  <a class="map-city-link" href="cities/sapporo.html" data-city="sapporo" data-i18n="cities.sapporo.name">Sapporo</a>
+                </div>
+              </div>
+              <div class="map-city-group">
+                <h4 class="map-city-group__title">Kanto / East</h4>
+                <div class="map-city-group__links">
+                  <a class="map-city-link" href="cities/tokyo.html" data-city="tokyo" data-i18n="cities.tokyo.name">Tokyo</a>
+                  <a class="map-city-link" href="cities/yokohama.html" data-city="yokohama" data-i18n="cities.yokohama.name">Yokohama</a>
+                  <a class="map-city-link" href="cities/nikko.html" data-city="nikko" data-i18n="cities.nikko.name">Nikko</a>
+                  <a class="map-city-link" href="cities/hakone.html" data-city="hakone" data-i18n="cities.hakone.name">Hakone</a>
+                </div>
+              </div>
+              <div class="map-city-group">
+                <h4 class="map-city-group__title">Chubu / Hokuriku</h4>
+                <div class="map-city-group__links">
+                  <a class="map-city-link" href="cities/kanazawa.html" data-city="kanazawa" data-i18n="cities.kanazawa.name">Kanazawa</a>
+                </div>
+              </div>
+              <div class="map-city-group">
+                <h4 class="map-city-group__title">Kansai</h4>
+                <div class="map-city-group__links">
+                  <a class="map-city-link" href="cities/kyoto.html" data-city="kyoto" data-i18n="cities.kyoto.name">Kyoto</a>
+                  <a class="map-city-link" href="cities/osaka.html" data-city="osaka" data-i18n="cities.osaka.name">Osaka</a>
+                  <a class="map-city-link" href="cities/nara.html" data-city="nara" data-i18n="cities.nara.name">Nara</a>
+                  <a class="map-city-link" href="cities/kobe.html" data-city="kobe" data-i18n="cities.kobe.name">Kobe</a>
+                </div>
+              </div>
+              <div class="map-city-group">
+                <h4 class="map-city-group__title">Chugoku / Kyushu</h4>
+                <div class="map-city-group__links">
+                  <a class="map-city-link" href="cities/hiroshima.html" data-city="hiroshima" data-i18n="cities.hiroshima.name">Hiroshima</a>
+                  <a class="map-city-link" href="cities/fukuoka.html" data-city="fukuoka" data-i18n="cities.fukuoka.name">Fukuoka</a>
+                  <a class="map-city-link" href="cities/nagasaki.html" data-city="nagasaki" data-i18n="cities.nagasaki.name">Nagasaki</a>
+                </div>
+              </div>
+              <div class="map-city-group">
+                <h4 class="map-city-group__title">Okinawa</h4>
+                <div class="map-city-group__links">
+                  <a class="map-city-link" href="cities/okinawa.html" data-city="okinawa" data-i18n="cities.okinawa.name">Okinawa</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section class="section" id="destinations">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="destinations.eyebrow">14 cities</p>
+          <h2 class="section__title" data-i18n="destinations.title">Destinations overview</h2>
+          <p class="section__desc" data-i18n="destinations.desc"></p>
+        </header>
+        <div class="grid-3 stagger">
+          
+      <a class="card dest-card reveal" href="cities/tokyo.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.tokyo.name">Tokyo</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">🏙 <span data-i18n="cities.tokyo.name">Tokyo</span></h3>
+          <p class="card__text" data-i18n="cities.tokyo.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="0">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="8" data-temp-c-max="30">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/kyoto.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.kyoto.name">Kyoto</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">🏛 <span data-i18n="cities.kyoto.name">Kyoto</span></h3>
+          <p class="card__text" data-i18n="cities.kyoto.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="365">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="5" data-temp-c-max="32">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/osaka.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.osaka.name">Osaka</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">🍜 <span data-i18n="cities.osaka.name">Osaka</span></h3>
+          <p class="card__text" data-i18n="cities.osaka.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="400">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="6" data-temp-c-max="33">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/nara.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.nara.name">Nara</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">🦌 <span data-i18n="cities.nara.name">Nara</span></h3>
+          <p class="card__text" data-i18n="cities.nara.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="390">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="5" data-temp-c-max="32">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/hiroshima.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.hiroshima.name">Hiroshima</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">☮️ <span data-i18n="cities.hiroshima.name">Hiroshima</span></h3>
+          <p class="card__text" data-i18n="cities.hiroshima.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="700">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="6" data-temp-c-max="31">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/yokohama.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.yokohama.name">Yokohama</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">⚓ <span data-i18n="cities.yokohama.name">Yokohama</span></h3>
+          <p class="card__text" data-i18n="cities.yokohama.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="30">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="7" data-temp-c-max="30">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/hakone.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.hakone.name">Hakone</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">♨️ <span data-i18n="cities.hakone.name">Hakone</span></h3>
+          <p class="card__text" data-i18n="cities.hakone.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="90">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="3" data-temp-c-max="26">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/nikko.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.nikko.name">Nikko</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">⛩ <span data-i18n="cities.nikko.name">Nikko</span></h3>
+          <p class="card__text" data-i18n="cities.nikko.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="140">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="1" data-temp-c-max="25">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/kanazawa.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.kanazawa.name">Kanazawa</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">✨ <span data-i18n="cities.kanazawa.name">Kanazawa</span></h3>
+          <p class="card__text" data-i18n="cities.kanazawa.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="300">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="3" data-temp-c-max="30">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/sapporo.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.sapporo.name">Sapporo</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">❄️ <span data-i18n="cities.sapporo.name">Sapporo</span></h3>
+          <p class="card__text" data-i18n="cities.sapporo.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="830">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="-4" data-temp-c-max="26">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/fukuoka.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.fukuoka.name">Fukuoka</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">🍢 <span data-i18n="cities.fukuoka.name">Fukuoka</span></h3>
+          <p class="card__text" data-i18n="cities.fukuoka.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="890">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="7" data-temp-c-max="32">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/kobe.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.kobe.name">Kobe</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">🥩 <span data-i18n="cities.kobe.name">Kobe</span></h3>
+          <p class="card__text" data-i18n="cities.kobe.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="430">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="6" data-temp-c-max="32">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/nagasaki.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.nagasaki.name">Nagasaki</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">⛰ <span data-i18n="cities.nagasaki.name">Nagasaki</span></h3>
+          <p class="card__text" data-i18n="cities.nagasaki.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="1000">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="7" data-temp-c-max="31">—</strong></span>
+          </div>
+        </div>
+      </a>
+      <a class="card dest-card reveal" href="cities/okinawa.html">
+        <div class="img-ph img-ph--sm"><span class="img-ph__label" data-i18n="cities.okinawa.name">Okinawa</span></div>
+        <div class="dest-card__body">
+          <h3 class="card__title">🏖 <span data-i18n="cities.okinawa.name">Okinawa</span></h3>
+          <p class="card__text" data-i18n="cities.okinawa.blurb"></p>
+          <div class="dest-card__meta">
+            <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="1550">—</strong></span>
+            <span>🌡 <strong data-temp-c-min="17" data-temp-c-max="32">—</strong></span>
+          </div>
+        </div>
+      </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROUTES -->
+    <section class="section section--alt" id="routes">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="routes.eyebrow">Itineraries</p>
+          <h2 class="section__title" data-i18n="routes.title">Suggested routes</h2>
+          <p class="section__desc" data-i18n="routes.desc"></p>
+        </header>
+        <div class="route-tabs" role="tablist">
+        <button type="button" data-route-tab="d5" class="is-active" data-i18n="routes.d5">d5</button>
+        <button type="button" data-route-tab="d7" class="" data-i18n="routes.d7">d7</button>
+        <button type="button" data-route-tab="d10" class="" data-i18n="routes.d10">d10</button>
+        <button type="button" data-route-tab="d14" class="" data-i18n="routes.d14">d14</button>
+        <button type="button" data-route-tab="sakura" class="" data-i18n="routes.sakura">sakura</button>
+        <button type="button" data-route-tab="autumn" class="" data-i18n="routes.autumn">autumn</button>
+        <button type="button" data-route-tab="food" class="" data-i18n="routes.food">food</button>
+        <button type="button" data-route-tab="anime" class="" data-i18n="routes.anime">anime</button>
+        <button type="button" data-route-tab="nature" class="" data-i18n="routes.nature">nature</button>
+        <button type="button" data-route-tab="luxury" class="" data-i18n="routes.luxury">luxury</button>
+        <button type="button" data-route-tab="budget" class="" data-i18n="routes.budget">budget</button>
+        </div>
+        <div id="route-panels">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOD -->
+    <section class="section" id="food">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="food.eyebrow">Cuisine</p>
+          <h2 class="section__title" data-i18n="food.title">Food guide overview</h2>
+          <p class="section__desc" data-i18n="food.desc"></p>
+        </header>
+        <div class="grid-3">
+          
+          <article class="card reveal">
+            <div class="card__icon">🍣</div>
+            <h3 class="card__title" data-i18n="food.sushi"></h3>
+            <p class="card__text" data-i18n="food.sushiText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🍜</div>
+            <h3 class="card__title" data-i18n="food.ramen"></h3>
+            <p class="card__text" data-i18n="food.ramenText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🍢</div>
+            <h3 class="card__title" data-i18n="food.street"></h3>
+            <p class="card__text" data-i18n="food.streetText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🍱</div>
+            <h3 class="card__title" data-i18n="food.kaiseki"></h3>
+            <p class="card__text" data-i18n="food.kaisekiText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🥩</div>
+            <h3 class="card__title" data-i18n="food.wagyu"></h3>
+            <p class="card__text" data-i18n="food.wagyuText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🍵</div>
+            <h3 class="card__title" data-i18n="food.sweets"></h3>
+            <p class="card__text" data-i18n="food.sweetsText"></p>
+          </article>
+        </div>
+        <p class="text-center mt-3 reveal"><span data-i18n="food.linkHint"></span>
+          <a href="cities/osaka.html" data-i18n="cities.osaka.name">Osaka</a> ·
+          <a href="cities/tokyo.html" data-i18n="cities.tokyo.name">Tokyo</a> ·
+          <a href="cities/kyoto.html" data-i18n="cities.kyoto.name">Kyoto</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ATTRACTIONS -->
+    <section class="section section--alt" id="attractions">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="attractions.eyebrow">See & do</p>
+          <h2 class="section__title" data-i18n="attractions.title">Attractions overview</h2>
+          <p class="section__desc" data-i18n="attractions.desc"></p>
+        </header>
+        <div class="grid-4">
+          
+          <article class="card reveal">
+            <div class="card__icon">🛕</div>
+            <h3 class="card__title" data-i18n="attractions.temples"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">⛩</div>
+            <h3 class="card__title" data-i18n="attractions.shrines"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🏯</div>
+            <h3 class="card__title" data-i18n="attractions.castles"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">⛰</div>
+            <h3 class="card__title" data-i18n="attractions.mountains"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🌲</div>
+            <h3 class="card__title" data-i18n="attractions.parks"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🏛</div>
+            <h3 class="card__title" data-i18n="attractions.museums"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🛍</div>
+            <h3 class="card__title" data-i18n="attractions.shopping"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🎢</div>
+            <h3 class="card__title" data-i18n="attractions.theme"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🎮</div>
+            <h3 class="card__title" data-i18n="attractions.anime"></h3>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🌃</div>
+            <h3 class="card__title" data-i18n="attractions.nightlife"></h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSPORT -->
+    <section class="section" id="transport">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="transport.eyebrow">Getting around</p>
+          <h2 class="section__title" data-i18n="transport.title">Transportation guide</h2>
+          <p class="section__desc" data-i18n="transport.desc"></p>
+        </header>
+        <div class="grid-3">
+          
+          <article class="card reveal">
+            <div class="card__icon">🚅</div>
+            <h3 class="card__title" data-i18n="transport.shinkansen"></h3>
+            <p class="card__text" data-i18n="transport.shinkansenText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🎫</div>
+            <h3 class="card__title" data-i18n="transport.jrpass"></h3>
+            <p class="card__text" data-i18n="transport.jrpassText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">💳</div>
+            <h3 class="card__title" data-i18n="transport.ic"></h3>
+            <p class="card__text" data-i18n="transport.icText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🚇</div>
+            <h3 class="card__title" data-i18n="transport.metro"></h3>
+            <p class="card__text" data-i18n="transport.metroText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">🚌</div>
+            <h3 class="card__title" data-i18n="transport.bus"></h3>
+            <p class="card__text" data-i18n="transport.busText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">✈️</div>
+            <h3 class="card__title" data-i18n="transport.flights"></h3>
+            <p class="card__text" data-i18n="transport.flightsText"></p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">⛴️</div>
+            <h3 class="card__title" data-i18n="transport.ferries"></h3>
+            <p class="card__text" data-i18n="transport.ferriesText"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEASONS -->
+    <section class="section section--alt" id="seasons">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="seasons.eyebrow">When to go</p>
+          <h2 class="section__title" data-i18n="seasons.title">Seasonal guide</h2>
+          <p class="section__desc" data-i18n="seasons.desc"></p>
+        </header>
+        <div class="grid-2">
+          <article class="card season-card season-card--spring reveal">
+            <h3 class="card__title" data-i18n="seasons.spring">Spring</h3>
+            <p class="season-temp"><span data-temp-c-min="8" data-temp-c-max="20">—</span></p>
+            <p class="card__text" data-i18n="seasons.springText"></p>
+            <p class="mt-2"><strong data-i18n="seasons.clothing"></strong>: <span data-i18n="seasons.springClothes"></span></p>
+            <p><strong data-i18n="seasons.activities"></strong>: <span data-i18n="seasons.springAct"></span></p>
+          </article>
+          <article class="card season-card season-card--summer reveal">
+            <h3 class="card__title" data-i18n="seasons.summer">Summer</h3>
+            <p class="season-temp"><span data-temp-c-min="22" data-temp-c-max="33">—</span></p>
+            <p class="card__text" data-i18n="seasons.summerText"></p>
+            <p class="mt-2"><strong data-i18n="seasons.clothing"></strong>: <span data-i18n="seasons.summerClothes"></span></p>
+            <p><strong data-i18n="seasons.activities"></strong>: <span data-i18n="seasons.summerAct"></span></p>
+          </article>
+          <article class="card season-card season-card--autumn reveal">
+            <h3 class="card__title" data-i18n="seasons.autumn">Autumn</h3>
+            <p class="season-temp"><span data-temp-c-min="10" data-temp-c-max="22">—</span></p>
+            <p class="card__text" data-i18n="seasons.autumnText"></p>
+            <p class="mt-2"><strong data-i18n="seasons.clothing"></strong>: <span data-i18n="seasons.autumnClothes"></span></p>
+            <p><strong data-i18n="seasons.activities"></strong>: <span data-i18n="seasons.autumnAct"></span></p>
+          </article>
+          <article class="card season-card season-card--winter reveal">
+            <h3 class="card__title" data-i18n="seasons.winter">Winter</h3>
+            <p class="season-temp"><span data-temp-c-min="0" data-temp-c-max="10">—</span></p>
+            <p class="card__text" data-i18n="seasons.winterText"></p>
+            <p class="mt-2"><strong data-i18n="seasons.clothing"></strong>: <span data-i18n="seasons.winterClothes"></span></p>
+            <p><strong data-i18n="seasons.activities"></strong>: <span data-i18n="seasons.winterAct"></span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FESTIVALS -->
+    <section class="section" id="festivals">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="festivals.eyebrow">Celebrate</p>
+          <h2 class="section__title" data-i18n="festivals.title">Major festivals</h2>
+          <p class="section__desc" data-i18n="festivals.desc"></p>
+        </header>
+        <div class="festival-track" id="festival-track"><!-- filled by JS --></div>
+      </div>
+    </section>
+
+    <!-- TIPS -->
+    <section class="section section--alt" id="tips">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="tips.eyebrow">Know before you go</p>
+          <h2 class="section__title" data-i18n="tips.title">Common travel tips</h2>
+          <p class="section__desc" data-i18n="tips.desc"></p>
+        </header>
+        <div class="grid-2">
+          
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.etiquette"></h3>
+            <p class="card__text" data-i18n="tips.etiquetteText"></p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.phrases"></h3>
+            <p class="card__text" data-i18n="tips.phrasesText"></p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.emergency"></h3>
+            <p class="card__text" data-i18n="tips.emergencyText"></p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.sim"></h3>
+            <p class="card__text" data-i18n="tips.simText"></p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.wifi"></h3>
+            <p class="card__text" data-i18n="tips.wifiText"></p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.cash"></h3>
+            <p class="card__text" data-i18n="tips.cashText"></p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.tipping"></h3>
+            <p class="card__text" data-i18n="tips.tippingText"></p>
+          </article>
+          <article class="card reveal">
+            <h3 class="card__title" data-i18n="tips.transit"></h3>
+            <p class="card__text" data-i18n="tips.transitText"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="faq.eyebrow">Questions</p>
+          <h2 class="section__title" data-i18n="faq.title">FAQ</h2>
+          <p class="section__desc" data-i18n="faq.desc"></p>
+        </header>
+        <div class="faq-list" id="faq-list">
+          
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q1"></button>
+            <div class="faq-item__a" data-i18n="faq.a1"></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q2"></button>
+            <div class="faq-item__a" data-i18n="faq.a2"></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q3"></button>
+            <div class="faq-item__a" data-i18n="faq.a3"></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q4"></button>
+            <div class="faq-item__a" data-i18n="faq.a4"></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q5"></button>
+            <div class="faq-item__a" data-i18n="faq.a5"></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q6"></button>
+            <div class="faq-item__a" data-i18n="faq.a6"></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q7"></button>
+            <div class="faq-item__a" data-i18n="faq.a7"></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-item__q" aria-expanded="false" data-i18n="faq.q8"></button>
+            <div class="faq-item__a" data-i18n="faq.a8"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- OFFICIAL RESOURCES -->
+    <section class="section section--alt" id="official">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="official.eyebrow">Official &amp; practical</p>
+          <h2 class="section__title" data-i18n="official.title">Resources you can rely on</h2>
+          <p class="section__desc" data-i18n="official.desc">This guide helps you plan. For visas, safety alerts, rail passes, and destination detail, use Japan National Tourism Organization (JNTO) and operators below.</p>
+        </header>
+        <div class="resource-list reveal">
+          <a class="resource-link" href="https://www.japan.travel/en/us/" target="_blank" rel="noopener">
+            <strong data-i18n="official.jnto">Travel Japan (JNTO)</strong>
+            <span data-i18n="official.jntoDesc">Official destination guides, itineraries, and planning hub</span>
+          </a>
+          <a class="resource-link" href="https://www.japan.travel/en/guide/jr-rail-pass/" target="_blank" rel="noopener">
+            <strong data-i18n="official.jr">Japan Rail Pass guide (JNTO)</strong>
+            <span data-i18n="official.jrDesc">What the pass covers, reservations, and when to consider regional passes</span>
+          </a>
+          <a class="resource-link" href="https://www.japan.travel/en/guide/how-to-travel-by-train-and-bus-in-japan/" target="_blank" rel="noopener">
+            <strong data-i18n="official.train">Trains &amp; buses (JNTO)</strong>
+            <span data-i18n="official.trainDesc">How to ride, IC cards, tickets, and transit manners</span>
+          </a>
+          <a class="resource-link" href="https://www.japan.travel/en/plan/hotline/" target="_blank" rel="noopener">
+            <strong data-i18n="official.hotline">Japan Visitor Hotline</strong>
+            <span data-i18n="official.hotlineDesc">Multilingual visitor support — save before you travel</span>
+          </a>
+          <a class="resource-link" href="https://www.jnto.go.jp/safety-tips/eng/index.html" target="_blank" rel="noopener">
+            <strong data-i18n="official.safety">Safety Tips app / info</strong>
+            <span data-i18n="official.safetyDesc">Emergency and disaster guidance for travelers in Japan</span>
+          </a>
+          <a class="resource-link" href="https://japanrailpass.net/en/" target="_blank" rel="noopener">
+            <strong data-i18n="official.jrOfficial">japanrailpass.net</strong>
+            <span data-i18n="official.jrOfficialDesc">Official JR Pass product site for purchase rules and validity</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY CTA -->
+    <section class="section" id="gallery-cta">
+      <div class="container">
+        <div class="gallery-cta feature-callout reveal">
+          <h2 data-i18n="galleryCta.title">Photo gallery</h2>
+          <p data-i18n="galleryCta.desc"></p>
+          <a class="btn btn--lg" href="gallery.html" data-i18n="galleryCta.button">Enter the gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUN FACTS -->
+    <section class="section section--alt" id="facts">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow" data-i18n="funFacts.eyebrow">Did you know?</p>
+          <h2 class="section__title" data-i18n="funFacts.title">Fun facts</h2>
+          <p class="section__desc" data-i18n="funFacts.desc"></p>
+        </header>
+        <div class="card fact-box reveal" id="fun-fact-box">
+          <div class="fact-box__icon" aria-hidden="true">💡</div>
+          <p class="fact-box__text" data-fact-text>—</p>
+          <button type="button" class="btn btn--primary" data-fact-refresh data-i18n="funFacts.refresh">Another fact</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div>
+      <div class="footer__brand" data-i18n="meta.siteName">Japan Travel Guide</div>
+      <p data-i18n="footer.aboutBlurb">A premium planning companion for multi-city Japan trips.</p>
+      <p class="mt-2"><button type="button" class="btn btn--secondary" data-open-settings data-i18n="nav.settings">Settings</button></p>
+    </div>
+    <div class="footer__col">
+      <h4 data-i18n="common.quickLinks">Quick links</h4>
+      <ul>
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="index.html#destinations" data-i18n="nav.destinations">Destinations</a></li>
+        <li><a href="tools.html#budget" data-i18n="nav.budget">Budget</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4 data-i18n="common.resources">Resources</h4>
+      <ul>
+        <li><a href="index.html#transport" data-i18n="nav.transport">Transport</a></li>
+        <li><a href="index.html#tips" data-i18n="nav.tips">Tips</a></li>
+        <li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="tools.html" data-i18n="nav.tools">Tools</a></li>
+        <li><a href="index.html#routes" data-i18n="nav.routes">Routes</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container footer__bottom">
+    <span data-i18n="common.copyright">© 2026 Japan Travel Guide.</span>
+    <div class="footer-legal-links">
+      <a href="tools.html" data-i18n="nav.tools">Tools</a>
+      <span class="footer-legal-sep">|</span>
+      <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+      <span class="footer-legal-sep">|</span>
+      <a href="privacy.html" data-i18n="legal.privacyLink">Privacy</a>
+      <span class="footer-legal-sep">|</span>
+      <a href="terms.html" data-i18n="legal.termsLink">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<div class="settings-overlay" id="settings-overlay" data-close-settings></div>
+<aside class="settings-panel" id="settings-panel" aria-label="Settings">
+  <div class="settings-panel__header">
+    <h2 data-i18n="common.settingsTitle">Settings</h2>
+    <button type="button" class="btn btn--icon btn--ghost" data-close-settings aria-label="Close">✕</button>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.language">Language</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="lang" data-value="en" data-i18n="common.langEn">English</button>
+      <button type="button" data-setting="lang" data-value="ja" data-i18n="common.langJa">日本語</button>
+      <button type="button" data-setting="lang" data-value="zh-CN" data-i18n="common.langZh">简体中文</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.distanceUnit">Distance</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="distanceUnit" data-value="km">km</button>
+      <button type="button" data-setting="distanceUnit" data-value="mi">mi</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.tempUnit">Temperature</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="tempUnit" data-value="c">°C</button>
+      <button type="button" data-setting="tempUnit" data-value="f">°F</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.theme">Theme</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="theme" data-value="light" data-i18n="common.themeLight">Light</button>
+      <button type="button" data-setting="theme" data-value="dark" data-i18n="common.themeDark">Dark</button>
+      <button type="button" data-setting="theme" data-value="auto" data-i18n="common.themeAuto">Auto</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.animation">Animation</h3>
+    <div class="settings-options">
+            <button type="button" data-setting="motion" data-value="full" data-i18n="common.motionFull">Full</button>
+      <button type="button" data-setting="motion" data-value="reduced" data-i18n="common.motionReduced">Reduced</button>
+      <button type="button" data-setting="motion" data-value="off" data-i18n="common.motionOff">Off</button>
+    </div>
+  </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // Render routes + festivals from translation dictionary
+    (function () {
+      function renderRoutes() {
+        const root = document.getElementById("route-panels");
+        if (!root || !window.JTG || !JTG.i18n) return;
+        const ids = ['d5', 'd7', 'd10', 'd14', 'sakura', 'autumn', 'food', 'anime', 'nature', 'luxury', 'budget'];
+        const t = JTG.i18n.t.bind(JTG.i18n);
+        const dict = JTG.i18n.getDict(JTG.Settings.get("lang"));
+        const content = (dict.routes && dict.routes.content) || {};
+        root.innerHTML = ids.map((id, idx) => {
+          const days = content[id] || [];
+          const items = days.map((text, i) => `
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="card card--solid">
+                <strong>${t("routes.day")} ${i + 1}</strong>
+                <p class="card__text mt-1">${text}</p>
+              </div>
+            </div>`).join("");
+          return `<div class="route-panel${idx === 0 ? " is-active" : ""}" data-route-panel="${id}"><div class="timeline">${items}</div></div>`;
+        }).join("");
+      }
+      function renderFestivals() {
+        const track = document.getElementById("festival-track");
+        if (!track || !JTG.i18n) return;
+        const dict = JTG.i18n.getDict(JTG.Settings.get("lang"));
+        const items = (dict.festivals && dict.festivals.items) || [];
+        track.innerHTML = items.map(it => `
+          <article class="card festival-card reveal">
+            <div class="festival-card__month">${it.month || ""}</div>
+            <h3 class="card__title">${it.name || ""}</h3>
+            <p class="card__text">${it.text || ""}</p>
+          </article>`).join("");
+        if (JTG.Animations) JTG.Animations.observeReveals(track);
+      }
+      window.addEventListener("jtg:i18n", () => { renderRoutes(); renderFestivals(); });
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => { renderRoutes(); renderFestivals(); }, 0);
+      });
+    })();
+  </script>
+  <script src="src/js/data/i18n.js" defer></script>
+  <script src="src/js/settings.js" defer></script>
+  <script src="src/js/i18n.js" defer></script>
+  <script src="src/js/units.js" defer></script>
+  <script src="src/js/currency.js" defer></script>
+  <script src="src/js/nav.js" defer></script>
+  <script src="src/js/animations.js" defer></script>
+  <script src="src/js/faq.js" defer></script>
+  <script src="src/js/fun-facts.js" defer></script>
+  <script src="src/js/map.js" defer></script>
+  <script src="src/js/routes.js" defer></script>
+  <script src="src/js/app.js" defer></script>
+
+</body>
+</html>

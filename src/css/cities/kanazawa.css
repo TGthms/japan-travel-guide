@@ -1,0 +1,30 @@
+/* Kanazawa — gold leaf craft, garden geometry */
+body.city-kanazawa {
+  --deep-red-bright: #2c3639;
+  --sakura: #84a98c;
+  --gold: #d4af37;
+  --gradient-hero: linear-gradient(135deg, #f6f3ea, #e8efe8 50%, #faf6e8);
+  --surface-2: rgba(212,175,55,.08);
+  --radius: 6px;
+}
+body.city-kanazawa .card {
+  border-radius: 6px;
+  border: 1px solid rgba(212,175,55,.4);
+  background:
+    linear-gradient(135deg, rgba(212,175,55,.04), transparent 40%),
+    #faf8f2;
+  box-shadow: 0 4px 0 rgba(44,54,57,.06);
+}
+body.city-kanazawa .btn--primary {
+  background: linear-gradient(135deg, #2c3639, #d4af37);
+  border-radius: 4px;
+}
+body.city-kanazawa .img-ph {
+  border-color: rgba(212,175,55,.55);
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(212,175,55,.05) 8px, rgba(212,175,55,.05) 16px),
+    #f5f0e4;
+}
+body.city-kanazawa .section__eyebrow { color: #2c3639; letter-spacing: .2em; }
+body.city-kanazawa .city-stat strong { color: #b8952f; }
+body.city-kanazawa .chip { background: rgba(132,169,140,.18); color: #2c3639; }

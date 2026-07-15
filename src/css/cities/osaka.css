@@ -1,0 +1,36 @@
+/* Osaka — lively street food, lantern warmth, playful boldness */
+body.city-osaka {
+  --deep-red-bright: #e85d04;
+  --sakura: #ffb703;
+  --gold: #fb8500;
+  --gradient-hero: linear-gradient(145deg, #fff4e6, #ffe0b8 45%, #fff8f0);
+  --surface-2: rgba(232,93,4,.08);
+  --radius: 20px;
+}
+body.city-osaka .city-hero {
+  background:
+    radial-gradient(circle at 90% 20%, rgba(255,183,3,.35), transparent 40%),
+    var(--gradient-hero);
+}
+body.city-osaka .card {
+  border-radius: 22px;
+  border: 2px solid rgba(232,93,4,.12);
+  box-shadow: 0 10px 28px rgba(232,93,4,.1);
+}
+body.city-osaka .btn--primary {
+  background: linear-gradient(135deg, #e85d04, #ffb703);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(232,93,4,.3);
+}
+body.city-osaka .card__icon {
+  background: rgba(255,183,3,.25);
+  border-radius: 50%;
+}
+body.city-osaka .img-ph {
+  border-radius: 18px;
+  border-color: rgba(251,133,0,.4);
+  background: linear-gradient(145deg, rgba(255,183,3,.2), rgba(232,93,4,.08)), #fff8f0;
+}
+body.city-osaka .section__eyebrow { color: #e85d04; }
+body.city-osaka .city-stat strong { color: #e85d04; }
+body.city-osaka .chip { background: rgba(255,183,3,.25); color: #9a3412; border-radius: 999px; }

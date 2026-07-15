@@ -1,0 +1,29 @@
+# macOS / editor noise
+.DS_Store
+**/.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (dev-only package.json; no runtime build pipeline)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Internal photo workflow (not part of the published site)
+# Local Gallery Manager + launcher — never deploy to GitHub Pages
+tools/
+Add Photos.command
+**/__pycache__/
+*.py[cod]
+*.pyo
+.Python
+tools/.geo_cache.json
+
+# Local temp / scratch from image workflows
+assets/gallery/tmp*
+*.tmp
+.cache/
+.github/workflows/

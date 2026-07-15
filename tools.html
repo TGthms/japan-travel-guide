@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Japan travel tools — budget planner, packing checklist, currency, clocks, tax, JR Pass, rail fares, and emergency numbers." />
+  <meta name="theme-color" content="#8b1a2b" />
+  <title>Travel Tools · Japan Travel Guide</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b1a2b'/%3E%3Ctext x='32' y='44' font-size='32' text-anchor='middle' fill='%23f8b4c4'%3E%E6%97%A5%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/styles.css" />
+  <script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem('jtg-preferences') || '{}');
+      var theme = p.theme || 'auto';
+      var resolved = theme === 'auto'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      var motion = p.motion || 'full';
+      if (motion !== 'full' && motion !== 'reduced' && motion !== 'off') motion = 'full';
+      document.documentElement.setAttribute('data-motion', motion);
+      var osReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var eff = motion === 'off' ? 'off' : ((motion === 'reduced' || osReduce) ? 'reduced' : 'full');
+      document.documentElement.setAttribute('data-motion-effective', eff);
+      if (p.lang) document.documentElement.lang = p.lang === 'zh-CN' ? 'zh-CN' : p.lang;
+    } catch (e) {}
+  })();
+  </script>
+
+</head>
+<body data-page="tools" class="page-tools">
+  <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
+  <div id="loader"><div class="loader__inner"><div class="loader__torii"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
+  <div id="scroll-progress"></div>
+
+  <header class="gallery-app-bar site-header" role="banner">
+    <div class="container gallery-app-bar__inner">
+      <a href="index.html" class="gallery-app-back">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span data-i18n="tools.backToGuide">Back to the guide</span>
+      </a>
+      <div class="gallery-app-title">
+        <span class="gallery-app-mark" aria-hidden="true">⛩</span>
+        <span data-i18n="nav.tools">Tools</span>
+      </div>
+      <div class="gallery-app-actions">
+        <a href="gallery.html" class="btn btn--icon btn--ghost" title="Gallery" data-i18n-aria="nav.gallery">📷</a>
+        <button type="button" class="btn btn--icon btn--ghost" data-open-settings data-i18n-aria="nav.settings">⚙</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tools-page" tabindex="-1">
+    <div class="container">
+      <header class="tools-app-header reveal">
+        <div>
+          <p class="section__eyebrow" data-i18n="tools.eyebrow">Travel tools</p>
+          <h1 class="section__title" data-i18n-html="true" data-i18n="tools.heading">Plan Japan with <em>clarity</em></h1>
+        </div>
+        <p class="section__desc" data-i18n="tools.intro">Budget planner, packing checklist, live currency, world clocks, Japan tax, JR Pass check, rail estimates, and emergency numbers.</p>
+      </header>
+
+      <nav class="tools-jump reveal" aria-label="Tools sections">
+        <a href="#budget" data-i18n="nav.budget">Budget</a>
+        <a href="#packing" data-i18n="nav.packing">Packing</a>
+        <a href="#currency-tool" data-i18n="tools.currencyLabel">Currency</a>
+        <a href="#emergency-tool" data-i18n="tools.emergencyLabel">Emergency</a>
+      </nav>
+
+      <div class="tools-grid">
+
+        <!-- BUDGET PLANNER -->
+        <section class="tool-card tool-card-wide reveal" id="budget">
+          <div class="tool-label" data-i18n="budget.title">Budget planner</div>
+          <p class="tool-sub" data-i18n="budget.desc">Estimate trip cost in yen, then convert with live rates.</p>
+          <div class="budget-layout" id="budget-planner">
+            <div class="card card--solid">
+              <div class="form-group">
+                <label for="budget-days" data-i18n="budget.days">Days</label>
+                <input type="number" id="budget-days" min="1" max="90" value="7" />
+              </div>
+              <div class="form-group">
+                <label for="budget-acc" data-i18n="budget.accommodation">Accommodation</label>
+                <select id="budget-acc">
+                  <option value="hostel" data-i18n="budget.hostel">Hostel</option>
+                  <option value="business" data-i18n="budget.business">Business</option>
+                  <option value="mid" selected data-i18n="budget.mid">Mid</option>
+                  <option value="luxury" data-i18n="budget.luxury">Luxury</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget-transport" data-i18n="budget.transport">Transport</label>
+                <select id="budget-transport">
+                  <option value="local" data-i18n="budget.local">Local</option>
+                  <option value="jrpass" selected data-i18n="budget.jrpass">JR style</option>
+                  <option value="private" data-i18n="budget.private">Private</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget-food" data-i18n="budget.food">Food</label>
+                <select id="budget-food">
+                  <option value="budget" data-i18n="budget.foodBudget">Budget</option>
+                  <option value="mid" selected data-i18n="budget.foodMid">Mid</option>
+                  <option value="gourmet" data-i18n="budget.foodGourmet">Gourmet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget-attr" data-i18n="budget.attractions">Attractions</label>
+                <select id="budget-attr">
+                  <option value="light" data-i18n="budget.attrLight">Light</option>
+                  <option value="standard" selected data-i18n="budget.attrStandard">Standard</option>
+                  <option value="heavy" data-i18n="budget.attrHeavy">Heavy</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget-currency" data-i18n="budget.currency">Currency</label>
+                <select id="budget-currency">
+                  <option value="JPY">JPY</option>
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="CNY">CNY</option>
+                  <option value="GBP">GBP</option>
+                </select>
+              </div>
+            </div>
+            <div class="card card--solid">
+              <p data-i18n="budget.total">Estimated total</p>
+              <div class="budget-total" id="budget-total">—</div>
+              <div class="budget-breakdown" id="budget-breakdown"></div>
+              <p class="rates-note" id="budget-rates-note"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PACKING CHECKLIST -->
+        <section class="tool-card tool-card-wide reveal" id="packing">
+          <div class="tool-label" data-i18n="packing.title">Packing checklist</div>
+          <p class="tool-sub" data-i18n="packing.desc">Tap items to check them off — your list is saved in this browser.</p>
+          <div class="packing-grid" id="packing-list"></div>
+          <div class="packing-actions">
+            <button type="button" class="btn btn--secondary" id="packing-check-all" data-i18n="packing.checkAll">Check all</button>
+            <button type="button" class="btn btn--ghost" id="packing-reset" data-i18n="packing.reset">Reset</button>
+          </div>
+        </section>
+
+        <!-- Currency -->
+        <section class="tool-card tool-card-wide reveal" id="currency-tool">
+          <div class="tool-label" data-i18n="tools.currencyLabel">Live currency converter</div>
+          <p class="tool-sub" data-i18n="tools.currencySub">Daily rates via frankfurter.dev (JPY-centered, multi-currency).</p>
+          <div class="tool-form currency-tool">
+            <label class="tool-field"><span data-i18n="tools.amount">Amount</span>
+              <input id="tool-amount" type="number" min="0" step="0.01" value="10000" inputmode="decimal" />
+            </label>
+            <label class="tool-field"><span data-i18n="tools.from">From</span>
+              <select id="tool-from">
+                <option value="JPY" selected>JPY</option>
+                <option value="USD">USD</option><option value="EUR">EUR</option><option value="CNY">CNY</option>
+                <option value="GBP">GBP</option><option value="KRW">KRW</option><option value="AUD">AUD</option>
+                <option value="HKD">HKD</option><option value="SGD">SGD</option><option value="TWD">TWD</option>
+                <option value="THB">THB</option><option value="CAD">CAD</option><option value="CHF">CHF</option>
+              </select>
+            </label>
+            <button type="button" class="tool-swap" id="tool-swap" aria-label="Swap">⇄</button>
+            <label class="tool-field"><span data-i18n="tools.to">To</span>
+              <select id="tool-to">
+                <option value="USD" selected>USD</option>
+                <option value="JPY">JPY</option><option value="EUR">EUR</option><option value="CNY">CNY</option>
+                <option value="GBP">GBP</option><option value="KRW">KRW</option><option value="AUD">AUD</option>
+                <option value="HKD">HKD</option><option value="SGD">SGD</option><option value="TWD">TWD</option>
+                <option value="THB">THB</option><option value="CAD">CAD</option><option value="CHF">CHF</option>
+              </select>
+            </label>
+          </div>
+          <div class="tool-result" id="tool-currency-result">—</div>
+          <p class="tool-meta" id="tool-currency-meta"></p>
+        </section>
+
+        <!-- Clocks -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.clockLabel">World clock</div>
+          <p class="tool-sub" data-i18n="tools.clockSub">Japan runs on one timezone (JST). Compare with home for calls and arrivals.</p>
+          <div class="clock-list" id="world-clock-list"></div>
+        </section>
+
+        <!-- Tax -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.taxLabel">Japan consumption tax</div>
+          <p class="tool-sub" data-i18n="tools.taxSub">Standard rate is typically 10% (some groceries 8%). Japan does not expect tipping.</p>
+          <div class="tool-form stacked">
+            <label class="tool-field"><span data-i18n="tools.taxBill">Price before tax (¥)</span>
+              <input id="tax-bill" type="number" min="0" step="1" value="3000" inputmode="decimal" />
+            </label>
+            <label class="tool-field"><span data-i18n="tools.taxRate">Tax %</span>
+              <select id="tax-rate">
+                <option value="10" selected>10% — standard</option>
+                <option value="8">8% — reduced (some food)</option>
+                <option value="0">0% — tax-free eligible (if applicable)</option>
+              </select>
+            </label>
+          </div>
+          <div class="tool-result" id="tax-result">—</div>
+          <p class="tool-meta" id="tax-meta"></p>
+          <p class="tool-meta" data-i18n="tools.noTip">Tipping is not customary in Japan — excellent service is included in the culture, not the bill.</p>
+        </section>
+
+        <!-- JR Pass -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.jrLabel">JR Pass sense-check</div>
+          <p class="tool-sub" data-i18n="tools.jrSub">Rough comparison of a tourist rail pass vs buying long-distance tickets. Prices change — always verify officially.</p>
+          <div class="tool-form stacked">
+            <label class="tool-field"><span data-i18n="tools.jrDays">Trip length (days)</span>
+              <input id="jr-days" type="number" min="1" max="30" value="7" />
+            </label>
+            <label class="tool-field"><span data-i18n="tools.jrLegs">Long-distance rail legs (approx.)</span>
+              <input id="jr-legs" type="number" min="0" max="40" value="4" />
+            </label>
+          </div>
+          <div class="tool-result tool-result-sm" id="jr-result">—</div>
+          <p class="tool-meta" id="jr-meta"></p>
+        </section>
+
+        <!-- Rail -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.railLabel">Shinkansen fare estimate</div>
+          <p class="tool-sub" data-i18n="tools.railSub">Indicative one-way ordinary car averages for planning — not a booking system.</p>
+          <div class="tool-form stacked">
+            <label class="tool-field"><span data-i18n="tools.railRoute">Route</span>
+              <select id="rail-route">
+                <option value="tokyo-kyoto">Tokyo ↔ Kyoto</option>
+                <option value="tokyo-osaka">Tokyo ↔ Osaka</option>
+                <option value="tokyo-hiroshima">Tokyo ↔ Hiroshima</option>
+                <option value="tokyo-fukuoka">Tokyo ↔ Fukuoka (Hakata)</option>
+                <option value="tokyo-kanazawa">Tokyo ↔ Kanazawa</option>
+                <option value="osaka-hiroshima">Osaka ↔ Hiroshima</option>
+                <option value="osaka-fukuoka">Osaka ↔ Fukuoka</option>
+                <option value="tokyo-nagoya">Tokyo ↔ Nagoya</option>
+                <option value="tokyo-sendai">Tokyo ↔ Sendai</option>
+              </select>
+            </label>
+            <label class="tool-field"><span data-i18n="tools.railTrips">Number of one-ways</span>
+              <input id="rail-trips" type="number" min="1" max="20" value="2" />
+            </label>
+          </div>
+          <div class="tool-result" id="rail-result">—</div>
+          <p class="tool-meta" id="rail-meta"></p>
+        </section>
+
+        <!-- Emergency -->
+        <section class="tool-card reveal" id="emergency-tool">
+          <div class="tool-label" data-i18n="tools.emergencyLabel">Useful numbers in Japan</div>
+          <p class="tool-sub" data-i18n="tools.emergencySub">Save these before you need them.</p>
+          <ul class="tool-info-list">
+            <li><strong>110</strong> — <span data-i18n="tools.emPolice">Police</span></li>
+            <li><strong>119</strong> — <span data-i18n="tools.emFire">Fire &amp; ambulance</span></li>
+            <li><strong>118</strong> — <span data-i18n="tools.emCoast">Coast Guard</span></li>
+            <li><strong>0570-000-911</strong> — <span data-i18n="tools.emHelpline">Japan Helpline (English-friendly)</span></li>
+            <li><strong>#7119</strong> — <span data-i18n="tools.emMedical">Non-emergency medical advice (many areas)</span></li>
+          </ul>
+          <p class="tool-meta" data-i18n="tools.emNote">Also save your country’s embassy or consulate in Japan.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer gallery-footer">
+    <div class="container footer__bottom" style="border:0;flex-direction:column;align-items:center">
+      <span data-i18n="common.copyright">© 2026 Japan Travel Guide.</span>
+      <div class="footer-legal-links">
+        <a href="index.html" data-i18n="common.backHome">Home</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="privacy.html" data-i18n="legal.privacyLink">Privacy</a>
+        <span class="footer-legal-sep">|</span>
+        <a href="terms.html" data-i18n="legal.termsLink">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="settings-overlay" id="settings-overlay" data-close-settings></div>
+  <aside class="settings-panel" id="settings-panel" aria-label="Settings">
+    <div class="settings-panel__header">
+      <h2 data-i18n="common.settingsTitle">Settings</h2>
+      <button type="button" class="btn btn--icon btn--ghost" data-close-settings>✕</button>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.language">Language</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="lang" data-value="en" data-i18n="common.langEn">English</button>
+        <button type="button" data-setting="lang" data-value="ja" data-i18n="common.langJa">日本語</button>
+        <button type="button" data-setting="lang" data-value="zh-CN" data-i18n="common.langZh">简体中文</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.distanceUnit">Distance</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="distanceUnit" data-value="km">km</button>
+        <button type="button" data-setting="distanceUnit" data-value="mi">mi</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.tempUnit">Temperature</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="tempUnit" data-value="c">°C</button>
+        <button type="button" data-setting="tempUnit" data-value="f">°F</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.theme">Theme</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="theme" data-value="light" data-i18n="common.themeLight">Light</button>
+        <button type="button" data-setting="theme" data-value="dark" data-i18n="common.themeDark">Dark</button>
+        <button type="button" data-setting="theme" data-value="auto" data-i18n="common.themeAuto">Auto</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.animation">Animation</h3>
+      <div class="settings-options">
+              <button type="button" data-setting="motion" data-value="full" data-i18n="common.motionFull">Full</button>
+      <button type="button" data-setting="motion" data-value="reduced" data-i18n="common.motionReduced">Reduced</button>
+      <button type="button" data-setting="motion" data-value="off" data-i18n="common.motionOff">Off</button>
+      </div>
+    </div>
+  </aside>
+
+
+
+
+
+
+
+
+
+
+  <script src="src/js/data/i18n.js" defer></script>
+  <script src="src/js/settings.js" defer></script>
+  <script src="src/js/i18n.js" defer></script>
+  <script src="src/js/units.js" defer></script>
+  <script src="src/js/currency.js" defer></script>
+  <script src="src/js/budget.js" defer></script>
+  <script src="src/js/packing.js" defer></script>
+  <script src="src/js/nav.js" defer></script>
+  <script src="src/js/animations.js" defer></script>
+  <script src="src/js/tools.js" defer></script>
+  <script src="src/js/app.js" defer></script>
+
+</body>
+</html>

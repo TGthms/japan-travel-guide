@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="cities.tokyo.name">Tokyo · Japan Travel Guide</title>
+  <link rel="stylesheet" href="../src/css/styles.css" />
+  <link rel="stylesheet" href="../src/css/cities/tokyo.css" />
+<script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem('jtg-preferences') || '{}');
+      var theme = p.theme || 'auto';
+      var resolved = theme === 'auto'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      var motion = p.motion || 'full';
+      if (motion !== 'full' && motion !== 'reduced' && motion !== 'off') motion = 'full';
+      document.documentElement.setAttribute('data-motion', motion);
+      var osReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var eff = motion === 'off' ? 'off' : ((motion === 'reduced' || osReduce) ? 'reduced' : 'full');
+      document.documentElement.setAttribute('data-motion-effective', eff);
+      if (p.lang) document.documentElement.lang = p.lang === 'zh-CN' ? 'zh-CN' : p.lang;
+    } catch (e) {}
+  })();
+  </script>
+</head>
+<body class="city-tokyo" data-page="city" data-city="tokyo">
+  <div id="loader"><div class="loader__inner"><div class="loader__torii"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
+  <div id="scroll-progress"></div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__brand" href="../index.html"><span class="nav__logo">日</span><span data-i18n="meta.siteName">Japan Travel Guide</span></a>
+      <button class="nav__toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav__links">
+        <a href="../index.html" data-i18n="nav.home">Home</a>
+        <a href="../index.html#destinations" data-i18n="nav.destinations">Destinations</a>
+        <a href="#food" data-i18n="common.foodGuide">Food</a>
+        <a href="#attractions" data-i18n="common.attractions">Attractions</a>
+        <a href="../gallery.html" data-i18n="nav.gallery">Gallery</a>
+      </nav>
+      <div class="nav__actions">
+        <button type="button" class="btn btn--secondary" data-open-settings data-i18n="nav.settings">Settings</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="city-hero">
+      <div class="container">
+        <p class="reveal"><a href="../index.html#destinations" data-i18n="cityPage.back">All destinations</a></p>
+        <h1 class="city-hero__title reveal">🏙 <span data-i18n="cities.tokyo.name">Tokyo</span></h1>
+        <div class="neon-line" aria-hidden="true"></div>
+        <p class="section__desc reveal" data-i18n="cityContent.tokyo.tagline"></p>
+        <div class="city-hero__meta reveal">
+          <span class="chip"><span data-i18n="common.fromTokyo"></span>: <strong data-distance-km="0">—</strong></span>
+          <span class="chip chip--gold"><span data-i18n="common.weather"></span>: <strong data-temp-c-min="8" data-temp-c-max="30">—</strong></span>
+          <span class="chip"><span data-i18n="common.stay"></span>: <strong data-i18n="cityContent.tokyo.stay"></strong> <span data-i18n="common.days"></span></span>
+        </div>
+        <div class="img-ph img-ph--hero reveal"><span class="img-ph__label" data-i18n="cities.tokyo.name"></span><span class="img-ph__hint" data-i18n="common.placeholder"></span></div>
+        <div class="city-stats">
+          <div class="card city-stat reveal"><strong data-distance-km="0">—</strong><span data-i18n="cityPage.distanceNote"></span></div>
+          <div class="card city-stat reveal"><strong data-i18n="cityContent.tokyo.budget">—</strong><span data-i18n="cityPage.budgetDay"></span></div>
+          <div class="card city-stat reveal"><strong data-temp-c-min="8" data-temp-c-max="30">—</strong><span data-i18n="cityPage.weatherAvg"></span></div>
+          <div class="card city-stat reveal"><strong data-i18n="cityContent.tokyo.stay">—</strong><span data-i18n="common.stay"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="container">
+        <div class="grid-2">
+          <div class="reveal">
+            <h2 class="section__title" data-i18n="common.overview">Overview</h2>
+            <p class="mt-2" data-i18n="cityContent.tokyo.overview"></p>
+            <h3 class="mt-3" data-i18n="common.highlights">Highlights</h3>
+            <ul class="tip-list mt-2" id="highlights-list"></ul>
+          </div>
+          <div class="reveal">
+            <div class="card card--solid">
+              <h3 data-i18n="common.bestTime">Best time</h3>
+              <p class="card__text mt-1" data-i18n="cityContent.tokyo.bestTime"></p>
+              <h3 class="mt-2" data-i18n="common.weather">Weather</h3>
+              <p class="card__text mt-1" data-i18n="cityContent.tokyo.weather"></p>
+              <h3 class="mt-2" data-i18n="cityPage.gettingThere">Getting there</h3>
+              <p class="card__text mt-1" data-i18n="cityContent.tokyo.gettingThere"></p>
+            </div>
+            <div class="img-ph img-ph--lg mt-2"><span class="img-ph__label" data-i18n="cities.tokyo.name"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="food">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" data-i18n="common.foodGuide">Food guide</h2>
+        </header>
+        <div class="dish-list" id="food-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="attractions">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" data-i18n="common.attractions">Attractions</h2>
+        </header>
+        <div class="grid-2" id="attr-list"></div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="transport">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" data-i18n="common.transport">Getting around</h2>
+        </header>
+        <div class="card reveal" data-i18n="cityContent.tokyo.transportLocal"></div>
+      </div>
+    </section>
+
+    <section class="section" id="tips">
+      <div class="container">
+        <header class="section__header reveal">
+          <h2 class="section__title" data-i18n="common.travelTips">Travel tips</h2>
+        </header>
+        <div class="tip-list" id="tips-list"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container text-center">
+        <a class="btn btn--primary" href="../gallery.html" data-i18n="common.openGallery">Open photo gallery</a>
+        <a class="btn btn--secondary" href="../index.html#destinations" data-i18n="cityPage.back">All destinations</a>
+      </div>
+    </section>
+  </main>
+
+
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div>
+      <div class="footer__brand" data-i18n="meta.siteName">Japan Travel Guide</div>
+      <p data-i18n="footer.aboutBlurb">A premium planning companion for multi-city Japan trips.</p>
+      <p class="mt-2"><button type="button" class="btn btn--secondary" data-open-settings data-i18n="nav.settings">Settings</button></p>
+    </div>
+    <div class="footer__col">
+      <h4 data-i18n="common.quickLinks">Quick links</h4>
+      <ul>
+        <li><a href="../index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="../index.html#destinations" data-i18n="nav.destinations">Destinations</a></li>
+        <li><a href="../tools.html#budget" data-i18n="nav.budget">Budget</a></li>
+        <li><a href="../gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4 data-i18n="common.resources">Resources</h4>
+      <ul>
+        <li><a href="../index.html#transport" data-i18n="nav.transport">Transport</a></li>
+        <li><a href="../index.html#tips" data-i18n="nav.tips">Tips</a></li>
+        <li><a href="../index.html#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="../tools.html" data-i18n="nav.tools">Tools</a></li>
+        <li><a href="../index.html#routes" data-i18n="nav.routes">Routes</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container footer__bottom">
+    <span data-i18n="common.copyright">© 2026 Japan Travel Guide.</span>
+    <div class="footer-legal-links">
+      <a href="../tools.html" data-i18n="nav.tools">Tools</a>
+      <span class="footer-legal-sep">|</span>
+      <a href="../gallery.html" data-i18n="nav.gallery">Gallery</a>
+      <span class="footer-legal-sep">|</span>
+      <a href="../privacy.html" data-i18n="legal.privacyLink">Privacy</a>
+      <span class="footer-legal-sep">|</span>
+      <a href="../terms.html" data-i18n="legal.termsLink">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<div class="settings-overlay" id="settings-overlay" data-close-settings></div>
+<aside class="settings-panel" id="settings-panel" aria-label="Settings">
+  <div class="settings-panel__header">
+    <h2 data-i18n="common.settingsTitle">Settings</h2>
+    <button type="button" class="btn btn--icon btn--ghost" data-close-settings aria-label="Close">✕</button>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.language">Language</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="lang" data-value="en" data-i18n="common.langEn">English</button>
+      <button type="button" data-setting="lang" data-value="ja" data-i18n="common.langJa">日本語</button>
+      <button type="button" data-setting="lang" data-value="zh-CN" data-i18n="common.langZh">简体中文</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.distanceUnit">Distance</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="distanceUnit" data-value="km">km</button>
+      <button type="button" data-setting="distanceUnit" data-value="mi">mi</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.tempUnit">Temperature</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="tempUnit" data-value="c">°C</button>
+      <button type="button" data-setting="tempUnit" data-value="f">°F</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.theme">Theme</h3>
+    <div class="settings-options">
+      <button type="button" data-setting="theme" data-value="light" data-i18n="common.themeLight">Light</button>
+      <button type="button" data-setting="theme" data-value="dark" data-i18n="common.themeDark">Dark</button>
+      <button type="button" data-setting="theme" data-value="auto" data-i18n="common.themeAuto">Auto</button>
+    </div>
+  </div>
+  <div class="settings-group">
+    <h3 data-i18n="common.animation">Animation</h3>
+    <div class="settings-options">
+            <button type="button" data-setting="motion" data-value="full" data-i18n="common.motionFull">Full</button>
+      <button type="button" data-setting="motion" data-value="reduced" data-i18n="common.motionReduced">Reduced</button>
+      <button type="button" data-setting="motion" data-value="off" data-i18n="common.motionOff">Off</button>
+    </div>
+  </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    (function () {
+      const city = document.body.dataset.city;
+      function renderCity() {
+        if (!window.JTG || !JTG.i18n) return;
+        const lang = JTG.Settings.get("lang");
+        const dict = JTG.i18n.getDict(lang);
+        const c = (dict.cityContent && dict.cityContent[city]) || {};
+        const hl = document.getElementById("highlights-list");
+        if (hl) hl.innerHTML = (c.highlights || []).map(t => `<li class="tip-item"><span>✦</span><span>${t}</span></li>`).join("");
+        const fl = document.getElementById("food-list");
+        if (fl) fl.innerHTML = (c.food || []).map(d => `
+          <div class="dish-item reveal"><span class="dish-item__emoji">${d.e || "🍽"}</span>
+          <div><strong>${d.n || ""}</strong><p class="card__text">${d.d || ""}</p></div></div>`).join("");
+        const al = document.getElementById("attr-list");
+        if (al) al.innerHTML = (c.attractions || []).map(a => `
+          <article class="card reveal"><span class="chip mb-2">${a.c || ""}</span>
+          <h3 class="card__title">${a.n || ""}</h3><p class="card__text">${a.d || ""}</p></article>`).join("");
+        const tl = document.getElementById("tips-list");
+        if (tl) tl.innerHTML = (c.tips || []).map(t => `<div class="tip-item reveal"><span>👉</span><span>${t}</span></div>`).join("");
+        if (JTG.Animations) JTG.Animations.observeReveals(document);
+        if (JTG.Units) JTG.Units.applyAll();
+      }
+      window.addEventListener("jtg:i18n", renderCity);
+      document.addEventListener("DOMContentLoaded", () => setTimeout(renderCity, 0));
+    })();
+  </script>
+  <script src="../src/js/data/i18n.js" defer></script>
+  <script src="../src/js/settings.js" defer></script>
+  <script src="../src/js/i18n.js" defer></script>
+  <script src="../src/js/units.js" defer></script>
+  <script src="../src/js/currency.js" defer></script>
+  <script src="../src/js/nav.js" defer></script>
+  <script src="../src/js/animations.js" defer></script>
+  <script src="../src/js/app.js" defer></script>
+
+</body>
+</html>
