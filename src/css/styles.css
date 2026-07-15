@@ -1536,12 +1536,16 @@ h4 {
   border-color: transparent;
 }
 
-/* ---------- Footer ---------- */
-.site-footer {
+/* ---------- Footer (centered: About Me + GitHub, like USA guide) ---------- */
+.site-footer,
+footer.site-footer {
+  position: relative;
   background: var(--ink-soft);
   color: #e8e4e0;
-  padding: 3.5rem 0 2rem;
+  padding: clamp(3rem, 2.5rem + 2vw, 4.5rem) 0 2rem;
   margin-top: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="dark"] .site-footer {
@@ -1549,60 +1553,103 @@ h4 {
   border-top: 1px solid var(--border);
 }
 
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
+.site-footer-inner {
+  max-width: min(36rem, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 0 1.25rem;
 }
 
-@media (max-width: 800px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.site-footer-brand {
+  display: inline-block;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem);
+  font-weight: 700;
+  color: #fff !important;
+  text-decoration: none;
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.01em;
 }
 
-@media (max-width: 480px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-  }
+.site-footer-brand:hover {
+  color: var(--sakura) !important;
 }
 
-.site-footer a {
+.site-footer-tagline {
+  margin: 0 0 1.5rem;
+  max-width: 34rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: #cfc8c2;
 }
 
-.site-footer a:hover {
-  color: var(--sakura);
-}
-
-.footer__brand {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.75rem;
-}
-
-.footer__col h4 {
-  color: #fff;
-  font-size: 0.95rem;
-  margin-bottom: 0.85rem;
-}
-
-.footer__col ul {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1.25rem;
+.site-footer-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.9rem;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.footer-github-link,
+.footer-about-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e8e4e0 !important;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.footer-github-link:hover,
+.footer-about-link:hover {
+  border-color: var(--sakura);
+  color: #1a1014 !important;
+  background: var(--sakura);
+  transform: translateY(-1px);
+}
+
+.site-footer-meta {
+  width: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.site-footer-copy {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 0.78rem;
+  line-height: 1.55;
   color: #9a938c;
+  font-weight: 400;
+}
+
+.site-footer .footer-legal-links {
+  margin-top: 0.15rem;
+  justify-content: center;
+}
+
+/* legacy grid helpers (unused on main pages; keep city CSS safe) */
+.footer__grid,
+.footer__brand,
+.footer__col,
+.footer__bottom {
+  /* no-op placeholders for older snippets */
 }
 
 /* ---------- About feature list ---------- */
@@ -3586,26 +3633,38 @@ p {
   border-color: transparent;
 }
 
-/* ---------- Footer product-clean ---------- */
+/* ---------- Footer product-clean refinements ---------- */
 .site-footer {
   background: #1d1d1f;
   border-top: none;
   padding: 3rem 0 calc(2rem + env(safe-area-inset-bottom, 0px));
 }
 
-.footer__brand {
-  font-size: 1.1rem;
-  font-weight: 600;
+.site-footer-brand {
   letter-spacing: -0.02em;
 }
 
 .footer-legal-links a {
   color: #a1a1a6;
   font-size: 12px;
+  text-decoration: none;
 }
 
 .footer-legal-links a:hover {
   color: #f5f5f7;
+}
+
+.footer-github-link,
+.footer-about-link {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.footer-github-link:hover,
+.footer-about-link:hover {
+  border-color: var(--sakura, #f0a0b4);
+  background: var(--sakura, #f0a0b4);
+  color: #1d1d1f !important;
 }
 
 /* ---------- Gallery CTA as product feature ---------- */

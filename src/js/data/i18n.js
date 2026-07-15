@@ -738,7 +738,10 @@
   },
 
   "footer": {
-    "aboutBlurb": "A premium, offline-friendly planning companion for multi-city Japan trips."
+    "tagline": "A practical multi-city planning companion for Japan trips.",
+    "aboutMe": "About Me",
+    "aboutBlurb": "A practical multi-city planning companion for Japan trips.",
+    "copyright": "© 2026 Japan Travel Guide · Created by Tim G"
   },
   "cityPage": {
     "back": "All destinations",
@@ -2403,7 +2406,10 @@
   },
 
   "footer": {
-    "aboutBlurb": "複数都市の旅を支える、上質でオフラインにも強いガイド。"
+    "tagline": "複数都市の日本旅行を支える、実用的なプランニング・ガイド。",
+    "aboutMe": "自己紹介",
+    "aboutBlurb": "複数都市の日本旅行を支える、実用的なプランニング・ガイド。",
+    "copyright": "© 2026 Japan Travel Guide · Tim G"
   },
   "cityPage": {
     "back": "すべての目的地",
@@ -4068,7 +4074,10 @@
   },
 
   "footer": {
-    "aboutBlurb": "为多城市日本之旅打造的精致规划伙伴。"
+    "tagline": "为多城市日本之旅打造的实用规划伙伴。",
+    "aboutMe": "关于我",
+    "aboutBlurb": "为多城市日本之旅打造的实用规划伙伴。",
+    "copyright": "© 2026 Japan Travel Guide · Tim G 制作"
   },
   "cityPage": {
     "back": "全部目的地",

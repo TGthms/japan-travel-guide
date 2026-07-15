@@ -1,72 +1,63 @@
 <p align="center">
-  <strong>Japan Travel Guide</strong>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Japan%20Travel%20Guide&animation=fadeIn"/>
 </p>
 
 <p align="center">
-  A practical multi-city Japan travel guide — destinations, routes, transport, tools, gallery, and legal pages.
-  Static site architecture aligned with the USA Travel Guide core technology.
+  <a href="README.md">English</a> ·
+  <a href="docs/i18n/README.zh.md">中文</a> ·
+  <a href="docs/i18n/README.ja.md">日本語</a>
 </p>
 
 <p align="center">
-  <a href="https://tgthms.github.io/japan-travel-guide/"><strong>🔗 Live site</strong></a>
-  ·
-  <a href="https://github.com/TGthms/japan-travel-guide">GitHub</a>
+  A practical multi-city Japan travel guide — 14 destination cities, routes, transport, seasons, festivals, a photo gallery, dedicated travel tools, fun facts, and planning essentials grounded in how people actually travel Japan.
+</p>
+
+<p align="center">
+  <a href="https://tgthms.github.io/japan-travel-guide/"><strong>🔗 Try it out</strong></a>
 </p>
 
 ---
 
-## Core technology (same model as USA guide)
+## ✨ Features
 
 | | |
 |---|---|
-| **Static multi-page** | No bundler. Classic `<script>` tags (not ES modules). |
-| **Layout** | `src/css/styles.css` · `src/js/app.js` · `src/js/data/*` |
-| **Serve** | `npm run serve` → http://127.0.0.1:8000/ |
-| **Deploy** | GitHub Pages from `main` (`https://tgthms.github.io/japan-travel-guide/`). Private `tools/` is gitignored and never published. |
-| **Preferences** | `safeStorage` + `jtg-preferences` (language, units, theme, motion) |
-| **Motion** | Full / Reduced / Off (+ OS `prefers-reduced-motion`) |
-| **i18n** | EN · 日本語 · 简体中文 via `src/js/data/i18n.js` |
+| 🏙️ **14 city guides** | Tokyo, Kyoto, Osaka, Nara, Hiroshima, Yokohama, Hakone, Nikko, Kanazawa, Sapporo, Fukuoka, Kobe, Nagasaki, and Okinawa — each with its own look and practical tips. |
+| 🗺️ **Map, routes & seasons** | Interactive destination map, sample itineraries, when to go, and festival highlights. |
+| 🖼️ **Photo gallery** | Filterable trip photography with quality tiers (thumbnail / medium / full) and lightbox. |
+| 🧰 **Travel tools** | Budget planner, packing list, currency conversion, clocks, tax, JR Pass helpers, rail estimates, and emergency numbers. |
+| 🚆 **Transport know-how** | IC cards, shinkansen basics, and official JR / rail resource pointers. |
+| 🎲 **Japan fun facts** | One shuffled fact at a time — trivia in every language. |
+| 🌐 **Multi-language** | English, 日本語, and 简体中文 across the guide (including legal pages). |
+| ⚙️ **Personalization** | Language, units (°C/°F, km/mi), theme, and motion preferences — saved on your device. |
+| ♿️ **Animations: Full / Reduced / Off** | Accessibility-first motion levels. Respects OS “prefers reduced motion.” |
+| 📱 **Mobile-ready** | Responsive layouts and performance-friendly interactions. |
+| 🔒 **Privacy & terms** | On-site [Privacy Policy](privacy.html) and [Terms of Use](terms.html). |
+| 🔗 **Official resources** | Links toward JNTO and other official travel references for verification. |
 
-### Project layout
+---
 
-| Path | Role |
-|------|------|
-| `index.html` · `gallery.html` · `tools.html` · `privacy.html` · `terms.html` | Site pages (repo root for GitHub Pages) |
-| `cities/*.html` | 14 destination pages with local design themes |
-| `src/css/styles.css` | Shared styles |
-| `src/css/cities/` | Per-city visual languages |
-| `src/js/app.js` | Bootstrap, ENV, safeStorage, motion |
-| `src/js/data/i18n.js` | Translation dictionary |
-| `src/js/*.js` | Feature modules (settings, gallery, tools, …) |
-| `assets/gallery/` | Gallery originals · medium · thumbs · `gallery.json` |
-| `tools/` | **Private** Gallery Manager (not published) |
-| `Add Photos.command` | Local launcher for Gallery Manager |
+Main pages: `index.html` · `gallery.html` · `tools.html` · `privacy.html` · `terms.html` · `cities/*`
+
+Local preview from the repo root:
 
 ```bash
 npm run serve
 # → http://127.0.0.1:8000/
 ```
 
-Gallery Manager (local only):
+---
 
-```bash
-python3 tools/gallery_manager.py
-# or double-click Add Photos.command
-```
+## 💬 Feedback
+
+This is an interest-driven personal project — bug reports and suggestions are welcome!
+
+📧 **contact.timg@icloud.com**
 
 ---
 
-## Features
+## 📄 License and legal
 
-- 14 city guides with distinct themes  
-- Interactive map, routes, seasons, festivals, FAQ, fun facts  
-- Travel Tools: budget, packing, currency, clocks, tax, JR Pass, rail estimates, emergencies  
-- Photo gallery (thumb / medium / full)  
-- Privacy Policy & Terms of Use  
-- Official JNTO resource links  
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+- **Code:** MIT — see [LICENSE](LICENSE).
+- **Fonts (web):** Loaded from Google Fonts — open-licensed families for Latin, Japanese, and Simplified Chinese text.
+- **Site policy:** [Privacy Policy](privacy.html) · [Terms of Use](terms.html)
