@@ -3571,6 +3571,26 @@ p {
   font-size: 1.15rem;
 }
 
+/* Home hero photo (replaces CSS Fuji panel) */
+.hero-photo {
+  margin: 0 auto;
+  max-width: 880px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--card-solid, #1a1210);
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: min(42vw, 380px);
+  max-height: min(52vw, 460px);
+  object-fit: cover;
+  object-position: center 45%;
+}
+
 /* ---------- Destination cards product strip ---------- */
 .dest-card {
   border-radius: var(--radius);
