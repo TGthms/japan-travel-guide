@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=hero-mobile1" />
+  <link rel="stylesheet" href="src/css/styles.css?v=about-culture1" />
   <script>
   (function () {
     try {
@@ -144,23 +144,6 @@
           <h2 class="section__title" data-i18n="about.title">About Japan</h2>
           <p class="section__desc" data-i18n="about.desc"></p>
         </header>
-        <div class="grid-3 mb-2">
-          <div class="visual-panel visual-panel--lg reveal" data-visual="culture" role="img">
-            <div class="visual-panel__glow" aria-hidden="true"></div>
-            <span class="visual-panel__glyph" aria-hidden="true">🎎</span>
-            <span class="visual-panel__label" data-i18n="about.photo1"></span>
-          </div>
-          <div class="visual-panel visual-panel--lg reveal reveal-delay-1" data-visual="nature" role="img">
-            <div class="visual-panel__glow" aria-hidden="true"></div>
-            <span class="visual-panel__glyph" aria-hidden="true">🌿</span>
-            <span class="visual-panel__label" data-i18n="about.photo2"></span>
-          </div>
-          <div class="visual-panel visual-panel--lg reveal reveal-delay-2" data-visual="cities" role="img">
-            <div class="visual-panel__glow" aria-hidden="true"></div>
-            <span class="visual-panel__glyph" aria-hidden="true">🚄</span>
-            <span class="visual-panel__label" data-i18n="about.photo3"></span>
-          </div>
-        </div>
         <div class="about-grid">
           
           <article class="card reveal">
@@ -168,10 +151,25 @@
             <h3 class="card__title" data-i18n="about.geoTitle"></h3>
             <p class="card__text" data-i18n="about.geoText"></p>
           </article>
-          <article class="card reveal">
-            <div class="card__icon">🎎</div>
-            <h3 class="card__title" data-i18n="about.cultureTitle"></h3>
-            <p class="card__text" data-i18n="about.cultureText"></p>
+          <article class="card card--with-photo reveal">
+            <figure class="card__media">
+              <img
+                src="assets/gallery/Byodoin-Uji.jpeg"
+                alt="Byōdō-in Phoenix Hall and pond garden"
+                width="2000"
+                height="1125"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <p class="card__photo-meta">
+              <span class="card__photo-pin" aria-hidden="true">📍</span>
+              <span class="card__photo-location">Byōdō-in, Uji</span>
+            </p>
+            <div class="card__body">
+              <h3 class="card__title" data-i18n="about.cultureTitle"></h3>
+              <p class="card__text" data-i18n="about.cultureText"></p>
+            </div>
           </article>
           <article class="card reveal">
             <div class="card__icon">📜</div>
