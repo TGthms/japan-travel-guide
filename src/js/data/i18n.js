@@ -84,8 +84,8 @@
     "quickLinks": "Quick links",
     "resources": "Resources",
     "destinations": "Destinations",
-    "placeholder": "Photo slot",
-    "photoSlot": "Photo slot — add your trip photos in Gallery"
+    "placeholder": "Visual panel",
+    "photoSlot": "Explore trip photos in the Gallery"
   },
   "hero": {
     "eyebrow": "Independent Japan trip planner",
@@ -128,9 +128,9 @@
     "etiquetteText": "Queue orderly, keep trains quiet (no phone calls in cars), remove shoes where marked, and be respectful at shrines and temples. Tipping is not expected.",
     "whyTitle": "Why visit",
     "whyText": "Nowhere else balances futuristic cities, sacred landscapes, and everyday craftsmanship so gracefully.",
-    "photo1": "Traditional street in Kyoto",
-    "photo2": "Shinkansen at platform",
-    "photo3": "Seasonal kaiseki meal"
+    "photo1": "Tradition & craft",
+    "photo2": "Nature & seasons",
+    "photo3": "Cities in motion"
   },
   "map": {
     "eyebrow": "Navigate",
@@ -1753,7 +1753,7 @@
     "quickLinks": "クイックリンク",
     "resources": "リソース",
     "destinations": "目的地",
-    "placeholder": "写真プレースホルダー"
+    "placeholder": "ビジュアル"
   },
   "hero": {
     "eyebrow": "実用的な日本旅行プランナー",
@@ -1796,9 +1796,9 @@
     "etiquetteText": "車内は静かに、室内は靴を脱ぎ、列を守り、神社では敬意を。",
     "whyTitle": "訪れる理由",
     "whyText": "未来都市と聖地、日常の職人技がこれほど優雅に両立する場所は稀です。",
-    "photo1": "京都の伝統的な町並み",
-    "photo2": "ホームの新幹線",
-    "photo3": "季節の会席料理"
+    "photo1": "伝統と工芸",
+    "photo2": "自然と季節",
+    "photo3": "動く都市"
   },
   "map": {
     "eyebrow": "ナビ",
@@ -3421,7 +3421,7 @@
     "quickLinks": "快速链接",
     "resources": "资源",
     "destinations": "目的地",
-    "placeholder": "图片占位"
+    "placeholder": "视觉面板"
   },
   "hero": {
     "eyebrow": "实用的日本行程规划",
@@ -3464,9 +3464,9 @@
     "etiquetteText": "列车保持安静、室内脱鞋、排队有序、敬重神社。",
     "whyTitle": "为何前往",
     "whyText": "未来都市、圣地山景与日常工艺在此优雅共存。",
-    "photo1": "京都传统街巷",
-    "photo2": "站台新干线",
-    "photo3": "时令怀石料理"
+    "photo1": "传统与工艺",
+    "photo2": "自然与四季",
+    "photo3": "城市脉动"
   },
   "map": {
     "eyebrow": "导航",

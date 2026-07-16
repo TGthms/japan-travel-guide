@@ -19,7 +19,7 @@ body.city-nikko .btn--primary {
   border-radius: 2px;
 }
 body.city-nikko .city-stat strong { color: #d4af37; }
-body.city-nikko .img-ph {
+body.city-nikko .visual-panel {
   border-radius: 2px; border-style: double; border-width: 3px;
   border-color: rgba(212,175,55,.45);
   background: linear-gradient(160deg, rgba(45,74,62,.5), #1a2822);

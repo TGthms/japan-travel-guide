@@ -12,7 +12,7 @@ body.city-yokohama .card {
   box-shadow: 0 8px 24px rgba(27,73,101,.08);
 }
 body.city-yokohama .btn--primary { background: linear-gradient(135deg, #1b4965, #5fa8d3); border-radius: 4px; }
-body.city-yokohama .img-ph {
+body.city-yokohama .visual-panel {
   border-radius: 2px;
   border-color: rgba(27,73,101,.3);
   background: linear-gradient(135deg, rgba(98,182,203,.2), rgba(202,233,255,.3)), #eef5f8;

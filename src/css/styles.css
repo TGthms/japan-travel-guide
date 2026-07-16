@@ -564,62 +564,273 @@ h4 {
   font-size: 0.95rem;
 }
 
-/* ---------- Image placeholders ---------- */
-.img-ph {
+/* ---------- Visual panels (CSS art — no photo placeholders) ---------- */
+.visual-panel {
+  --vp-grad: linear-gradient(155deg, #2a1c24 0%, #1a1018 45%, #0e0a10 100%);
+  --vp-glow: rgba(240, 160, 180, 0.28);
+  --vp-accent: rgba(212, 175, 55, 0.45);
+  --vp-sky: rgba(255, 255, 255, 0.08);
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  justify-content: flex-end;
+  gap: 0.35rem;
   min-height: 180px;
   border-radius: var(--radius);
-  border: 2px dashed rgba(201, 162, 39, 0.45);
-  background: linear-gradient(
-      145deg,
-      rgba(248, 180, 196, 0.15),
-      rgba(201, 162, 39, 0.08)
-    ),
-    var(--card-solid);
-  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   text-align: center;
-  padding: 1.25rem;
+  padding: 1.15rem 1.1rem;
+  color: #f7efe8;
+  isolation: isolate;
+  background: var(--vp-grad);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.img-ph::before {
-  content: "📷";
-  font-size: 1.75rem;
-  opacity: 0.7;
+.visual-panel__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 78% 18%, var(--vp-glow) 0%, transparent 68%),
+    radial-gradient(ellipse 50% 40% at 12% 90%, var(--vp-sky) 0%, transparent 60%),
+    linear-gradient(125deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%),
+    linear-gradient(var(--vp-accent), var(--vp-accent));
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 2px;
+  background-position: 0 0, 0 0, 0 0, 0 100%;
+  background-repeat: no-repeat;
 }
 
-.img-ph__label {
+.visual-panel__glyph {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem);
+  line-height: 1;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+  margin-bottom: 0.15rem;
+  transition: transform 0.35s ease;
+}
+
+.visual-panel__glyph--lg {
+  font-size: clamp(2.4rem, 2rem + 2vw, 3.6rem);
+  margin-bottom: 0.5rem;
+}
+
+.visual-panel:hover .visual-panel__glyph {
+  transform: scale(1.06) translateY(-2px);
+}
+
+.visual-panel__caption {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  max-width: 90%;
+}
+
+.visual-panel__kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
   font-weight: 600;
+}
+
+.visual-panel__label {
+  position: relative;
+  z-index: 1;
+  font-weight: 650;
   font-size: 0.95rem;
-  color: var(--text);
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
-.img-ph__hint {
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
-
-.img-ph--hero {
-  min-height: 420px;
+.visual-panel--hero {
+  min-height: min(48vw, 420px);
   border-radius: var(--radius-lg);
+  justify-content: flex-end;
+  padding: 1.5rem 1.35rem 1.6rem;
 }
 
-.img-ph--lg {
-  min-height: 280px;
+.visual-panel--lg {
+  min-height: 240px;
 }
 
-.img-ph--sm {
-  min-height: 140px;
+.visual-panel--sm {
+  min-height: 150px;
+  border-radius: 0;
+  justify-content: center;
+  padding: 1rem;
 }
 
-.img-ph--wide {
-  min-height: 220px;
-  width: 100%;
+/* Hero Fuji scene (index) */
+.visual-panel[data-visual="fuji"] {
+  --vp-grad: linear-gradient(175deg, #1a2840 0%, #2a3a55 28%, #6b4a58 58%, #c4785a 82%, #e8b898 100%);
+  --vp-glow: rgba(255, 210, 160, 0.35);
+  --vp-accent: rgba(255, 255, 255, 0.25);
+  --vp-sky: rgba(255, 230, 200, 0.15);
+}
+
+.visual-panel__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.visual-panel__sun {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  right: 18%;
+  top: 16%;
+  background: radial-gradient(circle at 35% 35%, #fff6e8, #ffb070 55%, transparent 72%);
+  box-shadow: 0 0 60px rgba(255, 160, 100, 0.45);
+  opacity: 0.9;
+}
+
+.visual-panel__mount {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 160px solid #2a3348;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+}
+
+.visual-panel__mount::before {
+  content: "";
+  position: absolute;
+  left: -48px;
+  top: 28px;
+  width: 0;
+  height: 0;
+  border-left: 48px solid transparent;
+  border-right: 48px solid transparent;
+  border-bottom: 52px solid #f2f4f8;
+  opacity: 0.92;
+}
+
+.visual-panel__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  background:
+    radial-gradient(ellipse 80% 100% at 20% 0%, rgba(255, 255, 255, 0.12), transparent 55%),
+    linear-gradient(180deg, transparent, rgba(20, 30, 50, 0.55));
+}
+
+/* About thematic panels */
+.visual-panel[data-visual="culture"] {
+  --vp-grad: linear-gradient(150deg, #7a281c 0%, #4a1810 48%, #1a0c0a 100%);
+  --vp-glow: rgba(232, 180, 140, 0.3);
+  --vp-accent: rgba(184, 149, 61, 0.55);
+}
+.visual-panel[data-visual="nature"] {
+  --vp-grad: linear-gradient(150deg, #1e7058 0%, #0e3830 48%, #061610 100%);
+  --vp-glow: rgba(100, 220, 180, 0.28);
+  --vp-accent: rgba(100, 220, 180, 0.45);
+}
+.visual-panel[data-visual="cities"] {
+  --vp-grad: linear-gradient(150deg, #2a4a78 0%, #152038 42%, #1a1030 100%);
+  --vp-glow: rgba(160, 200, 255, 0.28);
+  --vp-accent: rgba(201, 162, 89, 0.5);
+}
+
+/* City visual stories (destination cards + city pages) */
+.visual-panel[data-visual="tokyo"] {
+  --vp-grad: linear-gradient(145deg, #2a1050 0%, #12081c 42%, #05050f 100%);
+  --vp-glow: rgba(255, 43, 214, 0.32);
+  --vp-accent: rgba(0, 240, 255, 0.45);
+  --vp-sky: rgba(0, 240, 255, 0.1);
+}
+.visual-panel[data-visual="kyoto"] {
+  --vp-grad: linear-gradient(155deg, #9c2b1f 0%, #5a2018 40%, #2a1410 100%);
+  --vp-glow: rgba(229, 196, 168, 0.3);
+  --vp-accent: rgba(184, 149, 61, 0.5);
+}
+.visual-panel[data-visual="osaka"] {
+  --vp-grad: linear-gradient(150deg, #c45a28 0%, #6a2818 45%, #1a0c0a 100%);
+  --vp-glow: rgba(255, 170, 100, 0.3);
+  --vp-accent: rgba(255, 140, 80, 0.5);
+}
+.visual-panel[data-visual="nara"] {
+  --vp-grad: linear-gradient(150deg, #4a7040 0%, #2a4028 48%, #101810 100%);
+  --vp-glow: rgba(180, 220, 140, 0.28);
+  --vp-accent: rgba(200, 180, 100, 0.45);
+}
+.visual-panel[data-visual="hiroshima"] {
+  --vp-grad: linear-gradient(150deg, #3a6a88 0%, #1a3850 48%, #0a1820 100%);
+  --vp-glow: rgba(160, 210, 240, 0.28);
+  --vp-accent: rgba(240, 220, 160, 0.45);
+}
+.visual-panel[data-visual="yokohama"] {
+  --vp-grad: linear-gradient(150deg, #1e5a7a 0%, #0c2c40 48%, #061018 100%);
+  --vp-glow: rgba(100, 200, 240, 0.28);
+  --vp-accent: rgba(140, 210, 240, 0.5);
+}
+.visual-panel[data-visual="hakone"] {
+  --vp-grad: linear-gradient(155deg, #4a7a9c 0%, #2a4a5c 35%, #3a2818 72%, #1a0e12 100%);
+  --vp-glow: rgba(210, 225, 255, 0.26);
+  --vp-accent: rgba(180, 210, 255, 0.45);
+}
+.visual-panel[data-visual="nikko"] {
+  --vp-grad: linear-gradient(150deg, #8a6a20 0%, #4a3810 45%, #1c1408 100%);
+  --vp-glow: rgba(240, 200, 80, 0.28);
+  --vp-accent: rgba(200, 40, 40, 0.45);
+}
+.visual-panel[data-visual="kanazawa"] {
+  --vp-grad: linear-gradient(150deg, #6e3488 0%, #321450 48%, #0e0618 100%);
+  --vp-glow: rgba(230, 170, 255, 0.24);
+  --vp-accent: rgba(210, 150, 255, 0.5);
+}
+.visual-panel[data-visual="sapporo"] {
+  --vp-grad: linear-gradient(160deg, #4a7a9c 0%, #1e3a50 40%, #e8f0f8 78%, #f8fbff 100%);
+  --vp-glow: rgba(200, 230, 255, 0.4);
+  --vp-accent: rgba(255, 255, 255, 0.55);
+  color: #1a2838;
+}
+.visual-panel[data-visual="sapporo"] .visual-panel__label {
+  color: #1a2838;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.visual-panel[data-visual="fukuoka"] {
+  --vp-grad: linear-gradient(150deg, #c83850 0%, #6a1828 48%, #1a080c 100%);
+  --vp-glow: rgba(255, 140, 160, 0.28);
+  --vp-accent: rgba(255, 180, 100, 0.45);
+}
+.visual-panel[data-visual="kobe"] {
+  --vp-grad: linear-gradient(150deg, #2a5080 0%, #183050 40%, #3a2030 100%);
+  --vp-glow: rgba(120, 180, 255, 0.28);
+  --vp-accent: rgba(255, 160, 140, 0.45);
+}
+.visual-panel[data-visual="nagasaki"] {
+  --vp-grad: linear-gradient(150deg, #206070 0%, #103040 48%, #081018 100%);
+  --vp-glow: rgba(100, 220, 220, 0.26);
+  --vp-accent: rgba(240, 180, 100, 0.45);
+}
+.visual-panel[data-visual="okinawa"] {
+  --vp-grad: linear-gradient(160deg, #12a0b0 0%, #0a5560 42%, #063040 100%);
+  --vp-glow: rgba(80, 240, 230, 0.3);
+  --vp-accent: rgba(255, 220, 140, 0.45);
+}
+
+html[data-motion-effective="reduced"] .visual-panel:hover .visual-panel__glyph,
+html[data-motion-effective="off"] .visual-panel:hover .visual-panel__glyph {
+  transform: none;
 }
 
 /* ---------- Hero ---------- */
@@ -811,7 +1022,7 @@ h4 {
   color: inherit;
 }
 
-.dest-card .img-ph {
+.dest-card .visual-panel {
   border-radius: 0;
   border: none;
   border-bottom: 1px solid var(--border);
@@ -2564,16 +2775,6 @@ body {
   letter-spacing: 0.01em;
 }
 
-.img-ph {
-  border-radius: var(--radius);
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(139, 26, 43, 0.18);
-  background:
-    linear-gradient(145deg, rgba(248, 180, 196, 0.1), rgba(201, 162, 39, 0.06)),
-    var(--card-solid);
-}
-
 .site-footer {
   background: #1a1210;
   border-top: 3px solid var(--deep-red-bright);
@@ -3360,54 +3561,14 @@ p {
   color: var(--text-muted);
 }
 
-.hero .img-ph--hero {
+.hero .visual-panel--hero {
   max-width: 880px;
   margin: 0 auto;
-  min-height: min(48vw, 420px);
-  border-radius: var(--radius-lg);
-  border: none;
-  background: linear-gradient(145deg, #e8e0d8, #d4c8bc 40%, #c4a090);
   box-shadow: var(--shadow-lg);
-  color: rgba(255, 255, 255, 0.92);
 }
 
-.hero .img-ph--hero .img-ph__label {
-  color: #fff;
-  font-size: 1.1rem;
-}
-
-.hero .img-ph--hero .img-ph__hint {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-/* ---------- Image places — refined, not “test placeholder” ---------- */
-.img-ph {
-  border: none;
-  border-radius: var(--radius);
-  background: linear-gradient(160deg, var(--jp-fill-2), #ddd5cc);
-  color: var(--text-muted);
-  min-height: 160px;
-}
-
-.img-ph::before {
-  content: "";
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.35);
-  margin-bottom: 0.35rem;
-}
-
-.img-ph__label {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-
-.img-ph__hint {
-  font-size: 0.75rem;
-  opacity: 0.75;
+.hero .visual-panel--hero .visual-panel__label {
+  font-size: 1.15rem;
 }
 
 /* ---------- Destination cards product strip ---------- */
@@ -3423,9 +3584,12 @@ p {
   transform: scale(1.015);
 }
 
-.dest-card .img-ph {
+.dest-card .visual-panel {
   min-height: 180px;
   border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }
 
 .dest-card__body {

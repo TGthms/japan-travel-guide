@@ -27,7 +27,7 @@ body.city-tokyo .btn--primary {
   border-radius: 4px; box-shadow: 0 0 20px rgba(255,43,214,.35);
 }
 body.city-tokyo .chip { background: rgba(0,240,255,.12); color: #00f0ff; border-color: rgba(0,240,255,.35); border-radius: 2px; }
-body.city-tokyo .img-ph {
+body.city-tokyo .visual-panel {
   border-radius: 2px; border-style: solid;
   border-color: rgba(255,43,214,.4);
   background: linear-gradient(145deg, rgba(255,43,214,.14), rgba(0,240,255,.08)), #10102a;

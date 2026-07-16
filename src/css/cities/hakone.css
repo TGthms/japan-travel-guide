@@ -15,7 +15,7 @@ body.city-hakone .card {
   border: 1px solid rgba(166,124,82,.2);
 }
 body.city-hakone .btn--primary { background: linear-gradient(135deg, #6d5a7a, #a67c52); }
-body.city-hakone .img-ph {
+body.city-hakone .visual-panel {
   border-radius: 20px;
   border-color: rgba(201,184,212,.5);
   background: linear-gradient(180deg, rgba(201,184,212,.35), rgba(166,124,82,.1)), #f0ebf5;

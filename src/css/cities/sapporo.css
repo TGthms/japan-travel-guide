@@ -18,7 +18,7 @@ body.city-sapporo .btn--primary {
   color: #0b1320;
   border-radius: 2px;
 }
-body.city-sapporo .img-ph {
+body.city-sapporo .visual-panel {
   border-radius: 2px;
   border-color: rgba(224,251,252,.9);
   background: linear-gradient(160deg, rgba(224,251,252,.9), rgba(152,193,217,.25)), #fff;

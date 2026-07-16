@@ -19,7 +19,7 @@ body.city-nara .card {
   background: rgba(247,250,244,.95);
 }
 body.city-nara .btn--primary { background: linear-gradient(135deg, #4a6741, #8a9a5b); border-radius: 999px; }
-body.city-nara .img-ph {
+body.city-nara .visual-panel {
   border-radius: 24px 8px 24px 8px;
   border-color: rgba(138,154,91,.4);
   background: linear-gradient(160deg, rgba(197,213,181,.35), #eef3e8);

@@ -19,7 +19,7 @@ body.city-kobe .btn--primary {
   letter-spacing: .04em;
 }
 body.city-kobe .section__title { letter-spacing: .06em; }
-body.city-kobe .img-ph {
+body.city-kobe .visual-panel {
   border-radius: 4px;
   border-color: rgba(201,162,39,.4);
   background: linear-gradient(145deg, rgba(232,213,196,.5), rgba(107,28,42,.06)), #f7f0e9;

@@ -14,7 +14,7 @@ body.city-hiroshima .card {
   box-shadow: 0 6px 20px rgba(61,107,140,.06);
 }
 body.city-hiroshima .btn--primary { background: linear-gradient(135deg, #3d6b8c, #6b8f71); border-radius: 6px; }
-body.city-hiroshima .img-ph {
+body.city-hiroshima .visual-panel {
   border-radius: 6px; border-style: solid; border-color: rgba(61,107,140,.25);
   background: linear-gradient(180deg, rgba(168,197,212,.25), #eef4f7);
 }

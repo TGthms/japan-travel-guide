@@ -26,7 +26,7 @@ body.city-osaka .card__icon {
   background: rgba(255,183,3,.25);
   border-radius: 50%;
 }
-body.city-osaka .img-ph {
+body.city-osaka .visual-panel {
   border-radius: 18px;
   border-color: rgba(251,133,0,.4);
   background: linear-gradient(145deg, rgba(255,183,3,.2), rgba(232,93,4,.08)), #fff8f0;
