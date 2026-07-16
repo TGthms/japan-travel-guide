@@ -901,17 +901,22 @@ section.hero {
   position: relative;
   display: block;
   min-height: 0;
-  padding: 3rem 0 3.25rem;
+  padding: 2.25rem 0 1.5rem;
   margin: 0;
   overflow: visible;
   background: var(--gradient-hero, linear-gradient(165deg, #f7f0e8 0%, #f3ebe3 50%, #efe6dc 100%));
   text-align: left;
 }
 
+/* Tighten gap into the next section (was huge empty cream band) */
+section.hero + .section {
+  padding-top: clamp(2.25rem, 5vw, 3.5rem);
+}
+
 section.hero .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.95fr);
+  gap: clamp(1.5rem, 3.5vw, 2.75rem);
   align-items: center;
   width: 100%;
   max-width: none;
@@ -924,7 +929,7 @@ section.hero .hero__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin: 0 0 1rem;
+  margin: 0 0 0.85rem;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
   border: 1px solid rgba(196, 30, 58, 0.22);
@@ -941,13 +946,13 @@ section.hero .hero__eyebrow::before {
 }
 
 section.hero .hero__title {
-  margin: 0 0 0.9rem;
-  max-width: 16ch;
+  margin: 0 0 0.75rem;
+  max-width: 12ch;
   font-family: var(--font-display);
-  font-size: clamp(2.15rem, 4.2vw, 3.15rem);
+  font-size: clamp(2.25rem, 4.4vw, 3.35rem);
   font-weight: 650;
-  letter-spacing: -0.03em;
-  line-height: 1.12;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
   color: var(--text, #1d1d1f);
   background: none;
   -webkit-background-clip: border-box;
@@ -963,9 +968,9 @@ section.hero .hero__title em {
 }
 
 section.hero .hero__lead {
-  margin: 0 0 1.4rem;
-  max-width: 34rem;
-  font-size: 1.05rem;
+  margin: 0 0 1.15rem;
+  max-width: 32rem;
+  font-size: 1.02rem;
   line-height: 1.55;
   color: var(--text-muted, #6e6e73);
   text-shadow: none;
@@ -974,49 +979,65 @@ section.hero .hero__lead {
 section.hero .hero__cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 0 0 1.6rem;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin: 0 0 1.35rem;
   justify-content: flex-start;
 }
 
 section.hero .hero__stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem 1.75rem;
+  gap: 1.1rem 1.75rem;
   justify-content: flex-start;
 }
 
 section.hero .hero__stat strong {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 650;
   letter-spacing: -0.02em;
+  line-height: 1.15;
   color: var(--deep-red-bright, #c41e3a);
 }
 
 section.hero .hero__stat span {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted, #6e6e73);
 }
 
-/* Hero visual uses shared .visual-panel--photo chrome */
-section.hero .visual-panel--hero {
+/*
+ * Hero image = same visual-panel card, photo as fill only.
+ * Height tracks the text column so we don't leave a dead band under the hero.
+ */
+section.hero .visual-panel.visual-panel--hero.visual-panel--photo {
   width: 100%;
-  min-height: 0;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  max-height: 380px;
-  border-radius: 18px;
+  min-height: 260px;
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+  border-radius: 22px;
+  align-self: stretch;
 }
 
-/* Unused orb helpers (kept inert if markup lacks them) */
+section.hero .hero__grid > .reveal:last-child {
+  display: flex;
+  align-items: stretch;
+  min-height: 100%;
+}
+
+section.hero .visual-panel.visual-panel--hero.visual-panel--photo .visual-panel__photo {
+  object-position: center 38%;
+}
+
+/* Unused orb helpers */
 section.hero .hero__bg-orbs,
 section.hero .hero__orb {
   display: none;
 }
 
-/* Hero must paint immediately (do not wait for scroll-reveal JS) */
+/* Hero paints immediately (no scroll-reveal hide) */
 section.hero .reveal {
   opacity: 1;
   transform: none;
@@ -1025,20 +1046,30 @@ section.hero .reveal {
 
 @media (max-width: 900px) {
   section.hero {
-    padding: 1.75rem 0 2.25rem;
+    padding: 1.5rem 0 1.25rem;
+  }
+  section.hero + .section {
+    padding-top: 2rem;
   }
   section.hero .hero__grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.35rem;
+    align-items: start;
   }
   section.hero .hero__title {
     max-width: none;
-    font-size: clamp(2rem, 8vw, 2.6rem);
+    font-size: clamp(2rem, 7.5vw, 2.55rem);
   }
-  section.hero .visual-panel--hero {
-    max-height: 240px;
+  section.hero .hero__grid > .reveal:last-child {
+    display: block;
+    min-height: 0;
+  }
+  section.hero .visual-panel.visual-panel--hero.visual-panel--photo {
+    min-height: 0;
+    height: auto;
+    max-height: 260px;
     aspect-ratio: 16 / 10;
-    border-radius: 14px;
+    border-radius: 16px;
   }
 }
 
