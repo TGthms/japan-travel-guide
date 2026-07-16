@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=hero-tight1" />
+  <link rel="stylesheet" href="src/css/styles.css?v=hero-wide1" />
   <script>
   (function () {
     try {
@@ -61,10 +61,10 @@
   </header>
 
   <main id="main">
-    <!-- HERO — two columns: copy + contained visual -->
+    <!-- HERO — centered copy + single wide photo card (old Mount Fuji slot layout) -->
     <section class="hero" id="hero">
-      <div class="container hero__grid">
-        <div class="reveal">
+      <div class="container hero__stack">
+        <div class="hero__copy reveal">
           <div class="hero__eyebrow" data-i18n="hero.eyebrow">Independent Japan trip planner</div>
           <h1 class="hero__title" data-i18n="hero.title">Plan Japan with confidence</h1>
           <p class="hero__lead" data-i18n="hero.lead">Practical routes, city guides, transport, budgets, and tools — grounded in how people actually travel Japan. Cross-check schedules and passes on official sites before you go.</p>
@@ -78,22 +78,20 @@
             <div class="hero__stat"><strong>24/7</strong><span data-i18n="hero.statTips">Planning tools</span></div>
           </div>
         </div>
-        <div class="reveal reveal-delay-2">
-          <div
-            class="visual-panel visual-panel--hero visual-panel--photo"
-            role="img"
-            aria-label="Tokyo skyline at dusk from above Shibuya"
-          >
-            <img
-              class="visual-panel__photo"
-              src="assets/gallery/ShibuyaSkyView.jpeg"
-              alt=""
-              width="2000"
-              height="1125"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
+        <div
+          class="visual-panel visual-panel--hero visual-panel--photo reveal"
+          role="img"
+          aria-label="Tokyo skyline at dusk from above Shibuya"
+        >
+          <img
+            class="visual-panel__photo"
+            src="assets/gallery/ShibuyaSkyView.jpeg"
+            alt=""
+            width="2000"
+            height="1125"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
