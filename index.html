@@ -61,32 +61,34 @@
   </header>
 
   <main id="main">
-    <!-- HERO — full-bleed photo + overlay copy -->
-    <section class="hero hero--photo" id="hero">
-      <div class="hero__media" aria-hidden="true">
-        <img
-          src="assets/gallery/ShibuyaSkyView.jpeg"
-          alt=""
-          width="2000"
-          height="1125"
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-        />
-      </div>
-      <div class="hero__scrim" aria-hidden="true"></div>
-      <div class="container hero__content reveal">
-        <div class="hero__eyebrow" data-i18n="hero.eyebrow">Independent Japan trip planner</div>
-        <h1 class="hero__title" data-i18n="hero.title">Plan Japan with confidence</h1>
-        <p class="hero__lead" data-i18n="hero.lead">Practical routes, city guides, transport, budgets, and tools — grounded in how people actually travel Japan. Cross-check schedules and passes on official sites before you go.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary btn--lg" href="#plan" data-i18n="hero.ctaPrimary">Start planning</a>
-          <a class="btn btn--ghost-light btn--lg" href="tools.html" data-i18n="hero.ctaSecondary">Open travel tools</a>
+    <!-- HERO — two columns: copy + contained visual -->
+    <section class="hero" id="hero">
+      <div class="container hero__grid">
+        <div class="reveal">
+          <div class="hero__eyebrow" data-i18n="hero.eyebrow">Independent Japan trip planner</div>
+          <h1 class="hero__title" data-i18n="hero.title">Plan Japan with confidence</h1>
+          <p class="hero__lead" data-i18n="hero.lead">Practical routes, city guides, transport, budgets, and tools — grounded in how people actually travel Japan. Cross-check schedules and passes on official sites before you go.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary btn--lg" href="#plan" data-i18n="hero.ctaPrimary">Start planning</a>
+            <a class="btn btn--secondary btn--lg" href="tools.html" data-i18n="hero.ctaSecondary">Open travel tools</a>
+          </div>
+          <div class="hero__stats">
+            <div class="hero__stat"><strong data-counter="14">0</strong><span data-i18n="hero.statCities">City guides</span></div>
+            <div class="hero__stat"><strong data-counter="11">0</strong><span data-i18n="hero.statRoutes">Itinerary styles</span></div>
+            <div class="hero__stat"><strong>24/7</strong><span data-i18n="hero.statTips">Planning tools</span></div>
+          </div>
         </div>
-        <div class="hero__stats">
-          <div class="hero__stat"><strong data-counter="14">0</strong><span data-i18n="hero.statCities">City guides</span></div>
-          <div class="hero__stat"><strong data-counter="11">0</strong><span data-i18n="hero.statRoutes">Itinerary styles</span></div>
-          <div class="hero__stat"><strong>24/7</strong><span data-i18n="hero.statTips">Planning tools</span></div>
+        <div class="reveal reveal-delay-2">
+          <figure class="hero-visual">
+            <img
+              src="assets/gallery/ShibuyaSkyView.jpeg"
+              alt="Tokyo skyline at dusk from above Shibuya"
+              width="2000"
+              height="1125"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
         </div>
       </div>
     </section>
