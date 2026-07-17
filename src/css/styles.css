@@ -674,7 +674,7 @@ h4 {
  *
  * Usage:
  * <div class="visual-panel visual-panel--lg visual-panel--photo">
- *   <img class="visual-panel__photo" src="assets/gallery/Name.jpeg" alt="" />
+ *   <img class="visual-panel__photo" src="assets/gallery/about/Name.jpg" alt="" />
  *   <span class="visual-panel__label">Optional caption</span>
  * </div>
  */
