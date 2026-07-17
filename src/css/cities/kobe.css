@@ -4,29 +4,56 @@ body.city-kobe {
   --sakura: #e8d5c4;
   --gold: #c9a227;
   --gradient-hero: linear-gradient(165deg, #f7f0e9, #ebe0d4 50%, #faf6f2);
+
+  /* Self-contained light skin — works even when Settings theme is Dark */
+  --bg: #f7f0e9;
+  --bg-elevated: #faf6f2;
+  --text: #2a1518;
+  --text-muted: #6b5550;
+  --card-solid: #faf6f2;
+  --card: #faf6f2;
+  --border: rgba(107,28,42,.14);
+  --surface-2: #efe4d8;
+  --paper-warm: #f7f0e9;
+  --ink: #2a1518;
+  --muted: #6b5550;
+
+  --jp-fill: #f7f0e9;
+  --jp-fill-2: #efe4d8;
+  --jp-surface: #faf6f2;
+  --jp-ink: #2a1518;
+  --jp-ink-soft: #6b5550;
+  --jp-gray: #6b5550;
+  --jp-hairline: rgba(107,28,42,.14);
+  --jp-red: #6b1c2a;
+  --jp-red-deep: #6b1c2a;
+  --jp-sakura: #e8d5c4;
+  --jp-gold: #c9a227;
+
+  color-scheme: light;
+
+}
+body.city-kobe {
   --font-display: "Noto Serif JP", Georgia, serif;
   --radius: 8px;
-  --surface-2: rgba(107,28,42,.05);
 }
 body.city-kobe .card {
-  border-radius: 8px;
-  border: 1px solid rgba(107,28,42,.12);
-  box-shadow: 0 10px 30px rgba(107,28,42,.06);
+  border-radius: 8px; border: 1px solid rgba(107,28,42,.12);
+  background: var(--card-solid); box-shadow: 0 10px 30px rgba(107,28,42,.06);
 }
 body.city-kobe .btn--primary {
   background: linear-gradient(135deg, #6b1c2a, #c9a227);
-  border-radius: 4px;
-  letter-spacing: .04em;
+  border-radius: 4px; color: #fff; letter-spacing: .04em;
 }
-body.city-kobe .section__title { letter-spacing: .06em; }
+body.city-kobe .section__title { letter-spacing: .06em; color: var(--text); }
 body.city-kobe .visual-panel {
-  border-radius: 4px;
-  border-color: rgba(201,162,39,.4);
+  border-radius: 4px; border-color: rgba(201,162,39,.4);
   background: linear-gradient(145deg, rgba(232,213,196,.5), rgba(107,28,42,.06)), #f7f0e9;
 }
 body.city-kobe .city-hero__title {
   border-bottom: 1px solid rgba(201,162,39,.5);
-  padding-bottom: .4rem;
-  display: inline-block;
+  padding-bottom: .4rem; display: inline-block; color: var(--text);
 }
 body.city-kobe .chip { background: rgba(107,28,42,.08); color: #6b1c2a; }
+body.city-kobe .site-header { background: rgba(250,246,242,.94); }
+

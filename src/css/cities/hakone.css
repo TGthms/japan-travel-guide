@@ -1,29 +1,53 @@
 /* Hakone — misty onsen, steam, wood & lavender fog */
 body.city-hakone {
-  --deep-red-bright: #6d5a7a;
+  --deep-red-bright: #5a4a66;
   --sakura: #c9b8d4;
   --gold: #a67c52;
   --gradient-hero: linear-gradient(165deg, #ebe6f0, #d5cddc 35%, #f0e8df);
-  --bg: #ebe7ef; --card-solid: rgba(255,252,250,.75);
-  --surface-2: rgba(109,90,122,.08);
-  --radius: 14px;
+
+  /* Self-contained light skin — works even when Settings theme is Dark */
+  --bg: #ebe7ef;
+  --bg-elevated: #f5f2f7;
+  --text: #2e2835;
+  --text-muted: #6a6275;
+  --card-solid: #fffcfa;
+  --card: #fffcfa;
+  --border: rgba(109,90,122,.16);
+  --surface-2: #e0dae8;
+  --paper-warm: #ebe7ef;
+  --ink: #2e2835;
+  --muted: #6a6275;
+
+  --jp-fill: #ebe7ef;
+  --jp-fill-2: #e0dae8;
+  --jp-surface: #fffcfa;
+  --jp-ink: #2e2835;
+  --jp-ink-soft: #6a6275;
+  --jp-gray: #6a6275;
+  --jp-hairline: rgba(109,90,122,.16);
+  --jp-red: #5a4a66;
+  --jp-red-deep: #5a4a66;
+  --jp-sakura: #c9b8d4;
+  --jp-gold: #a67c52;
+
+  color-scheme: light;
+
 }
+body.city-hakone { --radius: 14px; }
 body.city-hakone .card {
-  border-radius: 16px;
-  background: rgba(255,252,250,.65);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(166,124,82,.2);
+  border-radius: 16px; background: rgba(255,252,250,.9);
+  backdrop-filter: blur(14px); border: 1px solid rgba(166,124,82,.2); color: var(--text);
 }
-body.city-hakone .btn--primary { background: linear-gradient(135deg, #6d5a7a, #a67c52); }
+body.city-hakone .btn--primary { background: linear-gradient(135deg, #6d5a7a, #a67c52); color: #fff; }
 body.city-hakone .visual-panel {
-  border-radius: 20px;
-  border-color: rgba(201,184,212,.5);
+  border-radius: 20px; border-color: rgba(201,184,212,.5);
   background: linear-gradient(180deg, rgba(201,184,212,.35), rgba(166,124,82,.1)), #f0ebf5;
 }
-body.city-hakone .section__eyebrow { color: #6d5a7a; }
+body.city-hakone .section__eyebrow { color: #5a4a66; }
+body.city-hakone .section__title { color: var(--text); }
 body.city-hakone .city-hero {
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(255,255,255,.55), transparent 55%),
-    var(--gradient-hero);
+  background: radial-gradient(ellipse at 50% 100%, rgba(255,255,255,.55), transparent 55%), var(--gradient-hero);
 }
 body.city-hakone .chip { background: rgba(166,124,82,.15); color: #5c4033; }
+body.city-hakone .site-header { background: rgba(245,242,247,.94); }
+

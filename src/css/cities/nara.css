@@ -1,28 +1,54 @@
 /* Nara — deer park, moss, soft temple stone */
 body.city-nara {
-  --deep-red-bright: #4a6741;
+  --deep-red-bright: #3f5c38;
   --sakura: #c5d5b5;
   --gold: #8a9a5b;
   --gradient-hero: linear-gradient(165deg, #eef3e8, #dde8d4 50%, #f4f7f0);
-  --bg: #f2f6ef; --card-solid: #f7faf4;
-  --surface-2: rgba(74,103,65,.07);
-  --radius: 18px;
+
+  /* Self-contained light skin — works even when Settings theme is Dark */
+  --bg: #f2f6ef;
+  --bg-elevated: #f7faf4;
+  --text: #243022;
+  --text-muted: #5c6b55;
+  --card-solid: #f7faf4;
+  --card: #f7faf4;
+  --border: rgba(74,103,65,.16);
+  --surface-2: #e6eee0;
+  --paper-warm: #f2f6ef;
+  --ink: #243022;
+  --muted: #5c6b55;
+
+  --jp-fill: #f2f6ef;
+  --jp-fill-2: #e6eee0;
+  --jp-surface: #f7faf4;
+  --jp-ink: #243022;
+  --jp-ink-soft: #5c6b55;
+  --jp-gray: #5c6b55;
+  --jp-hairline: rgba(74,103,65,.16);
+  --jp-red: #3f5c38;
+  --jp-red-deep: #3f5c38;
+  --jp-sakura: #c5d5b5;
+  --jp-gold: #8a9a5b;
+
+  color-scheme: light;
+
 }
+body.city-nara { --radius: 18px; }
 body.city-nara .city-hero {
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(138,154,91,.18), transparent 50%),
-    var(--gradient-hero);
+  background: radial-gradient(ellipse at 20% 80%, rgba(138,154,91,.18), transparent 50%), var(--gradient-hero);
 }
 body.city-nara .card {
-  border-radius: 20px;
-  border: 1px solid rgba(74,103,65,.15);
-  background: rgba(247,250,244,.95);
+  border-radius: 20px; border: 1px solid rgba(74,103,65,.15);
+  background: var(--card-solid);
 }
-body.city-nara .btn--primary { background: linear-gradient(135deg, #4a6741, #8a9a5b); border-radius: 999px; }
+body.city-nara .btn--primary { background: linear-gradient(135deg, #4a6741, #8a9a5b); border-radius: 999px; color: #fff; }
 body.city-nara .visual-panel {
-  border-radius: 24px 8px 24px 8px;
-  border-color: rgba(138,154,91,.4);
+  border-radius: 24px 8px 24px 8px; border-color: rgba(138,154,91,.4);
   background: linear-gradient(160deg, rgba(197,213,181,.35), #eef3e8);
 }
-body.city-nara .section__eyebrow { color: #4a6741; letter-spacing: .18em; }
+body.city-nara .section__eyebrow { color: #3f5c38; letter-spacing: .18em; }
+body.city-nara .section__title { color: var(--text); }
 body.city-nara .city-hero__title::after { content: " 🦌"; font-size: .6em; }
+body.city-nara .city-hero__title { color: var(--text); }
+body.city-nara .site-header { background: rgba(247,250,244,.94); }
+

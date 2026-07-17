@@ -1,34 +1,60 @@
 /* Okinawa — subtropical lagoon, coral & white sand */
 body.city-okinawa {
-  --deep-red-bright: #00a8a8;
+  --deep-red-bright: #008a8a;
   --sakura: #ff8fab;
-  --gold: #ffd166;
+  --gold: #e0a800;
   --gradient-hero: linear-gradient(160deg, #e0fbfc, #90e0ef 35%, #fff0f5 100%);
-  --surface-2: rgba(0,168,168,.08);
-  --radius: 28px;
+
+  /* Self-contained light skin — works even when Settings theme is Dark */
+  --bg: #eefbfc;
+  --bg-elevated: #ffffff;
+  --text: #12383a;
+  --text-muted: #4f7072;
+  --card-solid: #ffffff;
+  --card: #ffffff;
+  --border: rgba(0,168,168,.16);
+  --surface-2: #d9f3f4;
+  --paper-warm: #eefbfc;
+  --ink: #12383a;
+  --muted: #4f7072;
+
+  --jp-fill: #eefbfc;
+  --jp-fill-2: #d9f3f4;
+  --jp-surface: #ffffff;
+  --jp-ink: #12383a;
+  --jp-ink-soft: #4f7072;
+  --jp-gray: #4f7072;
+  --jp-hairline: rgba(0,168,168,.16);
+  --jp-red: #008a8a;
+  --jp-red-deep: #008a8a;
+  --jp-sakura: #ff8fab;
+  --jp-gold: #e0a800;
+
+  color-scheme: light;
+
 }
+body.city-okinawa { --radius: 28px; }
 body.city-okinawa .card {
-  border-radius: 28px;
-  border: 1px solid rgba(0,180,216,.18);
-  box-shadow: 0 12px 32px rgba(0,168,168,.1);
+  border-radius: 28px; border: 1px solid rgba(0,180,216,.18);
+  background: var(--card-solid); box-shadow: 0 12px 32px rgba(0,168,168,.1);
 }
 body.city-okinawa .btn--primary {
   background: linear-gradient(135deg, #00b4d8, #ff8fab);
-  border-radius: 999px;
+  border-radius: 999px; color: #fff;
 }
 body.city-okinawa .visual-panel {
-  border-radius: 28px;
-  border-color: rgba(0,180,216,.4);
+  border-radius: 28px; border-color: rgba(0,180,216,.4);
   background:
     radial-gradient(circle at 30% 30%, rgba(255,255,255,.6), transparent 40%),
     linear-gradient(160deg, rgba(144,224,239,.4), rgba(255,143,171,.15)),
     #e8f9fa;
 }
-body.city-okinawa .section__eyebrow { color: #0096a0; letter-spacing: .16em; }
+body.city-okinawa .section__eyebrow { color: #008a8a; letter-spacing: .16em; }
+body.city-okinawa .section__title { color: var(--text); }
 body.city-okinawa .city-hero {
-  background:
-    radial-gradient(circle at 70% 80%, rgba(255,209,102,.3), transparent 40%),
-    var(--gradient-hero);
+  background: radial-gradient(circle at 70% 80%, rgba(255,209,102,.3), transparent 40%), var(--gradient-hero);
 }
 body.city-okinawa .chip { background: rgba(255,143,171,.2); color: #9d174d; border-radius: 999px; }
-body.city-okinawa .city-stat strong { color: #00a8a8; }
+body.city-okinawa .city-stat strong { color: #008a8a; }
+body.city-okinawa .site-header { background: rgba(255,255,255,.94); }
+

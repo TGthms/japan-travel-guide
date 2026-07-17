@@ -1,29 +1,55 @@
 /* Fukuoka — yatai night + coastal casual */
 body.city-fukuoka {
-  --deep-red-bright: #0077b6;
+  --deep-red-bright: #006a9e;
   --sakura: #90e0ef;
-  --gold: #fcbf49;
+  --gold: #c98a12;
   --gradient-hero: linear-gradient(155deg, #e6f7fc, #caf0f8 40%, #fff6e8);
-  --surface-2: rgba(0,119,182,.06);
-  --radius: 16px;
+
+  /* Self-contained light skin — works even when Settings theme is Dark */
+  --bg: #f3fafc;
+  --bg-elevated: #ffffff;
+  --text: #123040;
+  --text-muted: #4f6b78;
+  --card-solid: #ffffff;
+  --card: #ffffff;
+  --border: rgba(0,119,182,.14);
+  --surface-2: #e3f3f8;
+  --paper-warm: #f3fafc;
+  --ink: #123040;
+  --muted: #4f6b78;
+
+  --jp-fill: #f3fafc;
+  --jp-fill-2: #e3f3f8;
+  --jp-surface: #ffffff;
+  --jp-ink: #123040;
+  --jp-ink-soft: #4f6b78;
+  --jp-gray: #4f6b78;
+  --jp-hairline: rgba(0,119,182,.14);
+  --jp-red: #006a9e;
+  --jp-red-deep: #006a9e;
+  --jp-sakura: #90e0ef;
+  --jp-gold: #c98a12;
+
+  color-scheme: light;
+
 }
+body.city-fukuoka { --radius: 16px; }
 body.city-fukuoka .card {
-  border-radius: 16px;
-  border: 1px solid rgba(0,119,182,.12);
+  border-radius: 16px; border: 1px solid rgba(0,119,182,.12); background: var(--card-solid);
 }
 body.city-fukuoka .btn--primary {
   background: linear-gradient(135deg, #0077b6, #00b4d8 60%, #fcbf49);
-  border-radius: 999px;
+  border-radius: 999px; color: #fff;
 }
 body.city-fukuoka .visual-panel {
-  border-radius: 16px 16px 4px 4px;
-  border-color: rgba(0,180,216,.35);
+  border-radius: 16px 16px 4px 4px; border-color: rgba(0,180,216,.35);
   background: linear-gradient(180deg, rgba(144,224,239,.35), rgba(252,191,73,.12)), #eef9fc;
 }
-body.city-fukuoka .section__eyebrow { color: #0077b6; }
+body.city-fukuoka .section__eyebrow { color: #006a9e; }
+body.city-fukuoka .section__title { color: var(--text); }
 body.city-fukuoka .city-hero {
-  background:
-    radial-gradient(ellipse at 10% 90%, rgba(252,191,73,.25), transparent 45%),
-    var(--gradient-hero);
+  background: radial-gradient(ellipse at 10% 90%, rgba(252,191,73,.25), transparent 45%), var(--gradient-hero);
 }
 body.city-fukuoka .chip { background: rgba(252,191,73,.2); color: #7a4e00; }
+body.city-fukuoka .site-header { background: rgba(255,255,255,.94); }
+

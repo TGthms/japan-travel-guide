@@ -1,32 +1,103 @@
-/* Nikko — sacred forest, lacquer red, shrine gold */
+/* Nikko — sacred forest, lacquer red, shrine gold (coherent dark skin) */
 body.city-nikko {
-  --deep-red-bright: #9b1b1b;
-  --sakura: #2d4a3e;
+  color-scheme: dark;
+
+  --deep-red-bright: #e04040;
+  --sakura: #3d6b58;
   --gold: #d4af37;
   --gradient-hero: linear-gradient(165deg, #152820, #1e342a 45%, #141f1a);
-  color-scheme: dark;
-  --bg: #121c18; --bg-elevated: #1a2820; --text: #f3efe6; --text-muted: #b5c4b8;
-  --card-solid: #1a2822; --card: rgba(26,40,34,.9); --border: rgba(212,175,55,.22);
-  --surface-2: rgba(155,27,27,.12);
+
+  --bg: #121c18;
+  --bg-elevated: #1a2820;
+  --text: #f3efe6;
+  --text-muted: #b5c4b8;
+  --card-solid: #1a2822;
+  --card: #1a2822;
+  --border: rgba(212, 175, 55, 0.24);
+  --surface-2: #16241e;
+  --paper-warm: #101814;
+
+  --jp-fill: #121c18;
+  --jp-fill-2: #16241e;
+  --jp-surface: #1a2822;
+  --jp-ink: #f3efe6;
+  --jp-ink-soft: #d8d4c8;
+  --jp-gray: #b5c4b8;
+  --jp-hairline: rgba(212, 175, 55, 0.22);
+  --jp-red: #e04040;
+  --jp-red-deep: #9b1b1b;
+  --jp-sakura: #6b9b84;
+  --jp-gold: #d4af37;
+
+  --ink: #f3efe6;
+  --muted: #b5c4b8;
+  --shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
 }
+
 body.city-nikko .card {
-  border: 1px solid rgba(212,175,55,.28);
-  border-radius: 4px;
-  box-shadow: inset 0 0 0 1px rgba(155,27,27,.15);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 6px;
+  background: var(--card-solid);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(155, 27, 27, 0.12);
 }
+
 body.city-nikko .btn--primary {
   background: linear-gradient(135deg, #9b1b1b, #d4af37);
-  border-radius: 2px;
+  border-radius: 4px;
+  color: #fff;
 }
-body.city-nikko .city-stat strong { color: #d4af37; }
+
+body.city-nikko .city-stat strong {
+  color: #d4af37;
+}
+
 body.city-nikko .visual-panel {
-  border-radius: 2px; border-style: double; border-width: 3px;
-  border-color: rgba(212,175,55,.45);
-  background: linear-gradient(160deg, rgba(45,74,62,.5), #1a2822);
+  border-radius: 4px;
+  border-style: double;
+  border-width: 3px;
+  border-color: rgba(212, 175, 55, 0.45);
+  background: linear-gradient(160deg, rgba(45, 74, 62, 0.5), #1a2822);
 }
-body.city-nikko .section__eyebrow { color: #d4af37; letter-spacing: .24em; }
+
+body.city-nikko .section__eyebrow {
+  color: #d4af37;
+  letter-spacing: 0.24em;
+}
+
+body.city-nikko .section__title {
+  color: var(--text);
+}
+
+body.city-nikko .city-hero {
+  background: var(--gradient-hero);
+}
+
 body.city-nikko .city-hero__title {
+  color: var(--text);
   border-left: 4px solid #9b1b1b;
-  padding-left: .75rem;
+  padding-left: 0.75rem;
 }
-body.city-nikko .chip { background: rgba(212,175,55,.12); color: #e8d48b; border-color: rgba(212,175,55,.3); }
+
+body.city-nikko .chip {
+  background: rgba(212, 175, 55, 0.12);
+  color: #e8d48b;
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+body.city-nikko .site-header {
+  background: rgba(18, 28, 24, 0.94);
+  border-bottom-color: rgba(212, 175, 55, 0.18);
+}
+
+body.city-nikko .site-footer {
+  background: #0e1612;
+  border-top-color: rgba(212, 175, 55, 0.15);
+}
+
+body.city-nikko .city-hero__media {
+  border-color: rgba(212, 175, 55, 0.35);
+}
+body.city-nikko .city-back:hover {
+  color: #d4af37;
+}

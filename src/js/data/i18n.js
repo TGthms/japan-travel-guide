@@ -1,7 +1,5 @@
 /**
  * Centralized translations — EN (default), JA, zh-CN
- * Access via JTG.TRANSLATIONS[lang] and JTG.i18n.t(key)
- * Locale copy is written for natural voice (not literal EN mirrors).
  */
 (function (global) {
   "use strict";
@@ -10,7 +8,7 @@
     en: {
     "meta": {
       "siteName": "Japan Travel Guide",
-      "tagline": "Practical multi-city Japan planning"
+      "tagline": "Plan multi-city Japan trips with clarity"
     },
     "nav": {
       "home": "Home",
@@ -44,10 +42,10 @@
       "weather": "Weather",
       "highlights": "Highlights",
       "overview": "Overview",
-      "foodGuide": "Food guide",
-      "attractions": "Attractions",
+      "foodGuide": "Food",
+      "attractions": "Sights",
       "transport": "Getting around",
-      "travelTips": "Travel tips",
+      "travelTips": "Tips",
       "days": "days",
       "openGallery": "Open photo gallery",
       "backHome": "Back to home",
@@ -60,8 +58,8 @@
       "sortBy": "Sort by",
       "sortOrder": "Default order",
       "sortName": "Name",
-      "sortTimeAsc": "Time (oldest)",
-      "sortTimeDesc": "Time (newest)",
+      "sortTimeAsc": "Oldest first",
+      "sortTimeDesc": "Newest first",
       "emptyGalleryTitle": "Gallery is empty",
       "emptyGalleryDesc": "Photos will appear here after you add them with the local Gallery Manager (Add Photos.command).",
       "settingsTitle": "Settings",
@@ -92,7 +90,7 @@
     "hero": {
       "eyebrow": "Independent Japan trip planner",
       "title": "Plan Japan with confidence",
-      "lead": "City guides, realistic routes, transport tips, budgets, and planning tools—written for how people actually travel Japan. Always double-check fares and rules on official sites before you book.",
+      "lead": "City guides, realistic routes, transport tips, budgets, and tools—written for how people actually travel Japan. Confirm fares and rules on official sites before you book.",
       "ctaPrimary": "Start planning",
       "ctaSecondary": "Open travel tools",
       "statCities": "City guides",
@@ -137,14 +135,14 @@
     "map": {
       "eyebrow": "Navigate",
       "title": "Interactive map",
-      "desc": "Rough map of the cities in this guide. Click a pin or a name to open that city page.",
+      "desc": "Approximate locations of the cities in this guide. Click a pin or a name to open that city page.",
       "panelTitle": "Jump to a city",
       "panelHint": "Positions match real geography. Hover to highlight; click to open the city page."
     },
     "destinations": {
       "eyebrow": "14 city guides",
       "title": "Where to go",
-      "desc": "Each card opens a full city guide—what to eat, what to see, and how to get around. Distance from Tokyo and a typical daytime temperature range help you compare at a glance."
+      "desc": "Open any card for a full city guide—food, sights, and getting around. Distance from Tokyo and a typical daytime temperature range help you compare routes at a glance."
     },
     "cities": {
       "tokyo": {
@@ -320,8 +318,8 @@
     },
     "food": {
       "eyebrow": "Cuisine",
-      "title": "Food guide overview",
-      "desc": "Major categories to explore — detailed dishes live on each city page.",
+      "title": "Food guide",
+      "desc": "Major styles to look for. Local specialties live on each city page.",
       "sushi": "Sushi & sashimi",
       "sushiText": "Vinegared rice and pristine seafood, from conveyor belts to omakase counters.",
       "ramen": "Ramen",
@@ -353,8 +351,8 @@
     },
     "transport": {
       "eyebrow": "Getting around",
-      "title": "Transportation guide",
-      "desc": "National systems that make multi-city trips effortless.",
+      "title": "Getting around",
+      "desc": "The systems that make multi-city trips workable—and when a rail pass is worth it.",
       "shinkansen": "Shinkansen",
       "shinkansenText": "High-speed spine linking major cities with legendary punctuality.",
       "jrpass": "JR Pass",
@@ -448,7 +446,7 @@
     "seasons": {
       "eyebrow": "When to go",
       "title": "Seasonal guide",
-      "desc": "How the four seasons feel on the ground—and what to pack for each.",
+      "desc": "How each season feels on the ground—and what to pack.",
       "spring": "Spring",
       "summer": "Summer",
       "autumn": "Autumn",
@@ -517,8 +515,8 @@
     },
     "tips": {
       "eyebrow": "Know before you go",
-      "title": "Common travel tips",
-      "desc": "Nationwide basics — city pages add regional notes.",
+      "title": "Travel tips",
+      "desc": "Nationwide basics. City pages add local notes.",
       "etiquette": "Etiquette",
       "etiquetteText": "Avoid phone calls on local trains; use vestibules on long-distance trains if needed. Queue at doors and escalators (follow local side). No tipping in restaurants—pay at the register or tablet.",
       "phrases": "Useful phrases",
@@ -539,7 +537,7 @@
     "faq": {
       "eyebrow": "Questions",
       "title": "FAQ",
-      "desc": "Quick answers for first-time and returning visitors.",
+      "desc": "Straight answers for first visits and return trips.",
       "q1": "Do I need a JR Pass?",
       "a1": "Buy a Japan Rail Pass only if you will ride enough long-distance JR trains (especially shinkansen) during 7/14/21 days. Tokyo-only or one short hop: use IC cards and point-to-point tickets. Always price your exact legs on official JR / japanrailpass.net pages—pass rules and prices change.",
       "q2": "Is Japan expensive?",
@@ -707,15 +705,15 @@
     "plan": {
       "eyebrow": "How to use this guide",
       "title": "Four steps to a solid trip",
-      "desc": "Work top to bottom, then open each city page. Confirm fares and entry rules on official sites before you book.",
+      "desc": "Work top to bottom, then open each city page for detail. Confirm fares and entry rules on official sites before you book.",
       "step1Title": "Pick cities",
-      "step1Text": "Compare 14 destinations with distances from Tokyo, seasons, and suggested stay length.",
+      "step1Text": "Compare 14 destinations—distance from Tokyo, climate, and what each place is best for.",
       "step2Title": "Shape a route",
-      "step2Text": "Use 5–14 day arcs or theme trips (food, nature, sakura) as a starting skeleton.",
+      "step2Text": "Start from a 5–14 day arc or a theme trip, then edit to fit your pace.",
       "step3Title": "Solve transport",
-      "step3Text": "IC cards, shinkansen basics, and when a JR Pass or regional pass may make sense.",
+      "step3Text": "IC cards, shinkansen basics, and whether a JR or regional pass makes sense.",
       "step4Title": "Run the numbers",
-      "step4Text": "Budget, packing, currency, tax, rail estimates, and emergency numbers in Travel Tools.",
+      "step4Text": "Budget, packing, currency, tax, rail estimates, and emergency numbers in Tools.",
       "trustNote": "Fares, pass rules, and entry requirements change. Confirm with JR, airlines, and japan.travel (JNTO) before booking."
     },
     "official": {
@@ -736,19 +734,26 @@
       "jrOfficialDesc": "Official JR Pass product rules and purchase info"
     },
     "footer": {
-      "tagline": "A practical multi-city planning companion for Japan trips.",
+      "tagline": "A practical companion for multi-city Japan trips.",
       "aboutMe": "About Me",
-      "aboutBlurb": "A practical multi-city planning companion for Japan trips.",
+      "aboutBlurb": "A practical companion for multi-city Japan trips.",
       "copyright": "© 2026 Japan Travel Guide · Created by Tim G"
     },
     "cityPage": {
-      "back": "All destinations",
-      "distanceNote": "Approximate distance from Tokyo Station",
+      "back": "← Back",
+      "distanceNote": "Approx. from Tokyo Station",
       "stayValue": "{n} days",
-      "budgetDay": "per day (mid-range excl. long-distance rail)",
+      "budgetDay": "per day (mid-range)",
       "weatherAvg": "Typical daytime range",
       "gettingThere": "Getting there",
-      "moreInGallery": "Photos coming in the gallery"
+      "moreInGallery": "Photos coming in the gallery",
+      "foodIntro": "What to try while you are here.",
+      "sightsIntro": "Places worth planning around.",
+      "otherCities": "Other destinations",
+      "otherCitiesShort": "Cities",
+      "otherCitiesDesc": "Jump to another city guide without going back to the home page.",
+      "viewAllDestinations": "View all destinations overview →",
+      "switchCity": "Switch city"
     },
     "cityContent": {
       "tokyo": {
@@ -1675,8 +1680,8 @@
   },
     ja: {
     "meta": {
-      "siteName": "日本旅行ガイド",
-      "tagline": "複数都市の日本旅行を実務的に組み立てる"
+      "siteName": "Japan Travel Guide",
+      "tagline": "複数都市の日本旅行を、実務的に組み立てる"
     },
     "nav": {
       "home": "ホーム",
@@ -1685,7 +1690,7 @@
       "destinations": "目的地",
       "routes": "ルート",
       "food": "グルメ",
-      "attractions": "観光",
+      "attractions": "名所",
       "transport": "交通",
       "budget": "予算",
       "packing": "荷物",
@@ -1697,7 +1702,7 @@
       "facts": "豆知識",
       "tools": "ツール",
       "settings": "設定",
-      "cities": "都市一覧"
+      "cities": "都市"
     },
     "common": {
       "learnMore": "詳しく見る",
@@ -1712,8 +1717,8 @@
       "overview": "概要",
       "foodGuide": "グルメ",
       "attractions": "名所",
-      "transport": "移動について",
-      "travelTips": "旅のヒント",
+      "transport": "移動",
+      "travelTips": "ヒント",
       "days": "日間",
       "openGallery": "ギャラリーを開く",
       "backHome": "ホームへ戻る",
@@ -1725,9 +1730,9 @@
       "allCities": "すべての都市",
       "sortBy": "並び替え",
       "sortOrder": "標準",
-      "sortName": "名前",
-      "sortTimeAsc": "時期（古い順）",
-      "sortTimeDesc": "時期（新しい順）",
+      "sortName": "名前順",
+      "sortTimeAsc": "古い順",
+      "sortTimeDesc": "新しい順",
       "emptyGalleryTitle": "ギャラリーは空です",
       "emptyGalleryDesc": "ローカルの Gallery Manager（Add Photos.command）で写真を追加すると表示されます。",
       "settingsTitle": "設定",
@@ -1752,12 +1757,13 @@
       "resources": "リソース",
       "destinations": "目的地",
       "placeholder": "ビジュアル",
-      "openCityGuide": "都市ガイドを開く →"
+      "openCityGuide": "都市ガイドを開く →",
+      "home": "ホーム"
     },
     "hero": {
       "eyebrow": "個人旅行向けの日本ガイド",
       "title": "日本の旅を、迷わず組み立てる",
-      "lead": "都市ガイド、現実的なルート案、交通の要点、予算とツールまで。実際の旅の進め方に沿ってまとめています。運賃やパスの条件は、予約前に公式情報で必ず確認してください。",
+      "lead": "都市ガイド、現実的なルート、交通の要点、予算とツールまで。現場で使える進め方に沿ってまとめています。運賃やパスの条件は、予約前に公式情報で確認してください。",
       "ctaPrimary": "計画を始める",
       "ctaSecondary": "旅行ツールを開く",
       "statCities": "都市ガイド",
@@ -1766,59 +1772,59 @@
       "heroImage": "夜明けの富士山"
     },
     "about": {
-      "eyebrow": "列島",
+      "eyebrow": "列島を知る",
       "title": "日本について",
-      "desc": "初めてでもリピーターでも、鉄道でつながる都市、はっきりした四季、土地ごとの食と文化が魅力です。まずはここで全体像をつかみ、詳細は公式情報で確認する——という使い方を想定しています。",
+      "desc": "初めてでもリピーターでも——鉄道でつながる都市、はっきりした四季、土地ごとの食と文化が魅力です。まずはここで全体像をつかみ、細かい運賃や手続きは公式情報で確認する、という使い方を想定しています。",
       "geoTitle": "地理",
-      "geoText": "北海道の雪景色から沖縄の海まで。火山、森、巨大都市が南北に連なります。",
+      "geoText": "北海道の雪原から沖縄の珊瑚礁まで。火山、森、巨大都市が南北に連なり、気候も風景も大きく変わります。",
       "cultureTitle": "文化",
-      "cultureText": "神社仏閣の作法からポップカルチャーまで。地域ごとに空気感が変わります。",
+      "cultureText": "おもてなしの心、季節を味わう感覚、茶道からポップカルチャーまで。地域ごとに空気が違います。",
       "historyTitle": "歴史",
-      "historyText": "古都の社寺から近代の港町まで。旅先の背景がわかると街歩きが立体的になります。",
+      "historyText": "幕府の時代、明治の近代化、戦後の技術革新——社寺や城、現代の街並みにその層が重なっています。",
       "foodTitle": "食",
-      "foodText": "土地の味がそのままご当地アイデンティティ。都市ごとに「何を食べるか」で回り方も変わります。",
+      "foodText": "土地の味がその土地の顔。何を食べるかで、回り方も滞在のリズムも変わります。",
       "transportTitle": "交通",
-      "transportText": "鉄道とICカード、歩きやすい街で個人旅行がしやすい国です。",
-      "currencyTitle": "通貨",
-      "currencyText": "日本円。都市部ではカードも普及、現金もまだ便利です。",
-      "languageTitle": "言語",
-      "languageText": "日本語が中心。主要交通では英語表示も増えています。",
-      "internetTitle": "インターネット",
-      "internetText": "eSIMやポケットWi‑Fi、駅・カフェの無料Wi‑Fi。",
+      "transportText": "新幹線・私鉄・ICカードが都市をつなぎます。パスはルート次第で得にも損にもなります。",
+      "currencyTitle": "お金",
+      "currencyText": "通貨は円。都市部はカードが広がっていますが、寺社や小さな店では現金が安心です。",
+      "languageTitle": "ことば",
+      "languageText": "主要駅やホテルは英語表記が増えています。翻訳アプリと簡単な日本語があると旅が楽になります。",
+      "internetTitle": "ネット",
+      "internetText": "eSIMや空港のSIM、ポケットWi‑Fiが一般的。駅やカフェの無料Wi‑Fiも活用できます。",
       "safetyTitle": "安全",
-      "safetyText": "世界でも安全な旅行先の一つ。一般的な注意は忘れずに。",
-      "weatherTitle": "気候",
-      "weatherText": "四季がはっきり。春の桜、夏の湿気、秋の紅葉、北の雪。",
-      "seasonsTitle": "おすすめ時期",
-      "seasonsText": "3–5月と10–11月が人気。肩シーズンは混雑が少なめ。",
+      "safetyText": "治安は総じて良好。それでも貴重品管理と緊急番号の確認は忘れずに。",
+      "weatherTitle": "天気",
+      "weatherText": "梅雨、台風、大雪——季節リスクを知っておくと計画が安定します。",
+      "seasonsTitle": "四季",
+      "seasonsText": "桜、新緑、紅葉、雪——いつ行くかで体験がまったく変わります。",
       "etiquetteTitle": "マナー",
-      "etiquetteText": "車内は静かに、室内は靴を脱ぎ、列を守り、神社では敬意を。",
-      "whyTitle": "訪れる理由",
-      "whyText": "未来都市と聖地、日常の職人技がこれほど優雅に両立する場所は稀です。",
+      "etiquetteText": "電車内の通話を控え、整列し、チップは基本不要。静かな場所では声量に気を配りましょう。",
+      "whyTitle": "なぜ日本か",
+      "whyText": "最先端の都市と静かな聖地、日常の職人技が近い距離で共存している——それが日本の旅の密度です。",
       "photo1": "伝統と工芸",
       "photo2": "自然と季節",
       "photo3": "動く都市"
     },
     "map": {
-      "eyebrow": "ナビ",
-      "title": "インタラクティブマップ",
-      "desc": "このガイドに登場する都市の位置関係。ピンや名前を押すと都市ページへ。",
+      "eyebrow": "位置関係",
+      "title": "都市マップ",
+      "desc": "このガイドに登場する都市のおよその位置です。ピンや名前を押すと都市ページが開きます。",
       "panelTitle": "都市へジャンプ",
       "panelHint": "位置は実際の地理に対応。ホバーで強調、クリックで都市ページへ。"
     },
     "destinations": {
       "eyebrow": "都市ガイド 14",
       "title": "行き先を選ぶ",
-      "desc": "カードをタップすると、その都市の専用ガイド（グルメ・名所・移動）が開きます。東京からの距離と日中の気温目安も載せているので、比較しながらルートを組み立てられます。"
+      "desc": "カードを開くと、その都市の専用ガイド（グルメ・名所・移動）へ進みます。東京からの距離と日中の気温目安も載せているので、比較しながらルートを組み立てられます。"
     },
     "cities": {
       "tokyo": {
         "name": "東京",
-        "blurb": "街歩きの拠点に最適。食とナイトライフ、郊外への起点にもなります。"
+        "blurb": "街歩きの拠点に。食とナイトライフ、近郊への出発点にもなります。"
       },
       "kyoto": {
         "name": "京都",
-        "blurb": "社寺と茶の文化、歩いて巡る旧市街。朝早く動くのがコツ。"
+        "blurb": "社寺と茶の文化。歩いて巡るなら、朝早く動くのがコツです。"
       },
       "osaka": {
         "name": "大阪",
@@ -1830,7 +1836,7 @@
       },
       "hiroshima": {
         "name": "広島",
-        "blurb": "平和の学びとお好み焼き、宮島への玄関口。"
+        "blurb": "平和の学びとお好み焼き。宮島への玄関口。"
       },
       "yokohama": {
         "name": "横浜",
@@ -1862,7 +1868,7 @@
       },
       "nagasaki": {
         "name": "長崎",
-        "blurb": "坂の街と港の歴史、独自の食文化。九州でも空気が違う一帯。"
+        "blurb": "坂の街と港の歴史。九州でも空気が違う一帯。"
       },
       "okinawa": {
         "name": "沖縄",
@@ -1870,9 +1876,9 @@
       }
     },
     "routes": {
-      "eyebrow": "行程",
-      "title": "おすすめルート",
-      "desc": "週末から2週間まで。そのまま使っても、組み替えても使えるモデルコース。",
+      "eyebrow": "モデルコース",
+      "title": "ルートの型",
+      "desc": "週末から2週間まで。そのまま使っても、自分用に組み替えても使える骨格です。",
       "d5": "5日間",
       "d7": "7日間",
       "d10": "10日間",
@@ -1985,26 +1991,26 @@
     },
     "food": {
       "eyebrow": "食文化",
-      "title": "食べ歩きの見取り図",
-      "desc": "ジャンルの地図。各都市ページに、その土地の名物をまとめています。",
+      "title": "グルメの見取り図",
+      "desc": "ジャンルの地図です。ご当地の名物は、各都市ページにまとめています。",
       "sushi": "寿司・刺身",
-      "sushiText": "江戸前からおまかせまで、新鮮な海の幸。",
+      "sushiText": "江戸前の握りからおまかせまで。新鮮な海の幸をカウンターで。",
       "ramen": "ラーメン",
-      "ramenText": "醤油・味噌・豚骨などご当地スープの世界。",
+      "ramenText": "醤油・味噌・豚骨——ご当地スープの違いを楽しむ。",
       "street": "ストリートフード",
       "streetText": "たこ焼き、たい焼き、焼き鳥、祭りの屋台。",
       "kaiseki": "会席",
-      "kaisekiText": "季節を盛るコース料理の芸術。",
+      "kaisekiText": "季節を盛るコース料理。茶の湯の美意識が土台。",
       "wagyu": "和牛・焼肉",
       "wagyuText": "霜降りをテーブルで、またはステーキで。",
       "sweets": "スイーツと茶",
       "sweetsText": "抹茶、和菓子、喫茶店文化。",
-      "linkHint": "ご当地グルメは各都市へ →"
+      "linkHint": "ご当地グルメは各都市ページへ →"
     },
     "attractions": {
       "eyebrow": "見どころ",
-      "title": "観光カテゴリ",
-      "desc": "カテゴリ別の入口。詳細は都市ページに。",
+      "title": "名所の見取り図",
+      "desc": "カテゴリの入口。詳細は各都市ページへ。",
       "temples": "寺院",
       "shrines": "神社",
       "castles": "城",
@@ -2018,18 +2024,18 @@
     },
     "transport": {
       "eyebrow": "移動",
-      "title": "移動の基本",
-      "desc": "都市間をラクにする全国の仕組み。パスはルート次第で得にも損にも。",
+      "title": "交通の基本",
+      "desc": "都市間をラクにする全国の仕組み。パスはルートで判断を。",
       "shinkansen": "新幹線",
-      "shinkansenText": "主要都市を結ぶ高速鉄道。",
+      "shinkansenText": "主要都市を結ぶ高速鉄道。定時性で知られます。",
       "jrpass": "JRパス",
-      "jrpassText": "外国人向け周遊パス。ルートで元が取れるか計算を。",
+      "jrpassText": "外国人向け周遊パス。長距離が多いときだけ元が取れるか計算を。席の予約は早めに。",
       "ic": "ICカード",
       "icText": "Suica・PASMO・ICOCAなど。電車もコンビニも。",
       "metro": "地下鉄・在来線",
       "metroText": "英語アプリと駅番号で迷いにくい。",
       "bus": "バス",
-      "busText": "高速バスは節約に。市内バスは鉄道の隙間を補完。",
+      "busText": "高速バスは節約に。市内バスは鉄道のすき間を補います。",
       "flights": "国内線",
       "flightsText": "北海道・九州・沖縄への時短に。",
       "ferries": "フェリー",
@@ -2038,7 +2044,7 @@
     "budget": {
       "eyebrow": "費用",
       "title": "予算プランナー",
-      "desc": "円で試算し、ライブレートで外貨表示。",
+      "desc": "円で試算し、ライブレートで外貨表示します。",
       "days": "日数",
       "accommodation": "宿泊",
       "hostel": "ホステル／カプセル",
@@ -2070,9 +2076,9 @@
       "ratesFallback": "予備レート"
     },
     "packing": {
-      "eyebrow": "準備",
-      "title": "荷物チェックリスト",
-      "desc": "タップでチェック。このブラウザに保存されます。",
+      "eyebrow": "荷物",
+      "title": "パッキングリスト",
+      "desc": "季節とスタイルに合わせてチェック。",
       "reset": "リセット",
       "checkAll": "すべてチェック",
       "cat": {
@@ -2111,17 +2117,17 @@
       }
     },
     "seasons": {
-      "eyebrow": "時期",
+      "eyebrow": "いつ行くか",
       "title": "季節ガイド",
-      "desc": "四季ごとの気候の感じ方と、荷物の目安。",
+      "desc": "現地での体感と、荷物の目安。",
       "spring": "春",
       "summer": "夏",
       "autumn": "秋",
       "winter": "冬",
-      "springText": "桜と過ごしやすい気候。混雑に備えて。",
-      "summerText": "祭りと花火、南の海。高温多湿に注意。",
+      "springText": "桜と過ごしやすい気候。人気地は混雑に備えを。",
+      "summerText": "祭りと花火、南の海。高温多湿への対策を。",
       "autumnText": "紅葉と晴天。人気スポットは早めの予約を。",
-      "winterText": "イルミネーションと温泉、北の雪。",
+      "winterText": "イルミネーション、温泉、北の雪景色。",
       "clothing": "服装",
       "activities": "アクティビティ",
       "springClothes": "薄手コートと重ね着",
@@ -2181,46 +2187,46 @@
       ]
     },
     "tips": {
-      "eyebrow": "事前知識",
-      "title": "知っておくと楽なこと",
-      "desc": "全国共通の心得。地域ごとの補足は都市ページに。",
+      "eyebrow": "事前に知っておくと楽",
+      "title": "旅のヒント",
+      "desc": "全国共通の心得です。地域ごとの補足は都市ページに。",
       "etiquette": "マナー",
-      "etiquetteText": "車内通話は控え、整列し、チップは不要。",
+      "etiquetteText": "車内通話は控え、整列し、チップは基本不要。",
       "phrases": "便利なフレーズ",
       "phrasesText": "ありがとうございます／すみません／英語がわかりますか？",
       "emergency": "緊急番号",
       "emergencyText": "警察110・消防救急119・ジャパンヘルプライン 0570-000-911",
       "sim": "SIM・eSIM",
-      "simText": "渡航前eSIMや空港カウンターが便利。",
+      "simText": "渡航前のeSIMや空港カウンターが便利。",
       "wifi": "Wi‑Fi",
-      "wifiText": "駅やコンビニ、カフェの無料Wi‑Fi。レンタルも安心。",
+      "wifiText": "駅・コンビニ・カフェの無料Wi‑Fi。レンタルも安心。",
       "cash": "現金とカード",
       "cashText": "都市はカード可。地方・神社・小さなお店は現金を。",
       "tipping": "チップ",
       "tippingText": "基本不要。サービス料込みの文化です。",
       "transit": "交通マナー",
-      "transitText": "優先席、静かな車内、ラッシュ時は前にバッグ。"
+      "transitText": "優先席、静かな車内、ラッシュ時はリュックを前に。"
     },
     "faq": {
-      "eyebrow": "質問",
-      "title": "よくある質問",
-      "desc": "初めての人も、二度目の人もよく聞くこと。",
+      "eyebrow": "よくある質問",
+      "title": "FAQ",
+      "desc": "初訪の人も、二度目の人もよく聞くこと。",
       "q1": "JRパスは必要？",
-      "a1": "長距離移動が多いときだけ。東京だけならICカードで十分。",
+      "a1": "長距離のJR（特に新幹線）を7/14/21日で多用するときだけ。東京中心や短い区間だけならICと普通乗車券で十分なことが多いです。必ず公式で区間運賃と比較を。",
       "q2": "日本は高い？",
-      "a2": "工夫次第。コンビニ食やビジネスホテル、地方都市で抑えられます。",
+      "a2": "工夫次第。コンビニ食、ビジネスホテル、地方都市を織り交ぜると抑えやすいです。",
       "q3": "桜の時期は？",
-      "a3": "東京・京都は例年3月末〜4月初旬。南は早く北は遅め。",
+      "a3": "東京・京都は例年3月末〜4月初旬。南は早く、北は遅めです。",
       "q4": "水道水は飲める？",
-      "a4": "はい、全国で安全です。",
+      "a4": "はい、全国で安全に飲めます。",
       "q5": "現金はいくら？",
-      "a5": "最初に1–3万円程度、セブン銀行ATMなどで補充。",
+      "a5": "最初に1〜3万円程度。セブン銀行ATMなどで補充できます。",
       "q6": "英語は通じる？",
-      "a6": "主要駅やホテルは基本対応。翻訳アプリも有効。",
+      "a6": "主要駅やホテルは基本対応。翻訳アプリもあると安心です。",
       "q7": "カードは使える？",
-      "a7": "都市部はほぼ可。寺社や地方の宿は現金のことも。",
+      "a7": "都市部はほぼ可。寺社や地方の宿・店は現金のこともあります。",
       "q8": "ベジタリアンやアレルギーは？",
-      "a8": "都市ほど選択肢あり。出汁の確認とフレーズが助けに。"
+      "a8": "都市ほど選択肢があります。出汁の確認と、伝えるフレーズを用意すると助かります。"
     },
     "galleryCta": {
       "title": "フォトギャラリー",
@@ -2231,7 +2237,7 @@
       "backToGuide": "ガイドへ戻る",
       "eyebrow": "フォトギャラリー",
       "heading": "日本の瞬間",
-      "pageIntro": "都市・季節・カテゴリで閲覧。グリッドは軽量サムネ、開くと中解像度、必要なら原寸を読み込みます。",
+      "pageIntro": "都市・季節・カテゴリで眺められます。一覧は軽いサムネ、開くと中解像度、必要なら原寸を読み込みます。",
       "searchPlaceholder": "名前・場所・都市・時期で検索…",
       "sortLocation": "場所",
       "sortCity": "都市",
@@ -2312,7 +2318,7 @@
       "backToGuide": "ガイドへ戻る",
       "eyebrow": "旅行ツール",
       "heading": "日本の旅を<em>見通しよく</em>",
-      "intro": "予算プランナー、荷物チェックリスト、為替、世界時計、消費税、JRパス目安、運賃目安、緊急電話。",
+      "intro": "予算、荷物リスト、為替、世界時計、消費税、JRパスの目安、運賃の概算、緊急電話。",
       "currencyLabel": "ライブ為替換算",
       "currencySub": "frankfurter.dev の日次レート（円基準）。",
       "amount": "金額",
@@ -2372,9 +2378,9 @@
     "plan": {
       "eyebrow": "このサイトの使い方",
       "title": "旅を固める4ステップ",
-      "desc": "上から順に進めて、気になる都市はページを開いて深掘り。予約前に運賃・入国は公式で確認を。",
+      "desc": "上から順に進め、気になる都市はページを開いて深掘り。予約前に運賃・入国は公式で確認を。",
       "step1Title": "都市を選ぶ",
-      "step1Text": "14都市を距離・季節感・滞在の目安で比較。カードから詳細へ。",
+      "step1Text": "距離・気候・向いている過ごし方で14都市を比較。カードから詳細へ。",
       "step2Title": "ルートを描く",
       "step2Text": "5〜14日やテーマ別のモデルを骨格に、自分用に組み替える。",
       "step3Title": "移動を決める",
@@ -2402,18 +2408,25 @@
     },
     "footer": {
       "tagline": "複数都市の日本旅行を、実務目線で組み立てるガイド。",
-      "aboutMe": "自己紹介",
+      "aboutMe": "このサイトについて",
       "aboutBlurb": "複数都市の日本旅行を、実務目線で組み立てるガイド。",
       "copyright": "© 2026 Japan Travel Guide · Tim G"
     },
     "cityPage": {
-      "back": "すべての目的地",
+      "back": "← 戻る",
       "distanceNote": "東京駅からのおおよその距離",
       "stayValue": "{n}日間",
-      "budgetDay": "1日あたり（中級・長距離鉄道除く）",
-      "weatherAvg": "日中の目安",
+      "budgetDay": "1日あたり（中級目安）",
+      "weatherAvg": "日中の気温の目安",
       "gettingThere": "アクセス",
-      "moreInGallery": "写真はギャラリーに追加予定"
+      "moreInGallery": "写真はギャラリーに追加予定",
+      "foodIntro": "この街で食べておきたいもの。",
+      "sightsIntro": "計画の軸になる名所。",
+      "otherCities": "他の都市",
+      "otherCitiesShort": "都市",
+      "otherCitiesDesc": "ホームに戻らず、別の都市ガイドへ移動できます。",
+      "viewAllDestinations": "目的地一覧を見る →",
+      "switchCity": "都市を切り替え"
     },
     "cityContent": {
       "tokyo": {
@@ -2428,17 +2441,17 @@
           {
             "e": "🍣",
             "n": "江戸前寿司",
-            "d": "カウンターの握り。気軽から名店まで。"
+            "d": "カウンターの握り。気軽な店から名店まで。"
           },
           {
             "e": "🍜",
             "n": "東京ラーメン",
-            "d": "醤油ベースや個性派の名店エリア。"
+            "d": "醤油系や個性派。荻窪など名店エリアも。"
           },
           {
             "e": "🍢",
             "n": "焼き鳥横丁",
-            "d": "ガード下の煙と串。"
+            "d": "ガード下の煙と串。夜の定番。"
           },
           {
             "e": "🍰",
@@ -2450,32 +2463,32 @@
           {
             "c": "temples",
             "n": "浅草寺",
-            "d": "東京を代表する参道と寺。"
+            "d": "仲見世通りと東京の象徴的な参道。"
           },
           {
             "c": "shrines",
             "n": "明治神宮",
-            "d": "原宿の隣の森の社。"
+            "d": "原宿のすぐそばにある森の神社。"
           },
           {
             "c": "museums",
             "n": "teamLab／美術館",
-            "d": "デジタルアートと世界級コレクション。"
+            "d": "デジタルアートと世界級のコレクション。"
           },
           {
             "c": "shopping",
-            "n": "銀座＆新宿",
+            "n": "銀座・新宿",
             "d": "ラグジュアリーから家電まで。"
           },
           {
             "c": "anime",
             "n": "秋葉原",
-            "d": "オタク文化とアーケード。"
+            "d": "オタク文化、ゲームセンター、キャラクターショップ。"
           },
           {
             "c": "nightlife",
-            "n": "ゴールデン街＆ルーフトップ",
-            "d": "小さなバーと夜景。"
+            "n": "ゴールデン街・ルーフトップ",
+            "d": "小さなバーと夜景カクテル。"
           }
         ],
         "transportLocal": "Suica/PASMOを。都心はタクシーより鉄道が早いことが多い。地図より徒歩が長い街区もあるので余裕を。",
@@ -2501,46 +2514,46 @@
         "gettingThere": "東京から新幹線約2時間15分。大阪・奈良からは在来線で短時間。",
         "food": [
           {
-            "e": "🍲",
-            "n": "会席",
-            "d": "茶の湯に根ざす季節のコース。"
-          },
-          {
             "e": "🍵",
             "n": "抹茶と和菓子",
-            "d": "宇治茶と繊細な甘いもの。"
+            "d": "茶道の街らしい甘味。"
           },
           {
-            "e": "🥣",
-            "n": "湯豆腐",
-            "d": "寺町のシンプルな味わい。"
+            "e": "🍲",
+            "n": "湯豆腐・京料理",
+            "d": "繊細な出汁と季節の一品。"
           },
           {
             "e": "🍜",
             "n": "京都ラーメン",
-            "d": "あっさり醤油や鶏系。"
+            "d": "鶏白湯や背脂醤油など独自の系譜。"
+          },
+          {
+            "e": "🍣",
+            "n": "京寿司",
+            "d": "鯖寿司など押し・棒の文化も。"
           }
         ],
         "attractions": [
           {
             "c": "shrines",
-            "n": "伏見稲荷",
-            "d": "千本鳥居。"
+            "n": "伏見稲荷大社",
+            "d": "千本鳥居の参道。"
           },
           {
             "c": "temples",
-            "n": "金閣・清水",
-            "d": "黄金の楼閣と山辺の景。"
+            "n": "清水寺・金閣",
+            "d": "山際の清水と金の楼閣。"
           },
           {
-            "c": "shopping",
-            "n": "錦市場",
-            "d": "京の台所。"
+            "c": "districts",
+            "n": "祇園・東山",
+            "d": "石畳と茶屋の風情。"
           },
           {
-            "c": "parks",
-            "n": "嵐山",
-            "d": "竹林と川辺。"
+            "c": "walks",
+            "n": "哲学の道",
+            "d": "桜と紅葉の散策路。"
           }
         ],
         "transportLocal": "バスは観光客で混雑しがち。地下鉄と徒歩、必要ならタクシーを。",
@@ -2566,46 +2579,46 @@
         "gettingThere": "新大阪は新幹線停車。関空からはハーカータクシーや特急。",
         "food": [
           {
-            "e": "🐙",
+            "e": "たこ焼き",
             "n": "たこ焼き",
-            "d": "外カリ中トロ。"
-          },
-          {
-            "e": "🥞",
-            "n": "お好み焼き",
-            "d": "地元流の鉄板焼き。"
+            "d": "大阪の顔。熱々をその場で。"
           },
           {
             "e": "🍜",
-            "n": "串カツ",
-            "d": "二度漬け禁止！"
+            "n": "お好み焼き・ねぎ焼き",
+            "d": "粉もの文化の中心。"
           },
           {
-            "e": "🐡",
-            "n": "割烹",
-            "d": "ストリートだけじゃない味。"
+            "e": "🍣",
+            "n": "回転寿司・立ち食い",
+            "d": "気軽に新鮮なネタ。"
+          },
+          {
+            "e": "🍺",
+            "n": "居酒屋文化",
+            "d": "食い倒れの夜はここから。"
           }
         ],
         "attractions": [
           {
+            "c": "neon",
+            "n": "道頓堀",
+            "d": "看板とグリコの夜景。"
+          },
+          {
             "c": "castles",
             "n": "大阪城",
-            "d": "シンボルの天守と公園。"
+            "d": "天守と公園の散策。"
           },
           {
-            "c": "nightlife",
-            "n": "道頓堀",
-            "d": "ネオンとグリコ看板。"
+            "c": "markets",
+            "n": "黒門市場",
+            "d": "食べ歩きの定番（混雑注意）。"
           },
           {
-            "c": "theme",
-            "n": "USJ",
-            "d": "大型テーマパーク。"
-          },
-          {
-            "c": "shopping",
-            "n": "心斎橋",
-            "d": "商店街とブランド。"
+            "c": "hub",
+            "n": "関西ハブ",
+            "d": "京都・奈良・神戸への起点。"
           }
         ],
         "transportLocal": "地下鉄とJRで十分。ICカード対応。食い倒れは徒歩圏が中心。",
@@ -2631,46 +2644,46 @@
         "gettingThere": "京都・大阪から近鉄またはJRで約30–50分。",
         "food": [
           {
-            "e": "🍪",
-            "n": "鹿せんべい文化",
-            "d": "鹿用せんべいと土産。"
+            "e": "🍡",
+            "n": "鹿せんべい以外のご当地",
+            "d": "柿の葉寿司や奈良の茶がけなど。"
           },
           {
             "e": "🍜",
-            "n": "三輪そうめん",
-            "d": "細い郷土麺。"
-          },
-          {
-            "e": "🍠",
-            "n": "柿の葉寿司",
-            "d": "柿の葉で包んだ押し寿司。"
+            "n": "そば・うどん",
+            "d": "寺町散策の合間に。"
           },
           {
             "e": "🍵",
-            "n": "中谷堂のもち",
-            "d": "高速もちつきで有名。"
+            "n": "奈良の和菓子",
+            "d": "参道沿いの甘味。"
+          },
+          {
+            "e": "🍶",
+            "n": "地酒",
+            "d": "奈良は酒造の歴史も深い。"
           }
         ],
         "attractions": [
           {
             "c": "temples",
             "n": "東大寺",
-            "d": "大仏殿。"
-          },
-          {
-            "c": "shrines",
-            "n": "春日大社",
-            "d": "灯籠の参道。"
+            "d": "大仏殿と二月堂。"
           },
           {
             "c": "parks",
             "n": "奈良公園",
-            "d": "鹿と緑。"
+            "d": "鹿と芝の風景。"
           },
           {
-            "c": "museums",
-            "n": "奈良国立博物館",
-            "d": "仏教美術。"
+            "c": "shrines",
+            "n": "春日大社",
+            "d": "石灯籠の参道。"
+          },
+          {
+            "c": "history",
+            "n": "興福寺",
+            "d": "五重塔と国宝館。"
           }
         ],
         "transportLocal": "駅から公園方面は徒歩が基本。バスは本数を確認。",
@@ -2696,46 +2709,46 @@
         "gettingThere": "山陽新幹線で東京から約4時間。広島空港もあり。",
         "food": [
           {
-            "e": "🥞",
+            "e": "お好み焼き",
             "n": "広島お好み焼き",
-            "d": "麺入りの層スタイル。"
+            "d": "麺入り・重ね焼きのスタイル。"
           },
           {
             "e": "🦪",
             "n": "牡蠣",
-            "d": "シーズンの瀬戸内の味。"
+            "d": "瀬戸内の味覚。"
           },
           {
             "e": "🍜",
-            "n": "尾道ラーメン",
-            "d": "近郊の醤油ラーメン。"
+            "n": "つけ麺・ご当地麺",
+            "d": "市内の人気店をチェック。"
           },
           {
-            "e": "🍁",
+            "e": "🍰",
             "n": "もみじ饅頭",
-            "d": "宮島の定番土産。"
+            "d": "定番のお土産。"
           }
         ],
         "attractions": [
           {
-            "c": "museums",
-            "n": "平和記念資料館",
-            "d": "必訪の歴史。"
+            "c": "peace",
+            "n": "平和記念公園・資料館",
+            "d": "時間に余裕を持って。"
           },
           {
-            "c": "shrines",
-            "n": "厳島神社",
-            "d": "海上の鳥居。"
+            "c": "island",
+            "n": "宮島・厳島神社",
+            "d": "大鳥居と弥山。"
           },
           {
-            "c": "castles",
-            "n": "広島城",
-            "d": "復興の城と展示。"
+            "c": "food",
+            "n": "お好み村など",
+            "d": "お好み焼きの食べ比べ。"
           },
           {
-            "c": "parks",
-            "n": "縮景園",
-            "d": "小さな名園。"
+            "c": "city",
+            "n": "市内電車",
+            "d": "移動の足として便利。"
           }
         ],
         "transportLocal": "市内電車が便利。宮島はJR＋フェリー。",
@@ -2763,44 +2776,44 @@
           {
             "e": "🥟",
             "n": "中華街",
-            "d": "点心と肉まん。"
+            "d": "点心から本格中華まで。"
           },
           {
             "e": "🍜",
-            "n": "家系ラーメン",
-            "d": "横浜発祥の濃厚スープ。"
-          },
-          {
-            "e": "☕",
-            "n": "ハーバーカフェ",
-            "d": "海辺のコーヒー。"
+            "n": "家系・横浜ラーメン",
+            "d": "地元のラーメン文化。"
           },
           {
             "e": "🍰",
             "n": "洋菓子",
-            "d": "港町のパティスリー。"
+            "d": "港町の甘い伝統。"
+          },
+          {
+            "e": "🍺",
+            "n": "ベイエリアの食事",
+            "d": "夜景と一緒に。"
           }
         ],
         "attractions": [
           {
-            "c": "museums",
-            "n": "カップヌードルミュージアム",
-            "d": "自分だけの麺作り。"
-          },
-          {
-            "c": "shopping",
+            "c": "waterfront",
             "n": "みなとみらい",
-            "d": "近代的ウォーターフロント。"
+            "d": "高層ビルと観覧車。"
           },
           {
-            "c": "parks",
-            "n": "山下公園",
-            "d": "定番の散歩道。"
+            "c": "chinatown",
+            "n": "中華街",
+            "d": "日本有数の規模。"
           },
           {
-            "c": "nightlife",
-            "n": "ベイエリアの夜",
-            "d": "光る港。"
+            "c": "history",
+            "n": "赤レンガ倉庫",
+            "d": "イベントと買い物。"
+          },
+          {
+            "c": "views",
+            "n": "大さん橋・夜景",
+            "d": "港のパノラマ。"
           }
         ],
         "transportLocal": "みなとみらい線と徒歩が中心。",
@@ -2826,46 +2839,46 @@
         "gettingThere": "東京から小田急ロマンスカー約85分、または新幹線＋箱根登山鉄道。",
         "food": [
           {
+            "e": "♨️",
+            "n": "温泉宿の食事",
+            "d": "夕食・朝食が旅の中心になることも。"
+          },
+          {
             "e": "🍜",
-            "n": "湯葉料理",
-            "d": "山の宿の定番。"
+            "n": "そば・山の味",
+            "d": "登山後の定番。"
           },
           {
             "e": "🥚",
             "n": "黒たまご",
-            "d": "硫黄泉で茹でた卵。"
-          },
-          {
-            "e": "🍲",
-            "n": "旅館会席",
-            "d": "宿での夕食。"
+            "d": "大涌谷名物（食べ過ぎ注意）。"
           },
           {
             "e": "🍰",
-            "n": "温泉まんじゅう",
-            "d": "温かい土産。"
+            "n": "寄駅の甘味",
+            "d": "周遊の合間に。"
           }
         ],
         "attractions": [
           {
-            "c": "mountains",
-            "n": "大涌谷",
-            "d": "火山の谷。"
-          },
-          {
-            "c": "parks",
+            "c": "lake",
             "n": "芦ノ湖",
-            "d": "晴れた日の富士。"
+            "d": "海賊船と富士の眺め。"
           },
           {
-            "c": "museums",
-            "n": "彫刻の森",
-            "d": "屋外彫刻。"
+            "c": "onsen",
+            "n": "温泉地",
+            "d": "湯本・強羅など。"
           },
           {
-            "c": "shrines",
-            "n": "箱根神社",
-            "d": "湖畔の社。"
+            "c": "ropeway",
+            "n": "ロープウェイ・大涌谷",
+            "d": "運休情報を確認。"
+          },
+          {
+            "c": "art",
+            "n": "美術館",
+            "d": "森の中のアートも魅力。"
           }
         ],
         "transportLocal": "箱根フリーパス系が便利。周遊は半日以上見て。",
@@ -2892,45 +2905,45 @@
         "food": [
           {
             "e": "🍜",
-            "n": "湯葉そば",
-            "d": "地元の味。"
-          },
-          {
-            "e": "🔥",
-            "n": "味噌料理",
-            "d": "山の滋味。"
-          },
-          {
-            "e": "Trout",
-            "n": "川魚",
-            "d": "高原の魚料理。"
+            "n": "湯波・郷土料理",
+            "d": "山の精進と地元の味。"
           },
           {
             "e": "🍡",
             "n": "参道スイーツ",
-            "d": "門前の甘いもの。"
+            "d": "東照宮周辺の甘味。"
+          },
+          {
+            "e": "🍛",
+            "n": "ランチ定食",
+            "d": "観光の合間に腹ごしらえ。"
+          },
+          {
+            "e": "🍺",
+            "n": "地元の味",
+            "d": "帰宅前の一杯も。"
           }
         ],
         "attractions": [
           {
             "c": "shrines",
-            "n": "東照宮",
-            "d": "華麗な社殿。"
+            "n": "日光東照宮",
+            "d": "華麗な彫刻と陽明門。"
           },
           {
-            "c": "mountains",
+            "c": "nature",
             "n": "華厳の滝",
-            "d": "中禅寺湖から落下。"
-          },
-          {
-            "c": "parks",
-            "n": "奥日光",
-            "d": "ハイキング。"
+            "d": "中禅寺湖エリア。"
           },
           {
             "c": "temples",
-            "n": "輪王寺",
-            "d": "聖地の寺院。"
+            "n": "輪王寺・二荒山",
+            "d": "二社一寺の世界遺産。"
+          },
+          {
+            "c": "cedar",
+            "n": "杉並木",
+            "d": "参道の緑陰。"
           }
         ],
         "transportLocal": "駅から社寺まではバスまたは観光周遊。",
@@ -2957,45 +2970,45 @@
         "food": [
           {
             "e": "🍣",
-            "n": "近江町市場",
-            "d": "朝の海鮮。"
+            "n": "海鮮・のどぐろ",
+            "d": "日本海の恵み。"
           },
           {
-            "e": "🥇",
+            "e": "🍡",
             "n": "金箔ソフト",
-            "d": "きらきら土産。"
-          },
-          {
-            "e": "🍣",
-            "n": "治部煮・加賀料理",
-            "d": "郷土の上品な味。"
+            "d": "映えも味も（程々に）。"
           },
           {
             "e": "🍵",
-            "n": "茶屋の甘いもの",
-            "d": "ひがし茶屋街で。"
+            "n": "茶屋の甘味",
+            "d": "ひがし茶屋街で一服。"
+          },
+          {
+            "e": "🍜",
+            "n": "ご当地麺",
+            "d": "散策の合間に。"
           }
         ],
         "attractions": [
           {
-            "c": "parks",
+            "c": "gardens",
             "n": "兼六園",
-            "d": "日本三名園。"
+            "d": "日本三名園の一つ。"
           },
           {
-            "c": "castles",
+            "c": "districts",
+            "n": "ひがし茶屋街",
+            "d": "茶屋と格子戸。"
+          },
+          {
+            "c": "castle",
             "n": "金沢城公園",
-            "d": "庭園の隣。"
+            "d": "復元された門と石垣。"
           },
           {
-            "c": "shopping",
-            "n": "ひがし茶屋",
-            "d": "茶屋の街並み。"
-          },
-          {
-            "c": "museums",
-            "n": "21世紀美術館",
-            "d": "現代アート。"
+            "c": "craft",
+            "n": "金箔・工芸",
+            "d": "体験と買い物体験。"
           }
         ],
         "transportLocal": "バスと徒歩が中心。周遊バスが便利な日も。",
@@ -3021,46 +3034,46 @@
         "gettingThere": "新千歳空港から快速で札幌へ。国内線が充実。",
         "food": [
           {
-            "e": "🦀",
-            "n": "海鮮丼",
-            "d": "蟹・うに・イクラ。"
-          },
-          {
             "e": "🍜",
             "n": "味噌ラーメン",
-            "d": "札幌スタイル。"
+            "d": "札幌の顔。"
+          },
+          {
+            "e": "🦀",
+            "n": "海鮮丼・蟹",
+            "d": "北海道の海の幸。"
           },
           {
             "e": "🍺",
-            "n": "ビアホール",
-            "d": "ジンギスカンとビール。"
+            "n": "ビール",
+            "d": "サッポロビール園など。"
           },
           {
-            "e": "🧀",
-            "n": "乳製品・スイーツ",
-            "d": "北海道ミルク。"
+            "e": "🍲",
+            "n": "ジンギスカン",
+            "d": "羊肉の網焼き。"
           }
         ],
         "attractions": [
           {
-            "c": "parks",
+            "c": "park",
             "n": "大通公園",
-            "d": "祭りの軸。"
+            "d": "街の軸。雪まつり会場。"
           },
           {
-            "c": "museums",
-            "n": "ビール博物館",
-            "d": "試飲つき。"
+            "c": "tower",
+            "n": "テレビ塔・展望",
+            "d": "街並みを一望。"
           },
           {
-            "c": "mountains",
-            "n": "藻岩山など",
-            "d": "夜景とスキー。"
+            "c": "market",
+            "n": "市場・場外",
+            "d": "海鮮の朝食。"
           },
           {
-            "c": "shopping",
-            "n": "狸小路",
-            "d": "アーケード商店街。"
+            "c": "base",
+            "n": "道内への起点",
+            "d": "小樽・富良野などへ。"
           }
         ],
         "transportLocal": "地下鉄と路面電車。冬は路面状況に注意。",
@@ -3087,45 +3100,45 @@
         "food": [
           {
             "e": "🍜",
-            "n": "博多とんこつ",
-            "d": "細麺と替え玉。"
+            "n": "博多ラーメン",
+            "d": "とんこつ・替え玉文化。"
           },
           {
             "e": "🍢",
             "n": "屋台",
-            "d": "夜の屋外スタンド。"
+            "d": "夜の屋外飲食（並ぶ前提）。"
           },
           {
             "e": "🐟",
-            "n": "明太子",
-            "d": "名産品。"
+            "n": "もつ鍋・水炊き",
+            "d": "冬に嬉しい鍋。"
           },
           {
-            "e": "🥟",
-            "n": "餃子・もつ鍋",
-            "d": "郷土の鍋と点心。"
+            "e": "🍰",
+            "n": "明太子土産",
+            "d": "定番の手土産。"
           }
         ],
         "attractions": [
           {
-            "c": "shrines",
-            "n": "櫛田神社",
-            "d": "祭りの社。"
+            "c": "yatai",
+            "n": "屋台通り",
+            "d": "中洲・天神周辺。"
           },
           {
-            "c": "temples",
+            "c": "temple",
             "n": "太宰府天満宮",
-            "d": "学問の神へ日帰り。"
+            "d": "半日の定番。"
           },
           {
-            "c": "shopping",
-            "n": "天神・キャナル",
-            "d": "買い物と都会。"
+            "c": "seaside",
+            "n": "海とアイランド",
+            "d": "都市と海の近さ。"
           },
           {
-            "c": "parks",
-            "n": "大濠公園",
-            "d": "都心の湖畔。"
+            "c": "hub",
+            "n": "九州ハブ",
+            "d": "新幹線と空港が近い。"
           }
         ],
         "transportLocal": "地下鉄が分かりやすい。天神・博多を軸に。",
@@ -3152,45 +3165,45 @@
         "food": [
           {
             "e": "🥩",
-            "n": "神戸牛",
-            "d": "ステーキと鉄板。"
-          },
-          {
-            "e": "🍞",
-            "n": "パン文化",
-            "d": "有名ベーカリー。"
-          },
-          {
-            "e": "🍷",
-            "n": "灘の酒",
-            "d": "酒蔵めぐり。"
+            "n": "神戸ビーフ",
+            "d": "予算に幅。店選びが大事。"
           },
           {
             "e": "🍰",
-            "n": "ハーバーデザート",
-            "d": "洋風カフェ。"
+            "n": "洋菓子・パン",
+            "d": "港町の甘い伝統。"
+          },
+          {
+            "e": "🍜",
+            "n": "南京町グルメ",
+            "d": "中華街の食べ歩き。"
+          },
+          {
+            "e": "🍺",
+            "n": "ハーバーの夜",
+            "d": "夜景と食事をセットで。"
           }
         ],
         "attractions": [
           {
-            "c": "mountains",
-            "n": "六甲・夜景",
-            "d": "ロープウェイ展望。"
+            "c": "port",
+            "n": "神戸港・ハーバーランド",
+            "d": "海風と夜景。"
           },
           {
-            "c": "museums",
+            "c": "kitano",
             "n": "北野異人館",
-            "d": "異国情緒の邸宅。"
+            "d": "坂の上の洋館。"
           },
           {
-            "c": "shopping",
-            "n": "ハーバーランド",
-            "d": "水辺の商業施設。"
+            "c": "food",
+            "n": "ステーキ通り",
+            "d": "予算に合う店を。"
           },
           {
-            "c": "parks",
-            "n": "メリケンパーク",
-            "d": "港のメモリアル。"
+            "c": "daytrip",
+            "n": "姫路・大阪への足",
+            "d": "同じラインで立ち寄りやすい。"
           }
         ],
         "transportLocal": "JRと阪急・阪神。三宮を拠点に徒歩＋短距離電車。",
@@ -3218,44 +3231,44 @@
           {
             "e": "🍜",
             "n": "ちゃんぽん・皿うどん",
-            "d": "長崎麺。"
+            "d": "長崎のご当地麺。"
           },
           {
             "e": "🍰",
             "n": "カステラ",
-            "d": "南蛮菓子の系譜。"
+            "d": "定番土産。"
           },
           {
             "e": "🍲",
             "n": "卓袱料理",
-            "d": "融合の宴。"
+            "d": "和洋中が混ざる宴席。"
           },
           {
             "e": "🐟",
             "n": "港の海鮮",
-            "d": "新鮮な海の幸。"
+            "d": "新鮮な魚介。"
           }
         ],
         "attractions": [
           {
-            "c": "museums",
-            "n": "平和公園・資料館",
-            "d": "歴史を学ぶ。"
+            "c": "tram",
+            "n": "路面電車と坂",
+            "d": "街の移動と風景。"
           },
           {
-            "c": "shopping",
-            "n": "出島・中華街",
-            "d": "交易の記憶。"
+            "c": "history",
+            "n": "平和公園・歴史施設",
+            "d": "展示に時間を。"
           },
           {
-            "c": "theme",
-            "n": "グラバー園",
-            "d": "丘の上の展望。"
+            "c": "views",
+            "n": "稲佐山など夜景",
+            "d": "世界的に知られる夜景。"
           },
           {
-            "c": "nightlife",
-            "n": "夜の港",
-            "d": "ライトアップ（季節）。"
+            "c": "port",
+            "n": "港と出島エリア",
+            "d": "交流の歴史。"
           }
         ],
         "transportLocal": "路面電車がわかりやすい。坂は徒歩かタクシー。",
@@ -3281,46 +3294,46 @@
         "gettingThere": "那覇空港が玄関。離島はさらに空路・高速船。",
         "food": [
           {
-            "e": "🍜",
-            "n": "沖縄そば",
-            "d": "豚骨系の小麦麺。"
-          },
-          {
             "e": "🐷",
-            "n": "ラフテー・タコライス",
-            "d": "豚肉と島の融合。"
+            "n": "沖縄そば・豚肉料理",
+            "d": "島の味の基本。"
           },
           {
-            "e": "🧃",
-            "n": "サーターアンダーギー・泡盛",
-            "d": "揚げ菓子と地酒。"
+            "e": "🍧",
+            "n": "海ぶどう・島野菜",
+            "d": "亜熱帯の食材。"
           },
           {
-            "e": "🥭",
-            "n": "南国フルーツ",
-            "d": "パインやマンゴー。"
+            "e": "🍺",
+            "n": "泡盛",
+            "d": "琉球の酒。"
+          },
+          {
+            "e": "🌮",
+            "n": "タコライス",
+            "d": "日常の島ごはん。"
           }
         ],
         "attractions": [
           {
-            "c": "castles",
-            "n": "首里城周辺",
-            "d": "琉球王国の遺産（状況確認）。"
+            "c": "beach",
+            "n": "ビーチ",
+            "d": "本島北部や離島。"
           },
           {
-            "c": "parks",
-            "n": "慶良間などの海",
-            "d": "シュノーケル天国。"
+            "c": "city",
+            "n": "国際通り・市場",
+            "d": "那覇の食べ歩き。"
           },
           {
-            "c": "museums",
-            "n": "県立博物館",
-            "d": "自然と文化。"
+            "c": "culture",
+            "n": "琉球文化",
+            "d": "城跡や工芸。"
           },
           {
-            "c": "nightlife",
-            "n": "国際通り",
-            "d": "土産と夜の賑わい。"
+            "c": "islands",
+            "n": "離島ホップ",
+            "d": "天候と欠航に注意。"
           }
         ],
         "transportLocal": "本島はレンタカーが多い。バスは本数に余裕を。",
@@ -3340,8 +3353,8 @@
   },
     "zh-CN": {
     "meta": {
-      "siteName": "日本旅行指南",
-      "tagline": "务实好用的多城市日本行程规划"
+      "siteName": "Japan Travel Guide",
+      "tagline": "把多城市日本行程规划得更踏实"
     },
     "nav": {
       "home": "首页",
@@ -3355,11 +3368,11 @@
       "budget": "预算",
       "packing": "行李",
       "seasons": "季节",
-      "festivals": "节日",
+      "festivals": "祭典",
       "tips": "贴士",
       "faq": "常见问题",
       "gallery": "图库",
-      "facts": "趣闻",
+      "facts": "冷知识",
       "tools": "工具",
       "settings": "设置",
       "cities": "城市"
@@ -3377,8 +3390,8 @@
       "overview": "概览",
       "foodGuide": "美食",
       "attractions": "景点",
-      "transport": "当地交通",
-      "travelTips": "旅行贴士",
+      "transport": "市内交通",
+      "travelTips": "贴士",
       "days": "天",
       "openGallery": "打开图库",
       "backHome": "返回首页",
@@ -3390,9 +3403,9 @@
       "allCities": "全部城市",
       "sortBy": "排序",
       "sortOrder": "默认",
-      "sortName": "名称",
-      "sortTimeAsc": "时间（旧→新）",
-      "sortTimeDesc": "时间（新→旧）",
+      "sortName": "按名称",
+      "sortTimeAsc": "最早优先",
+      "sortTimeDesc": "最新优先",
       "emptyGalleryTitle": "图库为空",
       "emptyGalleryDesc": "使用本地图库管理器（Add Photos.command）添加照片后显示在这里。",
       "settingsTitle": "设置",
@@ -3422,51 +3435,51 @@
     "hero": {
       "eyebrow": "面向自由行的日本行程指南",
       "title": "把日本之旅规划得更踏实",
-      "lead": "城市指南、可落地的路线、交通要点、预算与工具——按真实出行方式整理。票价、通票与入境规定请在预订前到官方渠道再确认一遍。",
+      "lead": "城市指南、可落地的路线、交通要点、预算与工具——按真实出行方式整理。票价、通票与入境规定，请在预订前到官方渠道再确认。",
       "ctaPrimary": "开始规划",
       "ctaSecondary": "打开旅行工具",
       "statCities": "城市指南",
       "statRoutes": "行程骨架",
       "statTips": "规划工具",
-      "heroImage": "黎明富士山"
+      "heroImage": "黎明时的富士山"
     },
     "about": {
-      "eyebrow": "列岛",
+      "eyebrow": "认识列岛",
       "title": "关于日本",
       "desc": "无论初访还是回访：铁路串联的城市、分明的四季、各地鲜明的饮食与文化，都值得细排。先在这里搭框架，细节再到官方信息核实。",
       "geoTitle": "地理",
-      "geoText": "从北海道的雪景到冲绳的珊瑚礁，火山、森林与超大城市南北铺展。",
+      "geoText": "从北海道雪原到冲绳珊瑚礁，火山、森林与超大城市南北铺展，气候与地貌反差极大。",
       "cultureTitle": "文化",
-      "cultureText": "从神社礼仪到流行文化，每个地区的节奏都不一样。",
+      "cultureText": "从待客之道、季节美学，到茶道与动漫亚文化——每个地区的节奏都不一样。",
       "historyTitle": "历史",
-      "historyText": "古都社寺与近代港城并存；了解背景后，街巷走起来更有层次。",
+      "historyText": "幕府时代、明治维新与战后创新，叠印在寺庙、城堡与当代街景里。",
       "foodTitle": "饮食",
       "foodText": "地方味道就是当地名片；「吃什么」往往决定你怎么走城。",
       "transportTitle": "交通",
-      "transportText": "铁路与交通卡发达，非常适合自由行。",
+      "transportText": "新干线、私铁与交通卡把城市串起来；通票是否划算取决于路线。",
       "currencyTitle": "货币",
-      "currencyText": "日元。城市普遍可刷卡，现金仍很有用。",
+      "currencyText": "货币为日元。大城市刷卡普及，寺社与小店仍建议备现金。",
       "languageTitle": "语言",
-      "languageText": "日语为主；主要交通枢纽常见英文标识。",
+      "languageText": "大站与酒店英文标识增多；翻译 app 加几句日语会更顺。",
       "internetTitle": "网络",
-      "internetText": "eSIM、随身Wi‑Fi与车站/咖啡馆免费网络。",
+      "internetText": "常见 eSIM、机场 SIM 或随身 Wi‑Fi；车站与咖啡馆也有免费网络。",
       "safetyTitle": "安全",
-      "safetyText": "全球最安全的旅行地之一，仍需基本防盗意识。",
-      "weatherTitle": "气候",
-      "weatherText": "四季分明：春樱、夏湿、秋叶、北国冬雪。",
-      "seasonsTitle": "最佳季节",
-      "seasonsText": "3–5月与10–11月最受欢迎；淡季人少。",
+      "safetyText": "整体治安良好，仍需保管贵重物品并记下紧急电话。",
+      "weatherTitle": "天气",
+      "weatherText": "梅雨、台风、大雪——了解季节风险，行程更稳。",
+      "seasonsTitle": "四季",
+      "seasonsText": "樱花、新绿、红叶、雪景——出发季节几乎决定体验。",
       "etiquetteTitle": "礼仪",
-      "etiquetteText": "列车保持安静、室内脱鞋、排队有序、敬重神社。",
-      "whyTitle": "为何前往",
-      "whyText": "未来都市、圣地山景与日常工艺在此优雅共存。",
+      "etiquetteText": "列车少通话、排队有序、餐厅一般不给小费；安静场所需控制音量。",
+      "whyTitle": "为什么是日本",
+      "whyText": "前沿都市与静谧圣地、日常里的匠人功夫近在咫尺——这就是日本行程的密度。",
       "photo1": "传统与工艺",
       "photo2": "自然与四季",
       "photo3": "城市脉动"
     },
     "map": {
-      "eyebrow": "导航",
-      "title": "互动地图",
+      "eyebrow": "位置关系",
+      "title": "城市地图",
       "desc": "本指南涉及城市的大致位置。点击图钉或名称即可进入城市页。",
       "panelTitle": "跳转到城市",
       "panelHint": "位置对应真实地理。悬停高亮，点击打开城市页。"
@@ -3474,7 +3487,7 @@
     "destinations": {
       "eyebrow": "14 座城市指南",
       "title": "去哪里",
-      "desc": "点开任意卡片，进入该城市的专属指南——吃什么、看什么、怎么走。卡片上同时标出距东京的距离和大致日间气温，方便你横向比较、串行程。"
+      "desc": "点开任意卡片，进入该城市的专属指南——吃什么、看什么、怎么走。卡片上同时标出距东京的距离和大致日间气温，方便横向比较、串行程。"
     },
     "cities": {
       "tokyo": {
@@ -3535,8 +3548,8 @@
       }
     },
     "routes": {
-      "eyebrow": "行程",
-      "title": "推荐路线",
+      "eyebrow": "示例行程",
+      "title": "路线骨架",
       "desc": "从周末短途到两周铁路环线，可直接套用，也可拆开重组。",
       "d5": "5天",
       "d7": "7天",
@@ -3651,15 +3664,15 @@
     "food": {
       "eyebrow": "饮食",
       "title": "美食怎么吃",
-      "desc": "先看大类，各地名物写在对应城市页。",
+      "desc": "先看大类地图；各地名物写在对应城市页。",
       "sushi": "寿司与刺身",
-      "sushiText": "从回转寿司到高级omakase。",
+      "sushiText": "从回转寿司到高级 omakase，新鲜海鲜是主角。",
       "ramen": "拉面",
-      "ramenText": "酱油、味噌、豚骨等地方汤头。",
+      "ramenText": "酱油、味噌、豚骨等地方汤头，各城风味不同。",
       "street": "街头小吃",
       "streetText": "章鱼烧、鲷鱼烧、烤串与祭典摊位。",
       "kaiseki": "怀石",
-      "kaisekiText": "呈现季节的多道精品料理。",
+      "kaisekiText": "呈现季节的多道精品料理，美学源自茶道。",
       "wagyu": "和牛与烧肉",
       "wagyuText": "桌边炙烤或牛排享用顶级霜降。",
       "sweets": "甜品与茶",
@@ -3668,8 +3681,8 @@
     },
     "attractions": {
       "eyebrow": "游览",
-      "title": "景点分类",
-      "desc": "按类型浏览；细节在城市页。",
+      "title": "景点怎么逛",
+      "desc": "先看分类入口；细节在各城市页。",
       "temples": "寺院",
       "shrines": "神社",
       "castles": "城郭",
@@ -3686,13 +3699,13 @@
       "title": "交通怎么走",
       "desc": "支撑多城行程的全国网络；通票是否划算取决于你的路线。",
       "shinkansen": "新干线",
-      "shinkansenText": "连接主要城市的高速铁路。",
+      "shinkansenText": "连接主要城市的高速铁路，以准点著称。",
       "jrpass": "JR Pass",
-      "jrpassText": "面向游客的周游券，请按路线核算是否划算。",
+      "jrpassText": "面向游客的周游券。长途段够多才划算；热门车次请预约座位，并以官网规则为准。",
       "ic": "交通卡",
-      "icText": "Suica、Pasmo、ICOCA等，火车公交便利店通用。",
-      "metro": "地铁与私铁",
-      "metroText": "英文app与站号系统清晰。",
+      "icText": "Suica、Pasmo、ICOCA 等，火车公交便利店通用。",
+      "metro": "地铁与在来线",
+      "metroText": "英文 app 与站号系统清晰。",
       "bus": "巴士",
       "busText": "高速巴士省钱；市内巴士补铁路空白。",
       "flights": "国内航班",
@@ -3735,9 +3748,9 @@
       "ratesFallback": "备用汇率"
     },
     "packing": {
-      "eyebrow": "行前",
-      "title": "行李清单",
-      "desc": "点击勾选；保存在本浏览器。",
+      "eyebrow": "行李",
+      "title": "打包清单",
+      "desc": "按季节与行程风格勾选。",
       "reset": "重置",
       "checkAll": "全选",
       "cat": {
@@ -3776,16 +3789,16 @@
       }
     },
     "seasons": {
-      "eyebrow": "何时去",
+      "eyebrow": "何时出发",
       "title": "季节指南",
-      "desc": "四季在当地的体感，以及对应的行李建议。",
+      "desc": "当地体感，以及对应的行李建议。",
       "spring": "春",
       "summer": "夏",
       "autumn": "秋",
       "winter": "冬",
-      "springText": "樱花与温和天气，热门景点较拥挤。",
-      "summerText": "祭典烟火与南部海滩，湿热需防暑。",
-      "autumnText": "红叶与晴空，适合徒步，尽早预订。",
+      "springText": "樱花与温和天气；热门景点请预留排队时间。",
+      "summerText": "祭典烟火与南部海滩；湿热需防暑。",
+      "autumnText": "红叶与晴空，适合徒步；尽早预订热门区。",
       "winterText": "灯饰、温泉与北国雪景。",
       "clothing": "着装",
       "activities": "活动",
@@ -3847,45 +3860,45 @@
     },
     "tips": {
       "eyebrow": "行前须知",
-      "title": "知道这些会更轻松",
-      "desc": "全国通用的习惯与提示；地区差异见城市页。",
+      "title": "旅行贴士",
+      "desc": "全国通用习惯；地区差异见城市页。",
       "etiquette": "礼仪",
-      "etiquetteText": "列车少通话、排队有序、餐厅无需小费。",
+      "etiquetteText": "列车少通话、排队有序、餐厅通常无需小费。",
       "phrases": "实用短语",
       "phrasesText": "谢谢／不好意思／您懂英语吗？",
       "emergency": "紧急电话",
-      "emergencyText": "警察110 · 消防急救119 · Japan Helpline 0570-000-911",
+      "emergencyText": "警察 110 · 消防急救 119 · Japan Helpline 0570-000-911",
       "sim": "SIM 与 eSIM",
       "simText": "出发前买 eSIM 或在机场办理。",
       "wifi": "Wi‑Fi",
-      "wifiText": "车站便利店咖啡馆常有免费网络；随身Wi‑Fi也可靠。",
+      "wifiText": "车站、便利店、咖啡馆常有免费网络；随身 Wi‑Fi 也可靠。",
       "cash": "现金与刷卡",
       "cashText": "城市多可刷卡；乡间、神社、小店备现金。",
       "tipping": "小费",
       "tippingText": "通常不需要。",
       "transit": "乘车礼仪",
-      "transitText": "优先席、安静车厢、高峰背包前置。"
+      "transitText": "优先席、安静车厢、高峰把背包拿到身前。"
     },
     "faq": {
       "eyebrow": "问答",
       "title": "常见问题",
       "desc": "初访和回头客都常问的问题。",
       "q1": "需要买 JR Pass 吗？",
-      "a1": "长途铁路多才划算；只玩东京用交通卡即可。",
+      "a1": "只有在 7/14/21 天内大量乘坐长途 JR（尤其新干线）时才可能划算。只玩东京或短途，用交通卡+单程票通常更合适。请用官网把具体区间比价后再决定。",
       "q2": "日本贵吗？",
-      "a2": "可高可低：便利店、商务酒店与地方城市能控预算。",
+      "a2": "可高可低：便利店、商务酒店与地方城市能有效控预算。",
       "q3": "樱花季节？",
-      "a3": "东京京都多在3月末至4月初；南早北晚。",
+      "a3": "东京、京都多在 3 月末至 4 月初；南早北晚。",
       "q4": "自来水能喝吗？",
       "a4": "可以，日本自来水可安全饮用。",
       "q5": "带多少现金？",
-      "a5": "先备1–3万日元，可用7‑11 ATM 取款。",
+      "a5": "先备 1–3 万日元，可用 7‑Eleven 等 ATM 取款。",
       "q6": "英语普及吗？",
-      "a6": "大站与酒店基本可沟通，翻译app很有用。",
+      "a6": "大站与酒店基本可沟通，翻译 app 很有用。",
       "q7": "能用信用卡吗？",
       "a7": "城市大多可以；部分寺社与乡间仍偏爱现金。",
       "q8": "素食或过敏？",
-      "a8": "大城市选择更多；留意高汤并准备过敏表达。"
+      "a8": "大城市选择更多；留意高汤，并准备过敏表达。"
     },
     "galleryCta": {
       "title": "摄影图库",
@@ -3896,7 +3909,7 @@
       "backToGuide": "返回指南",
       "eyebrow": "摄影图库",
       "heading": "日本瞬间",
-      "pageIntro": "按城市、季节与分类浏览。网格使用缩略图；打开后先看中等清晰度，需要时可加载原图。",
+      "pageIntro": "按城市、季节与分类浏览。网格用轻量缩略图；打开后先看中等清晰度，需要时可加载原图。",
       "searchPlaceholder": "搜索名称、地点、城市、时间…",
       "sortLocation": "地点",
       "sortCity": "城市",
@@ -4039,14 +4052,14 @@
       "title": "扎实行程四步",
       "desc": "从上往下推进；看中的城市直接点开专页深挖。预订前请再核对方票价与入境规定。",
       "step1Title": "选城市",
-      "step1Text": "用距离、季节感与建议停留天数比较 14 城，卡片可进详情。",
+      "step1Text": "按距离、气候与适合的玩法比较 14 城，卡片可进详情。",
       "step2Title": "串路线",
       "step2Text": "以 5–14 日或主题行程为骨架，再按兴趣增删。",
       "step3Title": "理交通",
       "step3Text": "交通卡、新干线基础，以及 JR Pass／地区通票是否划算。",
       "step4Title": "算清楚",
       "step4Text": "在工具页看预算、行李、汇率、税费、铁路估算与紧急电话。",
-      "trustNote": "票价与通票规则会变。请向JR、航司与 japan.travel（JNTO）核实后再预订。"
+      "trustNote": "票价与通票规则会变。请向 JR、航司与 japan.travel（JNTO）核实后再预订。"
     },
     "official": {
       "eyebrow": "官方与实用",
@@ -4067,18 +4080,25 @@
     },
     "footer": {
       "tagline": "用实务视角，帮你搭好多城市日本行程。",
-      "aboutMe": "关于我",
+      "aboutMe": "关于本站",
       "aboutBlurb": "用实务视角，帮你搭好多城市日本行程。",
-      "copyright": "© 2026 Japan Travel Guide · Tim G 制作"
+      "copyright": "© 2026 Japan Travel Guide · Tim G"
     },
     "cityPage": {
-      "back": "全部目的地",
+      "back": "← 返回",
       "distanceNote": "距东京站大致距离",
       "stayValue": "{n} 天",
-      "budgetDay": "每日（中档、不含长途铁路）",
-      "weatherAvg": "白天气温参考",
-      "gettingThere": "抵达方式",
-      "moreInGallery": "照片将在图库中更新"
+      "budgetDay": "每日（中档参考）",
+      "weatherAvg": "典型日间气温",
+      "gettingThere": "怎么到",
+      "moreInGallery": "照片将在图库中更新",
+      "foodIntro": "到这里值得一尝的味道。",
+      "sightsIntro": "值得围绕安排的景点。",
+      "otherCities": "其他目的地",
+      "otherCitiesShort": "城市",
+      "otherCitiesDesc": "无需返回首页，即可切换到其他城市指南。",
+      "viewAllDestinations": "查看全部目的地总览 →",
+      "switchCity": "切换城市"
     },
     "cityContent": {
       "tokyo": {
@@ -4093,54 +4113,54 @@
           {
             "e": "🍣",
             "n": "江户前寿司",
-            "d": "从平价到传奇的柜台握寿司。"
+            "d": "吧台握寿司，从亲民到名店都有。"
           },
           {
             "e": "🍜",
             "n": "东京拉面",
-            "d": "酱油风与个性名店。"
+            "d": "偏酱油与个性店；荻洼等地名店成片。"
           },
           {
             "e": "🍢",
             "n": "烤串横丁",
-            "d": "铁路桥下的烟火气。"
+            "d": "铁路高架下的烟火气，夜晚很有氛围。"
           },
           {
             "e": "🍰",
             "n": "百货地下甜品",
-            "d": "蛋糕与伴手礼天堂。"
+            "d": "蛋糕与伴手礼的宝库。"
           }
         ],
         "attractions": [
           {
             "c": "temples",
             "n": "浅草寺",
-            "d": "东京标志性参道与寺院。"
+            "d": "仲见世商店街与东京标志性参道。"
           },
           {
             "c": "shrines",
             "n": "明治神宫",
-            "d": "原宿旁的森林神社。"
+            "d": "紧挨原宿的森林神社。"
           },
           {
             "c": "museums",
-            "n": "teamLab／博物馆",
-            "d": "数字艺术与顶级展览。"
+            "n": "teamLab／美术馆",
+            "d": "数字艺术与顶级馆藏。"
           },
           {
             "c": "shopping",
             "n": "银座与新宿",
-            "d": "奢侈品到电器。"
+            "d": "从奢侈品到家电卖场。"
           },
           {
             "c": "anime",
             "n": "秋叶原",
-            "d": "二次元与游戏厅。"
+            "d": "御宅文化、游戏厅与角色商店。"
           },
           {
             "c": "nightlife",
-            "n": "黄金街与露台酒吧",
-            "d": "小酒吧与天际线。"
+            "n": "黄金街与屋顶酒吧",
+            "d": "袖珍酒吧与天际线鸡尾酒。"
           }
         ],
         "transportLocal": "建议办 Suica/PASMO。市区高峰宁坐铁路；步行距离常比地图感觉更长。",
@@ -4166,46 +4186,46 @@
         "gettingThere": "东京新干线约 2 小时 15 分；大阪、奈良在来线很近。",
         "food": [
           {
-            "e": "🍲",
-            "n": "怀石",
-            "d": "根植茶道美学的时令套餐。"
-          },
-          {
             "e": "🍵",
             "n": "抹茶与和果子",
-            "d": "宇治茶与精致甜点。"
+            "d": "茶道之城的甜味经典。"
           },
           {
-            "e": "🥣",
-            "n": "汤豆腐",
-            "d": "寺町的素雅滋味。"
+            "e": "🍲",
+            "n": "汤豆腐／京料理",
+            "d": "清淡高汤与时令小菜。"
           },
           {
             "e": "🍜",
             "n": "京都拉面",
-            "d": "清淡酱油或鸡汤系。"
+            "d": "鸡白汤、背脂酱油等本地谱系。"
+          },
+          {
+            "e": "🍣",
+            "n": "京寿司",
+            "d": "含鯖鱼押寿司等传统形式。"
           }
         ],
         "attractions": [
           {
             "c": "shrines",
-            "n": "伏见稻荷",
-            "d": "千本鸟居。"
+            "n": "伏见稻荷大社",
+            "d": "千本鸟居参道。"
           },
           {
             "c": "temples",
-            "n": "金阁寺与清水寺",
-            "d": "金楼与山际景色。"
+            "n": "清水寺与金阁",
+            "d": "山际清水与金色楼阁。"
           },
           {
-            "c": "shopping",
-            "n": "锦市场",
-            "d": "京都厨房。"
+            "c": "districts",
+            "n": "祇园／东山",
+            "d": "石板路与茶屋风情。"
           },
           {
-            "c": "parks",
-            "n": "岚山",
-            "d": "竹林与河畔。"
+            "c": "walks",
+            "n": "哲学之道",
+            "d": "樱花与红叶的散步道。"
           }
         ],
         "transportLocal": "观光巴士常挤；优先地铁+步行，赶时间可打车。",
@@ -4231,46 +4251,46 @@
         "gettingThere": "新大阪为新干线站；关西机场有特急与机场巴士。",
         "food": [
           {
-            "e": "🐙",
+            "e": "たこ焼き",
             "n": "章鱼烧",
-            "d": "外酥内软。"
-          },
-          {
-            "e": "🥞",
-            "n": "大阪烧",
-            "d": "当地铁板风味。"
+            "d": "大阪名片，趁热现场吃。"
           },
           {
             "e": "🍜",
-            "n": "串炸",
-            "d": "严禁二次蘸酱！"
+            "n": "大阪烧／葱烧",
+            "d": "关西粉物流派中心。"
           },
           {
-            "e": "🐡",
-            "n": "割烹",
-            "d": "不止街头，也有精致料理。"
+            "e": "🍣",
+            "n": "回转寿司／立食",
+            "d": "轻松吃新鲜海鲜。"
+          },
+          {
+            "e": "🍺",
+            "n": "居酒屋文化",
+            "d": "「吃倒」的夜晚从这里开始。"
           }
         ],
         "attractions": [
           {
+            "c": "neon",
+            "n": "道顿堀",
+            "d": "巨型招牌与固力果夜景。"
+          },
+          {
             "c": "castles",
             "n": "大阪城",
-            "d": "地标天守与公园。"
+            "d": "天守与公园散步。"
           },
           {
-            "c": "nightlife",
-            "n": "道顿堀",
-            "d": "霓虹与格力高招牌。"
+            "c": "markets",
+            "n": "黑门市场",
+            "d": "边走边吃（注意拥挤）。"
           },
           {
-            "c": "theme",
-            "n": "环球影城",
-            "d": "大型主题乐园。"
-          },
-          {
-            "c": "shopping",
-            "n": "心斋桥",
-            "d": "商店街与品牌。"
+            "c": "hub",
+            "n": "关西枢纽",
+            "d": "通往京都、奈良、神户的起点。"
           }
         ],
         "transportLocal": "地铁+JR 足够；IC 卡通用。美食多集中在步行可达区。",
@@ -4296,46 +4316,46 @@
         "gettingThere": "京都／大阪近铁或 JR 约 30–50 分钟。",
         "food": [
           {
-            "e": "🍪",
-            "n": "鹿饼干文化",
-            "d": "喂鹿小饼与伴手礼。"
+            "e": "🍡",
+            "n": "当地小吃（非鹿饼干）",
+            "d": "柿叶寿司、茶泡饭等。"
           },
           {
             "e": "🍜",
-            "n": "三轮素面",
-            "d": "细面乡土味。"
-          },
-          {
-            "e": "🍠",
-            "n": "柿叶寿司",
-            "d": "柿叶包的押寿司。"
+            "n": "荞麦面／乌冬",
+            "d": "逛寺间歇休息。"
           },
           {
             "e": "🍵",
-            "n": "中谷堂麻薯",
-            "d": "以快速捣麻薯闻名。"
+            "n": "奈良和果子",
+            "d": "参道沿线甜食。"
+          },
+          {
+            "e": "🍶",
+            "n": "地酒",
+            "d": "奈良酿酒历史悠久。"
           }
         ],
         "attractions": [
           {
             "c": "temples",
             "n": "东大寺",
-            "d": "大佛殿。"
-          },
-          {
-            "c": "shrines",
-            "n": "春日大社",
-            "d": "灯笼参道。"
+            "d": "大佛殿与二月堂。"
           },
           {
             "c": "parks",
             "n": "奈良公园",
-            "d": "鹿与绿地。"
+            "d": "鹿群与草地。"
           },
           {
-            "c": "museums",
-            "n": "奈良国立博物馆",
-            "d": "佛教美术。"
+            "c": "shrines",
+            "n": "春日大社",
+            "d": "石灯笼参道。"
+          },
+          {
+            "c": "history",
+            "n": "兴福寺",
+            "d": "五重塔与国宝馆。"
           }
         ],
         "transportLocal": "车站到公园以步行为主；巴士班次请先查。",
@@ -4361,46 +4381,46 @@
         "gettingThere": "山阳新干线东京约 4 小时；也有广岛机场。",
         "food": [
           {
-            "e": "🥞",
+            "e": "お好み焼き",
             "n": "广岛烧",
-            "d": "加面的分层做法。"
+            "d": "夹面层叠的本地风格。"
           },
           {
             "e": "🦪",
             "n": "牡蛎",
-            "d": "时令濑户内海味。"
+            "d": "濑户内海时令。"
           },
           {
             "e": "🍜",
-            "n": "尾道拉面",
-            "d": "近郊酱油拉面。"
+            "n": "沾面／当地面",
+            "d": "留意市内人气店。"
           },
           {
-            "e": "🍁",
-            "n": "红叶馒头",
-            "d": "宫岛经典伴手礼。"
+            "e": "🍰",
+            "n": "枫叶馒头",
+            "d": "经典伴手礼。"
           }
         ],
         "attractions": [
           {
-            "c": "museums",
-            "n": "和平纪念资料馆",
-            "d": "必访历史。"
+            "c": "peace",
+            "n": "和平纪念公园／资料馆",
+            "d": "请预留充足时间。"
           },
           {
-            "c": "shrines",
-            "n": "严岛神社",
-            "d": "海上鸟居。"
+            "c": "island",
+            "n": "宫岛／严岛神社",
+            "d": "大鸟居与弥山。"
           },
           {
-            "c": "castles",
-            "n": "广岛城",
-            "d": "重建城郭与展览。"
+            "c": "food",
+            "n": "大阪烧村等",
+            "d": "广岛烧吃对比。"
           },
           {
-            "c": "parks",
-            "n": "缩景园",
-            "d": "精致庭园。"
+            "c": "city",
+            "n": "市内电车",
+            "d": "市区移动很方便。"
           }
         ],
         "transportLocal": "市内电车方便；宫岛=JR+渡轮。",
@@ -4428,44 +4448,44 @@
           {
             "e": "🥟",
             "n": "中华街",
-            "d": "点心与肉包。"
+            "d": "从点心到正餐。"
           },
           {
             "e": "🍜",
-            "n": "家系拉面",
-            "d": "发源于横滨的浓厚汤头。"
-          },
-          {
-            "e": "☕",
-            "n": "港湾咖啡",
-            "d": "海景咖啡。"
+            "n": "家系／横滨拉面",
+            "d": "本地拉面文化。"
           },
           {
             "e": "🍰",
-            "n": "西点",
-            "d": "港口城市甜点传统。"
+            "n": "洋果子",
+            "d": "港城甜品传统。"
+          },
+          {
+            "e": "🍺",
+            "n": "湾区用餐",
+            "d": "配夜景更合适。"
           }
         ],
         "attractions": [
           {
-            "c": "museums",
-            "n": "杯面博物馆",
-            "d": "自制杯面体验。"
-          },
-          {
-            "c": "shopping",
+            "c": "waterfront",
             "n": "港未来",
-            "d": "现代滨水综合体。"
+            "d": "高层与摩天轮。"
           },
           {
-            "c": "parks",
-            "n": "山下公园",
-            "d": "经典海滨步道。"
+            "c": "chinatown",
+            "n": "中华街",
+            "d": "日本规模最大之一。"
           },
           {
-            "c": "nightlife",
-            "n": "湾区夜色",
-            "d": "港口灯火。"
+            "c": "history",
+            "n": "红砖仓库",
+            "d": "活动与购物。"
+          },
+          {
+            "c": "views",
+            "n": "大栈桥／夜景",
+            "d": "港口全景。"
           }
         ],
         "transportLocal": "以港未来线+步行为主。",
@@ -4491,46 +4511,46 @@
         "gettingThere": "东京小田急浪漫特快约 85 分钟，或新干线+登山铁道。",
         "food": [
           {
+            "e": "♨️",
+            "n": "温泉旅馆餐",
+            "d": "晚早餐常是旅程核心。"
+          },
+          {
             "e": "🍜",
-            "n": "汤叶料理",
-            "d": "山中旅馆经典。"
+            "n": "荞麦面／山味",
+            "d": "徒步后的经典选择。"
           },
           {
             "e": "🥚",
             "n": "黑玉子",
-            "d": "硫磺泉煮蛋。"
-          },
-          {
-            "e": "🍲",
-            "n": "旅馆怀石",
-            "d": "住宿晚餐。"
+            "d": "大涌谷名物（别吃太多）。"
           },
           {
             "e": "🍰",
-            "n": "温泉馒头",
-            "d": "热乎伴手礼。"
+            "n": "驿站甜食",
+            "d": "周游途中补充能量。"
           }
         ],
         "attractions": [
           {
-            "c": "mountains",
-            "n": "大涌谷",
-            "d": "火山山谷。"
-          },
-          {
-            "c": "parks",
+            "c": "lake",
             "n": "芦之湖",
-            "d": "晴日富士。"
+            "d": "游船与富士展望。"
           },
           {
-            "c": "museums",
-            "n": "雕刻之森",
-            "d": "户外雕塑。"
+            "c": "onsen",
+            "n": "温泉乡",
+            "d": "汤本、强罗等。"
           },
           {
-            "c": "shrines",
-            "n": "箱根神社",
-            "d": "湖畔神社。"
+            "c": "ropeway",
+            "n": "缆车／大涌谷",
+            "d": "留意是否停运。"
+          },
+          {
+            "c": "art",
+            "n": "美术馆",
+            "d": "山林中的艺术空间。"
           }
         ],
         "transportLocal": "箱根周游类通票省事；环线请留半天以上。",
@@ -4557,45 +4577,45 @@
         "food": [
           {
             "e": "🍜",
-            "n": "汤叶荞麦",
-            "d": "当地风味。"
-          },
-          {
-            "e": "🔥",
-            "n": "味噌料理",
-            "d": "山味。"
-          },
-          {
-            "e": "Trout",
-            "n": "河鱼",
-            "d": "高原鱼肴。"
+            "n": "汤叶／乡土料理",
+            "d": "山区精进与本地味。"
           },
           {
             "e": "🍡",
             "n": "参道甜食",
-            "d": "门前小路小吃。"
+            "d": "东照宫周边。"
+          },
+          {
+            "e": "🍛",
+            "n": "定食午餐",
+            "d": "观光间隙补充体力。"
+          },
+          {
+            "e": "🍺",
+            "n": "当地风味",
+            "d": "回程前也可以小酌。"
           }
         ],
         "attractions": [
           {
             "c": "shrines",
-            "n": "东照宫",
-            "d": "华丽社殿。"
+            "n": "日光东照宫",
+            "d": "华丽雕刻与阳明门。"
           },
           {
-            "c": "mountains",
+            "c": "nature",
             "n": "华严瀑布",
-            "d": "自中禅寺湖落下。"
-          },
-          {
-            "c": "parks",
-            "n": "奥日光",
-            "d": "徒步高原。"
+            "d": "中禅寺湖一带。"
           },
           {
             "c": "temples",
-            "n": "轮王寺",
-            "d": "圣地寺院。"
+            "n": "轮王寺／二荒山",
+            "d": "二社一寺世界遗产。"
+          },
+          {
+            "c": "cedar",
+            "n": "杉树林荫道",
+            "d": "参道绿荫。"
           }
         ],
         "transportLocal": "车站到社寺多乘巴士或观光环线。",
@@ -4622,45 +4642,45 @@
         "food": [
           {
             "e": "🍣",
-            "n": "近江町市场",
-            "d": "清晨海鲜。"
+            "n": "海鲜／喉黑鱼",
+            "d": "日本海的鲜味。"
           },
           {
-            "e": "🥇",
+            "e": "🍡",
             "n": "金箔冰淇淋",
-            "d": "闪亮伴手礼。"
-          },
-          {
-            "e": "🍣",
-            "n": "治部煮与加贺料理",
-            "d": "乡土精致菜。"
+            "d": "好拍也好吃（适量）。"
           },
           {
             "e": "🍵",
             "n": "茶屋甜品",
-            "d": "东茶屋街。"
+            "d": "东茶屋街歇脚。"
+          },
+          {
+            "e": "🍜",
+            "n": "当地面食",
+            "d": "散步途中补充。"
           }
         ],
         "attractions": [
           {
-            "c": "parks",
+            "c": "gardens",
             "n": "兼六园",
             "d": "日本三名园之一。"
           },
           {
-            "c": "castles",
+            "c": "districts",
+            "n": "东茶屋街",
+            "d": "茶屋与格子门。"
+          },
+          {
+            "c": "castle",
             "n": "金泽城公园",
-            "d": "毗邻庭园。"
+            "d": "修复的城门与石垣。"
           },
           {
-            "c": "shopping",
-            "n": "东茶屋",
-            "d": "茶屋街景。"
-          },
-          {
-            "c": "museums",
-            "n": "21世纪美术馆",
-            "d": "当代艺术。"
+            "c": "craft",
+            "n": "金箔与工艺",
+            "d": "体验与购物。"
           }
         ],
         "transportLocal": "巴士+步行；部分日子有观光巴士。",
@@ -4686,46 +4706,46 @@
         "gettingThere": "新千岁机场有快速列车进城；国内航班密集。",
         "food": [
           {
-            "e": "🦀",
-            "n": "海鲜盖饭",
-            "d": "蟹、海胆、鱼子。"
-          },
-          {
             "e": "🍜",
             "n": "味噌拉面",
-            "d": "札幌风。"
+            "d": "札幌名片。"
+          },
+          {
+            "e": "🦀",
+            "n": "海鲜盖饭／蟹",
+            "d": "北海道海味。"
           },
           {
             "e": "🍺",
-            "n": "啤酒堂",
-            "d": "成吉思汗烤肉与啤酒。"
+            "n": "啤酒",
+            "d": "札幌啤酒园等。"
           },
           {
-            "e": "🧀",
-            "n": "乳品甜点",
-            "d": "北海道牛奶。"
+            "e": "🍲",
+            "n": "成吉思汗烤肉",
+            "d": "羊肉网烤。"
           }
         ],
         "attractions": [
           {
-            "c": "parks",
+            "c": "park",
             "n": "大通公园",
-            "d": "节日中轴。"
+            "d": "城市轴线；雪祭会场。"
           },
           {
-            "c": "museums",
-            "n": "啤酒博物馆",
-            "d": "可试饮。"
+            "c": "tower",
+            "n": "电视塔／展望",
+            "d": "俯瞰街景。"
           },
           {
-            "c": "mountains",
-            "n": "藻岩山等",
-            "d": "夜景与滑雪。"
+            "c": "market",
+            "n": "市场／场外",
+            "d": "海鲜早餐。"
           },
           {
-            "c": "shopping",
-            "n": "狸小路",
-            "d": "拱廊商店街。"
+            "c": "base",
+            "n": "道内起点",
+            "d": "小樽、富良野等。"
           }
         ],
         "transportLocal": "地铁与路面电车；冬季留意路面。",
@@ -4752,45 +4772,45 @@
         "food": [
           {
             "e": "🍜",
-            "n": "博多豚骨",
-            "d": "细面与加面。"
+            "n": "博多拉面",
+            "d": "豚骨与「替玉」文化。"
           },
           {
             "e": "🍢",
             "n": "屋台",
-            "d": "夜间露天摊。"
+            "d": "夜间路边摊（请预留排队）。"
           },
           {
             "e": "🐟",
-            "n": "明太子",
-            "d": "名产。"
+            "n": "内脏锅／水炊",
+            "d": "冬天很受欢迎。"
           },
           {
-            "e": "🥟",
-            "n": "饺子与牛杂锅",
-            "d": "乡土火锅。"
+            "e": "🍰",
+            "n": "明太子伴手礼",
+            "d": "经典手信。"
           }
         ],
         "attractions": [
           {
-            "c": "shrines",
-            "n": "栉田神社",
-            "d": "祭典神社。"
+            "c": "yatai",
+            "n": "屋台街",
+            "d": "中洲、天神一带。"
           },
           {
-            "c": "temples",
+            "c": "temple",
             "n": "太宰府天满宫",
-            "d": "学问之神一日游。"
+            "d": "经典半日行程。"
           },
           {
-            "c": "shopping",
-            "n": "天神与运河城",
-            "d": "购物都会。"
+            "c": "seaside",
+            "n": "海岸与岛屿",
+            "d": "城市离海很近。"
           },
           {
-            "c": "parks",
-            "n": "大濠公园",
-            "d": "市中心湖畔。"
+            "c": "hub",
+            "n": "九州枢纽",
+            "d": "新干线与机场都近。"
           }
         ],
         "transportLocal": "地铁清晰；以天神、博多为轴。",
@@ -4818,44 +4838,44 @@
           {
             "e": "🥩",
             "n": "神户牛",
-            "d": "牛排与铁板烧。"
-          },
-          {
-            "e": "🍞",
-            "n": "面包文化",
-            "d": "知名烘焙。"
-          },
-          {
-            "e": "🍷",
-            "n": "滩区清酒",
-            "d": "酒藏参观。"
+            "d": "价位跨度大，先选店。"
           },
           {
             "e": "🍰",
-            "n": "港湾甜品",
-            "d": "西式咖啡。"
+            "n": "洋果子／面包",
+            "d": "港城甜品传统。"
+          },
+          {
+            "e": "🍜",
+            "n": "南京町美食",
+            "d": "中华街边走边吃。"
+          },
+          {
+            "e": "🍺",
+            "n": "港湾夜色",
+            "d": "夜景配晚餐。"
           }
         ],
         "attractions": [
           {
-            "c": "mountains",
-            "n": "六甲夜景",
-            "d": "缆车展望。"
+            "c": "port",
+            "n": "神户港／港湾城",
+            "d": "海风与夜景。"
           },
           {
-            "c": "museums",
+            "c": "kitano",
             "n": "北野异人馆",
-            "d": "异国风宅邸。"
+            "d": "坡上的洋馆。"
           },
           {
-            "c": "shopping",
-            "n": "港湾乐园",
-            "d": "滨水商业。"
+            "c": "food",
+            "n": "牛排街",
+            "d": "按预算挑选。"
           },
           {
-            "c": "parks",
-            "n": "美利坚公园",
-            "d": "港口纪念空间。"
+            "c": "daytrip",
+            "n": "姬路／大阪顺路",
+            "d": "同线很好停。"
           }
         ],
         "transportLocal": "JR 与阪急／阪神；以三宫为步行+短途轴心。",
@@ -4882,45 +4902,45 @@
         "food": [
           {
             "e": "🍜",
-            "n": "什锦面与皿乌冬",
-            "d": "长崎面条。"
+            "n": "長崎酱汤面／皿乌冬",
+            "d": "长崎当地面。"
           },
           {
             "e": "🍰",
             "n": "长崎蛋糕",
-            "d": "南蛮点心谱系。"
+            "d": "经典伴手礼。"
           },
           {
             "e": "🍲",
             "n": "卓袱料理",
-            "d": "融合宴席。"
+            "d": "和洋中交融的筵席。"
           },
           {
             "e": "🐟",
             "n": "港口海鲜",
-            "d": "新鲜海味。"
+            "d": "新鲜鱼贝。"
           }
         ],
         "attractions": [
           {
-            "c": "museums",
-            "n": "和平公园与资料馆",
-            "d": "历史学习。"
+            "c": "tram",
+            "n": "电车与坡道",
+            "d": "移动本身就是风景。"
           },
           {
-            "c": "shopping",
-            "n": "出岛与中华街",
-            "d": "贸易记忆。"
+            "c": "history",
+            "n": "和平公园／历史馆",
+            "d": "展陈需预留时间。"
           },
           {
-            "c": "theme",
-            "n": "哥拉巴园",
-            "d": "山丘展望。"
+            "c": "views",
+            "n": "稻佐山等夜景",
+            "d": "世界级夜景。"
           },
           {
-            "c": "nightlife",
-            "n": "港口夜色",
-            "d": "季节点灯。"
+            "c": "port",
+            "n": "港口与出岛",
+            "d": "交流史的痕迹。"
           }
         ],
         "transportLocal": "路面电车好懂；陡坡可步行或打车。",
@@ -4946,46 +4966,46 @@
         "gettingThere": "那霸机场为门户；离岛再转飞机或高速船。",
         "food": [
           {
-            "e": "🍜",
-            "n": "冲绳荞麦面",
-            "d": "猪肉汤的小麦面（非荞麦）。"
-          },
-          {
             "e": "🐷",
-            "n": "软软猪肉与塔可饭",
-            "d": "猪肉与岛屿融合菜。"
+            "n": "冲绳荞麦面／猪肉料理",
+            "d": "岛屿味道的基础。"
           },
           {
-            "e": "🧃",
-            "n": "沙塔安德吉与泡盛",
-            "d": "炸点心与地酒。"
+            "e": "🍧",
+            "n": "海葡萄／岛蔬",
+            "d": "亚热带食材。"
           },
           {
-            "e": "🥭",
-            "n": "热带水果",
-            "d": "菠萝芒果等。"
+            "e": "🍺",
+            "n": "泡盛",
+            "d": "琉球酒。"
+          },
+          {
+            "e": "🌮",
+            "n": "塔可饭",
+            "d": "日常岛味。"
           }
         ],
         "attractions": [
           {
-            "c": "castles",
-            "n": "首里城周边",
-            "d": "琉球王国遗产（关注重建动态）。"
+            "c": "beach",
+            "n": "海滩",
+            "d": "本岛北部与离岛。"
           },
           {
-            "c": "parks",
-            "n": "庆良间等海域",
-            "d": "浮潜天堂。"
+            "c": "city",
+            "n": "国际通／市场",
+            "d": "那霸边走边吃。"
           },
           {
-            "c": "museums",
-            "n": "县立博物馆",
-            "d": "自然与文化。"
+            "c": "culture",
+            "n": "琉球文化",
+            "d": "城迹与工艺。"
           },
           {
-            "c": "nightlife",
-            "n": "国际通",
-            "d": "伴手礼与夜色。"
+            "c": "islands",
+            "n": "离岛跳岛",
+            "d": "留意天气与停航。"
           }
         ],
         "transportLocal": "本岛常租车；巴士班次请留余量。",

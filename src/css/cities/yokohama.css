@@ -2,21 +2,49 @@
 body.city-yokohama {
   --deep-red-bright: #1b4965;
   --sakura: #62b6cb;
-  --gold: #cae9ff;
+  --gold: #5fa8d3;
   --gradient-hero: linear-gradient(160deg, #e8f1f5, #d0e4ef 40%, #f5f0e8);
-  --surface-2: rgba(27,73,101,.06);
+
+  /* Self-contained light skin — works even when Settings theme is Dark */
+  --bg: #eef4f7;
+  --bg-elevated: #f7fafc;
+  --text: #152a38;
+  --text-muted: #5a7384;
+  --card-solid: #ffffff;
+  --card: #ffffff;
+  --border: rgba(27,73,101,.14);
+  --surface-2: #e0ebf1;
+  --paper-warm: #eef4f7;
+  --ink: #152a38;
+  --muted: #5a7384;
+
+  --jp-fill: #eef4f7;
+  --jp-fill-2: #e0ebf1;
+  --jp-surface: #ffffff;
+  --jp-ink: #152a38;
+  --jp-ink-soft: #5a7384;
+  --jp-gray: #5a7384;
+  --jp-hairline: rgba(27,73,101,.14);
+  --jp-red: #1b4965;
+  --jp-red-deep: #1b4965;
+  --jp-sakura: #62b6cb;
+  --jp-gold: #5fa8d3;
+
+  color-scheme: light;
+
 }
 body.city-yokohama .card {
-  border-radius: 4px;
-  border-left: 4px solid #1b4965;
-  box-shadow: 0 8px 24px rgba(27,73,101,.08);
+  border-radius: 4px; border-left: 4px solid #1b4965;
+  background: var(--card-solid); box-shadow: 0 8px 24px rgba(27,73,101,.08);
 }
-body.city-yokohama .btn--primary { background: linear-gradient(135deg, #1b4965, #5fa8d3); border-radius: 4px; }
+body.city-yokohama .btn--primary { background: linear-gradient(135deg, #1b4965, #5fa8d3); border-radius: 4px; color: #fff; }
 body.city-yokohama .visual-panel {
-  border-radius: 2px;
-  border-color: rgba(27,73,101,.3);
+  border-radius: 2px; border-color: rgba(27,73,101,.3);
   background: linear-gradient(135deg, rgba(98,182,203,.2), rgba(202,233,255,.3)), #eef5f8;
 }
 body.city-yokohama .section__eyebrow { color: #1b4965; }
-body.city-yokohama .city-hero__title { font-style: italic; }
+body.city-yokohama .section__title { color: var(--text); }
+body.city-yokohama .city-hero__title { font-style: italic; color: var(--text); }
 body.city-yokohama .city-stat { border-top: 2px solid rgba(95,168,211,.35); }
+body.city-yokohama .site-header { background: rgba(247,250,252,.94); }
+

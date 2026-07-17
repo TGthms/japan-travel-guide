@@ -1195,67 +1195,15 @@ section.hero .reveal {
   border-color: rgba(232, 212, 139, 0.35);
 }
 
-/* ---------- Destination cards (photo banner matches About Japan) ---------- */
-.dest-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  padding: 0;
+/* ---------- Destination cards (link shell; photo layout shared with About) ---------- */
+a.card.dest-card {
   color: inherit;
   text-decoration: none;
-}
-
-.dest-card:hover {
-  color: inherit;
-}
-
-/* Same media frame as .about-grid .card__media */
-.dest-card .card__media {
-  margin: 0;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  max-height: 168px;
-  overflow: hidden;
-  background: #1a1210;
-  border-radius: 0;
-  flex-shrink: 0;
-}
-
-.dest-card .card__media img {
-  display: block;
-  width: 100%;
   height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center center;
 }
 
-/* Portrait source photos (Kyoto, Nara, Kobe, …) — keep subject in frame */
-.dest-card .card__media img[data-orient="portrait"] {
-  object-position: center 28%;
-}
-
-/* Emoji / gradient fallback when no photo yet */
-.dest-card .visual-panel {
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  aspect-ratio: 16 / 10;
-  max-height: 168px;
-  min-height: 0;
-  width: 100%;
-}
-
-.dest-card__body {
-  padding: 0.75rem 1.25rem 1.2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.dest-card .card__title {
-  margin-bottom: 0.35rem;
+a.card.dest-card:hover {
+  color: inherit;
 }
 
 .dest-card__meta {
@@ -1279,16 +1227,9 @@ section.hero .reveal {
   letter-spacing: 0.01em;
 }
 
-.dest-card:hover .dest-card__cta {
+a.card.dest-card:hover .dest-card__cta {
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-@media (max-width: 560px) {
-  .dest-card .card__media,
-  .dest-card .visual-panel {
-    max-height: 180px;
-  }
 }
 
 /* ---------- Map ---------- */
@@ -3492,7 +3433,8 @@ p {
 }
 
 .section--alt {
-  background: var(--jp-fill-2);
+  /* Prefer city/theme surface token; jp-fill-2 as fallback */
+  background: var(--surface-2, var(--jp-fill-2));
 }
 
 .section--ink {
@@ -3725,29 +3667,10 @@ img.nav__logo {
   color: var(--text-muted);
 }
 
-/* ---------- Destination cards product strip ---------- */
-.dest-card {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--jp-hairline);
-  box-shadow: none;
-}
-
-.dest-card:hover {
+/* Destination cards inherit .card + .card--with-photo; keep link hover subtle */
+a.card.dest-card:hover {
+  transform: scale(1.01);
   box-shadow: var(--shadow);
-  transform: scale(1.015);
-}
-
-.dest-card .visual-panel,
-.dest-card .card__media {
-  border-radius: 0;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-}
-
-.dest-card__body {
-  padding: 0.75rem 1.25rem 1.25rem;
 }
 
 .dest-card__meta {
@@ -4064,37 +3987,64 @@ body,
   font-weight: 500;
 }
 
-/* About grid denser product cards */
-.about-grid .card {
+/* About / Destinations shared grid density */
+.about-grid .card:not(.card--with-photo) {
   padding: 1.35rem;
 }
 
-/* About cards with top photo banner (Culture, later others) */
-.about-grid .card.card--with-photo {
+/*
+ * Shared photo product cards (About Japan + Destinations).
+ * One structure: media → location meta → body.
+ */
+.card.card--with-photo {
   display: flex;
   flex-direction: column;
   padding: 0;
   overflow: hidden;
 }
 
-.about-grid .card__media {
+.card.card--with-photo .card__media {
   margin: 0;
   width: 100%;
   aspect-ratio: 16 / 10;
   max-height: 168px;
   overflow: hidden;
   background: #1a1210;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 0;
 }
 
-.about-grid .card__media img {
+.card.card--with-photo .card__media img {
   display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
   object-position: center center;
 }
 
-.about-grid .card__photo-meta {
+/* Portrait city photos — keep subject visible */
+.card.card--with-photo .card__media img[data-orient="portrait"] {
+  object-position: center 28%;
+}
+
+/* Glyph placeholder (cities without a photo yet) — same frame as photos */
+.card.card--with-photo .card__media--glyph {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse 70% 55% at 78% 18%, rgba(240, 160, 180, 0.28) 0%, transparent 68%),
+    linear-gradient(155deg, #2a1c24 0%, #1a1018 45%, #0e0a10 100%);
+}
+
+.card.card--with-photo .card__media-glyph {
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 2.6rem);
+  line-height: 1;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+}
+
+.card.card--with-photo .card__photo-meta {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -4107,33 +4057,60 @@ body,
   line-height: 1.3;
 }
 
-.about-grid .card__photo-pin {
+.card.card--with-photo .card__photo-pin {
   font-size: 0.85em;
   opacity: 0.85;
   line-height: 1;
 }
 
-.about-grid .card__photo-location {
+.card.card--with-photo .card__photo-location {
   color: var(--text, #1d1d1f);
   font-weight: 600;
 }
 
-.about-grid .card--with-photo .card__body {
-  padding: 0.65rem 1.25rem 1.35rem;
+[data-theme="dark"] .card.card--with-photo .card__photo-location {
+  color: var(--text, #f5f2ef);
 }
 
-.about-grid .card--with-photo .card__icon {
+[data-theme="dark"] .card.card--with-photo .card__photo-meta {
+  color: var(--text-muted, #a8a29e);
+}
+
+.card.card--with-photo .card__body {
+  padding: 0.65rem 1.25rem 1.35rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.card--with-photo .card__icon {
   display: none;
 }
 
+.card.card--with-photo .card__title {
+  margin-bottom: 0.45rem;
+}
+
+.card.card--with-photo .card__text {
+  margin: 0;
+}
+
 @media (max-width: 560px) {
-  .about-grid .card__media {
+  .card.card--with-photo .card__media {
     max-height: 180px;
     aspect-ratio: 16 / 10;
   }
-  .about-grid .card__media img {
+  .card.card--with-photo .card__media img {
     object-position: center 50%;
   }
+  .card.card--with-photo .card__media img[data-orient="portrait"] {
+    object-position: center 30%;
+  }
+}
+
+/* Destinations grid reuses about-grid; alias for clarity */
+.destinations-grid {
+  /* inherits .about-grid */
 }
 
 /* Map layout polish */
@@ -4455,3 +4432,674 @@ body,
     transition: none;
   }
 }
+
+/* ===== CITY PAGES: theme cohesion & contrast ===== */
+/*
+ * City skins set local --bg/--text/--card tokens. Some also force a dark look
+ * without data-theme="dark", which left --jp-fill-2 as light cream while
+ * --text stayed pale → unreadable section titles on .section--alt.
+ */
+
+body[data-page="city"] {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body[data-page="city"] .section__title,
+body[data-page="city"] .city-hero__title,
+body[data-page="city"] h1,
+body[data-page="city"] h2,
+body[data-page="city"] h3 {
+  color: var(--text);
+}
+
+body[data-page="city"] .section__desc,
+body[data-page="city"] .card__text,
+body[data-page="city"] .city-stat span,
+body[data-page="city"] p {
+  color: var(--text-muted);
+}
+
+/* Prefer city surface token; fall back to design-system fill */
+body[data-page="city"] .section--alt {
+  background: var(--surface-2) !important;
+}
+
+body[data-page="city"] .card {
+  background: var(--card-solid);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body[data-page="city"] .card .card__title,
+body[data-page="city"] .card h3 {
+  color: var(--text);
+}
+
+body[data-page="city"] .site-header {
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  border-bottom-color: var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body[data-page="city"] .nav__brand,
+body[data-page="city"] .nav__links a {
+  color: var(--text);
+}
+
+body[data-page="city"] .nav__links a:hover,
+body[data-page="city"] .nav__links a.is-active {
+  color: var(--deep-red-bright);
+}
+
+/*
+ * Footer stays the product dark bar on every city skin.
+ * Never inherit pale city --bg/--text or white-on-cream breaks.
+ */
+body[data-page="city"] .site-footer,
+body[data-page="city"] footer.site-footer {
+  background: #1d1d1f !important;
+  color: #cfc8c2 !important;
+  border-top: none !important;
+}
+
+body[data-page="city"] .site-footer-brand {
+  color: #ffffff !important;
+}
+
+body[data-page="city"] .site-footer-brand:hover {
+  color: var(--sakura, #f8b4c4) !important;
+}
+
+body[data-page="city"] .site-footer-tagline {
+  color: #cfc8c2 !important;
+}
+
+body[data-page="city"] .site-footer-copy {
+  color: #9a938c !important;
+}
+
+body[data-page="city"] .footer-legal-links a {
+  color: #a1a1a6 !important;
+}
+
+body[data-page="city"] .footer-legal-links a:hover {
+  color: #f5f5f7 !important;
+}
+
+body[data-page="city"] .footer-github-link,
+body[data-page="city"] .footer-about-link {
+  color: #e8e4e0 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+body[data-page="city"] .footer-github-link:hover,
+body[data-page="city"] .footer-about-link:hover {
+  border-color: var(--sakura, #f8b4c4) !important;
+  background: var(--sakura, #f8b4c4) !important;
+  color: #1a1014 !important;
+}
+
+/* Secondary CTAs must stay readable on light city skins */
+body[data-page="city"] .btn--secondary {
+  color: var(--text) !important;
+  border: 1.5px solid color-mix(in srgb, var(--text) 28%, transparent) !important;
+  background: var(--card-solid) !important;
+  box-shadow: none !important;
+}
+
+body[data-page="city"] .btn--secondary:hover {
+  border-color: var(--deep-red-bright) !important;
+  color: var(--deep-red-bright) !important;
+  background: color-mix(in srgb, var(--deep-red-bright) 8%, var(--card-solid)) !important;
+}
+
+body[data-page="city"] .btn--primary {
+  color: #fff !important;
+}
+
+/* Dark-skinned cities: keep header/footer readable */
+body.city-theme-dark .site-header {
+  background: rgba(10, 10, 20, 0.92);
+}
+
+body.city-theme-dark .section--alt {
+  background: var(--surface-2, rgba(255, 255, 255, 0.04)) !important;
+}
+
+body.city-theme-dark .section__title {
+  color: var(--text);
+  opacity: 1;
+}
+
+/* Attraction / dish cards on city pages */
+body[data-page="city"] .dish-list .card,
+body[data-page="city"] #attr-list .card {
+  background: var(--card-solid);
+}
+
+/* Tips list contrast */
+body[data-page="city"] .tip-list li {
+  color: var(--text);
+}
+
+body[data-page="city"] .tip-list li::marker {
+  color: var(--deep-red-bright);
+}
+
+/* ===== CITY PAGE LAYOUT (v3) ===== */
+body[data-page="city"] {
+  overflow-x: hidden;
+}
+
+body[data-page="city"] .nav__brand-text {
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Back control */
+.city-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 1.1rem;
+  padding: 0.4rem 0.15rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  min-height: 44px;
+  transition: color var(--transition);
+}
+
+.city-back:hover {
+  color: var(--deep-red-bright);
+}
+
+/* Hero */
+.city-hero {
+  padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(2rem, 5vw, 3rem);
+}
+
+.city-hero__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.city-hero--with-photo .city-hero__layout {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: center;
+}
+
+.city-hero__title {
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin: 0.15rem 0 0.65rem;
+  color: var(--text);
+}
+
+.city-hero__tagline {
+  max-width: 38rem;
+  margin: 0;
+  font-size: clamp(0.98rem, 2.2vw, 1.1rem);
+}
+
+.city-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.1rem 0 1.25rem;
+}
+
+.city-hero__media {
+  margin: 0;
+  position: relative;
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  background: #1a1210;
+  aspect-ratio: 16 / 10;
+  max-height: 340px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.city-hero__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.city-hero__media img[data-orient="portrait"] {
+  object-position: center 28%;
+}
+
+.city-hero__media-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0.75rem 1rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+}
+
+/* Compact hero (no photo) — no empty placeholder */
+.city-hero--compact .city-hero__layout {
+  max-width: 48rem;
+}
+
+.city-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 720px) {
+  .city-hero--with-photo .city-stats,
+  .city-hero--compact .city-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.city-stat {
+  text-align: left;
+  padding: 0.85rem 0.95rem;
+  min-width: 0;
+}
+
+.city-stat strong {
+  display: block;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.25;
+  word-break: break-word;
+  color: var(--deep-red-bright);
+}
+
+.city-stat span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+/* Overview two-column */
+.city-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.85fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: start;
+}
+
+.city-prose {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 42rem;
+}
+
+.city-subhead {
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.city-fact-card {
+  padding: 1.25rem 1.35rem;
+  position: sticky;
+  top: calc(var(--nav-h) + 12px);
+}
+
+.city-fact-card h3 {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--text);
+}
+
+/* Attractions */
+.city-attr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.city-attr-grid .card {
+  padding: 1.15rem 1.2rem;
+  height: 100%;
+}
+
+/* Transport */
+.city-transport .section__header {
+  margin-bottom: 1.25rem;
+}
+
+.city-transport-card {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.4rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* Tips + bottom CTA */
+.tip-list--city {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.city-bottom-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.city-bottom-cta .btn {
+  min-height: 44px;
+}
+
+/* Mobile-first refinements */
+@media (max-width: 900px) {
+  .city-hero--with-photo .city-hero__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .city-hero__media {
+    max-height: 260px;
+    order: -1; /* photo first on small screens for visual punch */
+  }
+
+  .city-hero--with-photo .city-hero__copy {
+    order: 1;
+  }
+
+  .city-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .city-fact-card {
+    position: static;
+  }
+
+  .city-attr-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="city"] .section {
+    padding: 2.75rem 0;
+  }
+
+  body[data-page="city"] .section__header {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  body[data-page="city"] .section__title {
+    font-size: clamp(1.45rem, 6vw, 1.9rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(100% - 1.25rem, var(--max));
+  }
+
+  body[data-page="city"] .nav__brand-text {
+    max-width: 7.5rem;
+    font-size: 0.92rem;
+  }
+
+  body[data-page="city"] .nav__actions .btn {
+    padding-inline: 0.7rem;
+    font-size: 0.82rem;
+    min-height: 40px;
+  }
+
+  .city-hero {
+    padding-top: 1rem;
+  }
+
+  .city-hero__title {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  .city-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+  }
+
+  .city-stat {
+    padding: 0.75rem 0.8rem;
+  }
+
+  .city-stat strong {
+    font-size: 0.98rem;
+  }
+
+  .city-hero__media {
+    max-height: 220px;
+    border-radius: 12px;
+  }
+
+  .dish-item,
+  .tip-item {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .city-transport-card {
+    padding: 1.1rem 1.15rem;
+    font-size: 0.98rem;
+  }
+
+  .city-bottom-cta {
+    flex-direction: column;
+  }
+
+  .city-bottom-cta .btn {
+    width: 100%;
+  }
+
+  /* Mobile menu: city nav readability */
+  body[data-page="city"] .nav__links a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .city-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hide decorative neon line if any leftover */
+body[data-page="city"] .neon-line {
+  display: none;
+}
+
+/* Utility spacing used on city pages */
+body[data-page="city"] .mt-1 { margin-top: 0.35rem; }
+body[data-page="city"] .mt-2 { margin-top: 0.75rem; }
+body[data-page="city"] .mt-3 { margin-top: 1.25rem; }
+body[data-page="city"] .mb-2 { margin-bottom: 0.5rem; }
+
+/* ===== CITY SWITCHER ===== */
+.city-jump {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  margin: 0 0 1.15rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius, 10px);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card-solid) 88%, var(--text) 4%);
+}
+
+.city-jump__label {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.city-jump__select {
+  flex: 1 1 12rem;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.5rem 2.25rem 0.5rem 0.85rem;
+  border-radius: 980px;
+  border: 1.5px solid color-mix(in srgb, var(--text) 22%, transparent);
+  background: var(--card-solid);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  cursor: pointer;
+}
+
+.city-jump__select:focus {
+  outline: none;
+  box-shadow: var(--focus);
+  border-color: var(--deep-red-bright);
+}
+
+.city-switcher-section {
+  padding-top: 2.5rem;
+  padding-bottom: 2.75rem;
+}
+
+.city-switcher__header {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 1.25rem;
+}
+
+.city-switcher__title {
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  margin: 0 0 0.4rem;
+  color: var(--text);
+}
+
+.city-switcher__desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.city-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.city-switcher__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.45rem 0.95rem;
+  border-radius: 980px;
+  border: 1.5px solid color-mix(in srgb, var(--text) 16%, transparent);
+  background: var(--card-solid);
+  color: var(--text) !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+}
+
+a.city-switcher__chip:hover {
+  border-color: var(--deep-red-bright);
+  color: var(--deep-red-bright) !important;
+  transform: translateY(-1px);
+}
+
+.city-switcher__chip.is-current {
+  background: var(--deep-red-bright);
+  border-color: var(--deep-red-bright);
+  color: #fff !important;
+  cursor: default;
+}
+
+.city-switcher__all {
+  text-align: center;
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.city-switcher__all a {
+  color: var(--deep-red-bright);
+  text-decoration: none;
+}
+
+.city-switcher__all a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body.city-theme-dark .city-jump {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.city-theme-dark .city-jump__select {
+  background-color: var(--card-solid);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23ccc' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 640px) {
+  .city-jump {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .city-jump__select {
+    width: 100%;
+  }
+  .city-switcher {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.35rem;
+    gap: 0.45rem;
+    scroll-snap-type: x proximity;
+  }
+  .city-switcher__chip {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+}
+

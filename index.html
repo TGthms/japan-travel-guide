@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=logo-dest-i18n2" />
+  <link rel="stylesheet" href="src/css/styles.css?v=photo-card-parity4" />
   <script>
   (function () {
     try {
@@ -489,200 +489,259 @@
           <h2 class="section__title" data-i18n="destinations.title">Where to go</h2>
           <p class="section__desc" data-i18n="destinations.desc">Each card opens a full city guide—what to eat, what to see, and how to get around. Distance from Tokyo and a typical daytime temperature range help you compare at a glance.</p>
         </header>
-        <div class="grid-3 stagger">
+        <div class="about-grid destinations-grid stagger">
           
-      <a class="card dest-card reveal" href="cities/tokyo.html">
+      
+      <a class="card card--with-photo dest-card reveal" href="cities/tokyo.html">
         <figure class="card__media">
           <img src="assets/gallery/main/Tokyo.jpg" alt="" loading="lazy" decoding="async" />
         </figure>
-        <div class="dest-card__body">
-          <h3 class="card__title">🏙 <span data-i18n="cities.tokyo.name">Tokyo</span></h3>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Tokyo</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.tokyo.name">Tokyo</span></h3>
           <p class="card__text" data-i18n="cities.tokyo.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="0">—</strong></span>
             <span>🌡 <strong data-temp-c-min="8" data-temp-c-max="30">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/kyoto.html">
+      <a class="card card--with-photo dest-card reveal" href="cities/kyoto.html">
         <figure class="card__media">
           <img src="assets/gallery/main/Kyoto.jpg" alt="" loading="lazy" decoding="async" data-orient="portrait" />
         </figure>
-        <div class="dest-card__body">
-          <h3 class="card__title">🏛 <span data-i18n="cities.kyoto.name">Kyoto</span></h3>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Kyoto</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.kyoto.name">Kyoto</span></h3>
           <p class="card__text" data-i18n="cities.kyoto.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="365">—</strong></span>
             <span>🌡 <strong data-temp-c-min="5" data-temp-c-max="32">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/osaka.html">
+      <a class="card card--with-photo dest-card reveal" href="cities/osaka.html">
         <figure class="card__media">
           <img src="assets/gallery/main/Osaka.jpg" alt="" loading="lazy" decoding="async" />
         </figure>
-        <div class="dest-card__body">
-          <h3 class="card__title">🍜 <span data-i18n="cities.osaka.name">Osaka</span></h3>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Osaka</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.osaka.name">Osaka</span></h3>
           <p class="card__text" data-i18n="cities.osaka.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="400">—</strong></span>
             <span>🌡 <strong data-temp-c-min="6" data-temp-c-max="33">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/nara.html">
+      <a class="card card--with-photo dest-card reveal" href="cities/nara.html">
         <figure class="card__media">
           <img src="assets/gallery/main/Nara.jpg" alt="" loading="lazy" decoding="async" data-orient="portrait" />
         </figure>
-        <div class="dest-card__body">
-          <h3 class="card__title">🦌 <span data-i18n="cities.nara.name">Nara</span></h3>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Nara</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.nara.name">Nara</span></h3>
           <p class="card__text" data-i18n="cities.nara.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="390">—</strong></span>
             <span>🌡 <strong data-temp-c-min="5" data-temp-c-max="32">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/hiroshima.html">
-        <div class="visual-panel visual-panel--sm" data-visual="hiroshima" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">☮️</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">☮️ <span data-i18n="cities.hiroshima.name">Hiroshima</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/hiroshima.html">
+        <div class="card__media card__media--glyph" data-visual="hiroshima" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">☮️</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Hiroshima</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.hiroshima.name">Hiroshima</span></h3>
           <p class="card__text" data-i18n="cities.hiroshima.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="700">—</strong></span>
             <span>🌡 <strong data-temp-c-min="6" data-temp-c-max="31">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/yokohama.html">
-        <div class="visual-panel visual-panel--sm" data-visual="yokohama" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">⚓</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">⚓ <span data-i18n="cities.yokohama.name">Yokohama</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/yokohama.html">
+        <div class="card__media card__media--glyph" data-visual="yokohama" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">⚓</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Yokohama</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.yokohama.name">Yokohama</span></h3>
           <p class="card__text" data-i18n="cities.yokohama.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="30">—</strong></span>
             <span>🌡 <strong data-temp-c-min="7" data-temp-c-max="30">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/hakone.html">
+      <a class="card card--with-photo dest-card reveal" href="cities/hakone.html">
         <figure class="card__media">
           <img src="assets/gallery/main/Hakone.jpg" alt="" loading="lazy" decoding="async" />
         </figure>
-        <div class="dest-card__body">
-          <h3 class="card__title">♨️ <span data-i18n="cities.hakone.name">Hakone</span></h3>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Hakone</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.hakone.name">Hakone</span></h3>
           <p class="card__text" data-i18n="cities.hakone.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="90">—</strong></span>
             <span>🌡 <strong data-temp-c-min="3" data-temp-c-max="26">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/nikko.html">
-        <div class="visual-panel visual-panel--sm" data-visual="nikko" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">⛩</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">⛩ <span data-i18n="cities.nikko.name">Nikko</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/nikko.html">
+        <div class="card__media card__media--glyph" data-visual="nikko" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">⛩</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Nikkō</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.nikko.name">Nikko</span></h3>
           <p class="card__text" data-i18n="cities.nikko.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="140">—</strong></span>
             <span>🌡 <strong data-temp-c-min="1" data-temp-c-max="25">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/kanazawa.html">
-        <div class="visual-panel visual-panel--sm" data-visual="kanazawa" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🏯</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">✨ <span data-i18n="cities.kanazawa.name">Kanazawa</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/kanazawa.html">
+        <div class="card__media card__media--glyph" data-visual="kanazawa" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">🏯</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Kanazawa</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.kanazawa.name">Kanazawa</span></h3>
           <p class="card__text" data-i18n="cities.kanazawa.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="300">—</strong></span>
             <span>🌡 <strong data-temp-c-min="3" data-temp-c-max="30">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/sapporo.html">
-        <div class="visual-panel visual-panel--sm" data-visual="sapporo" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">❄️</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">❄️ <span data-i18n="cities.sapporo.name">Sapporo</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/sapporo.html">
+        <div class="card__media card__media--glyph" data-visual="sapporo" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">❄️</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Sapporo</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.sapporo.name">Sapporo</span></h3>
           <p class="card__text" data-i18n="cities.sapporo.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="830">—</strong></span>
             <span>🌡 <strong data-temp-c-min="-4" data-temp-c-max="26">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/fukuoka.html">
-        <div class="visual-panel visual-panel--sm" data-visual="fukuoka" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🍜</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">🍢 <span data-i18n="cities.fukuoka.name">Fukuoka</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/fukuoka.html">
+        <div class="card__media card__media--glyph" data-visual="fukuoka" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">🍢</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Fukuoka</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.fukuoka.name">Fukuoka</span></h3>
           <p class="card__text" data-i18n="cities.fukuoka.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="890">—</strong></span>
             <span>🌡 <strong data-temp-c-min="7" data-temp-c-max="32">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/kobe.html">
+      <a class="card card--with-photo dest-card reveal" href="cities/kobe.html">
         <figure class="card__media">
           <img src="assets/gallery/main/Kobe.jpg" alt="" loading="lazy" decoding="async" data-orient="portrait" />
         </figure>
-        <div class="dest-card__body">
-          <h3 class="card__title">🥩 <span data-i18n="cities.kobe.name">Kobe</span></h3>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Kobe</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.kobe.name">Kobe</span></h3>
           <p class="card__text" data-i18n="cities.kobe.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="430">—</strong></span>
             <span>🌡 <strong data-temp-c-min="6" data-temp-c-max="32">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/nagasaki.html">
-        <div class="visual-panel visual-panel--sm" data-visual="nagasaki" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🚢</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">⛰ <span data-i18n="cities.nagasaki.name">Nagasaki</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/nagasaki.html">
+        <div class="card__media card__media--glyph" data-visual="nagasaki" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">⛰</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Nagasaki</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.nagasaki.name">Nagasaki</span></h3>
           <p class="card__text" data-i18n="cities.nagasaki.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="1000">—</strong></span>
             <span>🌡 <strong data-temp-c-min="7" data-temp-c-max="31">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
-      <a class="card dest-card reveal" href="cities/okinawa.html">
-        <div class="visual-panel visual-panel--sm" data-visual="okinawa" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🌊</span></div>
-        <div class="dest-card__body">
-          <h3 class="card__title">🏖 <span data-i18n="cities.okinawa.name">Okinawa</span></h3>
+      <a class="card card--with-photo dest-card reveal" href="cities/okinawa.html">
+        <div class="card__media card__media--glyph" data-visual="okinawa" role="img" aria-hidden="true">
+          <span class="card__media-glyph" aria-hidden="true">🏖</span>
+        </div>
+        <p class="card__photo-meta">
+          <span class="card__photo-pin" aria-hidden="true">📍</span>
+          <span class="card__photo-location">Okinawa</span>
+        </p>
+        <div class="card__body">
+          <h3 class="card__title"><span data-i18n="cities.okinawa.name">Okinawa</span></h3>
           <p class="card__text" data-i18n="cities.okinawa.blurb"></p>
           <div class="dest-card__meta">
             <span>📍 <span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="1550">—</strong></span>
             <span>🌡 <strong data-temp-c-min="17" data-temp-c-max="32">—</strong></span>
           </div>
-        
-            <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
+          <span class="dest-card__cta" data-i18n="common.openCityGuide">Open city guide →</span>
         </div>
       </a>
         </div>
@@ -1198,7 +1257,7 @@
       });
     })();
   </script>
-  <script src="src/js/data/i18n.js?v=locale-voice2" defer></script>
+  <script src="src/js/data/i18n.js?v=locale-hq2" defer></script>
   <script src="src/js/settings.js" defer></script>
   <script src="src/js/i18n.js" defer></script>
   <script src="src/js/units.js" defer></script>

@@ -2,29 +2,51 @@
 body.city-kanazawa {
   --deep-red-bright: #2c3639;
   --sakura: #84a98c;
-  --gold: #d4af37;
+  --gold: #b8952f;
   --gradient-hero: linear-gradient(135deg, #f6f3ea, #e8efe8 50%, #faf6e8);
-  --surface-2: rgba(212,175,55,.08);
-  --radius: 6px;
+
+  /* Self-contained light skin — works even when Settings theme is Dark */
+  --bg: #f6f3ea;
+  --bg-elevated: #faf8f2;
+  --text: #1f2628;
+  --text-muted: #5c6568;
+  --card-solid: #faf8f2;
+  --card: #faf8f2;
+  --border: rgba(212,175,55,.35);
+  --surface-2: #ebe6d8;
+  --paper-warm: #f6f3ea;
+  --ink: #1f2628;
+  --muted: #5c6568;
+
+  --jp-fill: #f6f3ea;
+  --jp-fill-2: #ebe6d8;
+  --jp-surface: #faf8f2;
+  --jp-ink: #1f2628;
+  --jp-ink-soft: #5c6568;
+  --jp-gray: #5c6568;
+  --jp-hairline: rgba(212,175,55,.35);
+  --jp-red: #2c3639;
+  --jp-red-deep: #2c3639;
+  --jp-sakura: #84a98c;
+  --jp-gold: #b8952f;
+
+  color-scheme: light;
+
 }
+body.city-kanazawa { --radius: 6px; }
 body.city-kanazawa .card {
-  border-radius: 6px;
-  border: 1px solid rgba(212,175,55,.4);
-  background:
-    linear-gradient(135deg, rgba(212,175,55,.04), transparent 40%),
-    #faf8f2;
-  box-shadow: 0 4px 0 rgba(44,54,57,.06);
+  border-radius: 6px; border: 1px solid rgba(212,175,55,.4);
+  background: linear-gradient(135deg, rgba(212,175,55,.04), transparent 40%), var(--card-solid);
+  box-shadow: 0 4px 0 rgba(44,54,57,.06); color: var(--text);
 }
-body.city-kanazawa .btn--primary {
-  background: linear-gradient(135deg, #2c3639, #d4af37);
-  border-radius: 4px;
-}
+body.city-kanazawa .btn--primary { background: linear-gradient(135deg, #2c3639, #d4af37); border-radius: 4px; color: #fff; }
 body.city-kanazawa .visual-panel {
   border-color: rgba(212,175,55,.55);
-  background:
-    repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(212,175,55,.05) 8px, rgba(212,175,55,.05) 16px),
-    #f5f0e4;
+  background: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(212,175,55,.05) 8px, rgba(212,175,55,.05) 16px), #f5f0e4;
 }
 body.city-kanazawa .section__eyebrow { color: #2c3639; letter-spacing: .2em; }
-body.city-kanazawa .city-stat strong { color: #b8952f; }
+body.city-kanazawa .section__title { color: var(--text); }
+body.city-kanazawa .city-stat strong { color: #9a7a1f; }
 body.city-kanazawa .chip { background: rgba(132,169,140,.18); color: #2c3639; }
+body.city-kanazawa .site-header { background: rgba(250,248,242,.94); }
+
