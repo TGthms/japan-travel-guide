@@ -4,33 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="Fukuoka travel guide — food, sights, transport, and practical tips for Japan." />
+  <meta name="theme-color" content="#f5f2ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
   <title data-i18n="cities.fukuoka.name">Fukuoka · Japan Travel Guide</title>
   <link rel="icon" href="../assets/icons/logo.svg" />
-  <link rel="stylesheet" href="../src/css/styles.css?v=nav-gallery1" />
-  <link rel="stylesheet" href="../src/css/cities/fukuoka.css?v=release-final1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/css/styles.css?v=pro-1" />
+  <link rel="stylesheet" href="../src/css/cities/fukuoka.css?v=pro-1" />
   <script>
   (function () {
     try {
-      var p = JSON.parse(localStorage.getItem('jtg-preferences') || '{}');
-      var theme = p.theme || 'auto';
-      var resolved = theme === 'auto'
-        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      var p = JSON.parse(localStorage.getItem("jtg-preferences") || "{}");
+      var theme = p.theme || "auto";
+      var resolved = theme === "auto"
+        ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
         : theme;
-      document.documentElement.setAttribute('data-theme', resolved);
-      var motion = p.motion || 'full';
-      if (motion !== 'full' && motion !== 'reduced' && motion !== 'off') motion = 'full';
-      document.documentElement.setAttribute('data-motion', motion);
-      var osReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var eff = motion === 'off' ? 'off' : ((motion === 'reduced' || osReduce) ? 'reduced' : 'full');
-      document.documentElement.setAttribute('data-motion-effective', eff);
-      if (p.lang) document.documentElement.lang = p.lang === 'zh-CN' ? 'zh-CN' : p.lang;
+      document.documentElement.setAttribute("data-theme", resolved);
+      var motion = p.motion || "full";
+      if (motion !== "full" && motion !== "reduced" && motion !== "off") motion = "full";
+      document.documentElement.setAttribute("data-motion", motion);
+      var osReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var eff = motion === "off" ? "off" : ((motion === "reduced" || osReduce) ? "reduced" : "full");
+      document.documentElement.setAttribute("data-motion-effective", eff);
+      if (p.lang) document.documentElement.lang = p.lang === "zh-CN" ? "zh-CN" : p.lang;
     } catch (e) {}
   })();
   </script>
 </head>
 <body class="city-fukuoka" data-page="city" data-city="fukuoka">
   <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
-  <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
+  <div id="loader">
+    <div class="loader__inner">
+      <div class="loader__torii" aria-hidden="true"></div>
+      <p class="loader__text" data-i18n="common.loading">Loading…</p>
+    </div>
+  </div>
   <div id="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header city-header">
@@ -39,7 +50,9 @@
         <img class="nav__logo" src="../assets/icons/logo.svg" width="36" height="36" alt="" />
         <span class="nav__brand-text" data-i18n="meta.siteName">Japan Travel Guide</span>
       </a>
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
       <nav class="nav__links" aria-label="City sections">
         <a href="#overview" data-i18n="common.overview">Overview</a>
         <a href="#food" data-i18n="common.foodGuide">Food</a>
@@ -70,27 +83,25 @@
               <span class="chip chip--gold"><span data-i18n="common.weather">Weather</span>: <strong data-temp-c-min="7" data-temp-c-max="32">—</strong></span>
               <span class="chip"><span data-i18n="common.stay">Suggested stay</span>: <strong data-i18n="cityContent.fukuoka.stay"></strong> <span data-i18n="common.days">days</span></span>
             </div>
-            
-        <div class="city-jump reveal">
-          <label class="city-jump__label" for="city-jump-select" data-i18n="cityPage.switchCity">Switch city</label>
-          <select id="city-jump-select" class="city-jump__select" aria-label="Switch city">
-            <option value="tokyo.html">Tokyo</option>
-            <option value="kyoto.html">Kyoto</option>
-            <option value="osaka.html">Osaka</option>
-            <option value="nara.html">Nara</option>
-            <option value="hiroshima.html">Hiroshima</option>
-            <option value="yokohama.html">Yokohama</option>
-            <option value="hakone.html">Hakone</option>
-            <option value="nikko.html">Nikko</option>
-            <option value="kanazawa.html">Kanazawa</option>
-            <option value="sapporo.html">Sapporo</option>
-            <option value="fukuoka.html" selected>Fukuoka</option>
-            <option value="kobe.html">Kobe</option>
-            <option value="nagasaki.html">Nagasaki</option>
-            <option value="okinawa.html">Okinawa</option>
-          </select>
-        </div>
-
+            <div class="city-jump reveal">
+              <label class="city-jump__label" for="city-jump-select" data-i18n="cityPage.switchCity">Switch city</label>
+              <select id="city-jump-select" class="city-jump__select" aria-label="Switch city">
+                <option value="tokyo.html">Tokyo</option>
+                <option value="kyoto.html">Kyoto</option>
+                <option value="osaka.html">Osaka</option>
+                <option value="nara.html">Nara</option>
+                <option value="hiroshima.html">Hiroshima</option>
+                <option value="yokohama.html">Yokohama</option>
+                <option value="hakone.html">Hakone</option>
+                <option value="nikko.html">Nikko</option>
+                <option value="kanazawa.html">Kanazawa</option>
+                <option value="sapporo.html">Sapporo</option>
+                <option value="fukuoka.html" selected>Fukuoka</option>
+                <option value="kobe.html">Kobe</option>
+                <option value="nagasaki.html">Nagasaki</option>
+                <option value="okinawa.html">Okinawa</option>
+              </select>
+            </div>
             <div class="city-stats reveal">
               <div class="card city-stat"><strong data-distance-km="890">—</strong><span data-i18n="cityPage.distanceNote">Approx. from Tokyo Station</span></div>
               <div class="card city-stat"><strong data-i18n="cityContent.fukuoka.budget">—</strong><span data-i18n="cityPage.budgetDay">per day</span></div>
@@ -98,7 +109,7 @@
               <div class="card city-stat"><strong data-i18n="cityContent.fukuoka.stay">—</strong><span data-i18n="common.stay">Suggested stay</span></div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -193,78 +204,83 @@
         </p>
       </div>
     </section>
-
   </main>
 
-<footer class="site-footer">
-  <div class="site-footer-inner container">
-    <a href="../index.html" class="site-footer-brand">❀ <span data-i18n="meta.siteName">Japan Travel Guide</span></a>
-    <p class="site-footer-tagline" data-i18n="footer.tagline">A practical multi-city planning companion for Japan trips.</p>
-    <div class="site-footer-actions">
-      <a href="https://tgthms.github.io/about/" class="footer-about-link" target="_blank" rel="noopener" data-i18n="footer.aboutMe">About Me</a>
-      <a href="https://github.com/TGthms/japan-travel-guide" class="footer-github-link" target="_blank" rel="noopener">GitHub</a>
-    </div>
-    <div class="site-footer-meta">
-      <p class="site-footer-copy" data-i18n="footer.copyright">© 2026 Japan Travel Guide · Created by Tim G</p>
-      <div class="footer-legal-links" role="navigation" aria-label="Legal">
-        <a href="../privacy.html" data-i18n="legal.privacyLink">Privacy Policy</a>
-        <span class="footer-legal-sep" aria-hidden="true">·</span>
-        <a href="../terms.html" data-i18n="legal.termsLink">Terms of Use</a>
+  <footer class="site-footer">
+    <div class="site-footer-inner container">
+      <a href="../index.html" class="site-footer-brand">❀ <span data-i18n="meta.siteName">Japan Travel Guide</span></a>
+      <p class="site-footer-tagline" data-i18n="footer.tagline">A practical multi-city planning companion for Japan trips.</p>
+      <div class="site-footer-actions">
+        <a href="https://tgthms.github.io/about/" class="footer-about-link" target="_blank" rel="noopener" data-i18n="footer.aboutMe">About Me</a>
+        <a href="https://github.com/TGthms/japan-travel-guide" class="footer-github-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="site-footer-meta">
+        <p class="site-footer-copy" data-i18n="footer.copyright">© 2026 Japan Travel Guide · Created by Tim G</p>
+        <div class="footer-legal-links" role="navigation" aria-label="Legal">
+          <a href="../privacy.html" data-i18n="legal.privacyLink">Privacy Policy</a>
+          <span class="footer-legal-sep" aria-hidden="true">·</span>
+          <a href="../terms.html" data-i18n="legal.termsLink">Terms of Use</a>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<div class="settings-overlay" id="settings-overlay" data-close-settings></div>
-<aside class="settings-panel" id="settings-panel" aria-label="Settings">
-  <div class="settings-panel__header">
-    <h2 data-i18n="common.settingsTitle">Settings</h2>
-    <button type="button" class="btn btn--icon btn--ghost" data-close-settings aria-label="Close">✕</button>
-  </div>
-  <div class="settings-group">
-    <h3 data-i18n="common.language">Language</h3>
-    <div class="settings-options">
-      <button type="button" data-setting="lang" data-value="en" data-i18n="common.langEn">English</button>
-      <button type="button" data-setting="lang" data-value="ja" data-i18n="common.langJa">日本語</button>
-      <button type="button" data-setting="lang" data-value="zh-CN" data-i18n="common.langZh">简体中文</button>
+  <div class="settings-overlay" id="settings-overlay" data-close-settings></div>
+  <aside class="settings-panel" id="settings-panel" aria-label="Settings">
+    <div class="settings-panel__header">
+      <h2 data-i18n="common.settingsTitle">Settings</h2>
+      <button type="button" class="btn btn--icon btn--ghost" data-close-settings aria-label="Close">✕</button>
     </div>
-  </div>
-  <div class="settings-group">
-    <h3 data-i18n="common.distanceUnit">Distance</h3>
-    <div class="settings-options">
-      <button type="button" data-setting="distanceUnit" data-value="km">km</button>
-      <button type="button" data-setting="distanceUnit" data-value="mi">mi</button>
+    <div class="settings-group">
+      <h3 data-i18n="common.language">Language</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="lang" data-value="en" data-i18n="common.langEn">English</button>
+        <button type="button" data-setting="lang" data-value="ja" data-i18n="common.langJa">日本語</button>
+        <button type="button" data-setting="lang" data-value="zh-CN" data-i18n="common.langZh">简体中文</button>
+      </div>
     </div>
-  </div>
-  <div class="settings-group">
-    <h3 data-i18n="common.tempUnit">Temperature</h3>
-    <div class="settings-options">
-      <button type="button" data-setting="tempUnit" data-value="c">°C</button>
-      <button type="button" data-setting="tempUnit" data-value="f">°F</button>
+    <div class="settings-group">
+      <h3 data-i18n="common.distanceUnit">Distance</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="distanceUnit" data-value="km">km</button>
+        <button type="button" data-setting="distanceUnit" data-value="mi">mi</button>
+      </div>
     </div>
-  </div>
-  <div class="settings-group">
-    <h3 data-i18n="common.theme">Theme</h3>
-    <div class="settings-options">
-      <button type="button" data-setting="theme" data-value="light" data-i18n="common.themeLight">Light</button>
-      <button type="button" data-setting="theme" data-value="dark" data-i18n="common.themeDark">Dark</button>
-      <button type="button" data-setting="theme" data-value="auto" data-i18n="common.themeAuto">Auto</button>
+    <div class="settings-group">
+      <h3 data-i18n="common.tempUnit">Temperature</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="tempUnit" data-value="c">°C</button>
+        <button type="button" data-setting="tempUnit" data-value="f">°F</button>
+      </div>
     </div>
-  </div>
-  <div class="settings-group">
-    <h3 data-i18n="common.animation">Animation</h3>
-    <div class="settings-options">
-      <button type="button" data-setting="motion" data-value="full" data-i18n="common.motionFull">Full</button>
-      <button type="button" data-setting="motion" data-value="reduced" data-i18n="common.motionReduced">Reduced</button>
-      <button type="button" data-setting="motion" data-value="off" data-i18n="common.motionOff">Off</button>
+    <div class="settings-group">
+      <h3 data-i18n="common.theme">Theme</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="theme" data-value="light" data-i18n="common.themeLight">Light</button>
+        <button type="button" data-setting="theme" data-value="dark" data-i18n="common.themeDark">Dark</button>
+        <button type="button" data-setting="theme" data-value="auto" data-i18n="common.themeAuto">Auto</button>
+      </div>
     </div>
-  </div>
-</aside>
+    <div class="settings-group">
+      <h3 data-i18n="common.animation">Animation</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="motion" data-value="full" data-i18n="common.motionFull">Full</button>
+        <button type="button" data-setting="motion" data-value="reduced" data-i18n="common.motionReduced">Reduced</button>
+        <button type="button" data-setting="motion" data-value="off" data-i18n="common.motionOff">Off</button>
+      </div>
+    </div>
+  </aside>
 
-<script>
+  <script>
   (function () {
-    const city = document.body.dataset.city;
-    // Smart back: prefer history when came from this site, else destinations
+    function esc(s) {
+      return String(s == null ? "" : s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+    var city = document.body.dataset.city;
     var cityJumpSelect = document.getElementById("city-jump-select");
     if (cityJumpSelect) {
       cityJumpSelect.addEventListener("change", function () {
@@ -283,42 +299,51 @@
     });
     function renderCity() {
       if (!window.JTG || !JTG.i18n) return;
-      const lang = JTG.Settings.get("lang");
-      const dict = JTG.i18n.getDict(lang);
-      const c = (dict.cityContent && dict.cityContent[city]) || {};
-      const hl = document.getElementById("highlights-list");
-      if (hl) hl.innerHTML = (c.highlights || []).map(function (t) {
-        return '<li class="tip-item"><span aria-hidden="true">✦</span><span>' + t + "</span></li>";
-      }).join("");
-      const fl = document.getElementById("food-list");
-      if (fl) fl.innerHTML = (c.food || []).map(function (d) {
-        return '<div class="dish-item reveal"><span class="dish-item__emoji" aria-hidden="true">' + (d.e || "🍽") +
-          '</span><div><strong>' + (d.n || "") + '</strong><p class="card__text">' + (d.d || "") + "</p></div></div>";
-      }).join("");
-      const al = document.getElementById("attr-list");
-      if (al) al.innerHTML = (c.attractions || []).map(function (a) {
-        return '<article class="card reveal"><span class="chip mb-2">' + (a.c || "") +
-          '</span><h3 class="card__title">' + (a.n || "") + '</h3><p class="card__text">' + (a.d || "") + "</p></article>";
-      }).join("");
-      const tl = document.getElementById("tips-list");
-      if (tl) tl.innerHTML = (c.tips || []).map(function (t) {
-        return '<div class="tip-item reveal"><span aria-hidden="true">✓</span><span>' + t + "</span></div>";
-      }).join("");
+      var lang = JTG.Settings.get("lang");
+      var dict = JTG.i18n.getDict(lang);
+      var c = (dict.cityContent && dict.cityContent[city]) || {};
+      var hl = document.getElementById("highlights-list");
+      if (hl) {
+        hl.innerHTML = (c.highlights || []).map(function (t) {
+          return '<li class="tip-item"><span aria-hidden="true">✦</span><span>' + esc(t) + "</span></li>";
+        }).join("");
+      }
+      var fl = document.getElementById("food-list");
+      if (fl) {
+        fl.innerHTML = (c.food || []).map(function (d) {
+          return '<div class="dish-item reveal"><span class="dish-item__emoji" aria-hidden="true">' +
+            esc(d.e || "🍽") + '</span><div><strong>' + esc(d.n || "") +
+            '</strong><p class="card__text">' + esc(d.d || "") + "</p></div></div>";
+        }).join("");
+      }
+      var al = document.getElementById("attr-list");
+      if (al) {
+        al.innerHTML = (c.attractions || []).map(function (a) {
+          return '<article class="card reveal"><span class="chip mb-2">' + esc(a.c || "") +
+            '</span><h3 class="card__title">' + esc(a.n || "") +
+            '</h3><p class="card__text">' + esc(a.d || "") + "</p></article>";
+        }).join("");
+      }
+      var tl = document.getElementById("tips-list");
+      if (tl) {
+        tl.innerHTML = (c.tips || []).map(function (t) {
+          return '<div class="tip-item reveal"><span aria-hidden="true">✓</span><span>' + esc(t) + "</span></div>";
+        }).join("");
+      }
       if (JTG.Animations) JTG.Animations.observeReveals(document);
       if (JTG.Units) JTG.Units.applyAll();
     }
     window.addEventListener("jtg:i18n", renderCity);
     document.addEventListener("DOMContentLoaded", function () { setTimeout(renderCity, 0); });
   })();
-</script>
-<script src="../src/js/data/i18n.js?v=release-final1" defer></script>
-<script src="../src/js/settings.js?v=release-final1" defer></script>
-<script src="../src/js/i18n.js?v=release-final1" defer></script>
-<script src="../src/js/units.js" defer></script>
-<script src="../src/js/currency.js" defer></script>
-<script src="../src/js/nav.js?v=release-final1" defer></script>
-<script src="../src/js/animations.js" defer></script>
-<script src="../src/js/app.js?v=release-final1" defer></script>
-
+  </script>
+  <script src="../src/js/data/i18n.js?v=pro-1" defer></script>
+  <script src="../src/js/settings.js?v=pro-1" defer></script>
+  <script src="../src/js/i18n.js?v=pro-1" defer></script>
+  <script src="../src/js/units.js?v=pro-1" defer></script>
+  <script src="../src/js/currency.js?v=pro-1" defer></script>
+  <script src="../src/js/nav.js?v=pro-1" defer></script>
+  <script src="../src/js/animations.js?v=pro-1" defer></script>
+  <script src="../src/js/app.js?v=pro-1" defer></script>
 </body>
 </html>

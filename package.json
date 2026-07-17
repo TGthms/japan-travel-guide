@@ -5,7 +5,8 @@
   "description": "Japan Travel Guide: static multi-page site (src/ layout, classic scripts) for GitHub Pages",
   "scripts": {
     "serve": "python3 -m http.server 8000",
-    "serve:node": "npx --yes serve -l 8000 ."
+    "serve:node": "npx --yes serve -l 8000 .",
+    "generate:cities": "python3 scripts/generate_city_pages.py"
   },
   "engines": {
     "node": ">=18"

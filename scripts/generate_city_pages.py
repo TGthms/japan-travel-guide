@@ -1,20 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Tokyo travel guide — food, sights, transport, and practical tips for Japan." />
-  <meta name="theme-color" content="#f5f2ef" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-  <meta name="color-scheme" content="light dark" />
-  <title data-i18n="cities.tokyo.name">Tokyo · Japan Travel Guide</title>
-  <link rel="icon" href="../assets/icons/logo.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+#!/usr/bin/env python3
+"""
+Generate all city guide HTML pages from a single template.
+
+Run from repo root:
+  python3 scripts/generate_city_pages.py
+
+City pages are static HTML for GitHub Pages. Keeping one generator avoids
+drift across 14 nearly-identical files.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "cities"
+VERSION = "pro-1"
+
+# id, display name, extra body classes, distance km from Tokyo, temp min/max °C, hero photo
+CITIES: list[tuple[str, str, str, int, int, int, str | None]] = [
+    ("tokyo", "Tokyo", "city-theme-dark", 0, 8, 30, "Tokyo.jpg"),
+    ("kyoto", "Kyoto", "", 365, 5, 32, "Kyoto.jpg"),
+    ("osaka", "Osaka", "", 400, 6, 33, "Osaka.jpg"),
+    ("nara", "Nara", "", 390, 5, 32, "Nara.jpg"),
+    ("hiroshima", "Hiroshima", "", 700, 6, 31, None),
+    ("yokohama", "Yokohama", "", 30, 7, 30, None),
+    ("hakone", "Hakone", "", 90, 3, 26, "Hakone.jpg"),
+    ("nikko", "Nikko", "city-theme-dark", 140, 1, 25, None),
+    ("kanazawa", "Kanazawa", "", 300, 3, 30, None),
+    ("sapporo", "Sapporo", "", 830, -4, 26, None),
+    ("fukuoka", "Fukuoka", "", 890, 7, 32, None),
+    ("kobe", "Kobe", "", 430, 6, 32, "Kobe.jpg"),
+    ("nagasaki", "Nagasaki", "", 1000, 7, 31, None),
+    ("okinawa", "Okinawa", "", 1550, 17, 32, None),
+]
+
+FONT_LINKS = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../src/css/styles.css?v=pro-1" />
-  <link rel="stylesheet" href="../src/css/cities/tokyo.css?v=pro-1" />
-  <script>
+"""
+
+THEME_BOOT = """  <script>
   (function () {
     try {
       var p = JSON.parse(localStorage.getItem("jtg-preferences") || "{}");
@@ -33,8 +59,81 @@
     } catch (e) {}
   })();
   </script>
-</head>
-<body class="city-tokyo city-theme-dark" data-page="city" data-city="tokyo">
+"""
+
+
+def options_html(current_id: str) -> str:
+    lines = []
+    for cid, name, *_ in CITIES:
+        sel = " selected" if cid == current_id else ""
+        lines.append(f'                <option value="{cid}.html"{sel}>{name}</option>')
+    return "\n".join(lines)
+
+
+def switcher_html(current_id: str) -> str:
+    chips = []
+    for cid, name, *_ in CITIES:
+        if cid == current_id:
+            chips.append(
+                f'          <span class="city-switcher__chip is-current" aria-current="page">'
+                f'<span data-i18n="cities.{cid}.name">{name}</span></span>'
+            )
+        else:
+            chips.append(
+                f'          <a class="city-switcher__chip" href="{cid}.html">'
+                f'<span data-i18n="cities.{cid}.name">{name}</span></a>'
+            )
+    return "\n".join(chips)
+
+
+def hero_media(name: str, photo: str | None) -> str:
+    if not photo:
+        return ""
+    return f"""          <figure class="city-hero__media reveal">
+            <img
+              src="../assets/gallery/main/{photo}"
+              alt="{name}"
+              width="1200"
+              height="800"
+              loading="eager"
+              decoding="async"
+            />
+            <figcaption class="city-hero__media-cap">
+              <span aria-hidden="true">📍</span>
+              <span>{name}</span>
+            </figcaption>
+          </figure>
+"""
+
+
+def render_city(
+    cid: str,
+    name: str,
+    extra_cls: str,
+    dist: int,
+    tmin: int,
+    tmax: int,
+    photo: str | None,
+) -> str:
+    body_cls = f"city-{cid}" + (f" {extra_cls}" if extra_cls else "")
+    hero_mod = "city-hero--with-photo" if photo else "city-hero--compact"
+    media = hero_media(name, photo)
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="{name} travel guide — food, sights, transport, and practical tips for Japan." />
+  <meta name="theme-color" content="#f5f2ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <title data-i18n="cities.{cid}.name">{name} · Japan Travel Guide</title>
+  <link rel="icon" href="../assets/icons/logo.svg" />
+{FONT_LINKS}  <link rel="stylesheet" href="../src/css/styles.css?v={VERSION}" />
+  <link rel="stylesheet" href="../src/css/cities/{cid}.css?v={VERSION}" />
+{THEME_BOOT}</head>
+<body class="{body_cls}" data-page="city" data-city="{cid}">
   <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
   <div id="loader">
     <div class="loader__inner">
@@ -70,59 +169,33 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="city-hero city-hero--with-photo">
+    <section class="city-hero {hero_mod}">
       <div class="container">
         <a class="city-back reveal" href="../index.html#destinations" data-city-back data-i18n="cityPage.back">← Back</a>
         <div class="city-hero__layout">
           <div class="city-hero__copy">
             <p class="section__eyebrow reveal" data-i18n="nav.destinations">Destinations</p>
-            <h1 class="city-hero__title reveal"><span data-i18n="cities.tokyo.name">Tokyo</span></h1>
-            <p class="city-hero__tagline section__desc reveal" data-i18n="cityContent.tokyo.tagline"></p>
+            <h1 class="city-hero__title reveal"><span data-i18n="cities.{cid}.name">{name}</span></h1>
+            <p class="city-hero__tagline section__desc reveal" data-i18n="cityContent.{cid}.tagline"></p>
             <div class="city-hero__meta reveal">
-              <span class="chip"><span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="0">—</strong></span>
-              <span class="chip chip--gold"><span data-i18n="common.weather">Weather</span>: <strong data-temp-c-min="8" data-temp-c-max="30">—</strong></span>
-              <span class="chip"><span data-i18n="common.stay">Suggested stay</span>: <strong data-i18n="cityContent.tokyo.stay"></strong> <span data-i18n="common.days">days</span></span>
+              <span class="chip"><span data-i18n="common.fromTokyo">From Tokyo</span>: <strong data-distance-km="{dist}">—</strong></span>
+              <span class="chip chip--gold"><span data-i18n="common.weather">Weather</span>: <strong data-temp-c-min="{tmin}" data-temp-c-max="{tmax}">—</strong></span>
+              <span class="chip"><span data-i18n="common.stay">Suggested stay</span>: <strong data-i18n="cityContent.{cid}.stay"></strong> <span data-i18n="common.days">days</span></span>
             </div>
             <div class="city-jump reveal">
               <label class="city-jump__label" for="city-jump-select" data-i18n="cityPage.switchCity">Switch city</label>
               <select id="city-jump-select" class="city-jump__select" aria-label="Switch city">
-                <option value="tokyo.html" selected>Tokyo</option>
-                <option value="kyoto.html">Kyoto</option>
-                <option value="osaka.html">Osaka</option>
-                <option value="nara.html">Nara</option>
-                <option value="hiroshima.html">Hiroshima</option>
-                <option value="yokohama.html">Yokohama</option>
-                <option value="hakone.html">Hakone</option>
-                <option value="nikko.html">Nikko</option>
-                <option value="kanazawa.html">Kanazawa</option>
-                <option value="sapporo.html">Sapporo</option>
-                <option value="fukuoka.html">Fukuoka</option>
-                <option value="kobe.html">Kobe</option>
-                <option value="nagasaki.html">Nagasaki</option>
-                <option value="okinawa.html">Okinawa</option>
+{options_html(cid)}
               </select>
             </div>
             <div class="city-stats reveal">
-              <div class="card city-stat"><strong data-distance-km="0">—</strong><span data-i18n="cityPage.distanceNote">Approx. from Tokyo Station</span></div>
-              <div class="card city-stat"><strong data-i18n="cityContent.tokyo.budget">—</strong><span data-i18n="cityPage.budgetDay">per day</span></div>
-              <div class="card city-stat"><strong data-temp-c-min="8" data-temp-c-max="30">—</strong><span data-i18n="cityPage.weatherAvg">Typical daytime range</span></div>
-              <div class="card city-stat"><strong data-i18n="cityContent.tokyo.stay">—</strong><span data-i18n="common.stay">Suggested stay</span></div>
+              <div class="card city-stat"><strong data-distance-km="{dist}">—</strong><span data-i18n="cityPage.distanceNote">Approx. from Tokyo Station</span></div>
+              <div class="card city-stat"><strong data-i18n="cityContent.{cid}.budget">—</strong><span data-i18n="cityPage.budgetDay">per day</span></div>
+              <div class="card city-stat"><strong data-temp-c-min="{tmin}" data-temp-c-max="{tmax}">—</strong><span data-i18n="cityPage.weatherAvg">Typical daytime range</span></div>
+              <div class="card city-stat"><strong data-i18n="cityContent.{cid}.stay">—</strong><span data-i18n="common.stay">Suggested stay</span></div>
             </div>
           </div>
-          <figure class="city-hero__media reveal">
-            <img
-              src="../assets/gallery/main/Tokyo.jpg"
-              alt="Tokyo"
-              width="1200"
-              height="800"
-              loading="eager"
-              decoding="async"
-            />
-            <figcaption class="city-hero__media-cap">
-              <span aria-hidden="true">📍</span>
-              <span>Tokyo</span>
-            </figcaption>
-          </figure>
+{media.rstrip()}
         </div>
       </div>
     </section>
@@ -132,17 +205,17 @@
         <div class="city-overview-grid">
           <div class="reveal">
             <h2 class="section__title" data-i18n="common.overview">Overview</h2>
-            <p class="city-prose mt-2" data-i18n="cityContent.tokyo.overview"></p>
+            <p class="city-prose mt-2" data-i18n="cityContent.{cid}.overview"></p>
             <h3 class="city-subhead mt-3" data-i18n="common.highlights">Highlights</h3>
             <ul class="tip-list mt-2" id="highlights-list"></ul>
           </div>
           <aside class="card card--solid city-fact-card reveal">
             <h3 data-i18n="common.bestTime">Best time</h3>
-            <p class="card__text mt-1" data-i18n="cityContent.tokyo.bestTime"></p>
+            <p class="card__text mt-1" data-i18n="cityContent.{cid}.bestTime"></p>
             <h3 class="mt-2" data-i18n="common.weather">Weather</h3>
-            <p class="card__text mt-1" data-i18n="cityContent.tokyo.weather"></p>
+            <p class="card__text mt-1" data-i18n="cityContent.{cid}.weather"></p>
             <h3 class="mt-2" data-i18n="cityPage.gettingThere">Getting there</h3>
-            <p class="card__text mt-1" data-i18n="cityContent.tokyo.gettingThere"></p>
+            <p class="card__text mt-1" data-i18n="cityContent.{cid}.gettingThere"></p>
           </aside>
         </div>
       </div>
@@ -173,7 +246,7 @@
         <header class="section__header reveal">
           <h2 class="section__title" data-i18n="common.transport">Getting around</h2>
         </header>
-        <div class="card city-transport-card reveal" data-i18n="cityContent.tokyo.transportLocal"></div>
+        <div class="card city-transport-card reveal" data-i18n="cityContent.{cid}.transportLocal"></div>
       </div>
     </section>
 
@@ -197,20 +270,7 @@
           <p class="city-switcher__desc" data-i18n="cityPage.otherCitiesDesc">Jump to another city guide without going back to the home page.</p>
         </header>
         <div class="city-switcher" role="navigation" aria-label="Other destinations">
-          <span class="city-switcher__chip is-current" aria-current="page"><span data-i18n="cities.tokyo.name">Tokyo</span></span>
-          <a class="city-switcher__chip" href="kyoto.html"><span data-i18n="cities.kyoto.name">Kyoto</span></a>
-          <a class="city-switcher__chip" href="osaka.html"><span data-i18n="cities.osaka.name">Osaka</span></a>
-          <a class="city-switcher__chip" href="nara.html"><span data-i18n="cities.nara.name">Nara</span></a>
-          <a class="city-switcher__chip" href="hiroshima.html"><span data-i18n="cities.hiroshima.name">Hiroshima</span></a>
-          <a class="city-switcher__chip" href="yokohama.html"><span data-i18n="cities.yokohama.name">Yokohama</span></a>
-          <a class="city-switcher__chip" href="hakone.html"><span data-i18n="cities.hakone.name">Hakone</span></a>
-          <a class="city-switcher__chip" href="nikko.html"><span data-i18n="cities.nikko.name">Nikko</span></a>
-          <a class="city-switcher__chip" href="kanazawa.html"><span data-i18n="cities.kanazawa.name">Kanazawa</span></a>
-          <a class="city-switcher__chip" href="sapporo.html"><span data-i18n="cities.sapporo.name">Sapporo</span></a>
-          <a class="city-switcher__chip" href="fukuoka.html"><span data-i18n="cities.fukuoka.name">Fukuoka</span></a>
-          <a class="city-switcher__chip" href="kobe.html"><span data-i18n="cities.kobe.name">Kobe</span></a>
-          <a class="city-switcher__chip" href="nagasaki.html"><span data-i18n="cities.nagasaki.name">Nagasaki</span></a>
-          <a class="city-switcher__chip" href="okinawa.html"><span data-i18n="cities.okinawa.name">Okinawa</span></a>
+{switcher_html(cid)}
         </div>
         <p class="city-switcher__all">
           <a href="../index.html#destinations" data-i18n="cityPage.viewAllDestinations">View all destinations overview →</a>
@@ -285,78 +345,92 @@
   </aside>
 
   <script>
-  (function () {
-    function esc(s) {
+  (function () {{
+    function esc(s) {{
       return String(s == null ? "" : s)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
-    }
+    }}
     var city = document.body.dataset.city;
     var cityJumpSelect = document.getElementById("city-jump-select");
-    if (cityJumpSelect) {
-      cityJumpSelect.addEventListener("change", function () {
+    if (cityJumpSelect) {{
+      cityJumpSelect.addEventListener("change", function () {{
         if (cityJumpSelect.value) location.href = cityJumpSelect.value;
-      });
-    }
-    document.querySelectorAll("[data-city-back]").forEach(function (el) {
-      el.addEventListener("click", function (e) {
-        try {
-          if (document.referrer && document.referrer.indexOf(location.host) !== -1 && history.length > 1) {
+      }});
+    }}
+    document.querySelectorAll("[data-city-back]").forEach(function (el) {{
+      el.addEventListener("click", function (e) {{
+        try {{
+          if (document.referrer && document.referrer.indexOf(location.host) !== -1 && history.length > 1) {{
             e.preventDefault();
             history.back();
-          }
-        } catch (err) {}
-      });
-    });
-    function renderCity() {
+          }}
+        }} catch (err) {{}}
+      }});
+    }});
+    function renderCity() {{
       if (!window.JTG || !JTG.i18n) return;
       var lang = JTG.Settings.get("lang");
       var dict = JTG.i18n.getDict(lang);
-      var c = (dict.cityContent && dict.cityContent[city]) || {};
+      var c = (dict.cityContent && dict.cityContent[city]) || {{}};
       var hl = document.getElementById("highlights-list");
-      if (hl) {
-        hl.innerHTML = (c.highlights || []).map(function (t) {
+      if (hl) {{
+        hl.innerHTML = (c.highlights || []).map(function (t) {{
           return '<li class="tip-item"><span aria-hidden="true">✦</span><span>' + esc(t) + "</span></li>";
-        }).join("");
-      }
+        }}).join("");
+      }}
       var fl = document.getElementById("food-list");
-      if (fl) {
-        fl.innerHTML = (c.food || []).map(function (d) {
+      if (fl) {{
+        fl.innerHTML = (c.food || []).map(function (d) {{
           return '<div class="dish-item reveal"><span class="dish-item__emoji" aria-hidden="true">' +
             esc(d.e || "🍽") + '</span><div><strong>' + esc(d.n || "") +
             '</strong><p class="card__text">' + esc(d.d || "") + "</p></div></div>";
-        }).join("");
-      }
+        }}).join("");
+      }}
       var al = document.getElementById("attr-list");
-      if (al) {
-        al.innerHTML = (c.attractions || []).map(function (a) {
+      if (al) {{
+        al.innerHTML = (c.attractions || []).map(function (a) {{
           return '<article class="card reveal"><span class="chip mb-2">' + esc(a.c || "") +
             '</span><h3 class="card__title">' + esc(a.n || "") +
             '</h3><p class="card__text">' + esc(a.d || "") + "</p></article>";
-        }).join("");
-      }
+        }}).join("");
+      }}
       var tl = document.getElementById("tips-list");
-      if (tl) {
-        tl.innerHTML = (c.tips || []).map(function (t) {
+      if (tl) {{
+        tl.innerHTML = (c.tips || []).map(function (t) {{
           return '<div class="tip-item reveal"><span aria-hidden="true">✓</span><span>' + esc(t) + "</span></div>";
-        }).join("");
-      }
+        }}).join("");
+      }}
       if (JTG.Animations) JTG.Animations.observeReveals(document);
       if (JTG.Units) JTG.Units.applyAll();
-    }
+    }}
     window.addEventListener("jtg:i18n", renderCity);
-    document.addEventListener("DOMContentLoaded", function () { setTimeout(renderCity, 0); });
-  })();
+    document.addEventListener("DOMContentLoaded", function () {{ setTimeout(renderCity, 0); }});
+  }})();
   </script>
-  <script src="../src/js/data/i18n.js?v=pro-1" defer></script>
-  <script src="../src/js/settings.js?v=pro-1" defer></script>
-  <script src="../src/js/i18n.js?v=pro-1" defer></script>
-  <script src="../src/js/units.js?v=pro-1" defer></script>
-  <script src="../src/js/currency.js?v=pro-1" defer></script>
-  <script src="../src/js/nav.js?v=pro-1" defer></script>
-  <script src="../src/js/animations.js?v=pro-1" defer></script>
-  <script src="../src/js/app.js?v=pro-1" defer></script>
+  <script src="../src/js/data/i18n.js?v={VERSION}" defer></script>
+  <script src="../src/js/settings.js?v={VERSION}" defer></script>
+  <script src="../src/js/i18n.js?v={VERSION}" defer></script>
+  <script src="../src/js/units.js?v={VERSION}" defer></script>
+  <script src="../src/js/currency.js?v={VERSION}" defer></script>
+  <script src="../src/js/nav.js?v={VERSION}" defer></script>
+  <script src="../src/js/animations.js?v={VERSION}" defer></script>
+  <script src="../src/js/app.js?v={VERSION}" defer></script>
 </body>
 </html>
+"""
+
+
+def main() -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    for row in CITIES:
+        path = OUT_DIR / f"{row[0]}.html"
+        path.write_text(render_city(*row), encoding="utf-8")
+        print(f"wrote {path.relative_to(ROOT)}")
+    print(f"done — {len(CITIES)} city pages (asset version {VERSION})")
+
+
+if __name__ == "__main__":
+    main()

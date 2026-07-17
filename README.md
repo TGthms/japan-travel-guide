@@ -48,6 +48,26 @@ npm run serve
 
 ---
 
+
+## Project structure
+
+```
+index.html · gallery.html · tools.html · privacy.html · terms.html
+cities/                 # 14 city guides (generated)
+src/css/styles.css      # shared design system + release locks
+src/css/cities/         # per-city theme skins
+src/js/                 # classic JTG modules (no bundler)
+src/js/data/i18n.js     # EN / JA / zh-CN strings + city content
+assets/                 # icons + gallery media
+scripts/generate_city_pages.py
+```
+
+Regenerate city pages after template changes:
+
+```bash
+npm run generate:cities
+```
+
 ## 💬 Feedback
 
 This is an interest-driven personal project — bug reports and suggestions are welcome!

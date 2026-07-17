@@ -2,13 +2,13 @@
  * Japan Travel Guide — client application bootstrap
  * Shared by index · gallery · tools · privacy · terms · cities/*
  *
- * Companion classic scripts (not ES modules), same model as the USA guide:
- *   · src/js/data/i18n.js      → JTG.TRANSLATIONS
- *   · src/js/fun-facts.js → JTG.FunFacts (optional)
- *   · src/js/legal-i18n.js     → JTG.Legal
- *   · feature modules (settings, units, currency, budget, …)
+ * Classic scripts (not ES modules):
+ *   · src/js/data/i18n.js  → JTG.TRANSLATIONS
+ *   · src/js/fun-facts.js  → JTG.FunFacts (home, optional)
+ *   · src/js/legal-i18n.js → JTG.Legal (privacy/terms)
+ *   · feature modules: settings, units, currency, budget, packing, …
  *
- * Design goals (aligned with USA guide core tech):
+ * Design goals:
  *   · Never throw on missing APIs (IntersectionObserver, matchMedia, …)
  *   · Skip heavy work on constrained / mobile viewports
  *   · Preferences via safeStorage (localStorage with try/catch)
@@ -276,7 +276,7 @@
     setTimeout(hide, 2000);
   }
 
-  /* ── Boot feature modules (same order as legacy main.js) ── */
+  /* ── Boot feature modules ── */
   function bootFeatures() {
     if (global.JTG.i18n) global.JTG.i18n.apply();
     if (global.JTG.Units) global.JTG.Units.applyAll();
