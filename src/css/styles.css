@@ -413,8 +413,8 @@ img.nav__logo {
   flex-shrink: 0;
 }
 
-/* Tools is a separate page — sit with Settings, not section anchors */
-.nav__actions .nav__tools {
+/* Separate pages (Gallery, Tools) sit with Settings — not section anchors */
+.nav__actions .nav__page-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -430,10 +430,17 @@ img.nav__logo {
   background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 6%, transparent);
 }
 
-.nav__actions .nav__tools:hover {
+.nav__actions .nav__page-link:hover {
   background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 12%, transparent);
   color: var(--deep-red-bright, #c41e3a);
   opacity: 1;
+}
+
+@media (max-width: 420px) {
+  .nav__actions .nav__page-link {
+    padding: 0.35rem 0.65rem;
+    font-size: 11px;
+  }
 }
 
 .nav__toggle {
