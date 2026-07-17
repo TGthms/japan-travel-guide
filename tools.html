@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=nav-gallery1" />
+  <link rel="stylesheet" href="src/css/styles.css?v=budget-ui2" />
   <script>
   (function () {
     try {
@@ -74,162 +74,175 @@
       <div class="tools-grid">
 
         <!-- BUDGET PLANNER -->
-        <section class="tool-card tool-card-wide reveal" id="budget">
-          <div class="tool-label" data-i18n="budget.title">Budget planner</div>
-          <p class="tool-sub" data-i18n="budget.desc">Build a realistic Japan trip cost from daily rates, long-distance rail, transfers, and a contingency buffer. Figures are estimates for planning—not quotes.</p>
-
-          <div class="budget-presets" id="budget-presets" role="group" aria-label="Budget presets">
-            <span class="budget-presets__label" data-i18n="budget.presetsLabel">Start from a style</span>
-            <div class="budget-presets__row">
-              <button type="button" class="budget-preset" data-preset="backpacker" data-i18n="budget.presetBackpacker">Backpacker</button>
-              <button type="button" class="budget-preset is-active" data-preset="balanced" data-i18n="budget.presetBalanced">Balanced</button>
-              <button type="button" class="budget-preset" data-preset="comfort" data-i18n="budget.presetComfort">Comfort</button>
-              <button type="button" class="budget-preset" data-preset="luxury" data-i18n="budget.presetLuxury">Luxury</button>
+        <section class="tool-card tool-card-wide budget-tool reveal" id="budget">
+          <header class="budget-tool__header">
+            <div>
+              <div class="tool-label" data-i18n="budget.title">Budget planner</div>
+              <p class="tool-sub" data-i18n="budget.desc">Realistic Japan trip cost estimate from daily rates, rail, transfers, and a buffer. Planning figures only—not a quote.</p>
             </div>
-          </div>
+            <div class="budget-presets" id="budget-presets" role="group" aria-label="Budget presets">
+              <span class="budget-presets__label" data-i18n="budget.presetsLabel">Style</span>
+              <div class="budget-presets__row">
+                <button type="button" class="budget-preset" data-preset="backpacker" data-i18n="budget.presetBackpacker">Backpacker</button>
+                <button type="button" class="budget-preset is-active" data-preset="balanced" data-i18n="budget.presetBalanced">Balanced</button>
+                <button type="button" class="budget-preset" data-preset="comfort" data-i18n="budget.presetComfort">Comfort</button>
+                <button type="button" class="budget-preset" data-preset="luxury" data-i18n="budget.presetLuxury">Luxury</button>
+              </div>
+            </div>
+          </header>
 
           <div class="budget-layout" id="budget-planner">
-            <div class="card card--solid budget-inputs">
-              <h3 class="budget-section-title" data-i18n="budget.sectionTrip">Trip basics</h3>
-              <div class="budget-form-grid">
-                <div class="form-group">
-                  <label for="budget-days" data-i18n="budget.days">Days in Japan</label>
-                  <input type="number" id="budget-days" min="1" max="90" value="10" inputmode="numeric" />
-                  <p class="form-hint" data-i18n="budget.daysHint">Nights of lodging ≈ days − 1 is common; we bill lodging for every day for a safe buffer.</p>
+            <div class="budget-inputs">
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionTrip">Trip basics</h3>
+                <div class="budget-fields">
+                  <div class="budget-field">
+                    <label for="budget-days" data-i18n="budget.days">Days in Japan</label>
+                    <input type="number" id="budget-days" min="1" max="90" value="10" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-travelers" data-i18n="budget.travelers">Travelers</label>
+                    <input type="number" id="budget-travelers" min="1" max="12" value="1" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-cities" data-i18n="budget.cities">Cities / bases</label>
+                    <input type="number" id="budget-cities" min="1" max="10" value="3" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-season" data-i18n="budget.season">Season</label>
+                    <select id="budget-season">
+                      <option value="low" data-i18n="budget.seasonLow">Low season</option>
+                      <option value="shoulder" selected data-i18n="budget.seasonShoulder">Shoulder</option>
+                      <option value="peak" data-i18n="budget.seasonPeak">Peak season</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="budget-travelers" data-i18n="budget.travelers">Travelers</label>
-                  <input type="number" id="budget-travelers" min="1" max="12" value="1" inputmode="numeric" />
-                  <p class="form-hint" data-i18n="budget.travelersHint">Lodging can be shared; food, transit, and tickets scale per person.</p>
-                </div>
-                <div class="form-group">
-                  <label for="budget-cities" data-i18n="budget.cities">Cities / bases</label>
-                  <input type="number" id="budget-cities" min="1" max="10" value="3" inputmode="numeric" />
-                  <p class="form-hint" data-i18n="budget.citiesHint">Used to estimate long-distance legs between cities.</p>
-                </div>
-                <div class="form-group">
-                  <label for="budget-season" data-i18n="budget.season">Season pressure</label>
-                  <select id="budget-season">
-                    <option value="low" data-i18n="budget.seasonLow">Low (Jan–Feb, Jun, Sep)</option>
-                    <option value="shoulder" selected data-i18n="budget.seasonShoulder">Shoulder (most of year)</option>
-                    <option value="peak" data-i18n="budget.seasonPeak">Peak (sakura / Golden Week / foliage / NY)</option>
-                  </select>
-                </div>
-              </div>
+              </section>
 
-              <h3 class="budget-section-title" data-i18n="budget.sectionDaily">Daily spending style</h3>
-              <div class="budget-form-grid">
-                <div class="form-group">
-                  <label for="budget-acc" data-i18n="budget.accommodation">Accommodation (per room / night)</label>
-                  <select id="budget-acc">
-                    <option value="hostel" data-i18n="budget.hostel">Hostel / capsule (~¥3,500–5,000)</option>
-                    <option value="business" data-i18n="budget.business">Business hotel (~¥8,000–12,000)</option>
-                    <option value="mid" selected data-i18n="budget.mid">Mid-range hotel (~¥14,000–20,000)</option>
-                    <option value="ryokan" data-i18n="budget.ryokan">Ryokan / boutique (~¥25,000–40,000)</option>
-                    <option value="luxury" data-i18n="budget.luxury">Luxury (~¥45,000+)</option>
-                  </select>
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionDaily">Daily style</h3>
+                <div class="budget-fields">
+                  <div class="budget-field budget-field--wide">
+                    <label for="budget-acc" data-i18n="budget.accommodation">Accommodation</label>
+                    <select id="budget-acc">
+                      <option value="hostel" data-i18n="budget.hostel">Hostel / capsule</option>
+                      <option value="business" data-i18n="budget.business">Business hotel</option>
+                      <option value="mid" selected data-i18n="budget.mid">Mid-range hotel</option>
+                      <option value="ryokan" data-i18n="budget.ryokan">Ryokan / boutique</option>
+                      <option value="luxury" data-i18n="budget.luxury">Luxury</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-rooms" data-i18n="budget.rooms">Rooms</label>
+                    <input type="number" id="budget-rooms" min="1" max="6" value="1" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-transport" data-i18n="budget.transport">City transport</label>
+                    <select id="budget-transport">
+                      <option value="local" data-i18n="budget.local">IC + walking</option>
+                      <option value="pass" selected data-i18n="budget.pass">Metro day-pass mix</option>
+                      <option value="active" data-i18n="budget.active">Active city-hopping</option>
+                      <option value="taxi" data-i18n="budget.taxi">Taxi-heavy</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-food" data-i18n="budget.food">Food</label>
+                    <select id="budget-food">
+                      <option value="budget" data-i18n="budget.foodBudget">Budget eats</option>
+                      <option value="mid" selected data-i18n="budget.foodMid">Restaurant mix</option>
+                      <option value="nice" data-i18n="budget.foodNice">Nice dinners</option>
+                      <option value="gourmet" data-i18n="budget.foodGourmet">Gourmet</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-attr" data-i18n="budget.attractions">Sights &amp; activities</label>
+                    <select id="budget-attr">
+                      <option value="light" data-i18n="budget.attrLight">Light</option>
+                      <option value="standard" selected data-i18n="budget.attrStandard">Standard</option>
+                      <option value="heavy" data-i18n="budget.attrHeavy">Ticket-heavy</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="budget-rooms" data-i18n="budget.rooms">Rooms</label>
-                  <input type="number" id="budget-rooms" min="1" max="6" value="1" inputmode="numeric" />
-                </div>
-                <div class="form-group">
-                  <label for="budget-transport" data-i18n="budget.transport">City transport (per person / day)</label>
-                  <select id="budget-transport">
-                    <option value="local" data-i18n="budget.local">IC + walking (~¥800–1,500)</option>
-                    <option value="pass" selected data-i18n="budget.pass">Metro day-pass mix (~¥1,500–2,500)</option>
-                    <option value="active" data-i18n="budget.active">Active city-hopping (~¥2,500–4,000)</option>
-                    <option value="taxi" data-i18n="budget.taxi">Taxi-heavy (~¥5,000–10,000)</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="budget-food" data-i18n="budget.food">Food (per person / day)</label>
-                  <select id="budget-food">
-                    <option value="budget" data-i18n="budget.foodBudget">Convenience + casual (~¥2,500–3,500)</option>
-                    <option value="mid" selected data-i18n="budget.foodMid">Mix of restaurants (~¥4,500–7,000)</option>
-                    <option value="nice" data-i18n="budget.foodNice">Nice dinners most nights (~¥8,000–12,000)</option>
-                    <option value="gourmet" data-i18n="budget.foodGourmet">Gourmet / kaiseki (~¥15,000+)</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="budget-attr" data-i18n="budget.attractions">Sights &amp; activities (per person / day)</label>
-                  <select id="budget-attr">
-                    <option value="light" data-i18n="budget.attrLight">Temples + free views (~¥1,000–2,000)</option>
-                    <option value="standard" selected data-i18n="budget.attrStandard">Museums + paid spots (~¥3,000–5,000)</option>
-                    <option value="heavy" data-i18n="budget.attrHeavy">Theme parks / shows (~¥7,000–12,000)</option>
-                  </select>
-                </div>
-              </div>
+              </section>
 
-              <h3 class="budget-section-title" data-i18n="budget.sectionOnce">Trip add-ons (once or per leg)</h3>
-              <div class="budget-form-grid">
-                <div class="form-group">
-                  <label for="budget-rail-legs" data-i18n="budget.railLegs">Long-distance rail legs</label>
-                  <input type="number" id="budget-rail-legs" min="0" max="20" value="2" inputmode="numeric" />
-                  <p class="form-hint" data-i18n="budget.railLegsHint">e.g. Tokyo→Kyoto and Kyoto→Tokyo = 2. Auto-suggests from city count if you change cities.</p>
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionOnce">Travel add-ons</h3>
+                <div class="budget-fields">
+                  <div class="budget-field">
+                    <label for="budget-rail-legs" data-i18n="budget.railLegs">Long-distance legs</label>
+                    <input type="number" id="budget-rail-legs" min="0" max="20" value="2" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-rail-style" data-i18n="budget.railStyle">Long-distance style</label>
+                    <select id="budget-rail-style">
+                      <option value="shinkansen" selected data-i18n="budget.railShinkansen">Shinkansen</option>
+                      <option value="highway" data-i18n="budget.railHighway">Bus / slower rail</option>
+                      <option value="pass" data-i18n="budget.railPass">JR Pass style</option>
+                      <option value="flight" data-i18n="budget.railFlight">Domestic flights</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-airport" data-i18n="budget.airport">Airport transfers</label>
+                    <select id="budget-airport">
+                      <option value="train" selected data-i18n="budget.airportTrain">Train / bus</option>
+                      <option value="express" data-i18n="budget.airportExpress">Airport express</option>
+                      <option value="taxi" data-i18n="budget.airportTaxi">Taxi / private</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-sim" data-i18n="budget.sim">Phone data</label>
+                    <select id="budget-sim">
+                      <option value="none" data-i18n="budget.simNone">Wi‑Fi only</option>
+                      <option value="esim" selected data-i18n="budget.simEsim">eSIM / pocket Wi‑Fi</option>
+                      <option value="premium" data-i18n="budget.simPremium">High-data eSIM</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-buffer" data-i18n="budget.buffer">Contingency</label>
+                    <select id="budget-buffer">
+                      <option value="5" data-i18n="budget.buffer5">5%</option>
+                      <option value="10" selected data-i18n="budget.buffer10">10% recommended</option>
+                      <option value="15" data-i18n="budget.buffer15">15%</option>
+                      <option value="20" data-i18n="budget.buffer20">20%</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-currency" data-i18n="budget.currency">Currency</label>
+                    <select id="budget-currency">
+                      <option value="JPY">JPY</option>
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="CNY">CNY</option>
+                      <option value="GBP">GBP</option>
+                      <option value="AUD">AUD</option>
+                      <option value="CAD">CAD</option>
+                      <option value="KRW">KRW</option>
+                      <option value="TWD">TWD</option>
+                      <option value="SGD">SGD</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="budget-rail-style" data-i18n="budget.railStyle">Long-distance style</label>
-                  <select id="budget-rail-style">
-                    <option value="shinkansen" selected data-i18n="budget.railShinkansen">Shinkansen reserved (avg ~¥13,000/leg)</option>
-                    <option value="highway" data-i18n="budget.railHighway">Highway bus / slower rail (~¥5,000/leg)</option>
-                    <option value="pass" data-i18n="budget.railPass">JR Pass style (spreads cost)</option>
-                    <option value="flight" data-i18n="budget.railFlight">Domestic flight mix (~¥12,000/leg)</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="budget-airport" data-i18n="budget.airport">Airport transfers (round-trip pair)</label>
-                  <select id="budget-airport">
-                    <option value="train" selected data-i18n="budget.airportTrain">Train / limousine bus (~¥3,000 pp RT)</option>
-                    <option value="express" data-i18n="budget.airportExpress">NEX / Haruka style (~¥6,000 pp RT)</option>
-                    <option value="taxi" data-i18n="budget.airportTaxi">Taxi / private (~¥20,000 RT shared)</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="budget-sim" data-i18n="budget.sim">Phone data</label>
-                  <select id="budget-sim">
-                    <option value="none" data-i18n="budget.simNone">Use hotel / free Wi‑Fi</option>
-                    <option value="esim" selected data-i18n="budget.simEsim">eSIM / pocket Wi‑Fi (~¥3,500 trip)</option>
-                    <option value="premium" data-i18n="budget.simPremium">High-data eSIM (~¥6,000 trip)</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="budget-buffer" data-i18n="budget.buffer">Contingency buffer</label>
-                  <select id="budget-buffer">
-                    <option value="5" data-i18n="budget.buffer5">5% — tight plan</option>
-                    <option value="10" selected data-i18n="budget.buffer10">10% — recommended</option>
-                    <option value="15" data-i18n="budget.buffer15">15% — flexible</option>
-                    <option value="20" data-i18n="budget.buffer20">20% — worry-free</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="budget-currency" data-i18n="budget.currency">Display currency</label>
-                  <select id="budget-currency">
-                    <option value="JPY">JPY ¥</option>
-                    <option value="USD">USD $</option>
-                    <option value="EUR">EUR €</option>
-                    <option value="CNY">CNY ¥</option>
-                    <option value="GBP">GBP £</option>
-                    <option value="AUD">AUD $</option>
-                    <option value="CAD">CAD $</option>
-                    <option value="KRW">KRW ₩</option>
-                    <option value="TWD">TWD $</option>
-                    <option value="SGD">SGD $</option>
-                  </select>
-                </div>
-              </div>
+              </section>
             </div>
 
-            <div class="card card--solid budget-results">
-              <p class="budget-results__label" data-i18n="budget.total">Estimated trip total</p>
-              <div class="budget-total" id="budget-total">—</div>
-              <div class="budget-meta-row" id="budget-meta"></div>
+            <aside class="budget-results" aria-live="polite">
+              <div class="budget-results__hero">
+                <p class="budget-results__label" data-i18n="budget.total">Estimated trip total</p>
+                <div class="budget-total" id="budget-total">—</div>
+                <div class="budget-meta-row" id="budget-meta"></div>
+              </div>
               <div class="budget-range" id="budget-range" aria-label="Cost range"></div>
-              <div class="budget-breakdown" id="budget-breakdown"></div>
-              <ul class="budget-tips" id="budget-tips"></ul>
+              <div class="budget-results__section">
+                <h4 class="budget-results__h" data-i18n="budget.breakdownTitle">Breakdown</h4>
+                <div class="budget-breakdown" id="budget-breakdown"></div>
+              </div>
+              <div class="budget-results__section">
+                <h4 class="budget-results__h" data-i18n="budget.tipsTitle">Tips for this plan</h4>
+                <ul class="budget-tips" id="budget-tips"></ul>
+              </div>
               <p class="rates-note" id="budget-rates-note"></p>
-              <p class="budget-disclaimer" data-i18n="budget.disclaimer">Indicative averages for independent travelers (2025–2026 style pricing). Hotel peaks, festivals, and first-class rail can run higher. Always confirm fares and room rates before booking.</p>
-            </div>
+              <p class="budget-disclaimer" data-i18n="budget.disclaimer">Indicative averages for independent travelers. Hotel peaks and premium rail can run higher—confirm before booking.</p>
+            </aside>
           </div>
         </section>
 
@@ -456,12 +469,12 @@
 
 
 
-  <script src="src/js/data/i18n.js?v=budget-v2" defer></script>
+  <script src="src/js/data/i18n.js?v=budget-ui2" defer></script>
   <script src="src/js/settings.js?v=release-final1" defer></script>
   <script src="src/js/i18n.js?v=release-final1" defer></script>
   <script src="src/js/units.js" defer></script>
   <script src="src/js/currency.js" defer></script>
-  <script src="src/js/budget.js?v=budget-v2" defer></script>
+  <script src="src/js/budget.js?v=budget-ui2" defer></script>
   <script src="src/js/packing.js?v=release-final1" defer></script>
   <script src="src/js/nav.js?v=release-final1" defer></script>
   <script src="src/js/animations.js" defer></script>
