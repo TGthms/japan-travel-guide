@@ -441,7 +441,11 @@
         "phrasebook": "Offline phrase pack",
         "umbrella": "Travel umbrella",
         "snacks": "Familiar snacks"
-      }
+      },
+      "progressLabel": "Packed",
+      "progressStart": "Start checking items to fill the bar.",
+      "progressMid": "{pct}% packed — keep going.",
+      "progressDone": "All packed — you’re ready to go."
     },
     "seasons": {
       "eyebrow": "When to go",
@@ -2114,7 +2118,11 @@
         "phrasebook": "オフライン会話集",
         "umbrella": "折りたたみ傘",
         "snacks": "慣れ親しんだおやつ"
-      }
+      },
+      "progressLabel": "準備済み",
+      "progressStart": "チェックするとバーが埋まっていきます。",
+      "progressMid": "{pct}% 完了 — この調子で。",
+      "progressDone": "全部チェック済み。出発の準備OK。"
     },
     "seasons": {
       "eyebrow": "いつ行くか",
@@ -3786,7 +3794,11 @@
         "phrasebook": "离线短语包",
         "umbrella": "折叠伞",
         "snacks": "熟悉的零食"
-      }
+      },
+      "progressLabel": "已打包",
+      "progressStart": "勾选物品后进度条会随之填充。",
+      "progressMid": "已完成 {pct}% — 继续加油。",
+      "progressDone": "全部勾选完成，可以出发了。"
     },
     "seasons": {
       "eyebrow": "何时出发",

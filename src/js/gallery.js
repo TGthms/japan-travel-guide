@@ -29,9 +29,39 @@
   }
 
   async function loadManifest() {
-    const res = await fetch(assetBase() + "gallery.json");
-    if (!res.ok) throw new Error("Failed to load gallery.json");
-    return res.json();
+    const url = assetBase() + "gallery.json";
+    try {
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) throw new Error("Failed to load gallery.json (" + res.status + ")");
+      return await res.json();
+    } catch (err) {
+      // file:// or offline: try XHR (some browsers allow it when fetch fails)
+      try {
+        const data = await new Promise(function (resolve, reject) {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", url, true);
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 0) {
+              try {
+                resolve(JSON.parse(xhr.responseText || "{}"));
+              } catch (e) {
+                reject(e);
+              }
+            } else {
+              reject(new Error("XHR " + xhr.status));
+            }
+          };
+          xhr.onerror = function () {
+            reject(new Error("XHR network error"));
+          };
+          xhr.send();
+        });
+        return data;
+      } catch (e2) {
+        console.warn("[gallery] manifest unavailable", err, e2);
+        return { version: 1, photos: [], updatedAt: null };
+      }
+    }
   }
 
   function escapeHtml(s) {

@@ -4,7 +4,7 @@
  *
  * Companion classic scripts (not ES modules), same model as the USA guide:
  *   · src/js/data/i18n.js      → JTG.TRANSLATIONS
- *   · src/js/data/fun-facts.js → JTG.FunFacts pool helpers (optional)
+ *   · src/js/fun-facts.js → JTG.FunFacts (optional)
  *   · src/js/legal-i18n.js     → JTG.Legal
  *   · feature modules (settings, units, currency, budget, …)
  *
@@ -351,6 +351,8 @@
   }
 
   function boot() {
+    global.JTG = global.JTG || {};
+    global.JTG.__bootedViaApp = true;
     enhanceSettings();
     if (global.JTG.Settings) global.JTG.Settings.init();
     initLoader();

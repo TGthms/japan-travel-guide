@@ -1,5 +1,5 @@
 /**
- * Interactive packing checklist with localStorage persistence
+ * Interactive packing checklist with localStorage persistence + progress bar
  */
 (function (global) {
   "use strict";
@@ -14,6 +14,14 @@
     extras: ["cashYen", "toteBag", "phrasebook", "umbrella", "snacks"],
   };
 
+  function allKeys() {
+    const keys = [];
+    Object.keys(DEFAULT_ITEMS).forEach((cat) => {
+      DEFAULT_ITEMS[cat].forEach((id) => keys.push(`${cat}.${id}`));
+    });
+    return keys;
+  }
+
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -25,6 +33,63 @@
 
   function saveState(state) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function countProgress(state) {
+    const keys = allKeys();
+    const total = keys.length;
+    let done = 0;
+    keys.forEach((k) => {
+      if (state[k]) done += 1;
+    });
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
+  }
+
+  function updateProgress(state) {
+    const t = global.JTG.i18n ? global.JTG.i18n.t.bind(global.JTG.i18n) : (k) => k;
+    const { done, total, pct } = countProgress(state);
+
+    const countEl = document.getElementById("packing-progress-count");
+    const fillEl = document.getElementById("packing-progress-fill");
+    const barEl = document.getElementById("packing-progress-bar");
+    const hintEl = document.getElementById("packing-progress-hint");
+    const wrap = document.getElementById("packing-progress");
+
+    if (countEl) {
+      countEl.textContent = `${done} / ${total}`;
+    }
+    if (fillEl) {
+      fillEl.classList.toggle("is-complete", pct >= 100);
+      fillEl.classList.toggle("is-started", pct > 0 && pct < 100);
+      const w = pct + "%";
+      // Ensure transition is visible even when width was 0 on first paint
+      if (!fillEl.style.width) fillEl.style.width = "0%";
+      requestAnimationFrame(function () {
+        fillEl.style.width = w;
+      });
+    }
+    if (barEl) {
+      barEl.setAttribute("aria-valuenow", String(pct));
+      barEl.setAttribute("aria-valuetext", `${done} of ${total} items packed, ${pct}%`);
+    }
+    if (hintEl) {
+      if (pct >= 100) {
+        hintEl.textContent = t("packing.progressDone");
+      } else if (pct > 0) {
+        // Prefer localized template if present
+        const tmpl = t("packing.progressMid");
+        hintEl.textContent =
+          tmpl && tmpl !== "packing.progressMid"
+            ? tmpl.replace("{pct}", String(pct)).replace("{done}", String(done)).replace("{total}", String(total))
+            : `${pct}% packed — keep going.`;
+      } else {
+        hintEl.textContent = t("packing.progressStart");
+      }
+    }
+    if (wrap) {
+      wrap.classList.toggle("is-complete", pct >= 100);
+      wrap.classList.toggle("is-started", pct > 0);
+    }
   }
 
   function bind(container) {
@@ -53,6 +118,7 @@
             state[key] = input.checked;
             saveState(state);
             label.classList.toggle("is-checked", input.checked);
+            updateProgress(state);
           });
           const span = document.createElement("span");
           span.textContent = t(`packing.item.${id}`);
@@ -63,6 +129,8 @@
 
         container.appendChild(catEl);
       });
+
+      updateProgress(state);
 
       if (global.JTG.Animations && global.JTG.Animations.observeReveals) {
         global.JTG.Animations.observeReveals(container);
@@ -96,5 +164,5 @@
   }
 
   global.JTG = global.JTG || {};
-  global.JTG.Packing = { bind, DEFAULT_ITEMS };
+  global.JTG.Packing = { bind, DEFAULT_ITEMS, countProgress };
 })(window);
