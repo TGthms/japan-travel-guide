@@ -8,11 +8,11 @@
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
   <meta name="color-scheme" content="light dark" />
   <title>Japan Travel Guide — Plan multi-city trips</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b1a2b'/%3E%3Ctext x='32' y='44' font-size='32' text-anchor='middle' fill='%23f8b4c4'%3E%E6%97%A5%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="assets/icons/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=about-photos-all1" />
+  <link rel="stylesheet" href="src/css/styles.css?v=fuji-logo-cities1" />
   <script>
   (function () {
     try {
@@ -41,7 +41,7 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a class="nav__brand" href="index.html"><span class="nav__logo">日</span><span data-i18n="meta.siteName">Japan Travel Guide</span></a>
+      <a class="nav__brand" href="index.html"><img class="nav__logo" src="assets/icons/logo.svg" width="36" height="36" alt="" /><span data-i18n="meta.siteName">Japan Travel Guide</span></a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav class="nav__links" aria-label="Primary">
         <a href="#about" data-i18n="nav.about">About</a>
@@ -492,7 +492,7 @@
         <div class="grid-3 stagger">
           
       <a class="card dest-card reveal" href="cities/tokyo.html">
-        <div class="visual-panel visual-panel--sm" data-visual="tokyo" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🏙</span></div>
+        <div class="visual-panel visual-panel--sm visual-panel--photo" data-visual="tokyo" role="img" aria-label="Tokyo"><img class="visual-panel__photo" src="assets/gallery/main/Tokyo.jpg" alt="" loading="lazy" decoding="async" width="800" height="500" /></div>
         <div class="dest-card__body">
           <h3 class="card__title">🏙 <span data-i18n="cities.tokyo.name">Tokyo</span></h3>
           <p class="card__text" data-i18n="cities.tokyo.blurb"></p>
@@ -503,7 +503,7 @@
         </div>
       </a>
       <a class="card dest-card reveal" href="cities/kyoto.html">
-        <div class="visual-panel visual-panel--sm" data-visual="kyoto" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🏛</span></div>
+        <div class="visual-panel visual-panel--sm visual-panel--photo" data-visual="kyoto" role="img" aria-label="Kyoto"><img class="visual-panel__photo" src="assets/gallery/main/Kyoto.jpg" alt="" loading="lazy" decoding="async" width="800" height="500" /></div>
         <div class="dest-card__body">
           <h3 class="card__title">🏛 <span data-i18n="cities.kyoto.name">Kyoto</span></h3>
           <p class="card__text" data-i18n="cities.kyoto.blurb"></p>
@@ -514,7 +514,7 @@
         </div>
       </a>
       <a class="card dest-card reveal" href="cities/osaka.html">
-        <div class="visual-panel visual-panel--sm" data-visual="osaka" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🍜</span></div>
+        <div class="visual-panel visual-panel--sm visual-panel--photo" data-visual="osaka" role="img" aria-label="Osaka"><img class="visual-panel__photo" src="assets/gallery/main/Osaka.jpg" alt="" loading="lazy" decoding="async" width="800" height="500" /></div>
         <div class="dest-card__body">
           <h3 class="card__title">🍜 <span data-i18n="cities.osaka.name">Osaka</span></h3>
           <p class="card__text" data-i18n="cities.osaka.blurb"></p>
@@ -525,7 +525,7 @@
         </div>
       </a>
       <a class="card dest-card reveal" href="cities/nara.html">
-        <div class="visual-panel visual-panel--sm" data-visual="nara" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🦌</span></div>
+        <div class="visual-panel visual-panel--sm visual-panel--photo" data-visual="nara" role="img" aria-label="Nara"><img class="visual-panel__photo" src="assets/gallery/main/Nara.jpg" alt="" loading="lazy" decoding="async" width="800" height="500" /></div>
         <div class="dest-card__body">
           <h3 class="card__title">🦌 <span data-i18n="cities.nara.name">Nara</span></h3>
           <p class="card__text" data-i18n="cities.nara.blurb"></p>
@@ -558,7 +558,7 @@
         </div>
       </a>
       <a class="card dest-card reveal" href="cities/hakone.html">
-        <div class="visual-panel visual-panel--sm" data-visual="hakone" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🗻</span></div>
+        <div class="visual-panel visual-panel--sm visual-panel--photo" data-visual="hakone" role="img" aria-label="Hakone"><img class="visual-panel__photo" src="assets/gallery/main/Hakone.jpg" alt="" loading="lazy" decoding="async" width="800" height="500" /></div>
         <div class="dest-card__body">
           <h3 class="card__title">♨️ <span data-i18n="cities.hakone.name">Hakone</span></h3>
           <p class="card__text" data-i18n="cities.hakone.blurb"></p>
@@ -613,7 +613,7 @@
         </div>
       </a>
       <a class="card dest-card reveal" href="cities/kobe.html">
-        <div class="visual-panel visual-panel--sm" data-visual="kobe" role="img" aria-hidden="true"><div class="visual-panel__glow"></div><span class="visual-panel__glyph">🌉</span></div>
+        <div class="visual-panel visual-panel--sm visual-panel--photo" data-visual="kobe" role="img" aria-label="Kobe"><img class="visual-panel__photo" src="assets/gallery/main/Kobe.jpg" alt="" loading="lazy" decoding="async" width="800" height="500" /></div>
         <div class="dest-card__body">
           <h3 class="card__title">🥩 <span data-i18n="cities.kobe.name">Kobe</span></h3>
           <p class="card__text" data-i18n="cities.kobe.blurb"></p>
