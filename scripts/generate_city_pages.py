@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "cities"
-VERSION = "prod-lock1"
+VERSION = "icon-refine1"
 
 # id, display name, extra body classes, distance km from Tokyo, temp min/max °C, hero photo
 CITIES: list[tuple[str, str, str, int, int, int, str | None]] = [

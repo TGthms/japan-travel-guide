@@ -6462,59 +6462,108 @@ body.jtg-settings-open {
   overflow: hidden !important;
 }
 
-/* ----- Nav icons: large, high-contrast ----- */
+/* ----- Nav icons: quiet toolbar (no heavy gray tiles) ----- */
+.nav__actions {
+  gap: 0 !important;
+  padding: 0.15rem !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+}
+
 .nav__icon-btn {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  border-radius: 12px !important;
-  font-size: 1.4rem !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 999px !important;
+  font-size: 1.2rem !important;
   line-height: 1 !important;
-  color: #1d1d1f !important;
-  background: color-mix(in srgb, #1d1d1f 6%, transparent) !important;
+  color: #3a3a3c !important;
+  background: transparent !important;
   opacity: 1 !important;
   filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  transition:
+    background 0.18s ease,
+    transform 0.15s ease,
+    color 0.18s ease !important;
 }
 .nav__icon-btn:hover,
 .nav__icon-btn:focus-visible {
-  background: color-mix(in srgb, #1d1d1f 11%, transparent) !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+  color: #1d1d1f !important;
+  outline: none !important;
+}
+.nav__icon-btn:active {
+  transform: scale(0.92) !important;
+  background: rgba(0, 0, 0, 0.09) !important;
 }
 [data-theme="dark"] .nav__icon-btn {
-  color: #f5f5f7 !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ebebf5 !important;
+  background: transparent !important;
 }
 [data-theme="dark"] .nav__icon-btn:hover,
 [data-theme="dark"] .nav__icon-btn:focus-visible {
-  background: rgba(255, 255, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
 }
 
-/* Desktop: keep icons readable (not tiny) */
+/* Desktop */
 @media (min-width: 1101px) {
   .nav__icon-btn {
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
-    min-height: 42px !important;
-    font-size: 1.35rem !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 1.15rem !important;
   }
 }
 
-/* Compact hamburger matches icon row */
+/* Compact: icons + hamburger as one calm row */
 @media (max-width: 1100px) {
-  .nav__toggle {
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    border-radius: 12px !important;
+  .nav__actions {
+    gap: 0 !important;
+    margin-left: auto !important;
   }
   .nav__icon-btn {
-    width: 44px !important;
-    height: 44px !important;
-    font-size: 1.4rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.2rem !important;
   }
-  /* Menu sheet under header but never above settings */
+  .nav__toggle {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    margin-left: 0.1rem !important;
+    border-radius: 999px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .nav__toggle:hover,
+  .nav__toggle:focus-visible {
+    background: rgba(0, 0, 0, 0.06) !important;
+  }
+  [data-theme="dark"] .nav__toggle {
+    background: transparent !important;
+  }
+  [data-theme="dark"] .nav__toggle:hover,
+  [data-theme="dark"] .nav__toggle:focus-visible {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+  .nav__toggle[aria-expanded="true"] {
+    background: rgba(196, 30, 58, 0.1) !important;
+  }
+  .nav__toggle span {
+    width: 15px !important;
+    height: 1.5px !important;
+    background: #3a3a3c !important;
+  }
+  [data-theme="dark"] .nav__toggle span {
+    background: #ebebf5 !important;
+  }
   .nav__links {
     z-index: 990 !important;
   }
@@ -6526,46 +6575,74 @@ body.jtg-settings-open {
   }
 }
 
-/* Gallery / tools / legal app-bar actions */
+/* Gallery / tools / legal app-bar actions — match toolbar language */
 .gallery-app-actions .btn,
 .gallery-app-actions .btn--icon,
 .gallery-app-actions [data-open-settings] {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  border-radius: 12px !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 999px !important;
   border: none !important;
-  background: color-mix(in srgb, #1d1d1f 6%, transparent) !important;
-  color: #1d1d1f !important;
-  font-size: 1.25rem !important;
+  background: transparent !important;
+  color: #3a3a3c !important;
+  font-size: 1.15rem !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   opacity: 1 !important;
+  box-shadow: none !important;
+}
+.gallery-app-actions .btn:hover,
+.gallery-app-actions .btn:focus-visible,
+.gallery-app-actions [data-open-settings]:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
 }
 [data-theme="dark"] .gallery-app-actions .btn,
 [data-theme="dark"] .gallery-app-actions .btn--icon,
 [data-theme="dark"] .gallery-app-actions [data-open-settings] {
+  background: transparent !important;
+  color: #ebebf5 !important;
+}
+[data-theme="dark"] .gallery-app-actions .btn:hover,
+[data-theme="dark"] .gallery-app-actions [data-open-settings]:hover {
   background: rgba(255, 255, 255, 0.1) !important;
-  color: #f5f5f7 !important;
 }
 .gallery-app-bar.site-header {
   z-index: 1000 !important;
 }
 
-/* Narrow phones: keep 44px icons, slightly tighter gap */
+/* Settings close — same refined language */
+.settings-panel__header .settings-close,
+.settings-panel__header [data-close-settings] {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  border-radius: 999px !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  font-size: 1.05rem !important;
+  color: #3a3a3c !important;
+}
+.settings-panel__header .settings-close:hover,
+.settings-panel__header [data-close-settings]:hover {
+  background: rgba(0, 0, 0, 0.09) !important;
+}
+[data-theme="dark"] .settings-panel__header .settings-close,
+[data-theme="dark"] .settings-panel__header [data-close-settings] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #f5f5f7 !important;
+}
+
 @media (max-width: 360px) {
   .nav__icon-btn,
   .nav__toggle {
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
-    min-height: 42px !important;
-    font-size: 1.3rem !important;
-  }
-  .nav__actions {
-    gap: 0.05rem !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 1.12rem !important;
   }
 }
 
