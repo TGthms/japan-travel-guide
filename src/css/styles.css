@@ -5878,27 +5878,336 @@ body.city-theme-dark .city-jump__select {
   }
 }
 
-/* --- Mobile nav: brand left, menu+settings right --- */
+/* --- Product nav: iOS-quality across breakpoints --- */
+
+/* Drawer-only page links: hidden on desktop (actions row owns them) */
+.nav__drawer-page {
+  display: none !important;
+}
+.nav__drawer-sep {
+  display: none !important;
+}
+
+/* Desktop / tablet wide: refined actions row */
+@media (min-width: 1101px) {
+  .nav {
+    gap: 0.85rem !important;
+  }
+  .nav__actions {
+    gap: 0.4rem !important;
+  }
+  .nav__actions .nav__page-link {
+    min-height: 34px !important;
+    padding: 0.4rem 0.95rem !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    border-radius: 980px !important;
+    border: 1px solid color-mix(in srgb, var(--deep-red-bright, #c41e3a) 22%, transparent) !important;
+    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 5%, transparent) !important;
+    color: var(--deep-red-bright, #c41e3a) !important;
+  }
+  .nav__actions .nav__page-link:hover {
+    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 11%, transparent) !important;
+  }
+  .nav__actions .nav__settings-btn,
+  .nav__actions .btn.btn--secondary[data-open-settings] {
+    min-height: 34px !important;
+    padding: 0.4rem 0.95rem !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    border-radius: 980px !important;
+  }
+  .nav__links a {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 0.4rem 0.55rem !important;
+    min-height: 34px !important;
+  }
+}
+
+/* Compact / phone: sparse bar — brand · settings · menu */
 @media (max-width: 1100px) {
+  .site-header {
+    height: calc(52px + env(safe-area-inset-top, 0px)) !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+    background: color-mix(in srgb, var(--bg-elevated, #f5f2ef) 78%, transparent) !important;
+    backdrop-filter: saturate(180%) blur(20px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+    border-bottom: 0.5px solid color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
+  }
+  [data-theme="dark"] .site-header {
+    background: rgba(0, 0, 0, 0.72) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
   .nav {
     display: flex !important;
     align-items: center !important;
-    gap: 0.4rem !important;
+    height: 52px !important;
+    gap: 0.35rem !important;
   }
+
   .nav__brand {
     flex: 1 1 auto !important;
     min-width: 0 !important;
+    gap: 0.45rem !important;
+    order: 1 !important;
   }
-  .nav__toggle {
-    display: flex !important;
-    order: 2 !important;
-    margin-left: auto !important;
+  .nav__brand-text,
+  .nav__brand span[data-i18n],
+  .nav__brand > span:not(.nav__logo) {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.94rem !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.2 !important;
   }
+
+  /* Bar: only Settings stays; Gallery/Tools live in the drawer */
   .nav__actions {
-    order: 3 !important;
+    order: 2 !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+    gap: 0.15rem !important;
   }
+  .nav__actions .nav__page-link {
+    display: none !important;
+  }
+  .nav__actions .nav__settings-btn,
+  .nav__actions .btn.btn--secondary[data-open-settings],
+  .nav__actions button[data-open-settings] {
+    min-height: 40px !important;
+    min-width: 40px !important;
+    padding: 0 0.7rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--deep-red-bright, #c41e3a) !important;
+  }
+
+  .nav__toggle {
+    display: inline-flex !important;
+    order: 3 !important;
+    flex-shrink: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    margin-left: 0 !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: color-mix(in srgb, var(--text, #000) 6%, transparent) !important;
+    box-shadow: none !important;
+    gap: 4.5px !important;
+  }
+  .nav__toggle span {
+    width: 16px !important;
+    height: 1.75px !important;
+    border-radius: 2px !important;
+    background: var(--text) !important;
+  }
+  .nav__toggle[aria-expanded="true"] {
+    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 12%, transparent) !important;
+  }
+
+  /* iOS-style menu sheet */
   .nav__links {
     order: 4 !important;
+    position: fixed !important;
+    top: calc(52px + env(safe-area-inset-top, 0px)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.15rem !important;
+    margin: 0 !important;
+    padding: 0.55rem 0.75rem calc(0.85rem + env(safe-area-inset-bottom, 0px)) !important;
+    max-height: calc(100dvh - 52px - env(safe-area-inset-top, 0px)) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    background: color-mix(in srgb, var(--bg-elevated, #fff) 94%, transparent) !important;
+    backdrop-filter: saturate(180%) blur(24px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(24px) !important;
+    border-bottom: 0.5px solid color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
+    box-shadow: 0 18px 40px rgba(20, 12, 16, 0.12) !important;
+    z-index: 890 !important;
+    transform: translateY(-108%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition:
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.22s ease !important;
+  }
+  .nav__links.is-open {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .nav__links a {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 48px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1.02rem !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.015em !important;
+    color: var(--text) !important;
+    opacity: 1 !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+  }
+  .nav__links a:hover,
+  .nav__links a:active,
+  .nav__links a.is-active {
+    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 9%, transparent) !important;
+    color: var(--deep-red-bright, #c41e3a) !important;
+  }
+
+  /* Gallery + Tools appear only inside the mobile drawer */
+  .nav__drawer-sep {
+    display: block !important;
+    height: 0.5px !important;
+    margin: 0.4rem 0.65rem !important;
+    background: color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
+    border: 0 !important;
+    pointer-events: none !important;
+  }
+  .nav__drawer-page {
+    display: flex !important;
+    font-weight: 600 !important;
+    color: var(--deep-red-bright, #c41e3a) !important;
+  }
+
+  /* Dim scrim behind open menu */
+  .nav-menu-scrim {
+    position: fixed !important;
+    inset: 0 !important;
+    top: calc(52px + env(safe-area-inset-top, 0px)) !important;
+    z-index: 880 !important;
+    background: rgba(0, 0, 0, 0.28) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.22s ease !important;
+  }
+  .nav-menu-scrim.is-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  body.nav-menu-open {
+    overflow: hidden !important;
+  }
+}
+
+/* Very narrow phones: logo-only brand (no truncated title) */
+@media (max-width: 360px) {
+  .nav__brand-text,
+  .nav__brand span[data-i18n],
+  .nav__brand > span:not(.nav__logo) {
+    display: none !important;
+  }
+  .nav__actions .nav__settings-btn,
+  .nav__actions button[data-open-settings] {
+    padding: 0 0.55rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* App bars (gallery / tools / legal): match product nav feel */
+.gallery-app-bar.site-header {
+  height: calc(52px + env(safe-area-inset-top, 0px)) !important;
+  padding-top: env(safe-area-inset-top, 0px) !important;
+  background: color-mix(in srgb, var(--bg-elevated, #f5f2ef) 78%, transparent) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 0.5px solid color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
+}
+.gallery-app-bar__inner {
+  height: 52px !important;
+  gap: 0.5rem !important;
+}
+.gallery-app-back {
+  min-height: 40px !important;
+  padding: 0.4rem 0.75rem 0.4rem 0.55rem !important;
+  border: none !important;
+  border-radius: 12px !important;
+  background: color-mix(in srgb, var(--text, #000) 5%, transparent) !important;
+  color: var(--deep-red-bright, #c41e3a) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: -0.01em !important;
+}
+.gallery-app-back:hover {
+  background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 10%, transparent) !important;
+  color: var(--deep-red-bright, #c41e3a) !important;
+  border: none !important;
+}
+.gallery-app-title {
+  font-size: 1rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.02em !important;
+}
+.gallery-app-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.2rem !important;
+}
+.gallery-app-actions .btn {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: 1.05rem !important;
+}
+@media (max-width: 420px) {
+  .gallery-app-back span:not([aria-hidden]) {
+    /* keep label; if overflow, CSS ellipsis */
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* Hero stats: never sit as broken zeros under CTAs on mobile */
+@media (max-width: 720px) {
+  section.hero .hero__stats {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.55rem !important;
+    width: 100% !important;
+    margin-top: 0.35rem !important;
+  }
+  section.hero .hero__stat {
+    text-align: center !important;
+    padding: 0.65rem 0.35rem !important;
+    border-radius: 14px !important;
+    background: color-mix(in srgb, var(--card-solid, #fff) 80%, transparent) !important;
+    border: 1px solid color-mix(in srgb, var(--text, #000) 7%, transparent) !important;
+  }
+  section.hero .hero__stat strong {
+    display: block !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.2 !important;
+  }
+  section.hero .hero__stat span {
+    display: block !important;
+    margin-top: 0.2rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
+    color: var(--text-muted) !important;
   }
 }
 

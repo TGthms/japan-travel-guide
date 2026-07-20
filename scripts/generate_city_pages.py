@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "cities"
-VERSION = "pro-1"
+VERSION = "ios-nav1"
 
 # id, display name, extra body classes, distance km from Tokyo, temp min/max °C, hero photo
 CITIES: list[tuple[str, str, str, int, int, int, str | None]] = [
@@ -149,22 +149,25 @@ def render_city(
         <img class="nav__logo" src="../assets/icons/logo.svg" width="36" height="36" alt="" />
         <span class="nav__brand-text" data-i18n="meta.siteName">Japan Travel Guide</span>
       </a>
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav__links" aria-label="City sections">
+      <nav class="nav__links" id="city-nav" aria-label="City sections">
         <a href="#overview" data-i18n="common.overview">Overview</a>
         <a href="#food" data-i18n="common.foodGuide">Food</a>
         <a href="#attractions" data-i18n="common.attractions">Sights</a>
         <a href="#transport" data-i18n="common.transport">Getting around</a>
         <a href="#tips" data-i18n="common.travelTips">Tips</a>
         <a href="#other-cities" data-i18n="cityPage.otherCitiesShort">Cities</a>
+        <div class="nav__drawer-sep" role="separator" aria-hidden="true"></div>
+        <a class="nav__drawer-page" href="../gallery.html" data-i18n="nav.gallery">Gallery</a>
+        <a class="nav__drawer-page" href="../tools.html" data-i18n="nav.tools">Tools</a>
       </nav>
       <div class="nav__actions">
         <a class="nav__page-link" href="../gallery.html" data-i18n="nav.gallery">Gallery</a>
         <a class="nav__page-link nav__tools" href="../tools.html" data-i18n="nav.tools">Tools</a>
-        <button type="button" class="btn btn--secondary" data-open-settings data-i18n="nav.settings">Settings</button>
+        <button type="button" class="btn btn--secondary nav__settings-btn" data-open-settings data-i18n="nav.settings">Settings</button>
       </div>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="city-nav" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 

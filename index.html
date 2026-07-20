@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=pro-1" />
+  <link rel="stylesheet" href="src/css/styles.css?v=ios-nav1" />
   <script>
   (function () {
     try {
@@ -41,9 +41,11 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a class="nav__brand" href="index.html"><img class="nav__logo" src="assets/icons/logo.svg" width="36" height="36" alt="" /><span data-i18n="meta.siteName">Japan Travel Guide</span></a>
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
-      <nav class="nav__links" aria-label="Primary">
+      <a class="nav__brand" href="index.html">
+        <img class="nav__logo" src="assets/icons/logo.svg" width="36" height="36" alt="" />
+        <span class="nav__brand-text" data-i18n="meta.siteName">Japan Travel Guide</span>
+      </a>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary">
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#map" data-i18n="nav.map">Map</a>
         <a href="#destinations" data-i18n="nav.destinations">Destinations</a>
@@ -51,12 +53,16 @@
         <a href="#food" data-i18n="nav.food">Food</a>
         <a href="#transport" data-i18n="nav.transport">Transport</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <div class="nav__drawer-sep" role="separator" aria-hidden="true"></div>
+        <a class="nav__drawer-page" href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+        <a class="nav__drawer-page" href="tools.html" data-i18n="nav.tools">Tools</a>
       </nav>
       <div class="nav__actions">
         <a class="nav__page-link" href="gallery.html" data-i18n="nav.gallery">Gallery</a>
         <a class="nav__page-link nav__tools" href="tools.html" data-i18n="nav.tools">Tools</a>
-        <button type="button" class="btn btn--secondary" data-open-settings data-i18n="nav.settings">Settings</button>
+        <button type="button" class="btn btn--secondary nav__settings-btn" data-open-settings data-i18n="nav.settings">Settings</button>
       </div>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -98,8 +104,8 @@
             <a class="btn btn--secondary btn--lg" href="tools.html" data-i18n="hero.ctaSecondary">Open travel tools</a>
           </div>
           <div class="hero__stats">
-            <div class="hero__stat"><strong data-counter="14">0</strong><span data-i18n="hero.statCities">City guides</span></div>
-            <div class="hero__stat"><strong data-counter="11">0</strong><span data-i18n="hero.statRoutes">Itinerary styles</span></div>
+            <div class="hero__stat"><strong data-counter="14">14</strong><span data-i18n="hero.statCities">City guides</span></div>
+            <div class="hero__stat"><strong data-counter="11">11</strong><span data-i18n="hero.statRoutes">Itinerary styles</span></div>
             <div class="hero__stat"><strong>24/7</strong><span data-i18n="hero.statTips">Planning tools</span></div>
           </div>
         </div>
@@ -1261,18 +1267,18 @@
       });
     })();
   </script>
-  <script src="src/js/data/i18n.js?v=pro-1" defer></script>
-  <script src="src/js/settings.js?v=pro-1" defer></script>
-  <script src="src/js/i18n.js?v=pro-1" defer></script>
-  <script src="src/js/units.js?v=pro-1" defer></script>
-  <script src="src/js/currency.js?v=pro-1" defer></script>
-  <script src="src/js/nav.js?v=pro-1" defer></script>
-  <script src="src/js/animations.js?v=pro-1" defer></script>
-  <script src="src/js/faq.js?v=pro-1" defer></script>
-  <script src="src/js/fun-facts.js?v=pro-1" defer></script>
-  <script src="src/js/map.js?v=pro-1" defer></script>
-  <script src="src/js/routes.js?v=pro-1" defer></script>
-  <script src="src/js/app.js?v=pro-1" defer></script>
+  <script src="src/js/data/i18n.js?v=ios-nav1" defer></script>
+  <script src="src/js/settings.js?v=ios-nav1" defer></script>
+  <script src="src/js/i18n.js?v=ios-nav1" defer></script>
+  <script src="src/js/units.js?v=ios-nav1" defer></script>
+  <script src="src/js/currency.js?v=ios-nav1" defer></script>
+  <script src="src/js/nav.js?v=ios-nav1" defer></script>
+  <script src="src/js/animations.js?v=ios-nav1" defer></script>
+  <script src="src/js/faq.js?v=ios-nav1" defer></script>
+  <script src="src/js/fun-facts.js?v=ios-nav1" defer></script>
+  <script src="src/js/map.js?v=ios-nav1" defer></script>
+  <script src="src/js/routes.js?v=ios-nav1" defer></script>
+  <script src="src/js/app.js?v=ios-nav1" defer></script>
 
 </body>
 </html>
