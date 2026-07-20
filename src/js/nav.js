@@ -59,7 +59,6 @@
         }
       });
 
-      // Close when resizing to desktop layout
       var mq = window.matchMedia("(min-width: 1101px)");
       function onBp(e) {
         if (e.matches) closeMenu();
@@ -79,15 +78,18 @@
         progress.style.width = pct + "%";
       }
 
+      // Section highlight: ignore near top so "About" is not falsely active
       if (sectionLinks.length) {
         var current = "";
-        document.querySelectorAll("section[id]").forEach(function (sec) {
-          var top = sec.offsetTop - 120;
-          if (y >= top) current = sec.id;
-        });
+        if (y >= 96) {
+          document.querySelectorAll("section[id]").forEach(function (sec) {
+            var top = sec.offsetTop - 120;
+            if (y >= top) current = sec.id;
+          });
+        }
         sectionLinks.forEach(function (a) {
           var href = a.getAttribute("href") || "";
-          a.classList.toggle("is-active", href === "#" + current);
+          a.classList.toggle("is-active", current !== "" && href === "#" + current);
         });
       }
     }
@@ -103,7 +105,6 @@
     var closeBtns = document.querySelectorAll("[data-close-settings]");
 
     function open() {
-      // Don't stack settings over mobile nav sheet
       var links = document.querySelector(".nav__links");
       var toggle = document.querySelector(".nav__toggle");
       if (links) links.classList.remove("is-open");

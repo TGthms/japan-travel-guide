@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../src/css/styles.css?v=ios-nav1" />
-  <link rel="stylesheet" href="../src/css/cities/osaka.css?v=ios-nav1" />
+  <link rel="stylesheet" href="../src/css/styles.css?v=icon-nav1" />
+  <link rel="stylesheet" href="../src/css/cities/osaka.css?v=icon-nav1" />
   <script>
   (function () {
     try {
@@ -57,14 +57,11 @@
         <a href="#transport" data-i18n="common.transport">Getting around</a>
         <a href="#tips" data-i18n="common.travelTips">Tips</a>
         <a href="#other-cities" data-i18n="cityPage.otherCitiesShort">Cities</a>
-        <div class="nav__drawer-sep" role="separator" aria-hidden="true"></div>
-        <a class="nav__drawer-page" href="../gallery.html" data-i18n="nav.gallery">Gallery</a>
-        <a class="nav__drawer-page" href="../tools.html" data-i18n="nav.tools">Tools</a>
       </nav>
       <div class="nav__actions">
-        <a class="nav__page-link" href="../gallery.html" data-i18n="nav.gallery">Gallery</a>
-        <a class="nav__page-link nav__tools" href="../tools.html" data-i18n="nav.tools">Tools</a>
-        <button type="button" class="btn btn--secondary nav__settings-btn" data-open-settings data-i18n="nav.settings">Settings</button>
+        <a class="nav__icon-btn" href="../gallery.html" title="Gallery" aria-label="Gallery" data-i18n-aria="nav.gallery" data-i18n-title="nav.gallery">📷</a>
+        <a class="nav__icon-btn" href="../tools.html" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools" data-i18n-title="nav.tools">🧰</a>
+        <button type="button" class="nav__icon-btn" data-open-settings title="Settings" aria-label="Settings" data-i18n-aria="nav.settings" data-i18n-title="nav.settings">⚙️</button>
       </div>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="city-nav" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -353,13 +350,13 @@
     document.addEventListener("DOMContentLoaded", function () { setTimeout(renderCity, 0); });
   })();
   </script>
-  <script src="../src/js/data/i18n.js?v=ios-nav1" defer></script>
-  <script src="../src/js/settings.js?v=ios-nav1" defer></script>
-  <script src="../src/js/i18n.js?v=ios-nav1" defer></script>
-  <script src="../src/js/units.js?v=ios-nav1" defer></script>
-  <script src="../src/js/currency.js?v=ios-nav1" defer></script>
-  <script src="../src/js/nav.js?v=ios-nav1" defer></script>
-  <script src="../src/js/animations.js?v=ios-nav1" defer></script>
-  <script src="../src/js/app.js?v=ios-nav1" defer></script>
+  <script src="../src/js/data/i18n.js?v=icon-nav1" defer></script>
+  <script src="../src/js/settings.js?v=icon-nav1" defer></script>
+  <script src="../src/js/i18n.js?v=icon-nav1" defer></script>
+  <script src="../src/js/units.js?v=icon-nav1" defer></script>
+  <script src="../src/js/currency.js?v=icon-nav1" defer></script>
+  <script src="../src/js/nav.js?v=icon-nav1" defer></script>
+  <script src="../src/js/animations.js?v=icon-nav1" defer></script>
+  <script src="../src/js/app.js?v=icon-nav1" defer></script>
 </body>
 </html>

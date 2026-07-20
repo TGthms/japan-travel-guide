@@ -5878,45 +5878,73 @@ body.city-theme-dark .city-jump__select {
   }
 }
 
-/* --- Product nav: iOS-quality across breakpoints --- */
+/* --- Product nav: icon actions + solid menu sheet --- */
 
-/* Drawer-only page links: hidden on desktop (actions row owns them) */
-.nav__drawer-page {
+/* Shared icon action buttons (Gallery / Tools / Settings) */
+.nav__actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.2rem !important;
+  flex-shrink: 0 !important;
+}
+.nav__icon-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--text) !important;
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.18s ease, transform 0.15s ease !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.nav__icon-btn:hover,
+.nav__icon-btn:focus-visible {
+  background: color-mix(in srgb, var(--text, #000) 8%, transparent) !important;
+  outline: none !important;
+}
+.nav__icon-btn:active {
+  transform: scale(0.94) !important;
+  background: color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
+}
+/* Legacy text page-links (if any remain) */
+.nav__actions .nav__page-link {
   display: none !important;
 }
+.nav__drawer-page,
 .nav__drawer-sep {
   display: none !important;
 }
 
-/* Desktop / tablet wide: refined actions row */
+/* Desktop: section links + icons + no hamburger */
 @media (min-width: 1101px) {
   .nav {
-    gap: 0.85rem !important;
+    gap: 0.75rem !important;
+  }
+  .nav__toggle {
+    display: none !important;
   }
   .nav__actions {
-    gap: 0.4rem !important;
+    gap: 0.15rem !important;
   }
-  .nav__actions .nav__page-link {
-    min-height: 34px !important;
-    padding: 0.4rem 0.95rem !important;
-    font-size: 12.5px !important;
-    font-weight: 600 !important;
-    letter-spacing: -0.01em !important;
-    border-radius: 980px !important;
-    border: 1px solid color-mix(in srgb, var(--deep-red-bright, #c41e3a) 22%, transparent) !important;
-    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 5%, transparent) !important;
-    color: var(--deep-red-bright, #c41e3a) !important;
-  }
-  .nav__actions .nav__page-link:hover {
-    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 11%, transparent) !important;
-  }
-  .nav__actions .nav__settings-btn,
-  .nav__actions .btn.btn--secondary[data-open-settings] {
-    min-height: 34px !important;
-    padding: 0.4rem 0.95rem !important;
-    font-size: 12.5px !important;
-    font-weight: 600 !important;
-    border-radius: 980px !important;
+  .nav__icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    font-size: 1.05rem !important;
+    border-radius: 10px !important;
   }
   .nav__links a {
     font-size: 13px !important;
@@ -5926,18 +5954,19 @@ body.city-theme-dark .city-jump__select {
   }
 }
 
-/* Compact / phone: sparse bar — brand · settings · menu */
+/* Compact: brand · 📷 🧰 ⚙️ · ☰ */
 @media (max-width: 1100px) {
   .site-header {
     height: calc(52px + env(safe-area-inset-top, 0px)) !important;
     padding-top: env(safe-area-inset-top, 0px) !important;
-    background: color-mix(in srgb, var(--bg-elevated, #f5f2ef) 78%, transparent) !important;
+    background: rgba(250, 248, 246, 0.92) !important;
     backdrop-filter: saturate(180%) blur(20px) !important;
     -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
-    border-bottom: 0.5px solid color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.08) !important;
+    z-index: 1000 !important;
   }
   [data-theme="dark"] .site-header {
-    background: rgba(0, 0, 0, 0.72) !important;
+    background: rgba(18, 18, 20, 0.92) !important;
     border-bottom-color: rgba(255, 255, 255, 0.1) !important;
   }
 
@@ -5945,7 +5974,7 @@ body.city-theme-dark .city-jump__select {
     display: flex !important;
     align-items: center !important;
     height: 52px !important;
-    gap: 0.35rem !important;
+    gap: 0.2rem !important;
   }
 
   .nav__brand {
@@ -5966,30 +5995,15 @@ body.city-theme-dark .city-jump__select {
     line-height: 1.2 !important;
   }
 
-  /* Bar: only Settings stays; Gallery/Tools live in the drawer */
   .nav__actions {
     order: 2 !important;
-    flex-shrink: 0 !important;
     margin-left: auto !important;
-    gap: 0.15rem !important;
+    gap: 0.05rem !important;
   }
-  .nav__actions .nav__page-link {
-    display: none !important;
-  }
-  .nav__actions .nav__settings-btn,
-  .nav__actions .btn.btn--secondary[data-open-settings],
-  .nav__actions button[data-open-settings] {
-    min-height: 40px !important;
-    min-width: 40px !important;
-    padding: 0 0.7rem !important;
-    font-size: 0.9rem !important;
-    font-weight: 600 !important;
-    letter-spacing: -0.01em !important;
-    border: none !important;
-    border-radius: 12px !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    color: var(--deep-red-bright, #c41e3a) !important;
+  .nav__icon-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.12rem !important;
   }
 
   .nav__toggle {
@@ -6000,10 +6014,10 @@ body.city-theme-dark .city-jump__select {
     height: 40px !important;
     min-width: 40px !important;
     min-height: 40px !important;
-    margin-left: 0 !important;
+    margin-left: 0.1rem !important;
     border: none !important;
     border-radius: 12px !important;
-    background: color-mix(in srgb, var(--text, #000) 6%, transparent) !important;
+    background: color-mix(in srgb, var(--text, #000) 7%, transparent) !important;
     box-shadow: none !important;
     gap: 4.5px !important;
   }
@@ -6012,90 +6026,124 @@ body.city-theme-dark .city-jump__select {
     height: 1.75px !important;
     border-radius: 2px !important;
     background: var(--text) !important;
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease !important;
   }
   .nav__toggle[aria-expanded="true"] {
-    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 12%, transparent) !important;
+    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 14%, transparent) !important;
+  }
+  .nav__toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(6.25px) rotate(45deg) !important;
+  }
+  .nav__toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0 !important;
+  }
+  .nav__toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-6.25px) rotate(-45deg) !important;
   }
 
-  /* iOS-style menu sheet */
+  /*
+   * Solid menu panel — no ghost bleed-through.
+   * Closed: not displayed (avoids mid-animation translucency issues).
+   * Open: opaque sheet with short, crisp fade+slide.
+   */
   .nav__links {
     order: 4 !important;
     position: fixed !important;
     top: calc(52px + env(safe-area-inset-top, 0px)) !important;
-    left: 0 !important;
-    right: 0 !important;
-    display: flex !important;
+    left: 0.65rem !important;
+    right: 0.65rem !important;
+    display: none !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 0.15rem !important;
+    gap: 0.1rem !important;
     margin: 0 !important;
-    padding: 0.55rem 0.75rem calc(0.85rem + env(safe-area-inset-bottom, 0px)) !important;
-    max-height: calc(100dvh - 52px - env(safe-area-inset-top, 0px)) !important;
+    padding: 0.45rem !important;
+    max-height: min(70dvh, 520px) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    background: color-mix(in srgb, var(--bg-elevated, #fff) 94%, transparent) !important;
-    backdrop-filter: saturate(180%) blur(24px) !important;
-    -webkit-backdrop-filter: saturate(180%) blur(24px) !important;
-    border-bottom: 0.5px solid color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
-    box-shadow: 0 18px 40px rgba(20, 12, 16, 0.12) !important;
-    z-index: 890 !important;
-    transform: translateY(-108%) !important;
+    background: #faf8f6 !important;
+    border: 0.5px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 16px !important;
+    box-shadow:
+      0 4px 6px rgba(20, 12, 16, 0.04),
+      0 18px 40px rgba(20, 12, 16, 0.14) !important;
+    z-index: 990 !important;
     opacity: 0 !important;
+    transform: translateY(-8px) scale(0.98) !important;
     pointer-events: none !important;
-    transition:
-      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.22s ease !important;
+    transform-origin: top center !important;
+  }
+  [data-theme="dark"] .nav__links {
+    background: #1c1c1e !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45) !important;
   }
   .nav__links.is-open {
-    transform: translateY(0) !important;
+    display: flex !important;
     opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
     pointer-events: auto !important;
+    animation: jtg-menu-in 0.22s cubic-bezier(0.22, 1, 0.36, 1) both !important;
   }
+  @keyframes jtg-menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav__links.is-open {
+      animation: none !important;
+    }
+    .nav__toggle span {
+      transition: none !important;
+    }
+  }
+
   .nav__links a {
     display: flex !important;
     align-items: center !important;
-    min-height: 48px !important;
-    padding: 0.75rem 1rem !important;
+    min-height: 46px !important;
+    padding: 0.7rem 0.95rem !important;
     font-size: 1.02rem !important;
     font-weight: 500 !important;
     letter-spacing: -0.015em !important;
-    color: var(--text) !important;
+    color: var(--text, #1d1d1f) !important;
     opacity: 1 !important;
     border-radius: 12px !important;
     background: transparent !important;
+    border: none !important;
   }
   .nav__links a:hover,
-  .nav__links a:active,
+  .nav__links a:focus-visible {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: var(--text, #1d1d1f) !important;
+  }
+  [data-theme="dark"] .nav__links a:hover,
+  [data-theme="dark"] .nav__links a:focus-visible {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #f5f5f7 !important;
+  }
+  /* Active only as a quiet accent — never a washed pink block */
   .nav__links a.is-active {
-    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 9%, transparent) !important;
+    background: color-mix(in srgb, var(--deep-red-bright, #c41e3a) 10%, transparent) !important;
     color: var(--deep-red-bright, #c41e3a) !important;
-  }
-
-  /* Gallery + Tools appear only inside the mobile drawer */
-  .nav__drawer-sep {
-    display: block !important;
-    height: 0.5px !important;
-    margin: 0.4rem 0.65rem !important;
-    background: color-mix(in srgb, var(--text, #000) 12%, transparent) !important;
-    border: 0 !important;
-    pointer-events: none !important;
-  }
-  .nav__drawer-page {
-    display: flex !important;
     font-weight: 600 !important;
-    color: var(--deep-red-bright, #c41e3a) !important;
   }
 
-  /* Dim scrim behind open menu */
   .nav-menu-scrim {
     position: fixed !important;
     inset: 0 !important;
     top: calc(52px + env(safe-area-inset-top, 0px)) !important;
-    z-index: 880 !important;
-    background: rgba(0, 0, 0, 0.28) !important;
+    z-index: 980 !important;
+    background: rgba(0, 0, 0, 0.22) !important;
     opacity: 0 !important;
     pointer-events: none !important;
-    transition: opacity 0.22s ease !important;
+    transition: opacity 0.2s ease !important;
   }
   .nav-menu-scrim.is-open {
     opacity: 1 !important;
@@ -6106,17 +6154,19 @@ body.city-theme-dark .city-jump__select {
   }
 }
 
-/* Very narrow phones: logo-only brand (no truncated title) */
+/* Very narrow: logo only */
 @media (max-width: 360px) {
   .nav__brand-text,
   .nav__brand span[data-i18n],
   .nav__brand > span:not(.nav__logo) {
     display: none !important;
   }
-  .nav__actions .nav__settings-btn,
-  .nav__actions button[data-open-settings] {
-    padding: 0 0.55rem !important;
-    font-size: 0.85rem !important;
+  .nav__icon-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 1.05rem !important;
   }
 }
 
