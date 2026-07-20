@@ -118,14 +118,30 @@
 
       if (overlay) overlay.classList.add("is-open");
       if (panel) panel.classList.add("is-open");
+      document.body.classList.add("jtg-settings-open");
       document.body.style.overflow = "hidden";
+      // Move focus into panel for a11y; ensure close is reachable
+      var closeBtn = panel && panel.querySelector("[data-close-settings]");
+      if (closeBtn && typeof closeBtn.focus === "function") {
+        try {
+          closeBtn.focus();
+        } catch (e) {}
+      }
+      if (panel) {
+        panel.setAttribute("role", "dialog");
+        panel.setAttribute("aria-modal", "true");
+      }
       syncButtons();
     }
 
     function close() {
       if (overlay) overlay.classList.remove("is-open");
       if (panel) panel.classList.remove("is-open");
+      document.body.classList.remove("jtg-settings-open");
       document.body.style.overflow = "";
+      if (panel) {
+        panel.removeAttribute("aria-modal");
+      }
     }
 
     openBtns.forEach(function (b) {

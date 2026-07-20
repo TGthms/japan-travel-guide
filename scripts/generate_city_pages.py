@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "cities"
-VERSION = "icon-nav1"
+VERSION = "prod-lock1"
 
 # id, display name, extra body classes, distance km from Tokyo, temp min/max °C, hero photo
 CITIES: list[tuple[str, str, str, int, int, int, str | None]] = [
@@ -302,7 +302,7 @@ def render_city(
   <aside class="settings-panel" id="settings-panel" aria-label="Settings">
     <div class="settings-panel__header">
       <h2 data-i18n="common.settingsTitle">Settings</h2>
-      <button type="button" class="btn btn--icon btn--ghost" data-close-settings aria-label="Close">✕</button>
+      <button type="button" class="settings-close" data-close-settings aria-label="Close" data-i18n-aria="common.close">✕</button>
     </div>
     <div class="settings-group">
       <h3 data-i18n="common.language">Language</h3>
