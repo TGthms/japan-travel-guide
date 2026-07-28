@@ -6,9 +6,50 @@
   "use strict";
 
   const QUALITY_KEY = "jtg-gallery-quality"; // medium | full
+  let manifestVersionTag = "";
 
   function assetBase() {
     return "assets/gallery/";
+  }
+
+  function normalizeRelPath(p) {
+    if (!p) return "";
+    return String(p)
+      .trim()
+      .replace(/\\/g, "/")
+      .replace(/^\.?\/*assets\/gallery\//i, "")
+      .replace(/^\/+/, "");
+  }
+
+  function assetUrl(relPath) {
+    const rel = normalizeRelPath(relPath);
+    const url = assetBase() + rel;
+    if (!manifestVersionTag) return url;
+    const sep = url.includes("?") ? "&" : "?";
+    return `${url}${sep}v=${encodeURIComponent(manifestVersionTag)}`;
+  }
+
+  function normalizeManifest(raw) {
+    if (Array.isArray(raw)) {
+      return { version: 1, updatedAt: null, photos: raw };
+    }
+    if (!raw || typeof raw !== "object") {
+      return { version: 1, updatedAt: null, photos: [] };
+    }
+    const photos = Array.isArray(raw.photos) ? raw.photos : [];
+    return {
+      version: raw.version || 1,
+      updatedAt: raw.updatedAt || null,
+      photos,
+    };
+  }
+
+  function getEmbeddedManifest() {
+    const embedded = global.__JTG_GALLERY_MANIFEST;
+    if (!embedded) return null;
+    const data = normalizeManifest(embedded);
+    if (Array.isArray(data.photos) && data.photos.length) return data;
+    return null;
   }
 
   function getQuality() {
@@ -29,38 +70,48 @@
   }
 
   async function loadManifest() {
+    const embedded = getEmbeddedManifest();
+    if (embedded) return embedded;
     const url = assetBase() + "gallery.json";
+    const isFileProtocol = typeof location !== "undefined" && location.protocol === "file:";
+    const urlWithBust = isFileProtocol ? url : `${url}?v=${Date.now()}`;
     try {
-      const res = await fetch(url, { cache: "no-cache" });
+      const res = await fetch(urlWithBust, { cache: "no-store" });
       if (!res.ok) throw new Error("Failed to load gallery.json (" + res.status + ")");
-      return await res.json();
+      return normalizeManifest(await res.json());
     } catch (err) {
       // file:// or offline: try XHR (some browsers allow it when fetch fails)
-      try {
-        const data = await new Promise(function (resolve, reject) {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", url, true);
-          xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 0) {
-              try {
-                resolve(JSON.parse(xhr.responseText || "{}"));
-              } catch (e) {
-                reject(e);
+      const candidates = isFileProtocol ? [url, urlWithBust] : [urlWithBust, url];
+      for (const candidate of candidates) {
+        try {
+          const data = await new Promise(function (resolve, reject) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", candidate, true);
+            xhr.onload = function () {
+              if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) {
+                try {
+                  resolve(normalizeManifest(JSON.parse(xhr.responseText || "{}")));
+                } catch (e) {
+                  reject(e);
+                }
+              } else {
+                reject(new Error("XHR " + xhr.status));
               }
-            } else {
-              reject(new Error("XHR " + xhr.status));
-            }
-          };
-          xhr.onerror = function () {
-            reject(new Error("XHR network error"));
-          };
-          xhr.send();
-        });
-        return data;
-      } catch (e2) {
-        console.warn("[gallery] manifest unavailable", err, e2);
-        return { version: 1, photos: [], updatedAt: null };
+            };
+            xhr.onerror = function () {
+              reject(new Error("XHR network error"));
+            };
+            xhr.send();
+          });
+          return data;
+        } catch (e2) {
+          // try next candidate
+        }
       }
+      const fallback = getEmbeddedManifest();
+      if (fallback) return fallback;
+      console.warn("[gallery] manifest unavailable", err);
+      return { version: 1, photos: [], updatedAt: null };
     }
   }
 
@@ -208,7 +259,7 @@
       if (!rel || !img) return;
       img.classList.remove("is-loaded");
       img.alt = item.name || item.alt || "";
-      const url = assetBase() + rel;
+      const url = assetUrl(rel);
       // Medium can load directly (smaller); full uses XHR progress
       if (tier === "full" || getQuality() === "full") {
         loadViaXhr(url, (ok) => {
@@ -226,7 +277,7 @@
         };
         img.onerror = () => {
           // fallback to original
-          loadViaXhr(assetBase() + pathFor(item, "full"), (ok) => {
+          loadViaXhr(assetUrl(pathFor(item, "full")), (ok) => {
             if (ok) loadedTier = "full";
             updateHdBtn(item);
           });
@@ -257,7 +308,7 @@
         if (!item) return;
         btnHd.classList.add("is-loading");
         btnHd.disabled = true;
-        loadViaXhr(assetBase() + pathFor(item, "full"), (ok) => {
+        loadViaXhr(assetUrl(pathFor(item, "full")), (ok) => {
           if (ok) loadedTier = "full";
           updateHdBtn(item);
         });
@@ -348,10 +399,16 @@
 
     try {
       const data = await loadManifest();
+      manifestVersionTag = String(data.updatedAt || Date.now());
       all = Array.isArray(data.photos) ? data.photos : [];
       // migrate: ensure medium key falls back
       all.forEach((p) => {
+        p.original = normalizeRelPath(p.original);
+        p.medium = normalizeRelPath(p.medium);
+        p.thumb = normalizeRelPath(p.thumb);
         if (!p.medium && p.thumb) p.medium = p.thumb;
+        if (!p.thumb && p.medium) p.thumb = p.medium;
+        if (!p.original && p.medium) p.original = p.medium;
         if (!p.category) p.category = "cities";
       });
     } catch (e) {
@@ -432,7 +489,7 @@
         btn.type = "button";
         btn.className = "gallery-card";
         btn.setAttribute("role", "listitem");
-        const thumb = assetBase() + (item.thumb || item.medium || item.original);
+        const thumb = assetUrl(item.thumb || item.medium || item.original);
         btn.innerHTML = `
           <span class="gallery-card__media">
             <img class="gallery-card__thumb" src="${thumb}" alt="${escapeHtml(item.name || "")}" loading="lazy" decoding="async" />

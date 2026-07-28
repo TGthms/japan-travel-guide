@@ -1,4 +1,4 @@
-{
+window.__JTG_GALLERY_MANIFEST = {
   "version": 1,
   "updatedAt": "2026-07-26T04:33:34.185092Z",
   "photos": [
@@ -101,4 +101,4 @@
       "createdAt": "2026-07-26T04:33:33.966057Z"
     }
   ]
-}
+};
