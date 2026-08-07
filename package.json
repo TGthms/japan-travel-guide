@@ -1,12 +1,13 @@
 {
   "name": "japan-travel-guide",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Japan Travel Guide: static multi-page site (src/ layout, classic scripts) for GitHub Pages",
+  "description": "Japan Travel Guide: static multi-page site for Cloudflare Pages (primary) + GitHub Pages backup",
   "scripts": {
     "serve": "python3 -m http.server 8000",
     "serve:node": "npx --yes serve -l 8000 .",
-    "generate:cities": "python3 scripts/generate_city_pages.py"
+    "generate:cities": "python3 scripts/generate_city_pages.py",
+    "smoke": "node scripts/smoke-check.mjs"
   },
   "engines": {
     "node": ">=18"

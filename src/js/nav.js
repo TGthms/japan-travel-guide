@@ -103,8 +103,25 @@
     var overlay = document.getElementById("settings-overlay");
     var panel = document.getElementById("settings-panel");
     var closeBtns = document.querySelectorAll("[data-close-settings]");
+    var lastOpenTrigger = null;
 
-    function open() {
+    function isOpen() {
+      return !!(panel && panel.classList.contains("is-open"));
+    }
+
+    function getFocusableInPanel() {
+      if (!panel) return [];
+      return Array.from(
+        panel.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter(function (el) {
+        return el.offsetParent !== null || el === document.activeElement;
+      });
+    }
+
+    function open(e) {
+      lastOpenTrigger = (e && e.currentTarget) || document.activeElement || null;
       var links = document.querySelector(".nav__links");
       var toggle = document.querySelector(".nav__toggle");
       if (links) links.classList.remove("is-open");
@@ -130,6 +147,7 @@
       if (panel) {
         panel.setAttribute("role", "dialog");
         panel.setAttribute("aria-modal", "true");
+        panel.setAttribute("aria-hidden", "false");
       }
       syncButtons();
     }
@@ -141,6 +159,14 @@
       document.body.style.overflow = "";
       if (panel) {
         panel.removeAttribute("aria-modal");
+        panel.setAttribute("aria-hidden", "true");
+      }
+      if (lastOpenTrigger && typeof lastOpenTrigger.focus === "function") {
+        try {
+          lastOpenTrigger.focus({ preventScroll: true });
+        } catch (e) {
+          lastOpenTrigger.focus();
+        }
       }
     }
 
@@ -153,7 +179,24 @@
     if (overlay) overlay.addEventListener("click", close);
 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") close();
+      if (!isOpen()) return;
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+      if (e.key === "Tab") {
+        var nodes = getFocusableInPanel();
+        if (!nodes.length) return;
+        var first = nodes[0];
+        var last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
 
     function syncButtons() {

@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://tgthms.github.io/japan-travel-guide/"><strong>🔗 Try it out</strong></a>
+  <a href="https://traveljapan.pages.dev/"><strong>🔗 Try it out</strong></a>
 </p>
 
 ---
@@ -25,6 +25,7 @@
 | 🏙️ **14 city guides** | Tokyo, Kyoto, Osaka, Nara, Hiroshima, Yokohama, Hakone, Nikko, Kanazawa, Sapporo, Fukuoka, Kobe, Nagasaki, and Okinawa — each with its own look and practical tips. |
 | 🗺️ **Map, routes & seasons** | Interactive destination map, sample itineraries, when to go, and festival highlights. |
 | 🖼️ **Photo gallery** | Filterable trip photography with quality tiers (thumbnail / medium / full) and lightbox. |
+| ☁ **Weather** | Japan-first city forecasts via Open-Meteo (search, favorites, air quality). |
 | 🧰 **Travel tools** | Budget planner, packing list, currency conversion, clocks, tax, JR Pass helpers, rail estimates, and emergency numbers. |
 | 🚆 **Transport know-how** | IC cards, shinkansen basics, and official JR / rail resource pointers. |
 | 🎲 **Japan fun facts** | One shuffled fact at a time — trivia in every language. |
@@ -67,6 +68,10 @@ Regenerate city pages after template changes:
 ```bash
 npm run generate:cities
 ```
+
+Primary site: **https://traveljapan.pages.dev/** · Backup: GitHub Pages.
+
+See [docs/architecture.md](docs/architecture.md).
 
 ## 💬 Feedback
 

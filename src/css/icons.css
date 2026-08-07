@@ -1,0 +1,48 @@
+/**
+ * Stroke icons for UI chrome (USA guide pattern).
+ * Prefer .jtg-icon SVG over emoji for nav / settings / app bars.
+ */
+.jtg-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.jtg-icon--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.jtg-icon--nav {
+  width: 20px;
+  height: 20px;
+}
+
+.nav__icon-btn .jtg-icon,
+.nav__toggle .jtg-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.settings-close .jtg-icon,
+.settings-panel__header .jtg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.gallery-app-actions .jtg-icon,
+.gallery-app-back .jtg-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Keep stroke icons crisp on retina */
+.jtg-icon path,
+.jtg-icon circle,
+.jtg-icon rect,
+.jtg-icon line {
+  vector-effect: non-scaling-stroke;
+}

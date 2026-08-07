@@ -5,7 +5,7 @@
 (function (global) {
   "use strict";
 
-  const QUALITY_KEY = "jtg-gallery-quality"; // medium | full
+  const QUALITY_KEY = "jtg-gallery-quality"; // thumb | medium | full
   let manifestVersionTag = "";
 
   function assetBase() {
@@ -55,15 +55,17 @@
   function getQuality() {
     try {
       const q = localStorage.getItem(QUALITY_KEY);
-      return q === "full" ? "full" : "medium";
+      if (q === "thumb" || q === "medium" || q === "full") return q;
+      return "medium";
     } catch {
       return "medium";
     }
   }
 
   function setQuality(q) {
+    const normalized = q === "thumb" || q === "medium" || q === "full" ? q : "medium";
     try {
-      localStorage.setItem(QUALITY_KEY, q);
+      localStorage.setItem(QUALITY_KEY, normalized);
     } catch {
       /* ignore */
     }
@@ -129,6 +131,12 @@
     return item.original || item.medium || item.thumb;
   }
 
+  function tierFallbacks(startTier) {
+    if (startTier === "thumb") return ["thumb", "medium", "full"];
+    if (startTier === "full") return ["full", "medium", "thumb"];
+    return ["medium", "thumb", "full"];
+  }
+
   function bindLightbox() {
     const lb = document.getElementById("lightbox");
     if (!lb) return null;
@@ -151,6 +159,10 @@
     let xhr = null;
     let loadedTier = "";
     let objectUrl = null;
+    let loadToken = 0;
+    let lastFocusedThumb = null;
+    let scrollLockY = 0;
+    let bodyLocked = false;
 
     function revoke() {
       if (objectUrl) {
@@ -159,21 +171,66 @@
       }
     }
 
-    function close() {
-      lb.classList.remove("is-open");
-      lb.setAttribute("aria-hidden", "true");
+    function lockBodyScroll() {
+      if (bodyLocked) return;
+      scrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollLockY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+      bodyLocked = true;
+    }
+
+    function unlockBodyScroll() {
+      if (!bodyLocked) return;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
       document.body.style.overflow = "";
+      window.scrollTo(0, scrollLockY);
+      bodyLocked = false;
+    }
+
+    function focusables() {
+      return [btnClose, btnPrev, btnNext, btnHd].filter((el) => el && !el.hidden && !el.disabled);
+    }
+
+    function cancelLoad() {
+      loadToken += 1;
       if (xhr) {
         xhr.abort();
         xhr = null;
       }
+      if (img) {
+        img.onload = null;
+        img.onerror = null;
+        img.classList.remove("is-loading");
+      }
       revoke();
+    }
+
+    function close() {
+      lb.classList.remove("is-open");
+      lb.setAttribute("aria-hidden", "true");
+      cancelLoad();
       if (img) {
         img.src = "";
         img.classList.remove("is-loaded", "is-loading");
       }
       if (progress) progress.classList.remove("is-active");
       loadedTier = "";
+      unlockBodyScroll();
+      if (lastFocusedThumb && typeof lastFocusedThumb.focus === "function") {
+        try {
+          lastFocusedThumb.focus({ preventScroll: true });
+        } catch {
+          lastFocusedThumb.focus();
+        }
+      }
     }
 
     function setCaption(item) {
@@ -183,6 +240,8 @@
         meta.textContent = bits.join(" · ");
       }
       if (counter) counter.textContent = items.length ? `${index + 1} / ${items.length}` : "";
+      if (btnPrev) btnPrev.hidden = items.length < 2;
+      if (btnNext) btnNext.hidden = items.length < 2;
     }
 
     function updateHdBtn(item) {
@@ -194,8 +253,8 @@
       btnHd.classList.remove("is-loading");
     }
 
-    function loadViaXhr(url, onDone) {
-      if (xhr) xhr.abort();
+    function loadViaXhr(url, onDone, token) {
+      if (token !== loadToken) return;
       if (progress) progress.classList.add("is-active");
       if (bar) bar.style.width = "0%";
       if (progressPct) progressPct.textContent = "0%";
@@ -209,6 +268,7 @@
       xhr.open("GET", url, true);
       xhr.responseType = "blob";
       xhr.onprogress = (e) => {
+        if (token !== loadToken) return;
         if (e.lengthComputable && bar) {
           const pct = Math.round((e.loaded / e.total) * 100);
           bar.style.width = pct + "%";
@@ -218,11 +278,13 @@
         }
       };
       xhr.onload = () => {
+        if (token !== loadToken) return;
         if (xhr.status >= 200 && xhr.status < 300) {
           revoke();
           objectUrl = URL.createObjectURL(xhr.response);
           if (img) {
             img.onload = () => {
+              if (token !== loadToken) return;
               img.classList.add("is-loaded");
               img.classList.remove("is-loading");
               if (progress) progress.classList.remove("is-active");
@@ -240,13 +302,21 @@
         xhr = null;
       };
       xhr.onerror = () => {
+        if (token !== loadToken) return;
         if (img) {
           img.src = url;
           img.onload = () => {
+            if (token !== loadToken) return;
             img.classList.add("is-loaded");
             img.classList.remove("is-loading");
             if (progress) progress.classList.remove("is-active");
             if (onDone) onDone(true);
+          };
+          img.onerror = () => {
+          if (token !== loadToken) return;
+          img.classList.remove("is-loading");
+          if (progress) progress.classList.remove("is-active");
+          if (onDone) onDone(false);
           };
         }
         xhr = null;
@@ -254,49 +324,73 @@
       xhr.send();
     }
 
-    function loadTier(item, tier) {
-      const rel = pathFor(item, tier);
-      if (!rel || !img) return;
+    function loadTier(item, tier, token) {
+      if (!img) return;
       img.classList.remove("is-loaded");
       img.alt = item.name || item.alt || "";
-      const url = assetUrl(rel);
-      // Medium can load directly (smaller); full uses XHR progress
-      if (tier === "full" || getQuality() === "full") {
-        loadViaXhr(url, (ok) => {
-          if (ok) loadedTier = tier === "full" || !item.medium ? "full" : tier;
-          updateHdBtn(item);
-        });
-      } else {
+      const chain = tierFallbacks(tier);
+      const isFileProtocol = typeof location !== "undefined" && location.protocol === "file:";
+
+      const complete = (ok, resolvedTier) => {
+        if (ok) loadedTier = resolvedTier;
+        updateHdBtn(item);
+      };
+
+      const tryTier = (idx) => {
+        if (idx >= chain.length) {
+          if (progress) progress.classList.remove("is-active");
+          img.classList.remove("is-loading");
+          complete(false, "");
+          return;
+        }
+        const tierName = chain[idx];
+        const rel = pathFor(item, tierName);
+        if (!rel) {
+          tryTier(idx + 1);
+          return;
+        }
+        const url = assetUrl(rel);
+        if (tierName === "full" && !isFileProtocol) {
+          loadViaXhr(url, (ok) => {
+          if (ok) {
+            complete(true, "full");
+          } else {
+            tryTier(idx + 1);
+          }
+          }, token);
+          return;
+        }
         if (progress) progress.classList.remove("is-active");
         img.classList.add("is-loading");
         img.onload = () => {
+          if (token !== loadToken) return;
           img.classList.add("is-loaded");
           img.classList.remove("is-loading");
-          loadedTier = "medium";
-          updateHdBtn(item);
+          complete(true, tierName === "full" ? "full" : tierName);
         };
         img.onerror = () => {
-          // fallback to original
-          loadViaXhr(assetUrl(pathFor(item, "full")), (ok) => {
-            if (ok) loadedTier = "full";
-            updateHdBtn(item);
-          });
+          if (token !== loadToken) return;
+          tryTier(idx + 1);
         };
         img.src = url;
-      }
+      };
+
+      tryTier(0);
     }
 
     function show(i) {
       if (!items.length) return;
+      cancelLoad();
+      const token = loadToken;
       index = (i + items.length) % items.length;
       const item = items[index];
       setCaption(item);
-      const preferFull = getQuality() === "full";
+      const quality = getQuality();
       loadedTier = "";
-      loadTier(item, preferFull ? "full" : "medium");
+      loadTier(item, quality, token);
       lb.classList.add("is-open");
       lb.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
+      lockBodyScroll();
     }
 
     if (btnClose) btnClose.addEventListener("click", close);
@@ -306,12 +400,14 @@
       btnHd.addEventListener("click", () => {
         const item = items[index];
         if (!item) return;
+        cancelLoad();
+        const token = loadToken;
         btnHd.classList.add("is-loading");
         btnHd.disabled = true;
         loadViaXhr(assetUrl(pathFor(item, "full")), (ok) => {
           if (ok) loadedTier = "full";
           updateHdBtn(item);
-        });
+        }, token);
       });
     }
     lb.addEventListener("click", (e) => {
@@ -322,6 +418,19 @@
       if (e.key === "Escape") close();
       if (e.key === "ArrowLeft") show(index - 1);
       if (e.key === "ArrowRight") show(index + 1);
+      if (e.key === "Tab") {
+        const controls = focusables();
+        if (!controls.length) return;
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
 
     // Quality pills on page
@@ -333,7 +442,9 @@
           b.classList.toggle("is-active", b === btn);
         });
         if (lb.classList.contains("is-open") && items[index]) {
-          loadTier(items[index], q === "full" ? "full" : "medium");
+          cancelLoad();
+          const token = loadToken;
+          loadTier(items[index], q === "thumb" ? "thumb" : q === "full" ? "full" : "medium", token);
         }
       });
     });
@@ -343,11 +454,63 @@
     });
 
     return {
-      open(list, startIndex) {
+      open(list, startIndex, origin) {
         items = list;
+        lastFocusedThumb = origin || document.activeElement;
         show(startIndex || 0);
       },
     };
+  }
+
+  function getMasonryColumnCount() {
+    const w = window.innerWidth || 1200;
+    if (w <= 520) return 1;
+    if (w <= 900) return 2;
+    return 3;
+  }
+
+  function estimateCardHeight(card, columnWidth) {
+    const img = card.querySelector("img");
+    let ratio = 0.75;
+    if (img) {
+      const w = parseFloat(img.getAttribute("width") || "") || img.naturalWidth || 0;
+      const h = parseFloat(img.getAttribute("height") || "") || img.naturalHeight || 0;
+      if (w > 0 && h > 0) ratio = h / w;
+    }
+    return columnWidth * ratio + 88;
+  }
+
+  function packGalleryMasonry(grid, cards) {
+    grid.innerHTML = "";
+    if (!cards.length) return;
+    const count = getMasonryColumnCount();
+    if (count <= 1) {
+      cards.forEach((card) => grid.appendChild(card));
+      return;
+    }
+
+    const columns = [];
+    const heights = new Array(count).fill(0);
+    const gap = count === 2 ? 14 : 16;
+    const gridWidth = grid.clientWidth || grid.offsetWidth || 1000;
+    const colWidth = Math.max(120, (gridWidth - gap * (count - 1)) / count);
+
+    for (let i = 0; i < count; i += 1) {
+      const col = document.createElement("div");
+      col.className = "gallery-col";
+      col.setAttribute("role", "presentation");
+      columns.push(col);
+      grid.appendChild(col);
+    }
+
+    cards.forEach((card) => {
+      let shortest = 0;
+      for (let i = 1; i < count; i += 1) {
+        if (heights[i] < heights[shortest]) shortest = i;
+      }
+      columns[shortest].appendChild(card);
+      heights[shortest] += estimateCardHeight(card, colWidth) + gap;
+    });
   }
 
   function sortPhotos(photos, mode) {
@@ -475,21 +638,26 @@
           : "";
       }
 
-      grid.innerHTML = "";
       if (!list.length) {
         if (empty) empty.hidden = false;
+        grid.innerHTML = "";
         grid.hidden = true;
         return;
       }
       if (empty) empty.hidden = true;
       grid.hidden = false;
 
+      const cards = [];
       list.forEach((item, i) => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "gallery-card";
         btn.setAttribute("role", "listitem");
-        const thumb = assetUrl(item.thumb || item.medium || item.original);
+        const fallbackPaths = [item.thumb, item.medium, item.original]
+          .map((p) => normalizeRelPath(p))
+          .filter(Boolean)
+          .filter((p, idx, arr) => arr.indexOf(p) === idx);
+        const thumb = fallbackPaths.length ? assetUrl(fallbackPaths[0]) : "";
         btn.innerHTML = `
           <span class="gallery-card__media">
             <img class="gallery-card__thumb" src="${thumb}" alt="${escapeHtml(item.name || "")}" loading="lazy" decoding="async" />
@@ -501,23 +669,65 @@
           </span>
         `;
         const im = btn.querySelector("img");
+        const media = btn.querySelector(".gallery-card__media");
+        const fallbackLabel = global.JTG && global.JTG.i18n
+          ? global.JTG.i18n.t("gallery.photoUnavailable")
+          : "Photo unavailable";
+        let sourceIndex = 0;
+        const setCardError = () => {
+          btn.classList.add("is-error");
+          if (!media || media.querySelector(".gallery-card__placeholder")) return;
+          const ph = document.createElement("span");
+          ph.className = "gallery-card__placeholder";
+          ph.innerHTML = '<span class="ph-icon" aria-hidden="true">🖼️</span><span class="ph-text"></span>';
+          const t = ph.querySelector(".ph-text");
+          if (t) t.textContent = fallbackLabel;
+          media.appendChild(ph);
+        };
+        const tryNextSource = () => {
+          sourceIndex += 1;
+          if (!im || sourceIndex >= fallbackPaths.length) {
+            setCardError();
+            return;
+          }
+          im.src = assetUrl(fallbackPaths[sourceIndex]);
+        };
         if (im) {
-          im.addEventListener("load", () => btn.classList.add("is-ready"));
-          im.addEventListener("error", () => btn.classList.add("is-error"));
+          if (!fallbackPaths.length) setCardError();
+          im.addEventListener("load", () => {
+            btn.classList.add("is-ready");
+            btn.classList.remove("is-error");
+            if (media && !media.style.aspectRatio && im.naturalWidth > 0 && im.naturalHeight > 0) {
+              media.style.aspectRatio = `${im.naturalWidth} / ${im.naturalHeight}`;
+            }
+          });
+          im.addEventListener("error", tryNextSource);
         }
-        btn.addEventListener("click", () => lightbox && lightbox.open(list, i));
-        grid.appendChild(btn);
-        // staggered reveal
-        requestAnimationFrame(() => {
-          btn.classList.add("is-visible");
-        });
+        btn.addEventListener("click", () => lightbox && lightbox.open(list, i, btn));
+        btn.classList.add("is-visible");
+        cards.push(btn);
       });
+      packGalleryMasonry(grid, cards);
     }
 
     if (cityFilter) cityFilter.addEventListener("change", render);
     if (search) search.addEventListener("input", render);
     if (sortEl) sortEl.addEventListener("change", render);
     window.addEventListener("jtg:i18n", render);
+    let lastColumnCount = getMasonryColumnCount();
+    window.addEventListener("resize", () => {
+      const nextCount = getMasonryColumnCount();
+      if (nextCount !== lastColumnCount) {
+        lastColumnCount = nextCount;
+        render();
+      }
+    }, { passive: true });
+    window.addEventListener("orientationchange", () => {
+      setTimeout(() => {
+        lastColumnCount = getMasonryColumnCount();
+        render();
+      }, 120);
+    }, { passive: true });
     render();
   }
 

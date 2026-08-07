@@ -4,26 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="0rE0QD0vWPSfPxelCpS8qL2_n3JGrd_ZYPJBaGwnLZQ" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Photo gallery from Japan — temples, cities, food, nature, and neon nights. Browse by city, season, and category." />
+  <meta name="description" content="Japan city weather via Open-Meteo — forecasts, air quality, and search for Japan and world cities." />
   <meta name="theme-color" content="#8b1a2b" />
   <meta name="color-scheme" content="light dark" />
-  <title>Photo Gallery · Japan Travel Guide</title>
-  <link rel="canonical" href="https://traveljapan.pages.dev/gallery.html" />
+  <title>Weather · Japan Travel Guide</title>
+  <link rel="canonical" href="https://traveljapan.pages.dev/tools-weather.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Japan Travel Guide" />
-  <meta property="og:title" content="Photo Gallery · Japan Travel Guide" />
-  <meta property="og:description" content="Photo gallery from Japan — temples, cities, food, nature, and neon nights." />
-  <meta property="og:url" content="https://traveljapan.pages.dev/gallery.html" />
+  <meta property="og:title" content="Weather · Japan Travel Guide" />
+  <meta property="og:description" content="Japan city weather via Open-Meteo — forecasts, air quality, and world city search." />
+  <meta property="og:url" content="https://traveljapan.pages.dev/tools-weather.html" />
   <meta property="og:image" content="https://traveljapan.pages.dev/assets/gallery/main/ShibuyaSkyView.jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Photo Gallery · Japan Travel Guide" />
-  <meta name="twitter:description" content="Photo gallery from Japan — temples, cities, food, nature, and neon nights." />
   <link rel="icon" href="assets/icons/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="src/css/styles.css?v=usa-parity1" />
   <link rel="stylesheet" href="src/css/icons.css?v=usa-parity1" />
+  <link rel="stylesheet" href="src/css/weather.css?v=usa-parity1" />
+  <link rel="stylesheet" href="src/css/weather-app.css?v=usa-parity1" />
   <script>
   (function () {
     try {
@@ -43,114 +43,119 @@
     } catch (e) {}
   })();
   </script>
-
 </head>
-<body data-page="gallery" class="page-gallery">
+<body data-page="tools" class="page-tools page-tools-weather">
   <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
   <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
   <div id="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Gallery mini-app chrome -->
   <header class="gallery-app-bar site-header" role="banner">
     <div class="container gallery-app-bar__inner">
-      <a href="index.html" class="gallery-app-back">
+      <a href="tools.html" class="gallery-app-back">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-        <span data-i18n="gallery.backToGuide">Back to the guide</span>
+        <span data-i18n="tools.backToTools">Back to Tools</span>
       </a>
       <div class="gallery-app-title" aria-current="page">
-        <span class="gallery-app-mark" aria-hidden="true">❀</span>
-        <span data-i18n="nav.gallery">Gallery</span>
+        <span class="gallery-app-mark" aria-hidden="true">☁</span>
+        <span data-i18n="tools.weatherLabel">Weather</span>
       </div>
       <div class="gallery-app-actions">
+        <a href="gallery.html" class="nav__icon-btn" title="Gallery" aria-label="Gallery" data-i18n-aria="nav.gallery"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></a>
+        <a href="tools.html" class="nav__icon-btn" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></a>
         <button type="button" class="nav__icon-btn" data-open-settings title="Settings" aria-label="Settings" data-i18n-aria="nav.settings"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
       </div>
     </div>
   </header>
 
-  <main id="main" class="gallery-page" tabindex="-1">
-    <div class="container">
-      <header class="gallery-app-header reveal">
-        <div>
-          <p class="section__eyebrow" data-i18n="gallery.eyebrow">Photo gallery</p>
-          <h1 class="section__title" data-i18n="gallery.heading">Moments from <em>Japan</em></h1>
-        </div>
-        <p class="section__desc" data-i18n="gallery.pageIntro">Browse by city, season, and category. Grid uses fast thumbs; open a photo for a sharp medium view, then load the original when you want full quality.</p>
-      </header>
+  <main id="main" tabindex="-1">
+<section id="tools" class="tools-page tools-detail-page weather-root tools-miniapp" aria-labelledby="toolsTitle" data-tool="weather">
+  <h2 id="toolsTitle" class="visually-hidden" data-i18n="tools.weatherLabel">Weather</h2>
 
-      <div class="gallery-toolbar reveal">
-        <label class="gallery-search-wrap">
-          <span class="sr-only" data-i18n="common.search">Search</span>
-          <input type="search" id="gallery-search" class="gallery-search" autocomplete="off"
-            data-i18n-placeholder="gallery.searchPlaceholder" placeholder="Search name, place, city, date…" />
-        </label>
-        <select id="gallery-city" aria-label="City">
-          <option value="" data-i18n="common.allCities">All cities</option>
-        </select>
-        <select id="gallery-sort" aria-label="Sort">
-          <option value="time-desc" selected data-i18n="common.sortTimeDesc">Time (newest)</option>
-          <option value="time-asc" data-i18n="common.sortTimeAsc">Time (oldest)</option>
-          <option value="name" data-i18n="common.sortName">Name</option>
-          <option value="location" data-i18n="gallery.sortLocation">Location</option>
-          <option value="city" data-i18n="gallery.sortCity">City</option>
-          <option value="category" data-i18n="gallery.sortCategory">Category</option>
-          <option value="order" data-i18n="common.sortOrder">Default order</option>
-        </select>
-        <div class="gallery-quality" role="group" aria-label="Lightbox quality">
-          <button type="button" class="gallery-quality__btn" data-gallery-quality="thumb" data-i18n="gallery.qualityThumb">Thumb</button>
-          <button type="button" class="gallery-quality__btn is-active" data-gallery-quality="medium" data-i18n="gallery.qualityMedium">Medium</button>
-          <button type="button" class="gallery-quality__btn" data-gallery-quality="full" data-i18n="gallery.qualityFull">Full</button>
-        </div>
+  <div class="weather-page-sky" id="weatherPageSky" aria-hidden="true"></div>
+  <div class="weather-page">
+    <div class="weather-toolbar">
+      <div class="weather-search-wrap">
+        <span class="weather-search-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg></span>
+        <span class="visually-hidden" data-i18n="weather.search">Search city</span>
+        <input type="search" id="weatherSearch" class="weather-search" autocomplete="off" enterkeyhint="search"
+          placeholder="Search Japan or world cities…" data-i18n-placeholder="weather.searchPlaceholder" placeholder="Search Japan or world cities…" role="combobox" aria-autocomplete="list" aria-controls="weatherSuggest" aria-expanded="false">
+        <button type="button" class="weather-search-clear" id="weatherSearchClear" aria-label="Clear search" hidden>×</button>
+        <ul class="weather-suggest" id="weatherSuggest" role="listbox" hidden></ul>
       </div>
-
-      <div class="gallery-filters reveal" id="gallery-filters" role="toolbar" aria-label="Filter by category">
-        <button type="button" class="gallery-filter is-active" data-filter="all" aria-pressed="true"><span data-i18n="gallery.filterAll">All</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="cities" aria-pressed="false"><span data-i18n="gallery.filterCities">Cities</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="temples" aria-pressed="false"><span data-i18n="gallery.filterTemples">Temples</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="shrines" aria-pressed="false"><span data-i18n="gallery.filterShrines">Shrines</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="nature" aria-pressed="false"><span data-i18n="gallery.filterNature">Nature</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="food" aria-pressed="false"><span data-i18n="gallery.filterFood">Food</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="neon" aria-pressed="false"><span data-i18n="gallery.filterNeon">Neon / Night</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="travel" aria-pressed="false"><span data-i18n="gallery.filterTravel">Travel</span> <span class="gallery-filter__count">0</span></button>
-        <button type="button" class="gallery-filter" data-filter="culture" aria-pressed="false"><span data-i18n="gallery.filterCulture">Culture</span> <span class="gallery-filter__count">0</span></button>
-      </div>
-
-      <p class="gallery-count" id="gallery-count" aria-live="polite"></p>
-
-      <div id="gallery-empty" class="gallery-empty">
-        <div class="gallery-empty__icon" aria-hidden="true">📷</div>
-        <h2 data-i18n="common.emptyGalleryTitle">Gallery is empty</h2>
-        <p data-i18n="common.emptyGalleryDesc"></p>
-        <p class="muted mt-2" data-i18n="gallery.managerHint">Add photos with the local Gallery Manager: double-click Add Photos.command or run python3 tools/gallery_manager.py</p>
-      </div>
-
-      <div class="gallery-masonry" id="gallery-grid" role="list" hidden></div>
-    </div>
-  </main>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo viewer">
-    <div class="lightbox__counter" data-lb-counter></div>
-    <button type="button" class="lightbox__close" data-lb-close data-i18n-aria="common.close" aria-label="Close">✕</button>
-    <button type="button" class="lightbox__nav lightbox__nav--prev" data-lb-prev data-i18n-aria="common.previous" aria-label="Previous">‹</button>
-    <button type="button" class="lightbox__nav lightbox__nav--next" data-lb-next data-i18n-aria="common.next" aria-label="Next">›</button>
-    <div class="lightbox__stage">
-      <div class="lightbox__img-wrap">
-        <img class="lightbox__img" alt="" decoding="async" fetchpriority="high" />
-        <div class="lightbox__progress">
-          <div class="lightbox__progress-track"><div class="lightbox__progress-bar"></div></div>
-          <div class="lightbox__progress-label">
-            <span data-lb-progress-msg>Loading…</span>
-            <span data-lb-progress-pct>0%</span>
-          </div>
-        </div>
-      </div>
-      <div class="lightbox__caption">
-        <h3 data-lb-title></h3>
-        <p data-lb-meta></p>
-        <button type="button" class="btn btn--gold lightbox__hd" data-lb-hd hidden data-i18n="gallery.loadFull">Load full quality</button>
+      <div class="weather-toolbar-actions" role="toolbar" aria-label="Weather actions">
+        <button type="button" class="weather-btn weather-btn-pill" id="weatherLocate" data-i18n="weather.useLocation">Use my location</button>
+        <button type="button" class="weather-btn weather-btn-pill" id="weatherRefresh" data-i18n="weather.refresh">Refresh</button>
+        <button type="button" class="weather-btn weather-btn-pill" id="weatherUnitsBtn" data-i18n="weather.units">Units</button>
       </div>
     </div>
+    <p class="weather-updated" id="weatherUpdated" aria-live="polite"></p>
+    <p class="weather-error" id="weatherError" hidden></p>
+    <div class="weather-shell" id="weatherShell">
+      <div class="weather-load-panel" id="weatherLoading" hidden>
+        <div class="weather-load-status">
+          <span id="weatherLoadLabel" data-i18n="weather.loadingForecasts">Loading forecasts…</span>
+          <span class="weather-load-pct" id="weatherLoadPct">0%</span>
+        </div>
+        <div class="weather-load-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="weather-load-fill" id="weatherLoadFill"></div>
+        </div>
+      </div>
+      <div id="weatherMyLocationBlock" hidden>
+        <div class="weather-section-label" data-i18n="weather.myLocation">My Location</div>
+        <ul class="weather-list" id="weatherMyLocationList"></ul>
+      </div>
+      <div id="weatherFavoritesBlock" hidden>
+        <div class="weather-section-label" data-i18n="weather.favorites">Favorites</div>
+        <ul class="weather-list" id="weatherFavoritesList"></ul>
+      </div>
+      <div id="weatherMajorsBlock">
+        <div class="weather-section-label" data-i18n="weather.majorCities">Major cities</div>
+        <ul class="weather-list" id="weatherList"></ul>
+      </div>
+    </div>
+    <p class="weather-attribution" data-i18n="weather.attribution">Data: U.S. forecasts &amp; alerts NWS · world &amp; extras Open-Meteo (CC BY 4.0). For guidance only — not for emergencies.</p>
   </div>
+</section>
+
+<!-- Fullscreen city detail: sky fixed; content scrolls inside -->
+<div class="weather-detail" id="weatherDetail" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="weather-detail-sky" id="weatherDetailSky" aria-hidden="true">
+    <div class="wx-layer wx-layer-base"></div>
+    <div class="wx-layer wx-layer-a"></div>
+    <div class="wx-layer wx-layer-b"></div>
+  </div>
+  <div class="weather-detail-scroll" id="weatherDetailScroll">
+    <div class="weather-detail-bar">
+      <button type="button" class="weather-btn weather-btn-pill weather-btn-done" id="weatherDetailBack" data-i18n="weather.done">Done</button>
+      <div class="weather-detail-bar-actions">
+        <button type="button" class="weather-btn weather-btn-pill weather-btn-icon" id="weatherDetailFav" aria-pressed="false" aria-label="Favorite" title="Favorite"></button>
+        <button type="button" class="weather-btn weather-btn-pill" id="weatherDetailRefresh" data-i18n="weather.refresh">Refresh</button>
+      </div>
+    </div>
+    <div class="weather-detail-hero" id="weatherDetailHero"></div>
+    <div class="weather-modules" id="weatherModules"></div>
+  </div>
+</div>
+
+<!-- Info sheet — bottom sheet w/ drag-to-dismiss (about hub Preferences pattern) -->
+<div class="weather-sheet" id="weatherSheet" aria-hidden="true">
+  <div class="weather-sheet-panel" id="weatherSheetPanel" role="dialog" aria-modal="true">
+    <!-- Full drag zone: grabber + title (title filled by weather.js on open) -->
+    <div class="wx-sheet-dragzone" data-sheet-grab>
+      <div class="wx-sheet-grab" aria-hidden="true"></div>
+      <div class="wx-sheet-title-host" data-sheet-title-host></div>
+    </div>
+    <button type="button" class="weather-sheet-close" id="weatherSheetClose" aria-label="Close" data-i18n-aria="weather.close">
+      <svg class="sf-icon sf-icon--close" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <path d="M6.5 6.5L17.5 17.5"/>
+        <path d="M17.5 6.5L6.5 17.5"/>
+      </svg>
+    </button>
+    <div class="wx-sheet-surface" id="weatherSheetBody"></div>
+  </div>
+</div>
+
+</main>
 
   <footer class="site-footer">
   <div class="site-footer-inner container">
@@ -217,22 +222,13 @@
     </div>
   </aside>
 
-
-
-
-
-
-
   <script src="src/js/data/i18n.js?v=usa-parity1" defer></script>
   <script src="src/js/settings.js?v=usa-parity1" defer></script>
   <script src="src/js/i18n.js?v=usa-parity1" defer></script>
   <script src="src/js/units.js?v=usa-parity1" defer></script>
   <script src="src/js/nav.js?v=usa-parity1" defer></script>
-  <script src="src/js/animations.js?v=usa-parity1" defer></script>
-  <script src="assets/gallery/gallery.manifest.js?v=usa-parity1" defer></script>
-  <script src="src/js/gallery.js?v=usa-parity1" defer></script>
+  <script src="src/js/weather.js?v=usa-parity1" defer></script>
   <script src="src/js/nav-return.js?v=usa-parity1" defer></script>
   <script src="src/js/app.js?v=usa-parity1" defer></script>
-
 </body>
 </html>

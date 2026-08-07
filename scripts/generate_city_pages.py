@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "cities"
-VERSION = "icon-refine1"
+VERSION = "usa-parity1"
 
 # id, display name, extra body classes, distance km from Tokyo, temp min/max °C, hero photo
 CITIES: list[tuple[str, str, str, int, int, int, str | None]] = [
@@ -123,6 +123,7 @@ def render_city(
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="0rE0QD0vWPSfPxelCpS8qL2_n3JGrd_ZYPJBaGwnLZQ" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="{name} travel guide — food, sights, transport, and practical tips for Japan." />
   <meta name="theme-color" content="#f5f2ef" media="(prefers-color-scheme: light)" />
@@ -131,6 +132,7 @@ def render_city(
   <title data-i18n="cities.{cid}.name">{name} · Japan Travel Guide</title>
   <link rel="icon" href="../assets/icons/logo.svg" />
 {FONT_LINKS}  <link rel="stylesheet" href="../src/css/styles.css?v={VERSION}" />
+  <link rel="stylesheet" href="../src/css/icons.css?v={VERSION}" />
   <link rel="stylesheet" href="../src/css/cities/{cid}.css?v={VERSION}" />
 {THEME_BOOT}</head>
 <body class="{body_cls}" data-page="city" data-city="{cid}">
@@ -158,9 +160,9 @@ def render_city(
         <a href="#other-cities" data-i18n="cityPage.otherCitiesShort">Cities</a>
       </nav>
       <div class="nav__actions">
-        <a class="nav__icon-btn" href="../gallery.html" title="Gallery" aria-label="Gallery" data-i18n-aria="nav.gallery" data-i18n-title="nav.gallery">📷</a>
-        <a class="nav__icon-btn" href="../tools.html" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools" data-i18n-title="nav.tools">🧰</a>
-        <button type="button" class="nav__icon-btn" data-open-settings title="Settings" aria-label="Settings" data-i18n-aria="nav.settings" data-i18n-title="nav.settings">⚙️</button>
+        <a class="nav__icon-btn" href="../gallery.html" title="Gallery" aria-label="Gallery" data-i18n-aria="nav.gallery" data-i18n-title="nav.gallery"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></a>
+        <a class="nav__icon-btn" href="../tools.html" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools" data-i18n-title="nav.tools"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></a>
+        <button type="button" class="nav__icon-btn" data-open-settings title="Settings" aria-label="Settings" data-i18n-aria="nav.settings" data-i18n-title="nav.settings"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
       </div>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="city-nav" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -302,7 +304,7 @@ def render_city(
   <aside class="settings-panel" id="settings-panel" aria-label="Settings">
     <div class="settings-panel__header">
       <h2 data-i18n="common.settingsTitle">Settings</h2>
-      <button type="button" class="settings-close" data-close-settings aria-label="Close" data-i18n-aria="common.close">✕</button>
+      <button type="button" class="settings-close" data-close-settings aria-label="Close" data-i18n-aria="common.close"><svg class="jtg-icon jtg-icon--sm" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5"/></svg></button>
     </div>
     <div class="settings-group">
       <h3 data-i18n="common.language">Language</h3>
@@ -417,6 +419,7 @@ def render_city(
   <script src="../src/js/currency.js?v={VERSION}" defer></script>
   <script src="../src/js/nav.js?v={VERSION}" defer></script>
   <script src="../src/js/animations.js?v={VERSION}" defer></script>
+  <script src="../src/js/nav-return.js?v={VERSION}" defer></script>
   <script src="../src/js/app.js?v={VERSION}" defer></script>
 </body>
 </html>

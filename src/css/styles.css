@@ -3369,21 +3369,38 @@ body {
 
 /* Masonry-like columns */
 .gallery-masonry {
-  column-count: 3;
-  column-gap: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  isolation: isolate;
 }
 
 @media (max-width: 900px) {
-  .gallery-masonry { column-count: 2; }
+  .gallery-masonry { gap: 0.85rem; }
 }
 @media (max-width: 520px) {
-  .gallery-masonry { column-count: 1; }
+  .gallery-masonry { gap: 0.75rem; }
+}
+
+.gallery-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-anchor: none;
+}
+
+@media (max-width: 900px) {
+  .gallery-col { gap: 0.85rem; }
+}
+@media (max-width: 520px) {
+  .gallery-col { gap: 0.75rem; }
 }
 
 .gallery-card {
-  break-inside: avoid;
   width: 100%;
-  margin: 0 0 1rem;
+  margin: 0;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -3393,26 +3410,31 @@ body {
   text-align: left;
   color: inherit;
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.45s ease, transform 0.45s ease, box-shadow var(--transition);
+  contain: paint;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow-anchor: none;
+  opacity: 1;
+  transform: none;
+  transition: box-shadow var(--transition), border-color var(--transition);
 }
 
 .gallery-card.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .gallery-card:hover {
+  transform: none;
   box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
 }
 
 .gallery-card__media {
   position: relative;
   display: block;
   background: var(--surface-2);
-  min-height: 120px;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
 }
 
 .gallery-card__thumb {
@@ -3420,16 +3442,47 @@ body {
   height: auto;
   display: block;
   vertical-align: middle;
-  opacity: 0.92;
-  transition: opacity 0.35s ease, transform 0.45s ease;
+  opacity: 1;
+  transition: opacity 0.2s ease;
 }
 
 .gallery-card.is-ready .gallery-card__thumb {
   opacity: 1;
 }
 
-.gallery-card:hover .gallery-card__thumb {
-  transform: scale(1.03);
+.gallery-card.is-error {
+  border-style: dashed;
+}
+
+.gallery-card.is-error .gallery-card__thumb {
+  display: none;
+}
+
+.gallery-card__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  min-height: 160px;
+  text-align: center;
+  padding: 0.9rem;
+}
+
+.gallery-card__placeholder .ph-icon {
+  font-size: 1.5rem;
+  opacity: 0.55;
+}
+
+.gallery-card__placeholder .ph-text {
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .gallery-card__zoom {
@@ -3450,6 +3503,16 @@ body {
 
 .gallery-card:hover .gallery-card__zoom {
   opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .gallery-card:hover {
+    box-shadow: var(--shadow);
+  }
+
+  .gallery-card:hover .gallery-card__zoom {
+    opacity: 0;
+  }
 }
 
 .gallery-card__body {

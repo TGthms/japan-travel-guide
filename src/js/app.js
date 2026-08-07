@@ -77,7 +77,12 @@
 
   window.addEventListener("unhandledrejection", function (e) {
     try {
-      if (e && typeof e.preventDefault === "function") e.preventDefault();
+      const reason = e && "reason" in e ? e.reason : e;
+      console.error("[JTG] Unhandled promise rejection:", reason);
+      // Keep default browser reporting in normal environments so errors are visible.
+      if (ENV.constrained && e && typeof e.preventDefault === "function") {
+        e.preventDefault();
+      }
     } catch (err) { /* ignore */ }
   });
 
