@@ -4,24 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="0rE0QD0vWPSfPxelCpS8qL2_n3JGrd_ZYPJBaGwnLZQ" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Budget, packing, weather, currency, and more for Japan trips." />
+  <meta name="description" content="Japan travel tools — budget planner, packing checklist, currency, clocks, tax, JR Pass, rail fares, and emergency numbers." />
   <meta name="theme-color" content="#8b1a2b" />
-  <meta name="color-scheme" content="light dark" />
   <title>Travel Tools · Japan Travel Guide</title>
   <link rel="canonical" href="https://traveljapan.pages.dev/tools.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Japan Travel Guide" />
   <meta property="og:title" content="Travel Tools · Japan Travel Guide" />
-  <meta property="og:description" content="Budget, packing, weather, currency, and more for Japan trips." />
+  <meta property="og:description" content="Budget planner, packing checklist, currency, clocks, weather, and more." />
   <meta property="og:url" content="https://traveljapan.pages.dev/tools.html" />
   <meta property="og:image" content="https://traveljapan.pages.dev/assets/gallery/main/ShibuyaSkyView.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Travel Tools · Japan Travel Guide" />
+  <meta name="twitter:description" content="Budget planner, packing checklist, currency, clocks, weather, and more." />
   <link rel="icon" href="assets/icons/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=prod-fix1" />
-  <link rel="stylesheet" href="src/css/icons.css?v=prod-fix1" />
-<script>
+  <link rel="stylesheet" href="src/css/styles.css?v=tools-fix1" />
+  <link rel="stylesheet" href="src/css/icons.css?v=tools-fix1" />
+  <script>
   (function () {
     try {
       var p = JSON.parse(localStorage.getItem("jtg-preferences") || "{}");
@@ -40,24 +42,25 @@
     } catch (e) {}
   })();
   </script>
+
 </head>
 <body data-page="tools" class="page-tools">
   <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
-  <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
-  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="loader"><div class="loader__inner"><div class="loader__torii"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
+  <div id="scroll-progress"></div>
+
   <header class="gallery-app-bar site-header" role="banner">
     <div class="container gallery-app-bar__inner">
       <a href="index.html" class="gallery-app-back">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
         <span data-i18n="tools.backToGuide">Back to the guide</span>
       </a>
-      <div class="gallery-app-title" aria-current="page">
+      <div class="gallery-app-title">
         <span class="gallery-app-mark" aria-hidden="true">⛩</span>
         <span data-i18n="nav.tools">Tools</span>
       </div>
       <div class="gallery-app-actions">
         <a href="gallery.html" class="nav__icon-btn" title="Gallery" aria-label="Gallery" data-i18n-aria="nav.gallery"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></a>
-        <a href="tools.html" class="nav__icon-btn" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></a>
         <button type="button" class="nav__icon-btn" data-open-settings title="Settings" aria-label="Settings" data-i18n-aria="nav.settings"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
       </div>
     </div>
@@ -65,34 +68,355 @@
 
   <main id="main" class="tools-page" tabindex="-1">
     <div class="container">
-      <header class="tools-app-header reveal" style="padding-top:1.5rem">
+      <header class="tools-app-header reveal">
         <div>
           <p class="section__eyebrow" data-i18n="tools.eyebrow">Travel tools</p>
           <h1 class="section__title" data-i18n-html="true" data-i18n="tools.heading">Plan Japan with <em>clarity</em></h1>
         </div>
-        <p class="section__desc" data-i18n="tools.intro">Budget, packing, weather, currency, clocks, tax, rail helpers, and emergency numbers.</p>
+        <p class="section__desc" data-i18n="tools.intro">Budget planner, packing checklist, live currency, world clocks, Japan tax, JR Pass check, rail estimates, and emergency numbers.</p>
       </header>
-      <div class="tools-hub-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;padding:0 0 3rem">
-        <a class="card card--solid" href="tools-weather.html" style="padding:1.15rem;text-decoration:none">
-          <strong data-i18n="tools.weatherLabel">Weather</strong>
-          <p class="card__text" data-i18n="tools.weatherSub">Japan cities &amp; world search via Open-Meteo.</p>
+
+      <div class="tools-hub-weather reveal" style="margin:0 0 1.25rem">
+        <a class="card card--solid" href="tools-weather.html" style="display:flex;align-items:center;gap:1rem;padding:1rem 1.15rem;text-decoration:none">
+          <span aria-hidden="true" style="font-size:1.5rem">☁</span>
+          <span>
+            <strong data-i18n="tools.weatherLabel">Weather</strong>
+            <span class="card__text" style="display:block;margin-top:0.2rem" data-i18n="tools.weatherSub">Japan cities, world search, forecasts &amp; air quality via Open-Meteo.</span>
+          </span>
         </a>
-        <a class="card card--solid" href="tools-budget.html" style="padding:1.15rem;text-decoration:none">
-          <strong data-i18n="budget.title">Budget planner</strong>
-          <p class="card__text" data-i18n="budget.desc">Trip cost estimate from daily rates, rail, and buffer.</p>
-        </a>
-        <a class="card card--solid" href="tools-packing.html" style="padding:1.15rem;text-decoration:none">
-          <strong data-i18n="packing.title">Packing checklist</strong>
-          <p class="card__text" data-i18n="packing.desc">Check items off — saved in this browser.</p>
-        </a>
-        <a class="card card--solid" href="tools-utilities.html" style="padding:1.15rem;text-decoration:none">
-          <strong data-i18n="tools.utilitiesLabel">Utilities</strong>
-          <p class="card__text" data-i18n="tools.utilitiesSub">Currency, clocks, tax, rail, emergency numbers.</p>
-        </a>
+      </div>
+      <nav class="tools-jump reveal" aria-label="Tools sections">
+        <a href="#budget" data-i18n="nav.budget">Budget</a>
+        <a href="#packing" data-i18n="nav.packing">Packing</a>
+        <a href="#currency-tool" data-i18n="tools.currencyLabel">Currency</a>
+        <a href="#emergency-tool" data-i18n="tools.emergencyLabel">Emergency</a>
+      </nav>
+
+      <div class="tools-grid">
+
+        <!-- BUDGET PLANNER -->
+        <section class="tool-card tool-card-wide budget-tool reveal" id="budget">
+          <header class="budget-tool__header">
+            <div>
+              <div class="tool-label" data-i18n="budget.title">Budget planner</div>
+              <p class="tool-sub" data-i18n="budget.desc">Realistic Japan trip cost estimate from daily rates, rail, transfers, and a buffer. Planning figures only—not a quote.</p>
+            </div>
+            <div class="budget-presets" id="budget-presets" role="group" aria-label="Budget presets">
+              <span class="budget-presets__label" data-i18n="budget.presetsLabel">Style</span>
+              <div class="budget-presets__row">
+                <button type="button" class="budget-preset" data-preset="backpacker" data-i18n="budget.presetBackpacker">Backpacker</button>
+                <button type="button" class="budget-preset is-active" data-preset="balanced" data-i18n="budget.presetBalanced">Balanced</button>
+                <button type="button" class="budget-preset" data-preset="comfort" data-i18n="budget.presetComfort">Comfort</button>
+                <button type="button" class="budget-preset" data-preset="luxury" data-i18n="budget.presetLuxury">Luxury</button>
+              </div>
+            </div>
+          </header>
+
+          <div class="budget-layout" id="budget-planner">
+            <div class="budget-inputs">
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionTrip">Trip basics</h3>
+                <div class="budget-fields">
+                  <div class="budget-field">
+                    <label for="budget-days" data-i18n="budget.days">Days in Japan</label>
+                    <input type="number" id="budget-days" min="1" max="90" value="10" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-travelers" data-i18n="budget.travelers">Travelers</label>
+                    <input type="number" id="budget-travelers" min="1" max="12" value="1" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-cities" data-i18n="budget.cities">Cities / bases</label>
+                    <input type="number" id="budget-cities" min="1" max="10" value="3" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-season" data-i18n="budget.season">Season</label>
+                    <select id="budget-season">
+                      <option value="low" data-i18n="budget.seasonLow">Low season</option>
+                      <option value="shoulder" selected data-i18n="budget.seasonShoulder">Shoulder</option>
+                      <option value="peak" data-i18n="budget.seasonPeak">Peak season</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionDaily">Daily style</h3>
+                <div class="budget-fields">
+                  <div class="budget-field budget-field--wide">
+                    <label for="budget-acc" data-i18n="budget.accommodation">Accommodation</label>
+                    <select id="budget-acc">
+                      <option value="hostel" data-i18n="budget.hostel">Hostel / capsule</option>
+                      <option value="business" data-i18n="budget.business">Business hotel</option>
+                      <option value="mid" selected data-i18n="budget.mid">Mid-range hotel</option>
+                      <option value="ryokan" data-i18n="budget.ryokan">Ryokan / boutique</option>
+                      <option value="luxury" data-i18n="budget.luxury">Luxury</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-rooms" data-i18n="budget.rooms">Rooms</label>
+                    <input type="number" id="budget-rooms" min="1" max="6" value="1" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-transport" data-i18n="budget.transport">City transport</label>
+                    <select id="budget-transport">
+                      <option value="local" data-i18n="budget.local">IC + walking</option>
+                      <option value="pass" selected data-i18n="budget.pass">Metro day-pass mix</option>
+                      <option value="active" data-i18n="budget.active">Active city-hopping</option>
+                      <option value="taxi" data-i18n="budget.taxi">Taxi-heavy</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-food" data-i18n="budget.food">Food</label>
+                    <select id="budget-food">
+                      <option value="budget" data-i18n="budget.foodBudget">Budget eats</option>
+                      <option value="mid" selected data-i18n="budget.foodMid">Restaurant mix</option>
+                      <option value="nice" data-i18n="budget.foodNice">Nice dinners</option>
+                      <option value="gourmet" data-i18n="budget.foodGourmet">Gourmet</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-attr" data-i18n="budget.attractions">Sights &amp; activities</label>
+                    <select id="budget-attr">
+                      <option value="light" data-i18n="budget.attrLight">Light</option>
+                      <option value="standard" selected data-i18n="budget.attrStandard">Standard</option>
+                      <option value="heavy" data-i18n="budget.attrHeavy">Ticket-heavy</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionOnce">Travel add-ons</h3>
+                <div class="budget-fields">
+                  <div class="budget-field">
+                    <label for="budget-rail-legs" data-i18n="budget.railLegs">Long-distance legs</label>
+                    <input type="number" id="budget-rail-legs" min="0" max="20" value="2" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-rail-style" data-i18n="budget.railStyle">Long-distance style</label>
+                    <select id="budget-rail-style">
+                      <option value="shinkansen" selected data-i18n="budget.railShinkansen">Shinkansen</option>
+                      <option value="highway" data-i18n="budget.railHighway">Bus / slower rail</option>
+                      <option value="pass" data-i18n="budget.railPass">JR Pass style</option>
+                      <option value="flight" data-i18n="budget.railFlight">Domestic flights</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-airport" data-i18n="budget.airport">Airport transfers</label>
+                    <select id="budget-airport">
+                      <option value="train" selected data-i18n="budget.airportTrain">Train / bus</option>
+                      <option value="express" data-i18n="budget.airportExpress">Airport express</option>
+                      <option value="taxi" data-i18n="budget.airportTaxi">Taxi / private</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-sim" data-i18n="budget.sim">Phone data</label>
+                    <select id="budget-sim">
+                      <option value="none" data-i18n="budget.simNone">Wi‑Fi only</option>
+                      <option value="esim" selected data-i18n="budget.simEsim">eSIM / pocket Wi‑Fi</option>
+                      <option value="premium" data-i18n="budget.simPremium">High-data eSIM</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-buffer" data-i18n="budget.buffer">Contingency</label>
+                    <select id="budget-buffer">
+                      <option value="5" data-i18n="budget.buffer5">5%</option>
+                      <option value="10" selected data-i18n="budget.buffer10">10% recommended</option>
+                      <option value="15" data-i18n="budget.buffer15">15%</option>
+                      <option value="20" data-i18n="budget.buffer20">20%</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-currency" data-i18n="budget.currency">Currency</label>
+                    <select id="budget-currency">
+                      <option value="JPY">JPY</option>
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="CNY">CNY</option>
+                      <option value="GBP">GBP</option>
+                      <option value="AUD">AUD</option>
+                      <option value="CAD">CAD</option>
+                      <option value="KRW">KRW</option>
+                      <option value="TWD">TWD</option>
+                      <option value="SGD">SGD</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <aside class="budget-results" aria-live="polite">
+              <div class="budget-results__hero">
+                <p class="budget-results__label" data-i18n="budget.total">Estimated trip total</p>
+                <div class="budget-total" id="budget-total">—</div>
+                <div class="budget-meta-row" id="budget-meta"></div>
+              </div>
+              <div class="budget-range" id="budget-range" aria-label="Cost range"></div>
+              <div class="budget-results__section">
+                <h4 class="budget-results__h" data-i18n="budget.breakdownTitle">Breakdown</h4>
+                <div class="budget-breakdown" id="budget-breakdown"></div>
+              </div>
+              <div class="budget-results__section">
+                <h4 class="budget-results__h" data-i18n="budget.tipsTitle">Tips for this plan</h4>
+                <ul class="budget-tips" id="budget-tips"></ul>
+              </div>
+              <p class="rates-note" id="budget-rates-note"></p>
+              <p class="budget-disclaimer" data-i18n="budget.disclaimer">Indicative averages for independent travelers. Hotel peaks and premium rail can run higher—confirm before booking.</p>
+            </aside>
+          </div>
+        </section>
+
+        <!-- PACKING CHECKLIST -->
+        <section class="tool-card tool-card-wide reveal" id="packing">
+          <div class="tool-label" data-i18n="packing.title">Packing checklist</div>
+          <p class="tool-sub" data-i18n="packing.desc">Tap items to check them off — your list is saved in this browser.</p>
+
+          <div class="packing-progress" id="packing-progress" aria-live="polite">
+            <div class="packing-progress__row">
+              <span class="packing-progress__label" data-i18n="packing.progressLabel">Packed</span>
+              <span class="packing-progress__count" id="packing-progress-count">0 / 25</span>
+            </div>
+            <div
+              class="packing-progress__track"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              id="packing-progress-bar"
+            >
+              <div class="packing-progress__fill" id="packing-progress-fill"></div>
+            </div>
+            <p class="packing-progress__hint" id="packing-progress-hint" data-i18n="packing.progressStart">Start checking items to fill the bar.</p>
+          </div>
+
+          <div class="packing-grid" id="packing-list"></div>
+          <div class="packing-actions">
+            <button type="button" class="btn btn--secondary" id="packing-check-all" data-i18n="packing.checkAll">Check all</button>
+            <button type="button" class="btn btn--ghost" id="packing-reset" data-i18n="packing.reset">Reset</button>
+          </div>
+        </section>
+
+        <!-- Currency -->
+        <section class="tool-card tool-card-wide reveal" id="currency-tool">
+          <div class="tool-label" data-i18n="tools.currencyLabel">Live currency converter</div>
+          <p class="tool-sub" data-i18n="tools.currencySub">Daily rates via frankfurter.dev (JPY-centered, multi-currency).</p>
+          <div class="tool-form currency-tool">
+            <label class="tool-field"><span data-i18n="tools.amount">Amount</span>
+              <input id="tool-amount" type="number" min="0" step="0.01" value="10000" inputmode="decimal" />
+            </label>
+            <label class="tool-field"><span data-i18n="tools.from">From</span>
+              <select id="tool-from">
+                <option value="JPY" selected>JPY</option>
+                <option value="USD">USD</option><option value="EUR">EUR</option><option value="CNY">CNY</option>
+                <option value="GBP">GBP</option><option value="KRW">KRW</option><option value="AUD">AUD</option>
+                <option value="HKD">HKD</option><option value="SGD">SGD</option><option value="TWD">TWD</option>
+                <option value="THB">THB</option><option value="CAD">CAD</option><option value="CHF">CHF</option>
+              </select>
+            </label>
+            <button type="button" class="tool-swap" id="tool-swap" aria-label="Swap">⇄</button>
+            <label class="tool-field"><span data-i18n="tools.to">To</span>
+              <select id="tool-to">
+                <option value="USD" selected>USD</option>
+                <option value="JPY">JPY</option><option value="EUR">EUR</option><option value="CNY">CNY</option>
+                <option value="GBP">GBP</option><option value="KRW">KRW</option><option value="AUD">AUD</option>
+                <option value="HKD">HKD</option><option value="SGD">SGD</option><option value="TWD">TWD</option>
+                <option value="THB">THB</option><option value="CAD">CAD</option><option value="CHF">CHF</option>
+              </select>
+            </label>
+          </div>
+          <div class="tool-result" id="tool-currency-result">—</div>
+          <p class="tool-meta" id="tool-currency-meta"></p>
+        </section>
+
+        <!-- Clocks -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.clockLabel">World clock</div>
+          <p class="tool-sub" data-i18n="tools.clockSub">Japan runs on one timezone (JST). Compare with home for calls and arrivals.</p>
+          <div class="clock-list" id="world-clock-list"></div>
+        </section>
+
+        <!-- Tax -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.taxLabel">Japan consumption tax</div>
+          <p class="tool-sub" data-i18n="tools.taxSub">Standard rate is typically 10% (some groceries 8%). Japan does not expect tipping.</p>
+          <div class="tool-form stacked">
+            <label class="tool-field"><span data-i18n="tools.taxBill">Price before tax (¥)</span>
+              <input id="tax-bill" type="number" min="0" step="1" value="3000" inputmode="decimal" />
+            </label>
+            <label class="tool-field"><span data-i18n="tools.taxRate">Tax %</span>
+              <select id="tax-rate">
+                <option value="10" selected>10% — standard</option>
+                <option value="8">8% — reduced (some food)</option>
+                <option value="0">0% — tax-free eligible (if applicable)</option>
+              </select>
+            </label>
+          </div>
+          <div class="tool-result" id="tax-result">—</div>
+          <p class="tool-meta" id="tax-meta"></p>
+          <p class="tool-meta" data-i18n="tools.noTip">Tipping is not customary in Japan — excellent service is included in the culture, not the bill.</p>
+        </section>
+
+        <!-- JR Pass -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.jrLabel">JR Pass sense-check</div>
+          <p class="tool-sub" data-i18n="tools.jrSub">Rough comparison of a tourist rail pass vs buying long-distance tickets. Prices change — always verify officially.</p>
+          <div class="tool-form stacked">
+            <label class="tool-field"><span data-i18n="tools.jrDays">Trip length (days)</span>
+              <input id="jr-days" type="number" min="1" max="30" value="7" />
+            </label>
+            <label class="tool-field"><span data-i18n="tools.jrLegs">Long-distance rail legs (approx.)</span>
+              <input id="jr-legs" type="number" min="0" max="40" value="4" />
+            </label>
+          </div>
+          <div class="tool-result tool-result-sm" id="jr-result">—</div>
+          <p class="tool-meta" id="jr-meta"></p>
+        </section>
+
+        <!-- Rail -->
+        <section class="tool-card reveal">
+          <div class="tool-label" data-i18n="tools.railLabel">Shinkansen fare estimate</div>
+          <p class="tool-sub" data-i18n="tools.railSub">Indicative one-way ordinary car averages for planning — not a booking system.</p>
+          <div class="tool-form stacked">
+            <label class="tool-field"><span data-i18n="tools.railRoute">Route</span>
+              <select id="rail-route">
+                <option value="tokyo-kyoto">Tokyo ↔ Kyoto</option>
+                <option value="tokyo-osaka">Tokyo ↔ Osaka</option>
+                <option value="tokyo-hiroshima">Tokyo ↔ Hiroshima</option>
+                <option value="tokyo-fukuoka">Tokyo ↔ Fukuoka (Hakata)</option>
+                <option value="tokyo-kanazawa">Tokyo ↔ Kanazawa</option>
+                <option value="osaka-hiroshima">Osaka ↔ Hiroshima</option>
+                <option value="osaka-fukuoka">Osaka ↔ Fukuoka</option>
+                <option value="tokyo-nagoya">Tokyo ↔ Nagoya</option>
+                <option value="tokyo-sendai">Tokyo ↔ Sendai</option>
+              </select>
+            </label>
+            <label class="tool-field"><span data-i18n="tools.railTrips">Number of one-ways</span>
+              <input id="rail-trips" type="number" min="1" max="20" value="2" />
+            </label>
+          </div>
+          <div class="tool-result" id="rail-result">—</div>
+          <p class="tool-meta" id="rail-meta"></p>
+        </section>
+
+        <!-- Emergency -->
+        <section class="tool-card reveal" id="emergency-tool">
+          <div class="tool-label" data-i18n="tools.emergencyLabel">Useful numbers in Japan</div>
+          <p class="tool-sub" data-i18n="tools.emergencySub">Save these before you need them.</p>
+          <ul class="tool-info-list">
+            <li><strong>110</strong> — <span data-i18n="tools.emPolice">Police</span></li>
+            <li><strong>119</strong> — <span data-i18n="tools.emFire">Fire &amp; ambulance</span></li>
+            <li><strong>118</strong> — <span data-i18n="tools.emCoast">Coast Guard</span></li>
+            <li><strong>0570-000-911</strong> — <span data-i18n="tools.emHelpline">Japan Helpline (English-friendly)</span></li>
+            <li><strong>#7119</strong> — <span data-i18n="tools.emMedical">Non-emergency medical advice (many areas)</span></li>
+          </ul>
+          <p class="tool-meta" data-i18n="tools.emNote">Also save your country’s embassy or consulate in Japan.</p>
+        </section>
       </div>
     </div>
   </main>
-<footer class="site-footer">
+
+  <footer class="site-footer">
   <div class="site-footer-inner container">
     <a href="index.html" class="site-footer-brand">❀ <span data-i18n="meta.siteName">Japan Travel Guide</span></a>
     <p class="site-footer-tagline" data-i18n="footer.tagline">A practical multi-city planning companion for Japan trips.</p>
@@ -110,7 +434,8 @@
     </div>
   </div>
 </footer>
-<div class="settings-overlay" id="settings-overlay" data-close-settings></div>
+
+  <div class="settings-overlay" id="settings-overlay" data-close-settings></div>
   <aside class="settings-panel" id="settings-panel" aria-label="Settings">
     <div class="settings-panel__header">
       <h2 data-i18n="common.settingsTitle">Settings</h2>
@@ -155,13 +480,16 @@
       </div>
     </div>
   </aside>
-  <script src="src/js/data/i18n.js?v=prod-fix1" defer></script>
-  <script src="src/js/settings.js?v=prod-fix1" defer></script>
-  <script src="src/js/i18n.js?v=prod-fix1" defer></script>
-  <script src="src/js/units.js?v=prod-fix1" defer></script>
-  <script src="src/js/currency.js?v=prod-fix1" defer></script>
-  <script src="src/js/nav.js?v=prod-fix1" defer></script>
-  <script src="src/js/nav-return.js?v=prod-fix1" defer></script>
-  <script src="src/js/app.js?v=prod-fix1" defer></script>
+  <script src="src/js/data/i18n.js?v=tools-fix1" defer></script>
+  <script src="src/js/settings.js?v=tools-fix1" defer></script>
+  <script src="src/js/i18n.js?v=tools-fix1" defer></script>
+  <script src="src/js/units.js?v=tools-fix1" defer></script>
+  <script src="src/js/currency.js?v=tools-fix1" defer></script>
+  <script src="src/js/budget.js?v=tools-fix1" defer></script>
+  <script src="src/js/packing.js?v=tools-fix1" defer></script>
+  <script src="src/js/nav.js?v=tools-fix1" defer></script>
+  <script src="src/js/tools.js?v=tools-fix1" defer></script>
+  <script src="src/js/nav-return.js?v=tools-fix1" defer></script>
+  <script src="src/js/app.js?v=tools-fix1" defer></script>
 </body>
 </html>

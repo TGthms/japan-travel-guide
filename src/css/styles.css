@@ -6953,3 +6953,47 @@ body[data-page="city"] .nav__brand-text {
   border-radius: 8px;
   background: #000;
 }
+
+/* ===== TOOLS FIX: app-bar pages + hub cards ===== */
+body.page-tools .gallery-app-bar.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+body.page-tools .tools-page,
+body.page-tools main.tools-page {
+  padding-top: 1.25rem !important;
+  padding-bottom: 3.5rem !important;
+  min-height: 50vh !important;
+}
+body.page-tools .tools-app-header {
+  margin-top: 0.5rem !important;
+}
+body.page-tools .tools-hub-grid a.card {
+  display: block !important;
+  color: inherit !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+body.page-tools .tools-hub-grid a.card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg, 0 12px 32px rgba(0,0,0,.12)) !important;
+}
+body.page-tools .tools-hub-weather a.card {
+  color: inherit !important;
+}
+/* Mini-app main never collapses under sticky bar */
+body.page-tools .tools-mini-main,
+body.page-tools-weather .tools-page {
+  padding-top: 1.5rem !important;
+}
+/* Ensure tool cards readable */
+body.page-tools .tool-card {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+/* Reveal on tools shouldn't stay invisible if animations fail */
+body.page-tools .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
