@@ -28,3 +28,8 @@ assets/gallery/tmp*
 .cache/
 test-results/
 playwright-report/
+
+# Never commit virtualenvs under tools
+tools/**/.venv/
+tools/gallery_manager/.venv/
+**/.venv/
