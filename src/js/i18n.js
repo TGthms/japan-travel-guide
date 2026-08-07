@@ -13,6 +13,10 @@
 
   function resolve(dict, key) {
     if (!key) return "";
+    // Flat keys (USA manager style): "gallery.item.slug.caption"
+    if (dict && Object.prototype.hasOwnProperty.call(dict, key)) {
+      return dict[key];
+    }
     const parts = key.split(".");
     let cur = dict;
     for (const p of parts) {

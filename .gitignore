@@ -6,16 +6,16 @@
 *.swp
 *~
 
-# Node (dev-only package.json; no runtime build pipeline)
+# Node
 node_modules/
 npm-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# Internal photo workflow (not part of the published site)
-# Local Gallery Manager + launcher — never deploy to GitHub Pages
-tools/
+# Gallery Manager — source IS tracked (tools/gallery_manager.py, tools/README.md)
+# Launcher stays local-only
 Add Photos.command
+tools/__pycache__/
 **/__pycache__/
 *.py[cod]
 *.pyo
@@ -26,3 +26,5 @@ tools/.geo_cache.json
 assets/gallery/tmp*
 *.tmp
 .cache/
+test-results/
+playwright-report/

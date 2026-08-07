@@ -1,3 +1,4 @@
+/* DOMAIN FILES (load alongside this sheet from HTML): icons.css, weather.css, weather-app.css */
 /* ==========================================================================
    Japan Travel Guide — Global Design System
    Palette: sakura pink, deep red, white, black, gold accents
@@ -6725,4 +6726,230 @@ body.jtg-settings-open {
   font-size: 1.2rem !important;
   cursor: pointer !important;
   line-height: 1 !important;
+}
+
+/* ===== PHASE1 LOCK: city jump + header + weather search ===== */
+
+/* Switch city: never grow into a giant oval */
+.city-jump {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.5rem 0.75rem !important;
+  margin: 0 0 1rem !important;
+  padding: 0.65rem 0.85rem !important;
+}
+.city-jump__label {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+.city-jump__select,
+select.city-jump__select {
+  flex: 0 1 auto !important;
+  flex-grow: 0 !important;
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 10rem !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  padding: 0 2.4rem 0 0.9rem !important;
+  line-height: 42px !important;
+  border-radius: 999px !important;
+  box-sizing: border-box !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-size: 12px 8px !important;
+  background-position: right 0.9rem center !important;
+  background-repeat: no-repeat !important;
+}
+@media (max-width: 640px) {
+  .city-jump {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .city-jump__select,
+  select.city-jump__select {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+  }
+}
+
+/* City header: always readable over light/dark city skins */
+body[data-page="city"] .site-header.city-header,
+body[data-page="city"] .site-header {
+  background: color-mix(in srgb, var(--bg-elevated, #faf8f6) 92%, transparent) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 0.5px solid color-mix(in srgb, var(--text, #000) 10%, transparent) !important;
+  color: var(--text, #1d1d1f) !important;
+}
+body[data-page="city"] .nav__brand,
+body[data-page="city"] .nav__brand-text,
+body[data-page="city"] .nav__brand span {
+  color: var(--text, #1d1d1f) !important;
+  opacity: 1 !important;
+}
+[data-theme="dark"] body[data-page="city"] .site-header.city-header,
+[data-theme="dark"] body[data-page="city"] .site-header {
+  background: rgba(18, 18, 20, 0.92) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+[data-theme="dark"] body[data-page="city"] .nav__brand,
+[data-theme="dark"] body[data-page="city"] .nav__brand-text {
+  color: #f5f5f7 !important;
+}
+body[data-page="city"] .nav__brand-text {
+  max-width: min(42vw, 12rem) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* City hero mobile: stable full-width photo frame */
+@media (max-width: 900px) {
+  .city-hero--with-photo .city-hero__layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem !important;
+  }
+  .city-hero__media {
+    order: -1 !important;
+    width: 100% !important;
+    max-height: min(42vh, 240px) !important;
+    aspect-ratio: 16 / 10 !important;
+    border-radius: 16px !important;
+  }
+  .city-hero--with-photo .city-hero__copy {
+    order: 1 !important;
+  }
+}
+
+/* Weather search: icon always inside the field (USA mobile lock) */
+.weather-toolbar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  gap: 0.65rem !important;
+}
+.weather-toolbar .weather-search-wrap {
+  position: relative !important;
+  flex: 1 1 220px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: auto !important;
+  align-self: flex-start !important;
+}
+.weather-search {
+  width: 100% !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  max-height: 48px !important;
+  padding: 0 40px 0 42px !important;
+  box-sizing: border-box !important;
+  line-height: 48px !important;
+}
+.weather-search-icon {
+  position: absolute !important;
+  left: 14px !important;
+  top: 24px !important;
+  transform: translateY(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+.weather-search-clear {
+  position: absolute !important;
+  right: 10px !important;
+  top: 24px !important;
+  transform: translateY(-50%) !important;
+}
+@media (max-width: 640px) {
+  .weather-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .weather-toolbar .weather-search-wrap {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+  }
+  .weather-toolbar-actions {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+  }
+}
+
+/* ===== Gallery USA-style items (static HTML + manager) ===== */
+.gallery-grid.gallery-masonry,
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+.gallery-item {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card-solid, #1a1210);
+  cursor: pointer;
+  break-inside: avoid;
+  display: block;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  object-fit: cover;
+  transition: transform .35s ease, opacity .3s ease;
+}
+.gallery-item:hover img { transform: scale(1.03); }
+.gallery-item .gallery-caption,
+.gallery-item .gallery-card__cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,.62), transparent);
+  text-align: left;
+}
+.gallery-video-badge {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+.lightbox__video {
+  max-width: min(100%, 1100px);
+  max-height: min(78vh, 900px);
+  border-radius: 8px;
+  background: #000;
 }

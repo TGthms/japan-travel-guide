@@ -22,8 +22,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=usa-parity1" />
-  <link rel="stylesheet" href="src/css/icons.css?v=usa-parity1" />
+  <link rel="stylesheet" href="src/css/styles.css?v=prod-fix1" />
+  <link rel="stylesheet" href="src/css/icons.css?v=prod-fix1" />
   <script>
   (function () {
     try {
@@ -62,6 +62,7 @@
         <span data-i18n="nav.gallery">Gallery</span>
       </div>
       <div class="gallery-app-actions">
+        <a href="tools.html" class="nav__icon-btn" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></a>
         <button type="button" class="nav__icon-btn" data-open-settings title="Settings" aria-label="Settings" data-i18n-aria="nav.settings"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
       </div>
     </div>
@@ -116,14 +117,44 @@
 
       <p class="gallery-count" id="gallery-count" aria-live="polite"></p>
 
-      <div id="gallery-empty" class="gallery-empty">
+      <div id="gallery-empty" class="gallery-empty" hidden>
         <div class="gallery-empty__icon" aria-hidden="true">📷</div>
         <h2 data-i18n="common.emptyGalleryTitle">Gallery is empty</h2>
         <p data-i18n="common.emptyGalleryDesc"></p>
         <p class="muted mt-2" data-i18n="gallery.managerHint">Add photos with the local Gallery Manager: double-click Add Photos.command or run python3 tools/gallery_manager.py</p>
       </div>
 
-      <div class="gallery-masonry" id="gallery-grid" role="list" hidden></div>
+      <div class="gallery-grid gallery-masonry" id="gallery-grid" role="list">
+    <div class="gallery-item" data-category="cities" data-location="Tokyo SkyTree, Sumida" data-city="Tokyo" data-date="August 2024" data-id="birdshapedcloudchasingthesettingsun" data-name="Bird shaped cloud &quot;chasing&quot; the setting sun" tabindex="0" role="button">
+      <img src="assets/gallery/thumbs/birdshapedcloudchasingthesettingsun.jpeg" data-thumb="assets/gallery/thumbs/birdshapedcloudchasingthesettingsun.jpeg" data-medium="assets/gallery/medium/birdshapedcloudchasingthesettingsun.jpeg" data-full="assets/gallery/originals/birdshapedcloudchasingthesettingsun.jpeg" width="900" height="506" alt="Bird shaped cloud &quot;chasing&quot; the setting sun" loading="lazy" decoding="async">
+      <div class="gallery-caption" data-i18n="gallery.item.birdshapedcloudchasingthesettingsun.caption">Bird shaped cloud &quot;chasing&quot; the setting sun</div>
+    </div>
+    <div class="gallery-item" data-category="cities" data-location="Tokyo SkyTree, Sumida" data-city="Tokyo" data-date="August 2024" data-id="viewfromtokyoskytree" data-name="View from Tokyo SkyTree" tabindex="0" role="button">
+      <img src="assets/gallery/thumbs/viewfromtokyoskytree.jpeg" data-thumb="assets/gallery/thumbs/viewfromtokyoskytree.jpeg" data-medium="assets/gallery/medium/viewfromtokyoskytree.jpeg" data-full="assets/gallery/originals/viewfromtokyoskytree.jpeg" width="506" height="900" alt="View from Tokyo SkyTree" loading="lazy" decoding="async">
+      <div class="gallery-caption" data-i18n="gallery.item.viewfromtokyoskytree.caption">View from Tokyo SkyTree</div>
+    </div>
+    <div class="gallery-item" data-category="cities" data-location="Narita, Chiba" data-city="Tokyo" data-date="August 2024" data-id="welcome" data-name="Welcome!" tabindex="0" role="button">
+      <img src="assets/gallery/thumbs/welcome.jpeg" data-thumb="assets/gallery/thumbs/welcome.jpeg" data-medium="assets/gallery/medium/welcome.jpeg" data-full="assets/gallery/originals/welcome.jpeg" width="900" height="506" alt="Welcome!" loading="lazy" decoding="async">
+      <div class="gallery-caption" data-i18n="gallery.item.welcome.caption">Welcome!</div>
+    </div>
+    <div class="gallery-item" data-category="cities" data-location="Narita, Chiba" data-city="Tokyo" data-date="August 2024" data-id="welcometojapan" data-name="Welcome to JAPAN!" tabindex="0" role="button">
+      <img src="assets/gallery/thumbs/welcometojapan.jpeg" data-thumb="assets/gallery/thumbs/welcometojapan.jpeg" data-medium="assets/gallery/medium/welcometojapan.jpeg" data-full="assets/gallery/originals/welcometojapan.jpeg" width="900" height="506" alt="Welcome to JAPAN!" loading="lazy" decoding="async">
+      <div class="gallery-caption" data-i18n="gallery.item.welcometojapan.caption">Welcome to JAPAN!</div>
+    </div>
+    <div class="gallery-item" data-category="cities" data-location="Narita, Chiba" data-city="Tokyo" data-date="August 2024" data-id="welcomemessage" data-name="Welcome message &quot;迎&quot;" tabindex="0" role="button">
+      <img src="assets/gallery/thumbs/welcomemessage.jpeg" data-thumb="assets/gallery/thumbs/welcomemessage.jpeg" data-medium="assets/gallery/medium/welcomemessage.jpeg" data-full="assets/gallery/originals/welcomemessage.jpeg" width="900" height="506" alt="Welcome message &quot;迎&quot;" loading="lazy" decoding="async">
+      <div class="gallery-caption" data-i18n="gallery.item.welcomemessage.caption">Welcome message &quot;迎&quot;</div>
+    </div>
+    <div class="gallery-item" data-category="cities" data-location="Narita, Chiba" data-city="Tokyo" data-date="August 2024" data-id="artworkattheairport" data-name="Artwork at the airport" tabindex="0" role="button">
+      <img src="assets/gallery/thumbs/artworkattheairport.jpeg" data-thumb="assets/gallery/thumbs/artworkattheairport.jpeg" data-medium="assets/gallery/medium/artworkattheairport.jpeg" data-full="assets/gallery/originals/artworkattheairport.jpeg" width="506" height="900" alt="Artwork at the airport" loading="lazy" decoding="async">
+      <div class="gallery-caption" data-i18n="gallery.item.artworkattheairport.caption">Artwork at the airport</div>
+    </div>
+    <div class="gallery-item" data-category="nature" data-location="Nagano" data-city="Other" data-date="August 2024" data-id="mountfujifromairplane" data-name="Mount Fuji from airplane" tabindex="0" role="button">
+      <img src="assets/gallery/thumbs/mountfujifromairplane.jpeg" data-thumb="assets/gallery/thumbs/mountfujifromairplane.jpeg" data-medium="assets/gallery/medium/mountfujifromairplane.jpeg" data-full="assets/gallery/originals/mountfujifromairplane.jpeg" width="506" height="900" alt="Mount Fuji from airplane" loading="lazy" decoding="async">
+      <div class="gallery-caption" data-i18n="gallery.item.mountfujifromairplane.caption">Mount Fuji from airplane</div>
+    </div>
+    <!-- GALLERY_MANAGER_INSERT -->
+      </div>
     </div>
   </main>
 
@@ -136,6 +167,7 @@
     <div class="lightbox__stage">
       <div class="lightbox__img-wrap">
         <img class="lightbox__img" alt="" decoding="async" fetchpriority="high" />
+        <video class="lightbox__video" id="lightboxVideo" controls playsinline preload="metadata" hidden></video>
         <div class="lightbox__progress">
           <div class="lightbox__progress-track"><div class="lightbox__progress-bar"></div></div>
           <div class="lightbox__progress-label">
@@ -223,16 +255,16 @@
 
 
 
-  <script src="src/js/data/i18n.js?v=usa-parity1" defer></script>
-  <script src="src/js/settings.js?v=usa-parity1" defer></script>
-  <script src="src/js/i18n.js?v=usa-parity1" defer></script>
-  <script src="src/js/units.js?v=usa-parity1" defer></script>
-  <script src="src/js/nav.js?v=usa-parity1" defer></script>
-  <script src="src/js/animations.js?v=usa-parity1" defer></script>
-  <script src="assets/gallery/gallery.manifest.js?v=usa-parity1" defer></script>
-  <script src="src/js/gallery.js?v=usa-parity1" defer></script>
-  <script src="src/js/nav-return.js?v=usa-parity1" defer></script>
-  <script src="src/js/app.js?v=usa-parity1" defer></script>
+  <script src="src/js/data/i18n.js?v=prod-fix1" defer></script>
+  <script src="src/js/settings.js?v=prod-fix1" defer></script>
+  <script src="src/js/i18n.js?v=prod-fix1" defer></script>
+  <script src="src/js/units.js?v=prod-fix1" defer></script>
+  <script src="src/js/nav.js?v=prod-fix1" defer></script>
+  <script src="src/js/animations.js?v=prod-fix1" defer></script>
+  <script src="assets/gallery/gallery.manifest.js?v=prod-fix1" defer></script>
+  <script src="src/js/gallery.js?v=prod-fix1" defer></script>
+  <script src="src/js/nav-return.js?v=prod-fix1" defer></script>
+  <script src="src/js/app.js?v=prod-fix1" defer></script>
 
 </body>
 </html>

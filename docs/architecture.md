@@ -4,35 +4,41 @@ Static multi-page site.
 
 | | |
 |--|--|
-| **Primary host** | [https://traveljapan.pages.dev](https://traveljapan.pages.dev/) (Cloudflare Pages) |
-| **Backup** | [tgthms.github.io/japan-travel-guide](https://tgthms.github.io/japan-travel-guide/) (GitHub Pages) |
-
-No bundler at runtime. Patterns aligned with the USA Travel Guide (stroke icons, contextual Back, Open-Meteo weather mini-app, SEO files).
+| **Primary** | https://traveljapan.pages.dev/ (Cloudflare Pages) |
+| **Backup** | https://tgthms.github.io/japan-travel-guide/ (GitHub Pages) |
 
 ## Layout
 
 ```
 *.html · cities/ · assets/
-src/css/styles.css · icons.css · weather.css · weather-app.css · cities/*
-src/js/data/i18n.js · weather.js · nav-return.js · app.js · …
-tools-weather.html   # weather mini-app (Open-Meteo only)
-scripts/generate_city_pages.py
+src/css/
+  styles.css          # core + release/production locks
+  icons.css           # stroke toolbar icons
+  weather.css · weather-app.css
+  cities/*            # per-city skins
+src/js/
+  data/i18n.js
+  gallery.js · weather.js · budget.js · packing.js · …
+  nav.js · nav-return.js · app.js
+tools/                # Gallery Manager (tracked; stripped on public deploy)
+  gallery_manager.py · README.md
+scripts/generate_city_pages.py · smoke-check.mjs
 robots.txt · sitemap.xml
-tools/               # Gallery Manager (local; stripped on Pages deploy)
 ```
 
-## Weather
+## Tools
 
-- Ported from USA `tools-weather.html` + `weather.js` UI/structure
-- **Open-Meteo only** (forecast, geocode, air quality) — no NWS
-- Japan major cities as the default list
-- Units follow JTG Settings (°C/°F, km/mi)
+Hub: `tools.html`  
+Mini-apps: `tools-weather.html`, `tools-budget.html`, `tools-packing.html`, `tools-utilities.html`
 
-## Script order (weather page)
+## Gallery
 
-`data/i18n → settings → i18n → units → nav → weather → nav-return → app`
+- USA-style **HTML items** in `#gallery-grid` + `<!-- GALLERY_MANAGER_INSERT -->`
+- `gallery.js` prefers DOM items (works on `file://`); falls back to `gallery.json`
+- Video-capable lightbox (`#lightboxVideo`)
+- Manager: `python3 tools/gallery_manager.py` (photos + videos)
 
-## Gallery Manager
+## Deploy
 
-Local: `python3 tools/gallery_manager.py` or Add Photos.command.  
-Stripped in `.github/workflows/static.yml` before GitHub Pages publish.
+GitHub Actions strips `tools/` and `Add Photos.command` before Pages publish.  
+Do the same on Cloudflare if publishing the full tree.

@@ -153,6 +153,7 @@
     const btnPrev = lb.querySelector("[data-lb-prev]");
     const btnNext = lb.querySelector("[data-lb-next]");
     const btnHd = lb.querySelector("[data-lb-hd]");
+    const video = lb.querySelector("#lightboxVideo, .lightbox__video");
 
     let items = [];
     let index = 0;
@@ -220,6 +221,15 @@
       if (img) {
         img.src = "";
         img.classList.remove("is-loaded", "is-loading");
+        img.hidden = false;
+      }
+      if (video) {
+        try {
+          video.pause();
+        } catch (e) {}
+        video.removeAttribute("src");
+        video.load();
+        video.hidden = true;
       }
       if (progress) progress.classList.remove("is-active");
       loadedTier = "";
@@ -385,9 +395,29 @@
       index = (i + items.length) % items.length;
       const item = items[index];
       setCaption(item);
-      const quality = getQuality();
       loadedTier = "";
-      loadTier(item, quality, token);
+      const isVideo = !!(item.video || item.media === "video");
+      if (isVideo && video && item.video) {
+        if (img) {
+          img.hidden = true;
+          img.src = "";
+        }
+        video.hidden = false;
+        video.src = assetUrl(item.video);
+        if (btnHd) btnHd.hidden = true;
+        if (progress) progress.classList.remove("is-active");
+      } else {
+        if (video) {
+          try {
+            video.pause();
+          } catch (e) {}
+          video.hidden = true;
+          video.removeAttribute("src");
+        }
+        if (img) img.hidden = false;
+        const quality = getQuality();
+        loadTier(item, quality, token);
+      }
       lb.classList.add("is-open");
       lb.setAttribute("aria-hidden", "false");
       lockBodyScroll();
@@ -560,15 +590,72 @@
     let all = [];
     let activeCat = "all";
 
+    // Prefer USA-style static HTML items (works on file:// and HTTP).
+    function photosFromDom() {
+      const nodes = grid.querySelectorAll(".gallery-item, .gallery-card[data-id]");
+      if (!nodes.length) return [];
+      const out = [];
+      nodes.forEach((el, idx) => {
+        const img = el.querySelector("img");
+        if (!img) return;
+        const thumb = normalizeRelPath(
+          img.getAttribute("data-thumb") || img.getAttribute("src") || ""
+        ).replace(/^assets\/gallery\//i, "");
+        const medium = normalizeRelPath(
+          img.getAttribute("data-medium") || thumb
+        ).replace(/^assets\/gallery\//i, "");
+        const original = normalizeRelPath(
+          img.getAttribute("data-full") ||
+            img.getAttribute("data-original") ||
+            medium
+        ).replace(/^assets\/gallery\//i, "");
+        const video = (
+          img.getAttribute("data-video") ||
+          el.getAttribute("data-video") ||
+          ""
+        ).trim();
+        out.push({
+          id: el.getAttribute("data-id") || "item-" + idx,
+          name:
+            el.getAttribute("data-name") ||
+            img.getAttribute("alt") ||
+            (el.querySelector(".gallery-caption, .gallery-card__cap, .gallery-card__name") || {})
+              .textContent ||
+            "",
+          alt: img.getAttribute("alt") || "",
+          time: el.getAttribute("data-date") || "",
+          location: el.getAttribute("data-location") || "",
+          city: el.getAttribute("data-city") || "",
+          category: el.getAttribute("data-category") || "cities",
+          thumb: thumb,
+          medium: medium,
+          original: original,
+          video: video || null,
+          media: video || el.getAttribute("data-media") === "video" ? "video" : "photo",
+          sortOrder: (idx + 1) * 10,
+          width: parseFloat(img.getAttribute("width") || "") || 0,
+          height: parseFloat(img.getAttribute("height") || "") || 0,
+        });
+      });
+      return out;
+    }
+
     try {
-      const data = await loadManifest();
-      manifestVersionTag = String(data.updatedAt || Date.now());
-      all = Array.isArray(data.photos) ? data.photos : [];
-      // migrate: ensure medium key falls back
+      const fromDom = photosFromDom();
+      if (fromDom.length) {
+        all = fromDom;
+        manifestVersionTag = String(Date.now());
+      } else {
+        const data = await loadManifest();
+        manifestVersionTag = String(data.updatedAt || Date.now());
+        all = Array.isArray(data.photos) ? data.photos : [];
+      }
+      // migrate: ensure medium key falls back; strip asset base if present
       all.forEach((p) => {
-        p.original = normalizeRelPath(p.original);
-        p.medium = normalizeRelPath(p.medium);
-        p.thumb = normalizeRelPath(p.thumb);
+        p.original = normalizeRelPath(p.original).replace(/^assets\/gallery\//i, "");
+        p.medium = normalizeRelPath(p.medium).replace(/^assets\/gallery\//i, "");
+        p.thumb = normalizeRelPath(p.thumb).replace(/^assets\/gallery\//i, "");
+        if (p.video) p.video = normalizeRelPath(p.video).replace(/^assets\/gallery\//i, "");
         if (!p.medium && p.thumb) p.medium = p.thumb;
         if (!p.thumb && p.medium) p.thumb = p.medium;
         if (!p.original && p.medium) p.original = p.medium;

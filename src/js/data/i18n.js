@@ -715,6 +715,8 @@
     },
     "tools": {
       "weatherLabel": "Weather",
+      "utilitiesLabel": "Utilities",
+      "utilitiesSub": "Currency, clocks, tax, rail, and emergency numbers.",
       "weatherSub": "Japan cities, world search, forecasts & air quality via Open-Meteo.",
       "backToTools": "Back to Tools",
       "backToGuide": "Back to the guide",
@@ -2505,6 +2507,8 @@
     },
     "tools": {
       "weatherLabel": "天気",
+      "utilitiesLabel": "ユーティリティ",
+      "utilitiesSub": "為替、時計、税、鉄道、緊急電話。",
       "weatherSub": "日本の都市・世界検索・予報と大気質（Open-Meteo）。",
       "backToTools": "ツールに戻る",
       "backToGuide": "ガイドへ戻る",
@@ -4294,6 +4298,8 @@
     },
     "tools": {
       "weatherLabel": "天气",
+      "utilitiesLabel": "实用工具",
+      "utilitiesSub": "汇率、时钟、税费、铁路与紧急电话。",
       "weatherSub": "日本城市、世界搜索、预报与空气质量（Open-Meteo）。",
       "backToTools": "返回工具",
       "backToGuide": "返回指南",

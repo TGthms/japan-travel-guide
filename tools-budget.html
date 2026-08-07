@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="0rE0QD0vWPSfPxelCpS8qL2_n3JGrd_ZYPJBaGwnLZQ" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Japan trip budget planner." />
+  <meta name="theme-color" content="#8b1a2b" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Budget · Japan Travel Guide</title>
+  <link rel="canonical" href="https://traveljapan.pages.dev/tools-budget.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Japan Travel Guide" />
+  <meta property="og:title" content="Budget · Japan Travel Guide" />
+  <meta property="og:description" content="Japan trip budget planner." />
+  <meta property="og:url" content="https://traveljapan.pages.dev/tools-budget.html" />
+  <meta property="og:image" content="https://traveljapan.pages.dev/assets/gallery/main/ShibuyaSkyView.jpeg" />
+  <link rel="icon" href="assets/icons/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/styles.css?v=prod-fix1" />
+  <link rel="stylesheet" href="src/css/icons.css?v=prod-fix1" />
+<script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem("jtg-preferences") || "{}");
+      var theme = p.theme || "auto";
+      var resolved = theme === "auto"
+        ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+        : theme;
+      document.documentElement.setAttribute("data-theme", resolved);
+      var motion = p.motion || "full";
+      if (motion !== "full" && motion !== "reduced" && motion !== "off") motion = "full";
+      document.documentElement.setAttribute("data-motion", motion);
+      var osReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var eff = motion === "off" ? "off" : ((motion === "reduced" || osReduce) ? "reduced" : "full");
+      document.documentElement.setAttribute("data-motion-effective", eff);
+      if (p.lang) document.documentElement.lang = p.lang === "zh-CN" ? "zh-CN" : p.lang;
+    } catch (e) {}
+  })();
+  </script>
+</head>
+<body data-page="tools" class="page-tools page-tools-mini">
+  <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
+  <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <header class="gallery-app-bar site-header" role="banner">
+    <div class="container gallery-app-bar__inner">
+      <a href="tools.html" class="gallery-app-back">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span data-i18n="tools.backToTools">Back to Tools</span>
+      </a>
+      <div class="gallery-app-title" aria-current="page">
+        <span class="gallery-app-mark" aria-hidden="true">⛩</span>
+        <span data-i18n="budget.title">Budget</span>
+      </div>
+      <div class="gallery-app-actions">
+        <a href="gallery.html" class="nav__icon-btn" title="Gallery" aria-label="Gallery" data-i18n-aria="nav.gallery"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></a>
+        <a href="tools.html" class="nav__icon-btn" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></a>
+        <button type="button" class="nav__icon-btn" data-open-settings title="Settings" aria-label="Settings" data-i18n-aria="nav.settings"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tools-page" tabindex="-1">
+    <div class="container tools-mini-main" style="padding-top:1.25rem;padding-bottom:3rem;max-width:960px;margin:0 auto">
+<section class="tool-card tool-card-wide budget-tool reveal" id="budget">
+          <header class="budget-tool__header">
+            <div>
+              <div class="tool-label" data-i18n="budget.title">Budget planner</div>
+              <p class="tool-sub" data-i18n="budget.desc">Realistic Japan trip cost estimate from daily rates, rail, transfers, and a buffer. Planning figures only—not a quote.</p>
+            </div>
+            <div class="budget-presets" id="budget-presets" role="group" aria-label="Budget presets">
+              <span class="budget-presets__label" data-i18n="budget.presetsLabel">Style</span>
+              <div class="budget-presets__row">
+                <button type="button" class="budget-preset" data-preset="backpacker" data-i18n="budget.presetBackpacker">Backpacker</button>
+                <button type="button" class="budget-preset is-active" data-preset="balanced" data-i18n="budget.presetBalanced">Balanced</button>
+                <button type="button" class="budget-preset" data-preset="comfort" data-i18n="budget.presetComfort">Comfort</button>
+                <button type="button" class="budget-preset" data-preset="luxury" data-i18n="budget.presetLuxury">Luxury</button>
+              </div>
+            </div>
+          </header>
+
+          <div class="budget-layout" id="budget-planner">
+            <div class="budget-inputs">
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionTrip">Trip basics</h3>
+                <div class="budget-fields">
+                  <div class="budget-field">
+                    <label for="budget-days" data-i18n="budget.days">Days in Japan</label>
+                    <input type="number" id="budget-days" min="1" max="90" value="10" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-travelers" data-i18n="budget.travelers">Travelers</label>
+                    <input type="number" id="budget-travelers" min="1" max="12" value="1" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-cities" data-i18n="budget.cities">Cities / bases</label>
+                    <input type="number" id="budget-cities" min="1" max="10" value="3" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-season" data-i18n="budget.season">Season</label>
+                    <select id="budget-season">
+                      <option value="low" data-i18n="budget.seasonLow">Low season</option>
+                      <option value="shoulder" selected data-i18n="budget.seasonShoulder">Shoulder</option>
+                      <option value="peak" data-i18n="budget.seasonPeak">Peak season</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionDaily">Daily style</h3>
+                <div class="budget-fields">
+                  <div class="budget-field budget-field--wide">
+                    <label for="budget-acc" data-i18n="budget.accommodation">Accommodation</label>
+                    <select id="budget-acc">
+                      <option value="hostel" data-i18n="budget.hostel">Hostel / capsule</option>
+                      <option value="business" data-i18n="budget.business">Business hotel</option>
+                      <option value="mid" selected data-i18n="budget.mid">Mid-range hotel</option>
+                      <option value="ryokan" data-i18n="budget.ryokan">Ryokan / boutique</option>
+                      <option value="luxury" data-i18n="budget.luxury">Luxury</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-rooms" data-i18n="budget.rooms">Rooms</label>
+                    <input type="number" id="budget-rooms" min="1" max="6" value="1" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-transport" data-i18n="budget.transport">City transport</label>
+                    <select id="budget-transport">
+                      <option value="local" data-i18n="budget.local">IC + walking</option>
+                      <option value="pass" selected data-i18n="budget.pass">Metro day-pass mix</option>
+                      <option value="active" data-i18n="budget.active">Active city-hopping</option>
+                      <option value="taxi" data-i18n="budget.taxi">Taxi-heavy</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-food" data-i18n="budget.food">Food</label>
+                    <select id="budget-food">
+                      <option value="budget" data-i18n="budget.foodBudget">Budget eats</option>
+                      <option value="mid" selected data-i18n="budget.foodMid">Restaurant mix</option>
+                      <option value="nice" data-i18n="budget.foodNice">Nice dinners</option>
+                      <option value="gourmet" data-i18n="budget.foodGourmet">Gourmet</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-attr" data-i18n="budget.attractions">Sights &amp; activities</label>
+                    <select id="budget-attr">
+                      <option value="light" data-i18n="budget.attrLight">Light</option>
+                      <option value="standard" selected data-i18n="budget.attrStandard">Standard</option>
+                      <option value="heavy" data-i18n="budget.attrHeavy">Ticket-heavy</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section class="budget-block">
+                <h3 class="budget-block__title" data-i18n="budget.sectionOnce">Travel add-ons</h3>
+                <div class="budget-fields">
+                  <div class="budget-field">
+                    <label for="budget-rail-legs" data-i18n="budget.railLegs">Long-distance legs</label>
+                    <input type="number" id="budget-rail-legs" min="0" max="20" value="2" inputmode="numeric" />
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-rail-style" data-i18n="budget.railStyle">Long-distance style</label>
+                    <select id="budget-rail-style">
+                      <option value="shinkansen" selected data-i18n="budget.railShinkansen">Shinkansen</option>
+                      <option value="highway" data-i18n="budget.railHighway">Bus / slower rail</option>
+                      <option value="pass" data-i18n="budget.railPass">JR Pass style</option>
+                      <option value="flight" data-i18n="budget.railFlight">Domestic flights</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-airport" data-i18n="budget.airport">Airport transfers</label>
+                    <select id="budget-airport">
+                      <option value="train" selected data-i18n="budget.airportTrain">Train / bus</option>
+                      <option value="express" data-i18n="budget.airportExpress">Airport express</option>
+                      <option value="taxi" data-i18n="budget.airportTaxi">Taxi / private</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-sim" data-i18n="budget.sim">Phone data</label>
+                    <select id="budget-sim">
+                      <option value="none" data-i18n="budget.simNone">Wi‑Fi only</option>
+                      <option value="esim" selected data-i18n="budget.simEsim">eSIM / pocket Wi‑Fi</option>
+                      <option value="premium" data-i18n="budget.simPremium">High-data eSIM</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-buffer" data-i18n="budget.buffer">Contingency</label>
+                    <select id="budget-buffer">
+                      <option value="5" data-i18n="budget.buffer5">5%</option>
+                      <option value="10" selected data-i18n="budget.buffer10">10% recommended</option>
+                      <option value="15" data-i18n="budget.buffer15">15%</option>
+                      <option value="20" data-i18n="budget.buffer20">20%</option>
+                    </select>
+                  </div>
+                  <div class="budget-field">
+                    <label for="budget-currency" data-i18n="budget.currency">Currency</label>
+                    <select id="budget-currency">
+                      <option value="JPY">JPY</option>
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="CNY">CNY</option>
+                      <option value="GBP">GBP</option>
+                      <option value="AUD">AUD</option>
+                      <option value="CAD">CAD</option>
+                      <option value="KRW">KRW</option>
+                      <option value="TWD">TWD</option>
+                      <option value="SGD">SGD</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <aside class="budget-results" aria-live="polite">
+              <div class="budget-results__hero">
+                <p class="budget-results__label" data-i18n="budget.total">Estimated trip total</p>
+                <div class="budget-total" id="budget-total">—</div>
+                <div class="budget-meta-row" id="budget-meta"></div>
+              </div>
+              <div class="budget-range" id="budget-range" aria-label="Cost range"></div>
+              <div class="budget-results__section">
+                <h4 class="budget-results__h" data-i18n="budget.breakdownTitle">Breakdown</h4>
+                <div class="budget-breakdown" id="budget-breakdown"></div>
+              </div>
+              <div class="budget-results__section">
+                <h4 class="budget-results__h" data-i18n="budget.tipsTitle">Tips for this plan</h4>
+                <ul class="budget-tips" id="budget-tips"></ul>
+              </div>
+              <p class="rates-note" id="budget-rates-note"></p>
+              <p class="budget-disclaimer" data-i18n="budget.disclaimer">Indicative averages for independent travelers. Hotel peaks and premium rail can run higher—confirm before booking.</p>
+            </aside>
+          </div>
+        </section>
+    </div>
+  </main>
+<footer class="site-footer">
+  <div class="site-footer-inner container">
+    <a href="index.html" class="site-footer-brand">❀ <span data-i18n="meta.siteName">Japan Travel Guide</span></a>
+    <p class="site-footer-tagline" data-i18n="footer.tagline">A practical multi-city planning companion for Japan trips.</p>
+    <div class="site-footer-actions">
+      <a href="https://tgthms.github.io/about/" class="footer-about-link" target="_blank" rel="noopener" data-i18n="footer.aboutMe">About Me</a>
+      <a href="https://github.com/TGthms/japan-travel-guide" class="footer-github-link" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="site-footer-meta">
+      <p class="site-footer-copy" data-i18n="footer.copyright">© 2026 Japan Travel Guide · Created by Tim G</p>
+      <div class="footer-legal-links" role="navigation" aria-label="Legal">
+        <a href="privacy.html" data-i18n="legal.privacyLink">Privacy Policy</a>
+        <span class="footer-legal-sep" aria-hidden="true">·</span>
+        <a href="terms.html" data-i18n="legal.termsLink">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="settings-overlay" id="settings-overlay" data-close-settings></div>
+  <aside class="settings-panel" id="settings-panel" aria-label="Settings">
+    <div class="settings-panel__header">
+      <h2 data-i18n="common.settingsTitle">Settings</h2>
+      <button type="button" class="settings-close" data-close-settings aria-label="Close" data-i18n-aria="common.close"><svg class="jtg-icon jtg-icon--sm" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5"/></svg></button>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.language">Language</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="lang" data-value="en" data-i18n="common.langEn">English</button>
+        <button type="button" data-setting="lang" data-value="ja" data-i18n="common.langJa">日本語</button>
+        <button type="button" data-setting="lang" data-value="zh-CN" data-i18n="common.langZh">简体中文</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.distanceUnit">Distance</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="distanceUnit" data-value="km">km</button>
+        <button type="button" data-setting="distanceUnit" data-value="mi">mi</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.tempUnit">Temperature</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="tempUnit" data-value="c">°C</button>
+        <button type="button" data-setting="tempUnit" data-value="f">°F</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.theme">Theme</h3>
+      <div class="settings-options">
+        <button type="button" data-setting="theme" data-value="light" data-i18n="common.themeLight">Light</button>
+        <button type="button" data-setting="theme" data-value="dark" data-i18n="common.themeDark">Dark</button>
+        <button type="button" data-setting="theme" data-value="auto" data-i18n="common.themeAuto">Auto</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <h3 data-i18n="common.animation">Animation</h3>
+      <div class="settings-options">
+              <button type="button" data-setting="motion" data-value="full" data-i18n="common.motionFull">Full</button>
+      <button type="button" data-setting="motion" data-value="reduced" data-i18n="common.motionReduced">Reduced</button>
+      <button type="button" data-setting="motion" data-value="off" data-i18n="common.motionOff">Off</button>
+      </div>
+    </div>
+  </aside>
+  <script src="src/js/data/i18n.js?v=prod-fix1" defer></script>
+  <script src="src/js/settings.js?v=prod-fix1" defer></script>
+  <script src="src/js/i18n.js?v=prod-fix1" defer></script>
+  <script src="src/js/units.js?v=prod-fix1" defer></script>
+  <script src="src/js/currency.js?v=prod-fix1" defer></script>
+  <script src="src/js/nav.js?v=prod-fix1" defer></script>
+  <script src="src/js/budget.js?v=prod-fix1" defer></script>
+  <script src="src/js/tools.js?v=prod-fix1" defer></script>
+  <script src="src/js/nav-return.js?v=prod-fix1" defer></script>
+  <script src="src/js/app.js?v=prod-fix1" defer></script>
+</body>
+</html>
