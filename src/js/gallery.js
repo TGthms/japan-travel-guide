@@ -256,7 +256,7 @@
       };
       xhr.onload = function () {
         if (token !== loadToken) return;
-        if (xhr.status >= 200 && xhr.status < 300) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) {
           revoke();
           objectUrl = URL.createObjectURL(xhr.response);
           if (img) {
@@ -689,7 +689,21 @@
         countEl.textContent = shown ? shown + " " + t("gallery.photoCount", "photos") : "";
       }
       const none = items.length === 0 || shown === 0;
-      if (empty) empty.hidden = !none;
+      if (empty) {
+        empty.hidden = !none;
+        const titleEl = empty.querySelector("h2");
+        const descEl = empty.querySelector("p[data-i18n='common.emptyGalleryDesc']");
+        const hintEl = empty.querySelector("[data-i18n='gallery.managerHint']");
+        if (items.length === 0) {
+          if (titleEl) titleEl.textContent = t("common.emptyGalleryTitle", "Gallery is empty");
+          if (descEl) descEl.textContent = t("common.emptyGalleryDesc", "");
+          if (hintEl) hintEl.hidden = false;
+        } else {
+          if (titleEl) titleEl.textContent = t("common.filterEmptyTitle", "No photos in this view");
+          if (descEl) descEl.textContent = t("common.filterEmptyDesc", "Try another category, city, or search.");
+          if (hintEl) hintEl.hidden = true;
+        }
+      }
       grid.hidden = items.length === 0;
       packMasonry(grid, sorted);
       updateCounts();

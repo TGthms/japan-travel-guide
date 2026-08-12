@@ -145,7 +145,7 @@ const gm = fs.readFileSync(path.join(root, "tools/gallery_manager.py"), "utf8");
 if (!gm.includes("ORIGINALS_DIR")) errors.push("gallery_manager: missing ORIGINALS_DIR");
 if (gm.includes("US_PLACES")) errors.push("gallery_manager: leftover US_PLACES");
 if (!gm.includes("JP_PLACES")) errors.push("gallery_manager: missing JP_PLACES");
-if (!gm.includes('data-full="assets/gallery/originals/')) errors.push("gallery_manager: data-full must point at originals/");
+if (!gm.includes("assets/gallery/originals/")) errors.push("gallery_manager: data-full must point at originals/");
 
 if (errors.length) {
   console.error("SMOKE FAIL", errors.length);

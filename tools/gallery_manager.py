@@ -37,7 +37,7 @@ Usage — browser UI (recommended after a long trip):
 
 Usage — CLI batch from a folder:
   python3 tools/gallery_manager.py --cli ~/Pictures/california-trip \\
-      --category coast --location "Big Sur, California" --date "July 4, 2026"
+      --category cities --location "Tokyo" --date "August 12, 2026"
   # omit --location / --date to auto-detect from each photo's metadata
 
 Usage — rebuild medium assets for existing gallery photos:
@@ -627,7 +627,7 @@ def _format_nominatim_result(data: dict) -> str | None:
     # Categories that are almost never the place we want as the label
     skip_categories = {
         "amenity", "shop", "office", "craft", "building", "club", "healthcare",
-        "place_of_worship", "man_made", "emergency",
+        "man_made", "emergency",
     }
     # leisure subtypes that are minor facilities, not places
     skip_leisure_types = {
@@ -725,7 +725,7 @@ def reverse_geocode_online(lat: float, lon: float) -> str | None:
         raw = subprocess.check_output(
             [
                 "curl", "-sS",
-                "-A", "USA-Travel-Guide-GalleryManager/1.0 (local admin; reverse-geocode)",
+                "-A", "Japan-Travel-Guide-GalleryManager/1.0 (local admin; reverse-geocode)",
                 "--max-time", "10",
                 url,
             ],
@@ -1323,6 +1323,7 @@ def html_item_block(
     th: int,
     filename: str,
     video_filename: str | None = None,
+    full_rel: str | None = None,
 ) -> str:
     alt_esc = html.escape(alt or caption, quote=True)
     loc_esc = html.escape(location, quote=True)
@@ -1361,7 +1362,7 @@ def html_item_block(
         f'      <img src="assets/gallery/thumbs/{file_esc}" '
         f'data-thumb="assets/gallery/thumbs/{file_esc}" '
         f'data-medium="assets/gallery/medium/{file_esc}" '
-        f'data-full="assets/gallery/originals/{file_esc}"{webp_attrs}{video_attr} '
+        f'data-full="{html.escape(full_rel or ("assets/gallery/originals/" + filename), quote=True)}"{webp_attrs}{video_attr} '
         f'width="{tw}" height="{th}" alt="{alt_esc}" loading="lazy" decoding="async">\n'
         f"{badge}"
         f'      <div class="gallery-caption" data-i18n="gallery.item.{slug}.caption">'
@@ -2058,7 +2059,12 @@ def rebuild_media_for_existing(*, patch_html: bool = True) -> dict:
     missing_full = []
     for item in photos:
         fname = item["filename"]
-        full_path = ORIGINALS_DIR / fname
+        listed = item.get("full") or ""
+        full_path = ROOT / listed if listed.startswith("assets/") else ORIGINALS_DIR / fname
+        if not full_path.is_file():
+            full_path = ORIGINALS_DIR / fname
+        if not full_path.is_file():
+            full_path = GALLERY_DIR / fname
         if not full_path.is_file():
             missing_full.append(fname)
             continue
@@ -2083,7 +2089,7 @@ def rebuild_media_for_existing(*, patch_html: bool = True) -> dict:
             fm = re.search(r'data-full="assets/gallery/([^"]+)"', block)
             if not fm:
                 return block
-            fname = fm.group(1)
+            fname = Path(fm.group(1)).name
             # data-location → city/state attrs
             loc_m = re.search(r'data-location="([^"]*)"', block)
             loc = loc_m.group(1) if loc_m else ""
@@ -2226,8 +2232,9 @@ def update_one(
         # double-indent (html_item_block already starts with 4 spaces).
         item_m = re.search(
             rf'[ \t]*<div class="gallery-item"[^>]*>\s*'
-            rf'<img\s+([^>]+)>\s*'
-            rf'<div class="gallery-caption"[^>]*data-i18n="gallery\.item\.{re.escape(slug)}\.caption"[^>]*>[^<]*</div>\s*'
+            rf'<img\s+([^>]+)>'
+            rf'(?:\s*<span class="gallery-video-badge"[\s\S]*?</span>)?'
+            rf'\s*<div class="gallery-caption"[^>]*data-i18n="gallery\.item\.{re.escape(slug)}\.caption"[^>]*>[^<]*</div>\s*'
             rf'</div>',
             text,
             re.S,
@@ -2248,7 +2255,8 @@ def update_one(
         except ValueError:
             tw, th = 900, 600
 
-        filename = Path(full).name
+        filename = Path(full).name if full else item["filename"]
+        video_filename = Path(item["video"]).name if item.get("video") else None
         new_block = html_item_block(
             slug=slug,
             category=category,
@@ -2259,6 +2267,8 @@ def update_one(
             tw=tw,
             th=th,
             filename=filename,
+            video_filename=video_filename,
+            full_rel=full or item.get("full"),
         ).rstrip("\n")
 
         text = text.replace(old_block, new_block, 1)
@@ -2401,7 +2411,7 @@ UI_HTML = r"""<!DOCTYPE html>
   <section class="card">
     <h2>Defaults for new photos</h2>
     <p class="hint" style="margin-top:0;margin-bottom:12px">
-      After a mixed trip (e.g. LA), leave category empty and set only what you want shared.
+      After a mixed trip, leave category empty and set only what you want shared.
       Check which fields to apply — nothing forces a single category on every photo.
       Date &amp; location can be <strong>auto-detected</strong> from each photo’s EXIF/GPS.
     </p>
@@ -2409,16 +2419,18 @@ UI_HTML = r"""<!DOCTYPE html>
       <label>Category (optional)
         <select id="defCategory">
           <option value="">— Set per photo —</option>
-          <option value="coast">Coast</option>
-          <option value="landmarks">Landmarks</option>
+          <option value="cities">Cities</option>
+          <option value="temples">Temples</option>
+          <option value="shrines">Shrines</option>
           <option value="nature">Nature</option>
-          <option value="roads">Roads</option>
-          <option value="cityscapes">Cityscapes</option>
-          <option value="food-culture">Food &amp; Culture</option>
+          <option value="food">Food</option>
+          <option value="neon">Neon / Night</option>
+          <option value="travel">Travel</option>
+          <option value="culture">Culture</option>
         </select>
       </label>
       <label>Date fallback <input id="defDate" type="date"></label>
-      <label>Location fallback <input id="defLocation" type="text" placeholder="United States"></label>
+      <label>Location fallback <input id="defLocation" type="text" placeholder="Japan"></label>
     </div>
     <div class="row-actions" style="flex-wrap:wrap;gap:12px;align-items:center">
       <label style="flex-direction:row;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--text)">
@@ -2438,7 +2450,7 @@ UI_HTML = r"""<!DOCTYPE html>
       <button class="btn btn-ghost" type="button" id="applyDefaultsBtn">Apply checked defaults to queue</button>
       <button class="btn btn-ghost" type="button" id="reprobeBtn">Re-detect metadata for queue</button>
     </div>
-    <p class="hint">Each queue item keeps its own category/date/location. Auto-detect fills from EXIF/GPS when present (full calendar day, e.g. <strong>June 1, 2026</strong>). Date fields use the system calendar. If missing, defaults are <strong>today</strong> and <strong>United States</strong>.</p>
+    <p class="hint">Each queue item keeps its own category/date/location. Auto-detect fills from EXIF/GPS when present (full calendar day, e.g. <strong>June 1, 2026</strong>). Date fields use the system calendar. If missing, defaults are <strong>today</strong> and <strong>Japan</strong>.</p>
   </section>
 
   <section class="card">
@@ -2467,12 +2479,14 @@ UI_HTML = r"""<!DOCTYPE html>
       <label>Filter category
         <select id="libFilter">
           <option value="">All categories</option>
-          <option value="coast">Coast</option>
-          <option value="landmarks">Landmarks</option>
+          <option value="cities">Cities</option>
+          <option value="temples">Temples</option>
+          <option value="shrines">Shrines</option>
           <option value="nature">Nature</option>
-          <option value="roads">Roads</option>
-          <option value="cityscapes">Cityscapes</option>
-          <option value="food-culture">Food &amp; Culture</option>
+          <option value="food">Food</option>
+          <option value="neon">Neon / Night</option>
+          <option value="travel">Travel</option>
+          <option value="culture">Culture</option>
         </select>
       </label>
     </div>
@@ -2485,8 +2499,8 @@ UI_HTML = r"""<!DOCTYPE html>
 </main>
 <script>
 const CATS = [
-  ['coast','Coast'],['landmarks','Landmarks'],['nature','Nature'],
-  ['roads','Roads'],['cityscapes','Cityscapes'],['food-culture','Food & Culture']
+  ['cities','Cities'],['temples','Temples'],['shrines','Shrines'],['nature','Nature'],
+  ['food','Food'],['neon','Neon / Night'],['travel','Travel'],['culture','Culture']
 ];
 const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => [...el.querySelectorAll(s)];
@@ -2569,11 +2583,11 @@ function fallbackDate() {
   return ($('#defDate') && $('#defDate').value.trim()) || todayISO();
 }
 function fallbackLocation() {
-  return $('#defLocation').value.trim() || 'United States';
+  return $('#defLocation').value.trim() || 'Japan';
 }
 // Seed generic fallbacks (admin can change; auto-detect still overrides per photo)
 if ($('#defDate') && !$('#defDate').value) $('#defDate').value = todayISO();
-if ($('#defLocation') && !$('#defLocation').value) $('#defLocation').value = 'United States';
+if ($('#defLocation') && !$('#defLocation').value) $('#defLocation').value = 'Japan';
 async function probeFile(file) {
   const fd = new FormData();
   fd.append('file', file);
@@ -2612,7 +2626,7 @@ function renderQueue() {
         <div class="grid3">
           <label>Category <select data-k="category" data-i="${i}">${catOptions(item.category)}</select></label>
           <label>Date <input type="date" data-k="date" data-i="${i}" value="${escAttr(toPickerISO(item.date))}"></label>
-          <label>Location <input data-k="location" data-i="${i}" value="${escAttr(item.location)}" placeholder="United States"></label>
+          <label>Location <input data-k="location" data-i="${i}" value="${escAttr(item.location)}" placeholder="Japan"></label>
         </div>
         ${coverBit}
       </div>
@@ -3107,7 +3121,7 @@ class Handler(BaseHTTPRequestHandler):
                 )
                 return
             # Placeholder "United States" still allows process_one to prefer GPS when present
-            location = (fields.get("location") or ["United States"])[0]
+            location = (fields.get("location") or ["Japan"])[0]
             date = (fields.get("date") or [""])[0]
             caption = (fields.get("caption") or [None])[0]
             # Original client filename is the only reliable source for the
@@ -3424,7 +3438,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--category",
-        default="coast",
+        default="cities",
         choices=CATEGORIES,
         help="Default category for CLI import",
     )
