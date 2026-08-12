@@ -29,8 +29,9 @@
 }
 .weather-search:focus { outline: none; border-color: var(--accent-1); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-1) 22%, transparent); }
 .weather-search-icon {
-  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-  color: var(--text-mute); pointer-events: none; display: flex;
+  position: absolute; left: 14px; top: 50% !important; transform: translateY(-50%) !important;
+  color: var(--text-mute, var(--text-muted)); pointer-events: none; display: flex;
+  z-index: 2;
 }
 .weather-toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .weather-btn {

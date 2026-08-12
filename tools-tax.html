@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="0rE0QD0vWPSfPxelCpS8qL2_n3JGrd_ZYPJBaGwnLZQ" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Currency, clocks, tax, rail, and emergency tools for Japan." />
+  <meta name="description" content="Japan consumption tax calculator. Tipping is not expected." />
   <meta name="theme-color" content="#8b1a2b" />
   <meta name="color-scheme" content="light dark" />
-  <title>Travel utilities · Japan Travel Guide</title>
-  <link rel="canonical" href="https://traveljapan.pages.dev/tools-utilities.html" />
+  <title>Japan tax · Japan Travel Guide</title>
+  <link rel="canonical" href="https://traveljapan.pages.dev/tools-tax.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Japan Travel Guide" />
-  <meta property="og:title" content="Travel utilities · Japan Travel Guide" />
-  <meta property="og:description" content="Currency, clocks, tax, rail, and emergency tools for Japan." />
-  <meta property="og:url" content="https://traveljapan.pages.dev/tools-utilities.html" />
+  <meta property="og:title" content="Japan tax · Japan Travel Guide" />
+  <meta property="og:description" content="Japan consumption tax calculator. Tipping is not expected." />
+  <meta property="og:url" content="https://traveljapan.pages.dev/tools-tax.html" />
   <meta property="og:image" content="https://traveljapan.pages.dev/assets/gallery/main/ShibuyaSkyView.jpeg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="assets/icons/logo.svg" />
@@ -46,7 +46,7 @@
   </script>
 <!-- FIRST_PAINT_END -->
 </head>
-<body data-page="tools-mini" class="page-tools page-tools-mini" data-tool="utilities">
+<body data-page="tools-mini" class="page-tools page-tools-mini" data-tool="tax">
   <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
   <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
   <div id="scroll-progress" aria-hidden="true"></div>
@@ -56,8 +56,8 @@
       <span class="gallery-app-back-label" data-i18n="tools.backToTools">Back to Tools</span>
     </a>
     <div class="gallery-app-title" aria-current="page">
-      <span class="gallery-app-mark gallery-app-mark-svg" aria-hidden="true"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></span>
-      <span data-i18n="tools.utilitiesLabel">Utilities</span>
+      <span class="gallery-app-mark gallery-app-mark-svg" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 15.5 15.5 8.5"/><circle cx="9" cy="9" r="1.6"/><circle cx="15" cy="15" r="1.6"/></svg></span>
+      <span data-i18n="tools.taxLabel">Consumption tax</span>
     </div>
     <div class="gallery-app-actions">
       <a href="tools.html" class="nav__icon-btn" title="Tools" aria-label="Tools" data-i18n-aria="nav.tools"><svg class="jtg-icon jtg-icon--nav" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></a>
@@ -66,108 +66,25 @@
     </div>
   </header>
   <main id="main" tabindex="-1">
-    <section id="tools" class="tools-page tools-detail-page tools-miniapp" data-tool="utilities">
-      <p class="tools-miniapp-sub reveal" data-i18n="tools.utilitiesSub">Currency, clocks, tax, rail, and emergency numbers.</p>
-      <div class="tools-miniapp-body">
-        <section class="tool-card tool-card-wide reveal" id="currency-tool">
-          <div class="tool-label" data-i18n="tools.currencyLabel">Live currency converter</div>
-          <p class="tool-sub" data-i18n="tools.currencySub">Daily rates via frankfurter.dev (JPY-centered).</p>
-          <div class="tool-form currency-tool">
-            <label class="tool-field"><span data-i18n="tools.amount">Amount</span>
-              <input id="tool-amount" type="number" min="0" step="0.01" value="10000" inputmode="decimal" />
-            </label>
-            <label class="tool-field"><span data-i18n="tools.from">From</span>
-              <select id="tool-from">
-                <option value="JPY" selected>JPY</option>
-                <option value="USD">USD</option><option value="EUR">EUR</option><option value="CNY">CNY</option>
-                <option value="GBP">GBP</option><option value="KRW">KRW</option><option value="AUD">AUD</option>
-                <option value="HKD">HKD</option><option value="SGD">SGD</option><option value="TWD">TWD</option>
-                <option value="THB">THB</option><option value="CAD">CAD</option><option value="CHF">CHF</option>
-              </select>
-            </label>
-            <button type="button" class="tool-swap" id="tool-swap" aria-label="Swap">⇄</button>
-            <label class="tool-field"><span data-i18n="tools.to">To</span>
-              <select id="tool-to">
-                <option value="USD" selected>USD</option>
-                <option value="JPY">JPY</option><option value="EUR">EUR</option><option value="CNY">CNY</option>
-                <option value="GBP">GBP</option><option value="KRW">KRW</option><option value="AUD">AUD</option>
-                <option value="HKD">HKD</option><option value="SGD">SGD</option><option value="TWD">TWD</option>
-                <option value="THB">THB</option><option value="CAD">CAD</option><option value="CHF">CHF</option>
-              </select>
-            </label>
-          </div>
-          <div class="tool-result" id="tool-currency-result">—</div>
-          <p class="tool-meta" id="tool-currency-meta"></p>
-        </section>
-        <section class="tool-card reveal">
-          <div class="tool-label" data-i18n="tools.clockLabel">World clock</div>
-          <p class="tool-sub" data-i18n="tools.clockSub">Japan uses one timezone (JST). Compare with home for calls and arrivals.</p>
-          <div class="clock-list" id="world-clock-list"></div>
-        </section>
-        <section class="tool-card reveal">
-          <div class="tool-label" data-i18n="tools.taxLabel">Japan consumption tax</div>
-          <p class="tool-sub" data-i18n="tools.taxSub">Standard rate is typically 10% (some groceries 8%). Tipping is not expected.</p>
-          <div class="tool-form stacked">
-            <label class="tool-field"><span data-i18n="tools.taxBill">Price before tax (¥)</span>
-              <input id="tax-bill" type="number" min="0" step="1" value="3000" inputmode="decimal" />
-            </label>
-            <label class="tool-field"><span data-i18n="tools.taxRate">Tax %</span>
-              <select id="tax-rate">
-                <option value="10" selected>10% — standard</option>
-                <option value="8">8% — reduced (some food)</option>
-                <option value="0">0% — tax-free eligible (if applicable)</option>
-              </select>
-            </label>
-          </div>
-          <div class="tool-result" id="tax-result">—</div>
-          <p class="tool-meta" id="tax-meta"></p>
-        </section>
-        <section class="tool-card reveal">
-          <div class="tool-label" data-i18n="tools.jrLabel">JR Pass sense-check</div>
-          <div class="tool-form stacked">
-            <label class="tool-field"><span data-i18n="tools.jrDays">Trip length (days)</span>
-              <input id="jr-days" type="number" min="1" max="30" value="7" />
-            </label>
-            <label class="tool-field"><span data-i18n="tools.jrLegs">Long-distance rail legs (approx.)</span>
-              <input id="jr-legs" type="number" min="0" max="40" value="4" />
-            </label>
-          </div>
-          <div class="tool-result tool-result-sm" id="jr-result">—</div>
-          <p class="tool-meta" id="jr-meta"></p>
-        </section>
-        <section class="tool-card reveal">
-          <div class="tool-label" data-i18n="tools.railLabel">Shinkansen fare estimate</div>
-          <div class="tool-form stacked">
-            <label class="tool-field"><span data-i18n="tools.railRoute">Route</span>
-              <select id="rail-route">
-                <option value="tokyo-kyoto">Tokyo ↔ Kyoto</option>
-                <option value="tokyo-osaka">Tokyo ↔ Osaka</option>
-                <option value="tokyo-hiroshima">Tokyo ↔ Hiroshima</option>
-                <option value="tokyo-fukuoka">Tokyo ↔ Fukuoka (Hakata)</option>
-                <option value="tokyo-kanazawa">Tokyo ↔ Kanazawa</option>
-                <option value="osaka-hiroshima">Osaka ↔ Hiroshima</option>
-                <option value="osaka-fukuoka">Osaka ↔ Fukuoka</option>
-                <option value="tokyo-nagoya">Tokyo ↔ Nagoya</option>
-                <option value="tokyo-sendai">Tokyo ↔ Sendai</option>
-              </select>
-            </label>
-            <label class="tool-field"><span data-i18n="tools.railTrips">Number of one-ways</span>
-              <input id="rail-trips" type="number" min="1" max="20" value="2" />
-            </label>
-          </div>
-          <div class="tool-result" id="rail-result">—</div>
-          <p class="tool-meta" id="rail-meta"></p>
-        </section>
-        <section class="tool-card reveal" id="emergency-tool">
-          <div class="tool-label" data-i18n="tools.emergencyLabel">Useful numbers in Japan</div>
-          <ul class="tool-info-list">
-            <li><strong>110</strong> — <span data-i18n="tools.emPolice">Police</span></li>
-            <li><strong>119</strong> — <span data-i18n="tools.emFire">Fire &amp; ambulance</span></li>
-            <li><strong>118</strong> — <span data-i18n="tools.emCoast">Coast Guard</span></li>
-            <li><strong>0570-000-911</strong> — <span data-i18n="tools.emHelpline">Japan Helpline (English-friendly)</span></li>
-            <li><strong>#7119</strong> — <span data-i18n="tools.emMedical">Non-emergency medical advice (many areas)</span></li>
-          </ul>
-        </section>
+    <section id="tools" class="tools-page tools-detail-page tools-miniapp" data-tool="tax" aria-labelledby="toolsTitle">
+      <h2 id="toolsTitle" class="visually-hidden" data-i18n="tools.taxLabel">Japan consumption tax</h2>
+      <p class="tools-miniapp-sub reveal" data-i18n="tools.taxSub">Standard rate is typically 10% (some groceries 8%). Tipping is not expected.</p>
+      <div class="tools-miniapp-body reveal">
+        <div class="tool-form stacked">
+          <label class="tool-field"><span data-i18n="tools.taxBill">Price before tax (¥)</span>
+            <input id="tax-bill" type="number" min="0" step="1" value="3000" inputmode="decimal" />
+          </label>
+          <label class="tool-field"><span data-i18n="tools.taxRate">Tax %</span>
+            <select id="tax-rate">
+              <option value="10" selected>10% — standard</option>
+              <option value="8">8% — reduced (some food)</option>
+              <option value="0">0% — tax-free eligible (if applicable)</option>
+            </select>
+          </label>
+        </div>
+        <div class="tool-result tool-result-hero" id="tax-result">—</div>
+        <p class="tool-meta" id="tax-meta"></p>
+        <p class="tool-meta" data-i18n="tools.noTip">Tipping is not customary in Japan — excellent service is part of the culture, not the bill.</p>
       </div>
     </section>
   </main>
@@ -243,7 +160,6 @@
   <script src="src/js/core/env.js" defer></script>
   <script src="src/js/core/nav-return.js" defer></script>
   <script src="src/js/nav.js" defer></script>
-  <script src="src/js/currency.js" defer></script>
   <script src="src/js/tools.js" defer></script>
   <script src="src/js/app.js" defer></script>
 </body>

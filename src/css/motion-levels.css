@@ -1,0 +1,30 @@
+/* Japan Travel Guide — motion Full / Reduced / Off
+   User Full always wins over OS prefers-reduced-motion (see first-paint + app.js). */
+
+html[data-motion-effective="reduced"] *,
+html[data-motion-effective="reduced"] *::before,
+html[data-motion-effective="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-motion-effective="off"] *,
+html[data-motion-effective="off"] *::before,
+html[data-motion-effective="off"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-motion-effective="reduced"] .reveal,
+html[data-motion-effective="off"] .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html[data-motion-effective="off"] #loader,
+html[data-motion-effective="reduced"] #loader {
+  transition: none !important;
+}

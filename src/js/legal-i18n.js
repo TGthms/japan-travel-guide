@@ -53,6 +53,7 @@
 <ul>
 <li><strong>Fonts.</strong> Web fonts may be loaded from Google Fonts so Japanese, Chinese, and Latin text display correctly. That request may include technical data such as your IP address, subject to Google’s policies.</li>
 <li><strong>Exchange rates (Tools).</strong> The currency converter may request rates from a public API (for example Frankfurter). Only the currency codes needed for the conversion are sent for that request.</li>
+<li><strong>Weather (Tools).</strong> Forecasts, geocoding, and air quality are requested from Open-Meteo. Queries include a city name or coordinates for the place you look up.</li>
 <li><strong>Maps / reverse geocode (Gallery Manager only).</strong> The private local gallery manager may contact OpenStreetMap Nominatim when auto-detecting photo locations on your machine. That tool is not part of the public Site for visitors.</li>
 <li><strong>External / outbound links.</strong> For convenience, the Site includes links to third-party websites—including railways, tourism bureaus, and similar resources. Clicking such a link leaves the Site and takes you to a service we do not operate. Those operators may collect information under their own privacy policies; this policy does not cover them. We do not receive your activity on those external sites by virtue of the link alone, and a link does not mean we endorse or control that third party.</li>
 </ul>`,

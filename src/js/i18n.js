@@ -38,9 +38,15 @@
     const scope = root || document;
     const lang = (global.JTG.Settings && global.JTG.Settings.get("lang")) || "en";
 
+    const year = String(new Date().getFullYear());
+    function withYear(val) {
+      if (val == null) return val;
+      return String(val).replace(/\{year\}/g, year).replace(/©\s*20\d{2}\b/g, "© " + year);
+    }
+
     scope.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
-      const val = t(key, lang);
+      const val = withYear(t(key, lang));
       if (val == null) return;
       if (el.dataset.i18nHtml === "true") el.innerHTML = val;
       else el.textContent = val;

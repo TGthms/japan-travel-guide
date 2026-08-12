@@ -1,0 +1,159 @@
+/* Japan Travel Guide — dedicated tool mini-app layouts */
+
+body.page-tools .tools-page.tools-miniapp {
+  max-width: min(560px, 100%);
+  margin: 0 auto;
+  padding-top: 12px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+body.page-tools .tools-page.tools-miniapp[data-tool="budget"],
+body.page-tools .tools-page.tools-miniapp[data-tool="packing"],
+body.page-tools .tools-page.tools-miniapp[data-tool="rail"],
+body.page-tools .tools-page.tools-miniapp[data-tool="utilities"] {
+  max-width: min(1100px, 100%);
+}
+
+.tools-miniapp-sub {
+  margin: 0 auto 20px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text-mute, var(--text-muted));
+  text-align: center;
+  max-width: 36em;
+}
+
+.tools-miniapp-body {
+  background: color-mix(in srgb, var(--bg-card, var(--card-solid)) 88%, transparent);
+  border: 1px solid var(--border-light, var(--border));
+  border-radius: 22px;
+  padding: 22px 20px 24px;
+  box-shadow: var(--shadow, 0 12px 40px rgba(15, 15, 18, 0.08));
+}
+
+body.page-tools .tools-miniapp[data-tool="clock"] .tools-miniapp-body,
+body.page-tools .tools-miniapp.tools-miniapp-flat .tools-miniapp-body {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+body.page-tools .tools-miniapp .tool-field span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-mute, var(--text-muted));
+  margin-bottom: 6px;
+}
+body.page-tools .tools-miniapp .tool-field input,
+body.page-tools .tools-miniapp .tool-field select {
+  min-height: 48px;
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+body.page-tools .tools-miniapp .tool-result,
+body.page-tools .tools-miniapp .tool-result-hero {
+  margin-top: 22px;
+  text-align: center;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+body.page-tools .tools-miniapp .tool-meta {
+  text-align: center;
+  margin-top: 8px;
+}
+
+body.page-tools .tools-miniapp .currency-tool.tool-form,
+body.page-tools .tools-miniapp .currency-tool {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr) !important;
+  grid-template-areas:
+    "amount amount amount"
+    "from   swap   to" !important;
+  gap: 14px 12px !important;
+  align-items: end !important;
+}
+body.page-tools .tools-miniapp .currency-tool > .tool-field:nth-child(1) { grid-area: amount !important; }
+body.page-tools .tools-miniapp .currency-tool > .tool-field:nth-child(2) { grid-area: from !important; }
+body.page-tools .tools-miniapp .currency-tool > .tool-swap { grid-area: swap !important; margin: 0; }
+body.page-tools .tools-miniapp .currency-tool > .tool-field:nth-child(4) { grid-area: to !important; }
+
+body.page-tools .tools-miniapp .tool-swap {
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  align-self: end;
+}
+
+body.page-tools .tools-miniapp .clock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: none !important;
+  overflow: visible !important;
+}
+body.page-tools .tools-miniapp[data-tool="clock"] .clock-row {
+  padding: 16px 4px;
+}
+body.page-tools .tools-miniapp[data-tool="clock"] .clock-time {
+  font-size: 1.45rem;
+  font-variant-numeric: tabular-nums;
+}
+
+body.page-tools .tools-miniapp .tool-info-list {
+  gap: 10px;
+}
+body.page-tools .tools-miniapp .tool-info-list li {
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 15px;
+}
+body.page-tools .tools-miniapp .tool-info-list strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-1, var(--deep-red-bright));
+}
+
+/* Budget / packing keep their existing wide cards */
+body.page-tools .tools-miniapp[data-tool="budget"] .tools-miniapp-body,
+body.page-tools .tools-miniapp[data-tool="packing"] .tools-miniapp-body,
+body.page-tools .tools-miniapp[data-tool="rail"] .tools-miniapp-body {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Never leave reveal stuck at opacity 0 if animations.js is absent */
+body.page-tools .reveal {
+  opacity: 1;
+  transform: none;
+}
+body.page-tools .reveal.is-visible,
+body.page-tools .reveal.visible {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .tools-miniapp-body { padding: 18px 14px 20px; border-radius: 18px; }
+}
+@media (min-width: 900px) {
+  body.page-tools .tools-page.tools-miniapp { max-width: 600px; }
+  body.page-tools .tools-page.tools-miniapp[data-tool="budget"],
+  body.page-tools .tools-page.tools-miniapp[data-tool="packing"],
+  body.page-tools .tools-page.tools-miniapp[data-tool="rail"],
+  body.page-tools .tools-page.tools-miniapp[data-tool="utilities"] {
+    max-width: 1100px;
+  }
+}

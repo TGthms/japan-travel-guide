@@ -4250,5 +4250,7 @@
   nameFetchTimer = setTimeout(() => { ensureLocalizedMajorNames(); }, 600);
   // Keep ambient sky in sync with clock / theme
   setInterval(() => { if (isPageActive()) applyAmbientPageSky(); }, 5 * 60 * 1000);
-  document.querySelectorAll('.weather-root .reveal, .tools-page .reveal').forEach((el) => el.classList.add('visible'));
+  document.querySelectorAll('.weather-root .reveal, .tools-page .reveal').forEach((el) => {
+    el.classList.add('visible', 'is-visible');
+  });
 })();

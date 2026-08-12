@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "cities"
-VERSION = "usa-parity1"
+VERSION = ""  # pages load the CSS barrel without cache-bust tokens
 
 # id, display name, extra body classes, distance km from Tokyo, temp min/max °C, hero photo
 CITIES: list[tuple[str, str, str, int, int, int, str | None]] = [
@@ -40,7 +40,8 @@ FONT_LINKS = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
 """
 
-THEME_BOOT = """  <script>
+THEME_BOOT = """<!-- FIRST_PAINT_START -->
+  <script>
   (function () {
     try {
       var p = JSON.parse(localStorage.getItem("jtg-preferences") || "{}");
@@ -49,16 +50,20 @@ THEME_BOOT = """  <script>
         ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
         : theme;
       document.documentElement.setAttribute("data-theme", resolved);
+      document.documentElement.style.colorScheme = resolved === "light" ? "light" : "dark";
       var motion = p.motion || "full";
       if (motion !== "full" && motion !== "reduced" && motion !== "off") motion = "full";
       document.documentElement.setAttribute("data-motion", motion);
       var osReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var eff = motion === "off" ? "off" : ((motion === "reduced" || osReduce) ? "reduced" : "full");
+      var eff = motion === "off" ? "off" : (motion === "full" ? "full" : (motion === "reduced" ? "reduced" : (osReduce ? "reduced" : "full")));
       document.documentElement.setAttribute("data-motion-effective", eff);
       if (p.lang) document.documentElement.lang = p.lang === "zh-CN" ? "zh-CN" : p.lang;
-    } catch (e) {}
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
   })();
   </script>
+<!-- FIRST_PAINT_END -->
 """
 
 
@@ -131,9 +136,8 @@ def render_city(
   <meta name="color-scheme" content="light dark" />
   <title data-i18n="cities.{cid}.name">{name} · Japan Travel Guide</title>
   <link rel="icon" href="../assets/icons/logo.svg" />
-{FONT_LINKS}  <link rel="stylesheet" href="../src/css/styles.css?v={VERSION}" />
-  <link rel="stylesheet" href="../src/css/icons.css?v={VERSION}" />
-  <link rel="stylesheet" href="../src/css/cities/{cid}.css?v={VERSION}" />
+{FONT_LINKS}  <link rel="stylesheet" href="../src/css/styles.css" />
+  <link rel="stylesheet" href="../src/css/cities/{cid}.css" />
 {THEME_BOOT}</head>
 <body class="{body_cls}" data-page="city" data-city="{cid}">
   <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
@@ -412,15 +416,15 @@ def render_city(
     document.addEventListener("DOMContentLoaded", function () {{ setTimeout(renderCity, 0); }});
   }})();
   </script>
-  <script src="../src/js/data/i18n.js?v={VERSION}" defer></script>
-  <script src="../src/js/settings.js?v={VERSION}" defer></script>
-  <script src="../src/js/i18n.js?v={VERSION}" defer></script>
-  <script src="../src/js/units.js?v={VERSION}" defer></script>
-  <script src="../src/js/currency.js?v={VERSION}" defer></script>
-  <script src="../src/js/nav.js?v={VERSION}" defer></script>
-  <script src="../src/js/animations.js?v={VERSION}" defer></script>
-  <script src="../src/js/nav-return.js?v={VERSION}" defer></script>
-  <script src="../src/js/app.js?v={VERSION}" defer></script>
+  <script src="../src/js/data/i18n.js" defer></script>
+  <script src="../src/js/settings.js" defer></script>
+  <script src="../src/js/i18n.js" defer></script>
+  <script src="../src/js/units.js" defer></script>
+  <script src="../src/js/core/env.js" defer></script>
+  <script src="../src/js/nav.js" defer></script>
+  <script src="../src/js/animations.js" defer></script>
+  <script src="../src/js/core/nav-return.js" defer></script>
+  <script src="../src/js/app.js" defer></script>
 </body>
 </html>
 """

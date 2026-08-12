@@ -26,7 +26,11 @@
   }
 
   function save(prefs) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+    } catch (e) {
+      /* private mode / quota — in-memory prefs still apply */
+    }
   }
 
   function resolveTheme(theme) {
@@ -44,7 +48,15 @@
   }
 
   function applyMotion(motion) {
+    if (motion !== "full" && motion !== "reduced" && motion !== "off") motion = "full";
     document.documentElement.setAttribute("data-motion", motion);
+    var osReduce = false;
+    try {
+      osReduce = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    } catch (e) { /* ignore */ }
+    var constrained = !!(global.JTG && global.JTG.ENV && global.JTG.ENV.constrained);
+    var eff = motion === "off" ? "off" : (motion === "full" ? (constrained ? "reduced" : "full") : (motion === "reduced" ? "reduced" : (osReduce ? "reduced" : "full")));
+    document.documentElement.setAttribute("data-motion-effective", eff);
   }
 
   const Settings = {

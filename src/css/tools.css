@@ -1,0 +1,102 @@
+/* Japan Travel Guide — tools hub (card launcher) */
+
+.loader-flag-svg,
+.gallery-app-mark-svg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-1, var(--deep-red-bright));
+}
+
+body.page-tools .tools-app-header {
+  max-width: var(--content-max, 72rem);
+  margin: 0 auto 28px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+body.page-tools .tools-app-header .section__eyebrow,
+body.page-tools .tools-app-header .section-eyebrow {
+  margin-bottom: 12px;
+}
+
+.tools-hub-grid {
+  max-width: var(--content-max, 72rem);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+a.tools-hub-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border-light, var(--border));
+  background: var(--bg-card, var(--card-solid));
+  box-shadow: var(--shadow, 0 8px 32px rgba(15, 15, 18, 0.08));
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  min-height: 96px;
+}
+a.tools-hub-card:hover,
+a.tools-hub-card:focus-visible {
+  border-color: var(--accent-1, var(--deep-red-bright));
+  background: var(--bg-card-hov, var(--bg-elevated));
+  color: inherit;
+  outline: none;
+}
+@media (hover: hover) {
+  a.tools-hub-card:hover { transform: translateY(-2px); }
+}
+.tools-hub-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent-1, var(--deep-red-bright)) 14%, var(--bg-base, var(--bg)));
+  color: var(--accent-1, var(--deep-red-bright));
+  border: 1px solid color-mix(in srgb, var(--accent-1, var(--deep-red-bright)) 22%, transparent);
+}
+.tools-hub-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tools-hub-title {
+  font-family: var(--ff-display, var(--font-display));
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--text-main, var(--text));
+  letter-spacing: -0.01em;
+}
+.tools-hub-blurb {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-mute, var(--text-muted));
+}
+.tools-hub-chevron {
+  flex-shrink: 0;
+  color: var(--text-dim, var(--text-muted));
+  opacity: 0.7;
+}
+
+body.page-tools #main.tools-page,
+body.page-tools main.tools-page,
+body.page-tools #tools.tools-page {
+  padding-top: 1.25rem;
+  padding-bottom: 3rem;
+  padding-left: var(--section-x, 1.25rem);
+  padding-right: var(--section-x, 1.25rem);
+}
+
+@media (max-width: 640px) {
+  .tools-hub-grid { grid-template-columns: 1fr; gap: 12px; }
+  a.tools-hub-card { min-height: 84px; padding: 16px 14px; }
+}

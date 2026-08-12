@@ -20,10 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css?v=tools-fix1" />
-  <link rel="stylesheet" href="src/css/icons.css?v=tools-fix1" />
-  <link rel="stylesheet" href="src/css/weather.css?v=tools-fix1" />
-  <link rel="stylesheet" href="src/css/weather-app.css?v=tools-fix1" />
+  <link rel="stylesheet" href="src/css/styles.css" />
+  <!-- FIRST_PAINT_START -->
   <script>
   (function () {
     try {
@@ -33,18 +31,22 @@
         ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
         : theme;
       document.documentElement.setAttribute("data-theme", resolved);
+      document.documentElement.style.colorScheme = resolved === "light" ? "light" : "dark";
       var motion = p.motion || "full";
       if (motion !== "full" && motion !== "reduced" && motion !== "off") motion = "full";
       document.documentElement.setAttribute("data-motion", motion);
       var osReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var eff = motion === "off" ? "off" : ((motion === "reduced" || osReduce) ? "reduced" : "full");
+      var eff = motion === "off" ? "off" : (motion === "full" ? "full" : (motion === "reduced" ? "reduced" : (osReduce ? "reduced" : "full")));
       document.documentElement.setAttribute("data-motion-effective", eff);
       if (p.lang) document.documentElement.lang = p.lang === "zh-CN" ? "zh-CN" : p.lang;
-    } catch (e) {}
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
   })();
   </script>
+<!-- FIRST_PAINT_END -->
 </head>
-<body data-page="tools" class="page-tools page-tools-weather">
+<body data-page="tools-mini" class="page-tools page-tools-weather" data-tool="weather">
   <a class="skip-link" href="#main" data-i18n="common.skipToContent">Skip to content</a>
   <div id="loader"><div class="loader__inner"><div class="loader__torii" aria-hidden="true"></div><p class="loader__text" data-i18n="common.loading">Loading…</p></div></div>
   <div id="scroll-progress" aria-hidden="true"></div>
@@ -53,7 +55,7 @@
     <div class="container gallery-app-bar__inner">
       <a href="tools.html" class="gallery-app-back">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-        <span data-i18n="tools.backToTools">Back to Tools</span>
+        <span class="gallery-app-back-label" data-i18n="tools.backToTools">Back to Tools</span>
       </a>
       <div class="gallery-app-title" aria-current="page">
         <span class="gallery-app-mark" aria-hidden="true">☁</span>
@@ -113,7 +115,7 @@
         <ul class="weather-list" id="weatherList"></ul>
       </div>
     </div>
-    <p class="weather-attribution" data-i18n="weather.attribution">Data: U.S. forecasts &amp; alerts NWS · world &amp; extras Open-Meteo (CC BY 4.0). For guidance only — not for emergencies.</p>
+    <p class="weather-attribution" data-i18n="weather.attribution">Data: Open-Meteo (CC BY 4.0). Guidance only — not for emergencies.</p>
   </div>
 </section>
 
@@ -166,7 +168,7 @@
       <a href="https://github.com/TGthms/japan-travel-guide" class="footer-github-link" target="_blank" rel="noopener">GitHub</a>
     </div>
     <div class="site-footer-meta">
-      <p class="site-footer-copy" data-i18n="footer.copyright">© 2026 Japan Travel Guide · Created by Tim G</p>
+      <p class="site-footer-copy" data-i18n="footer.copyright">© {year} Japan Travel Guide · Created by Tim G</p>
       <div class="footer-legal-links" role="navigation" aria-label="Legal">
         <a href="privacy.html" data-i18n="legal.privacyLink">Privacy Policy</a>
         <span class="footer-legal-sep" aria-hidden="true">·</span>
@@ -222,13 +224,14 @@
     </div>
   </aside>
 
-  <script src="src/js/data/i18n.js?v=tools-fix1" defer></script>
-  <script src="src/js/settings.js?v=tools-fix1" defer></script>
-  <script src="src/js/i18n.js?v=tools-fix1" defer></script>
-  <script src="src/js/units.js?v=tools-fix1" defer></script>
-  <script src="src/js/nav.js?v=tools-fix1" defer></script>
-  <script src="src/js/weather.js?v=tools-fix1" defer></script>
-  <script src="src/js/nav-return.js?v=tools-fix1" defer></script>
-  <script src="src/js/app.js?v=tools-fix1" defer></script>
+  <script src="src/js/data/i18n.js" defer></script>
+  <script src="src/js/settings.js" defer></script>
+  <script src="src/js/i18n.js" defer></script>
+  <script src="src/js/units.js" defer></script>
+  <script src="src/js/core/env.js" defer></script>
+  <script src="src/js/nav.js" defer></script>
+  <script src="src/js/weather.js" defer></script>
+  <script src="src/js/core/nav-return.js" defer></script>
+  <script src="src/js/app.js" defer></script>
 </body>
 </html>

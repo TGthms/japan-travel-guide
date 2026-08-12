@@ -1,0 +1,190 @@
+/* Japan Travel Guide — mini-app chrome, settings stack, token aliases */
+
+:root {
+  --accent-1: var(--deep-red-bright, #c41e3a);
+  --text-main: var(--text, #0f0f12);
+  --text-mute: var(--text-muted, #6b6570);
+  --text-dim: var(--text-muted, #6b6570);
+  --bg-base: var(--bg, #fff9f5);
+  --bg-card: var(--card-solid, #ffffff);
+  --bg-card-hov: var(--bg-elevated, #ffffff);
+  --bg-surface-2: var(--surface-2, rgba(248, 180, 196, 0.12));
+  --border-light: var(--border, rgba(15, 15, 18, 0.08));
+  --border-med: var(--border, rgba(15, 15, 18, 0.08));
+  --nav-bg: var(--glass, rgba(255, 249, 245, 0.92));
+  --content-max: var(--max, 1200px);
+  --ff-display: var(--font-display);
+  --ff-body: var(--font-sans);
+  --section-x: 1.25rem;
+}
+
+/* ── Z-index contract (one scale, last writer) ── */
+.site-header { z-index: 200; }
+.gallery-app-bar.site-header { z-index: 200 !important; }
+.nav-menu-scrim { z-index: 198; }
+.nav__links.is-open { z-index: 199; }
+.settings-overlay {
+  z-index: 12000 !important;
+}
+.settings-panel {
+  z-index: 12010 !important;
+}
+body.jtg-settings-open .site-header {
+  z-index: 800 !important;
+}
+.lightbox,
+#lightbox {
+  z-index: 11000;
+}
+
+/* ── Mini-app bar: 3-column grid (Back | Title | Actions) ── */
+.gallery-app-bar.site-header {
+  position: sticky;
+  top: 0;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: auto !important;
+  min-height: calc(56px + env(safe-area-inset-top, 0px)) !important;
+  padding: env(safe-area-inset-top, 0px) max(12px, env(safe-area-inset-right, 0px)) 0 max(12px, env(safe-area-inset-left, 0px)) !important;
+  background: var(--nav-bg) !important;
+  backdrop-filter: blur(18px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.15) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+.gallery-app-bar__inner {
+  display: contents !important;
+  height: auto !important;
+}
+.gallery-app-back {
+  justify-self: start;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 12px 8px 8px !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--border-light) !important;
+  background: var(--bg-card) !important;
+  color: var(--text-dim) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.gallery-app-back svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.gallery-app-back-label,
+.gallery-app-back span:not([aria-hidden]) {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-width: none !important;
+}
+.gallery-app-back:hover,
+.gallery-app-back:focus-visible {
+  color: var(--accent-1) !important;
+  border-color: color-mix(in srgb, var(--accent-1) 45%, var(--border-light)) !important;
+  background: var(--bg-card-hov) !important;
+}
+.gallery-app-title {
+  justify-self: center;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+  font-family: var(--ff-display);
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gallery-app-mark,
+.gallery-app-mark-svg {
+  color: var(--accent-1);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.gallery-app-mark-svg svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.gallery-app-actions {
+  justify-self: end;
+  display: flex !important;
+  align-items: center;
+  gap: 4px !important;
+  margin-left: 0 !important;
+}
+.gallery-app-actions .nav__icon-btn {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+@media (max-width: 420px) {
+  .gallery-app-back {
+    padding: 8px !important;
+  }
+  .gallery-app-back-label,
+  .gallery-app-back span:not([aria-hidden]) {
+    /* Keep the phrase; shrink letter-spacing rather than ellipsis */
+    font-size: 11px !important;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Settings dialog sits above every sticky header */
+.settings-overlay.is-open,
+.settings-overlay[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.settings-panel.is-open {
+  transform: translateX(0);
+}
+
+.visually-hidden,
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Footer home link used by nav-return */
+.gallery-app-footer {
+  margin-top: 28px;
+  padding: 20px var(--section-x) calc(20px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+}
+.gallery-app-footer-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--text-dim);
+}

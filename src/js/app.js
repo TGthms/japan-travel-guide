@@ -60,7 +60,7 @@
     return false;
   }
 
-  const ENV = {
+  const ENV = (global.JTG && global.JTG.ENV) || {
     constrained: isConstrainedViewport(),
     mobile: isMobileOrCoarsePointer(),
     hasIO: typeof IntersectionObserver === "function",
@@ -152,9 +152,12 @@
   }
 
   function effectiveMotion(mode) {
+    /* User Full always wins over OS prefers-reduced-motion (USA policy). */
     if (mode === "off") return "off";
-    if (mode === "reduced" || ENV.reduceMotion) return "reduced";
+    if (mode === "full") return ENV.constrained ? "reduced" : "full";
+    if (mode === "reduced") return "reduced";
     if (ENV.constrained) return "reduced";
+    if (ENV.reduceMotion) return "reduced";
     return "full";
   }
 

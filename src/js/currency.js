@@ -49,10 +49,14 @@
   }
 
   function writeCache(payload) {
-    localStorage.setItem(
-      CACHE_KEY,
-      JSON.stringify({ ...payload, fetchedAt: Date.now() })
-    );
+    try {
+      localStorage.setItem(
+        CACHE_KEY,
+        JSON.stringify({ ...payload, fetchedAt: Date.now() })
+      );
+    } catch (e) {
+      /* private mode / quota */
+    }
   }
 
   function applyRates(rates, date, source) {
