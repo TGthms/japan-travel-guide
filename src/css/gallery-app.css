@@ -1,5 +1,32 @@
 /* Japan Travel Guide — gallery page polish (USA-style masonry + chrome) */
 
+.gallery-item.hidden {
+  display: none !important;
+}
+.gallery-item {
+  position: relative;
+}
+.gallery-item img.loaded {
+  opacity: 1;
+}
+.gallery-grid.gallery-grid--packed,
+.gallery-grid:has(.gallery-col) {
+  display: flex !important;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+.gallery-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.gallery-item.load-error {
+  min-height: 160px;
+  pointer-events: none;
+}
+
 body.page-gallery .gallery-page,
 body.page-gallery #main.gallery-page {
   padding-top: 1.25rem;

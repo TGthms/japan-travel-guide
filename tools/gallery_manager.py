@@ -6,17 +6,19 @@ A local mini-app (and CLI) so you can bulk-add trip photos without hand-editing
 HTML or making thumbnails yourself.
 
 What it does for each photo (add):
-  1. Saves the full photo              → assets/gallery/
+  1. Saves the full photo              → assets/gallery/originals/
      JPEG originals are copied byte-for-byte (HDR/color intact);
      other formats convert at quality 100 with no resize.
   2. Saves a medium lightbox asset     → assets/gallery/medium/
      (long edge ≤ 1920px — quality + performance balance)
   3. Saves a grid thumbnail            → assets/gallery/thumbs/
      (long edge ≤ 900px — grid stays fast)
-  4. Appends a gallery-item block      → gallery.html
-  5. Adds caption keys (es/zh/ja)      → src/js/data/i18n.js
+  4. Optional WebP sidecars for thumb/medium when Pillow is available
+  5. Appends a gallery-item block      → gallery.html
+  6. Adds caption keys (ja / zh-CN)    → src/js/data/i18n.js
      (slug / i18n key always come from the original filename or caption —
       never from the server tempfile used during browser upload)
+  7. Syncs assets/gallery/gallery.json from the live HTML items
 
   Metadata: date (e.g. "June 1, 2026" or month-only "July 2026") and
   location (e.g. "Los Angeles, CA") can be auto-detected from EXIF/GPS
@@ -75,9 +77,11 @@ from pathlib import Path
 # ── Paths ──────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
 GALLERY_DIR = ROOT / "assets" / "gallery"
+ORIGINALS_DIR = GALLERY_DIR / "originals"
 THUMBS_DIR = GALLERY_DIR / "thumbs"
 MEDIUM_DIR = GALLERY_DIR / "medium"
 VIDEOS_DIR = GALLERY_DIR / "videos"
+GALLERY_JSON = GALLERY_DIR / "gallery.json"
 GALLERY_HTML = ROOT / "gallery.html"
 # Caption keys live in the data pack (es/zh/ja). Path unchanged after core/features split.
 APP_JS = ROOT / "src" / "js" / "data" / "i18n.js"
@@ -116,61 +120,28 @@ JPEG_SUFFIXES = {".jpg", ".jpeg", ".jpe", ".jfif"}
 # Primary path uses online reverse geocode (OpenStreetMap Nominatim via curl).
 MAX_GEO_KM = 8.0
 GEO_CACHE_PATH = ROOT / "tools" / ".geo_cache.json"
-US_PLACES: list[tuple[float, float, str]] = [
-    # California Bay Area / coast
-    (37.7749, -122.4194, "San Francisco, California"),
-    (37.8044, -122.2712, "Oakland, California"),
-    (37.8715, -122.2730, "Berkeley, California"),
-    (37.9358, -122.3477, "Richmond, California"),
-    (37.4419, -122.1430, "Palo Alto, California"),
-    (37.3382, -121.8863, "San Jose, California"),
-    (37.8716, -122.2727, "Berkeley, California"),
-    (36.6002, -121.8947, "Monterey, California"),
-    (36.5552, -121.9233, "Carmel by the Sea, California"),
-    (36.4799, -121.9100, "Garrapata State Beach, California"),
-    (36.4193, -121.9152, "Garrapata Beach, California"),
-    (36.3724, -121.9015, "Bixby Creek Bridge, California"),
-    (36.3575, -121.9029, "CA-1, California"),
-    (36.2704, -121.8081, "Big Sur, California"),
-    (36.2116, -121.1238, "King City, California"),
-    (36.9741, -122.0308, "Santa Cruz, California"),
-    (37.7856, -122.4297, "Japantown, San Francisco, California"),
-    (37.8199, -122.4783, "Golden Gate Bridge, California"),
-    (37.9091, -122.3910, "Richmond, California"),
-    (34.4208, -119.6982, "Santa Barbara, California"),
-    (34.0522, -118.2437, "Los Angeles, California"),
-    (34.0195, -118.4912, "Santa Monica, California"),
-    (33.7701, -118.1937, "Long Beach, California"),
-    (32.7157, -117.1611, "San Diego, California"),
-    (36.7783, -119.4179, "Fresno, California"),
-    (38.5816, -121.4944, "Sacramento, California"),
-    (39.5296, -119.8138, "Reno, Nevada"),
-    (36.1699, -115.1398, "Las Vegas, Nevada"),
-    # West
-    (47.6062, -122.3321, "Seattle, Washington"),
-    (45.5152, -122.6784, "Portland, Oregon"),
-    (39.7392, -104.9903, "Denver, Colorado"),
-    (40.7608, -111.8910, "Salt Lake City, Utah"),
-    (33.4484, -112.0740, "Phoenix, Arizona"),
-    (36.0544, -112.1401, "Grand Canyon, Arizona"),
-    (35.1983, -111.6513, "Flagstaff, Arizona"),
-    # Midwest / South / East
-    (41.8781, -87.6298, "Chicago, Illinois"),
-    (29.7604, -95.3698, "Houston, Texas"),
-    (30.2672, -97.7431, "Austin, Texas"),
-    (32.7767, -96.7970, "Dallas, Texas"),
-    (29.4241, -98.4936, "San Antonio, Texas"),
-    (29.9511, -90.0715, "New Orleans, Louisiana"),
-    (33.7490, -84.3880, "Atlanta, Georgia"),
-    (25.7617, -80.1918, "Miami, Florida"),
-    (28.5383, -81.3792, "Orlando, Florida"),
-    (38.9072, -77.0369, "Washington, D.C."),
-    (40.7128, -74.0060, "New York, New York"),
-    (42.3601, -71.0589, "Boston, Massachusetts"),
-    (39.9526, -75.1652, "Philadelphia, Pennsylvania"),
-    (36.1627, -86.7816, "Nashville, Tennessee"),
-    (21.3069, -157.8583, "Honolulu, Hawaii"),
-    (61.2181, -149.9003, "Anchorage, Alaska"),
+JP_PLACES: list[tuple[float, float, str]] = [
+    (35.6762, 139.6503, "Tokyo"),
+    (35.7101, 139.8107, "Tokyo Skytree, Tokyo"),
+    (35.6586, 139.7454, "Tokyo Tower, Tokyo"),
+    (35.6595, 139.7004, "Shibuya, Tokyo"),
+    (35.7148, 139.7967, "Asakusa, Tokyo"),
+    (35.4437, 139.6380, "Yokohama"),
+    (35.2324, 139.1069, "Hakone"),
+    (36.7199, 139.6982, "Nikko"),
+    (35.0116, 135.7681, "Kyoto"),
+    (34.6851, 135.8048, "Nara"),
+    (34.6937, 135.5023, "Osaka"),
+    (34.6901, 135.1956, "Kobe"),
+    (36.5613, 136.6562, "Kanazawa"),
+    (34.3853, 132.4553, "Hiroshima"),
+    (32.7503, 129.8777, "Nagasaki"),
+    (33.5904, 130.4017, "Fukuoka"),
+    (43.0618, 141.3545, "Sapporo"),
+    (26.2124, 127.6809, "Naha, Okinawa"),
+    (35.3606, 138.7274, "Mount Fuji"),
+    (35.7719, 140.3928, "Narita, Chiba"),
+    (35.5533, 139.7811, "Haneda, Tokyo"),
 ]
 
 MONTH_NAMES = (
@@ -294,8 +265,10 @@ def ensure_layout() -> None:
     if not APP_JS.is_file():
         die(f"i18n data file not found at {APP_JS}")
     GALLERY_DIR.mkdir(parents=True, exist_ok=True)
+    ORIGINALS_DIR.mkdir(parents=True, exist_ok=True)
     THUMBS_DIR.mkdir(parents=True, exist_ok=True)
     MEDIUM_DIR.mkdir(parents=True, exist_ok=True)
+    VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
     if not shutil.which("sips"):
         die("macOS `sips` is required (should be at /usr/bin/sips)")
 
@@ -782,7 +755,7 @@ def reverse_geocode_local(lat: float, lon: float) -> str | None:
     Never stretch to a distant city — that caused wrong-city labels.
     """
     best: tuple[float, str] | None = None
-    for plat, plon, label in US_PLACES:
+    for plat, plon, label in JP_PLACES:
         d = _haversine_km(lat, lon, plat, plon)
         if best is None or d < best[0]:
             best = (d, label)
@@ -1183,6 +1156,8 @@ LOCATION_PLACEHOLDERS = {
     "usa",
     "us",
     "america",
+    "japan",
+    "日本",
     "unknown",
     "auto",
     "n/a",
@@ -1370,14 +1345,23 @@ def html_item_block(
             '<path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/>'
             '</svg><span data-i18n="gallery.videoBadge">Video</span></span>\n'
         )
+    slug_esc = html.escape(slug, quote=True)
+    name_esc = html.escape(caption, quote=True)
+    webp_stem = Path(filename).stem
+    webp_attrs = ""
+    if (THUMBS_DIR / f"{webp_stem}.webp").is_file():
+        webp_attrs += f' data-thumb-webp="assets/gallery/thumbs/{html.escape(webp_stem, quote=True)}.webp"'
+    if (MEDIUM_DIR / f"{webp_stem}.webp").is_file():
+        webp_attrs += f' data-medium-webp="assets/gallery/medium/{html.escape(webp_stem, quote=True)}.webp"'
     return (
         f'    <div class="gallery-item"{media_attr} data-category="{cat_esc}" '
         f'data-location="{loc_esc}" data-city="{city_esc}" data-state="{state_esc}" '
-        f'data-date="{date_esc}" tabindex="0" role="button">\n'
+        f'data-date="{date_esc}" data-id="{slug_esc}" data-name="{name_esc}" '
+        f'tabindex="0" role="button">\n'
         f'      <img src="assets/gallery/thumbs/{file_esc}" '
         f'data-thumb="assets/gallery/thumbs/{file_esc}" '
         f'data-medium="assets/gallery/medium/{file_esc}" '
-        f'data-full="assets/gallery/{file_esc}"{video_attr} '
+        f'data-full="assets/gallery/originals/{file_esc}"{webp_attrs}{video_attr} '
         f'width="{tw}" height="{th}" alt="{alt_esc}" loading="lazy" decoding="async">\n'
         f"{badge}"
         f'      <div class="gallery-caption" data-i18n="gallery.item.{slug}.caption">'
@@ -1639,7 +1623,9 @@ def process_one(
         date = normalize_gallery_date(date, fallback_today=True)
     except ValueError:
         date = today_display_date()
-    location = _abbreviate_location_state((location or "United States").strip())
+    location = (location or "Japan").strip()
+    if is_placeholder_location(location):
+        location = "Japan"
 
     # Slug base is computed outside the lock; unique_slug + all writes run under it
     # so concurrent /api/add cannot allocate the same slug.
@@ -1673,7 +1659,7 @@ def process_one(
             "location": location,
             "date": date,
             "media": "video" if is_video else "photo",
-            "full": str((GALLERY_DIR / filename).relative_to(ROOT)),
+            "full": str((ORIGINALS_DIR / filename).relative_to(ROOT)),
             "medium": str((MEDIUM_DIR / filename).relative_to(ROOT)),
             "thumb": str((THUMBS_DIR / filename).relative_to(ROOT)),
             "meta": {
@@ -1695,7 +1681,7 @@ def process_one(
     with _WRITE_LOCK:
         slug = unique_slug(slug_base)
         filename = f"{slug}.jpeg"
-        full_path = GALLERY_DIR / filename
+        full_path = ORIGINALS_DIR / filename
         medium_path = MEDIUM_DIR / filename
         thumb_path = THUMBS_DIR / filename
         video_path = None
@@ -1758,6 +1744,9 @@ def process_one(
             )
             insert_gallery_html(block)
             i18n_n = insert_i18n(slug, cap)
+            write_webp_from_jpeg(thumb_path, thumb_path.with_suffix(".webp"), 80)
+            write_webp_from_jpeg(medium_path, medium_path.with_suffix(".webp"), 82)
+            write_gallery_json()
         except Exception:
             # A gallery entry is one logical record — undo partial writes.
             for path in (thumb_path, medium_path, full_path, video_path):
@@ -1816,9 +1805,9 @@ def list_photos() -> list[dict]:
     # Optional video badge sits between <img> and caption.
     for m in re.finditer(
         r'<div class="gallery-item"([^>]*)>\s*'
-        r'<img\s+([^>]+)>\s*'
-        r'(?:<span class="gallery-video-badge"[\s\S]*?</span>\s*)?'
-        r'<div class="gallery-caption"[^>]*data-i18n="([^"]*)"[^>]*>([^<]*)</div>',
+        r'<img\s+([^>]+)>'
+        r'(?:\s*<span class="gallery-video-badge"[\s\S]*?</span>)?'
+        r'\s*<div class="gallery-caption"[^>]*data-i18n="([^"]*)"[^>]*>([^<]*)</div>',
         text,
         re.S,
     ):
@@ -1837,6 +1826,7 @@ def list_photos() -> list[dict]:
         category = html.unescape(attr(item_attrs, "data-category"))
         location = html.unescape(attr(item_attrs, "data-location"))
         date = html.unescape(attr(item_attrs, "data-date"))
+        city = html.unescape(attr(item_attrs, "data-city"))
         media = attr(item_attrs, "data-media") or "photo"
         thumb = html.unescape(attr(img_attrs, "src"))
         full = html.unescape(attr(img_attrs, "data-full"))
@@ -1859,6 +1849,7 @@ def list_photos() -> list[dict]:
             "i18n_key": i18n_key,
             "category": category,
             "location": location,
+            "city": city,
             "date": date,
             "media": media,
             "thumb": thumb,
@@ -1871,6 +1862,56 @@ def list_photos() -> list[dict]:
             row["video"] = video
         items.append(row)
     return items
+
+
+def write_gallery_json() -> None:
+    """Keep gallery.json in sync with HTML so fallback loaders stay honest."""
+    items = list_photos()
+    photos = []
+    for i, item in enumerate(items):
+        full = item.get("full") or ""
+        thumb = item.get("thumb") or ""
+        medium = item.get("medium") or ""
+
+        def rel(p: str) -> str:
+            p = (p or "").replace("\\", "/")
+            return re.sub(r"^/?assets/gallery/", "", p)
+
+        photos.append({
+            "id": item.get("slug") or Path(full).stem,
+            "name": item.get("caption") or "",
+            "alt": item.get("alt") or item.get("caption") or "",
+            "time": item.get("date") or "",
+            "location": item.get("location") or "",
+            "city": item.get("city") or "",
+            "category": item.get("category") or "cities",
+            "original": rel(full),
+            "medium": rel(medium),
+            "thumb": rel(thumb),
+            "sortOrder": (i + 1) * 10,
+            "media": item.get("media") or "photo",
+            "video": rel(item["video"]) if item.get("video") else None,
+        })
+    payload = {
+        "version": 1,
+        "updatedAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "photos": photos,
+    }
+    GALLERY_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def write_webp_from_jpeg(jpeg_path: Path, webp_path: Path, quality: int = 82) -> bool:
+    try:
+        from PIL import Image, ImageFile
+        ImageFile.LOAD_TRUNCATED_IMAGES = True
+        webp_path.parent.mkdir(parents=True, exist_ok=True)
+        with Image.open(jpeg_path) as im:
+            if im.mode not in ("RGB", "L"):
+                im = im.convert("RGB")
+            im.save(webp_path, "WEBP", quality=int(quality), method=4)
+        return webp_path.is_file() and webp_path.stat().st_size > 32
+    except Exception:
+        return False
 
 
 def remove_gallery_html(slug: str, filename: str | None = None) -> bool:
@@ -1887,9 +1928,9 @@ def remove_gallery_html(slug: str, filename: str | None = None) -> bool:
         rf'{badge}'
         rf'<div class="gallery-caption"[^>]*data-i18n="gallery\.item\.{re.escape(slug)}\.caption"[^>]*>[\s\S]*?</div>\s*'
         rf'</div>\s*',
-        # By data-full path
+        # By data-full path (originals/ or legacy root)
         rf'[ \t]*<div class="gallery-item"[^>]*>\s*'
-        rf'<img[^>]*data-full="assets/gallery/{re.escape(fname)}"[^>]*>\s*'
+        rf'<img[^>]*data-full="assets/gallery/(?:originals/)?{re.escape(fname)}"[^>]*>\s*'
         rf'{badge}'
         rf'<div class="gallery-caption"[^>]*>[\s\S]*?</div>\s*'
         rf'</div>\s*',
@@ -1937,12 +1978,16 @@ def remove_files(slug: str, filename: str | None = None) -> list[str]:
     fname = filename or f"{slug}.jpeg"
     removed = []
     candidates = [
+        ORIGINALS_DIR / fname,
         GALLERY_DIR / fname,
         MEDIUM_DIR / fname,
         THUMBS_DIR / fname,
+        THUMBS_DIR / f"{Path(fname).stem}.webp",
+        MEDIUM_DIR / f"{Path(fname).stem}.webp",
     ]
     if fname != f"{slug}.jpeg":
         candidates += [
+            ORIGINALS_DIR / f"{slug}.jpeg",
             GALLERY_DIR / f"{slug}.jpeg",
             MEDIUM_DIR / f"{slug}.jpeg",
             THUMBS_DIR / f"{slug}.jpeg",
@@ -1984,6 +2029,10 @@ def remove_one(slug: str, filename: str | None = None) -> dict:
     html_ok = remove_gallery_html(slug, fname)
     i18n_n = remove_i18n(slug)
     files = remove_files(slug, fname)
+    try:
+        write_gallery_json()
+    except OSError:
+        pass
 
     if not html_ok and i18n_n == 0 and not files:
         raise FileNotFoundError(f"No gallery entry found for '{slug}'")
@@ -2009,7 +2058,7 @@ def rebuild_media_for_existing(*, patch_html: bool = True) -> dict:
     missing_full = []
     for item in photos:
         fname = item["filename"]
-        full_path = GALLERY_DIR / fname
+        full_path = ORIGINALS_DIR / fname
         if not full_path.is_file():
             missing_full.append(fname)
             continue
@@ -3239,7 +3288,7 @@ def backfill_dates(*, apply: bool = False) -> dict:
         slug = p["slug"]
         filename = p["filename"]
         current = (p.get("date") or "").strip()
-        full_path = GALLERY_DIR / filename
+        full_path = ORIGINALS_DIR / filename
         if not full_path.is_file():
             missing.append({"slug": slug, "filename": filename, "reason": "missing full file"})
             continue

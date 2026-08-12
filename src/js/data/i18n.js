@@ -656,7 +656,8 @@
       "photoUnavailable": "Photo unavailable",
       "loadFull": "Load full quality",
       "loadingPhoto": "Loading photo…",
-      "managerHint": "Add photos with the local Gallery Manager: double-click Add Photos.command or run python3 tools/gallery_manager.py"
+      "managerHint": "Add photos with the local Gallery Manager: double-click Add Photos.command or run python3 tools/gallery_manager.py",
+      "videoBadge": "Video"
     },
     "funFacts": {
       "eyebrow": "Did you know?",
@@ -1801,6 +1802,14 @@
     }
   },
     ja: {
+
+      "gallery.item.birdshapedcloudchasingthesettingsun.caption": "Bird shaped cloud \"chasing\" the setting sun",
+      "gallery.item.viewfromtokyoskytree.caption": "View from Tokyo SkyTree",
+      "gallery.item.welcome.caption": "Welcome!",
+      "gallery.item.welcometojapan.caption": "Welcome to JAPAN!",
+      "gallery.item.welcomemessage.caption": "Welcome message \"迎\"",
+      "gallery.item.artworkattheairport.caption": "Artwork at the airport",
+      "gallery.item.mountfujifromairplane.caption": "Mount Fuji from airplane",
     "meta": {
       "siteName": "Japan Travel Guide",
       "tagline": "複数都市の日本旅行を、実務的に組み立てる"
@@ -2451,7 +2460,8 @@
       "photoUnavailable": "写真を表示できません",
       "loadFull": "原寸品質を読み込む",
       "loadingPhoto": "写真を読み込み中…",
-      "managerHint": "ローカルの Gallery Manager で追加：Add Photos.command をダブルクリック、または python3 tools/gallery_manager.py"
+      "managerHint": "ローカルの Gallery Manager で追加：Add Photos.command をダブルクリック、または python3 tools/gallery_manager.py",
+      "videoBadge": "動画"
     },
     "funFacts": {
       "eyebrow": "知っていましたか？",
@@ -3596,6 +3606,14 @@
     }
   },
     "zh-CN": {
+
+      "gallery.item.birdshapedcloudchasingthesettingsun.caption": "Bird shaped cloud \"chasing\" the setting sun",
+      "gallery.item.viewfromtokyoskytree.caption": "View from Tokyo SkyTree",
+      "gallery.item.welcome.caption": "Welcome!",
+      "gallery.item.welcometojapan.caption": "Welcome to JAPAN!",
+      "gallery.item.welcomemessage.caption": "Welcome message \"迎\"",
+      "gallery.item.artworkattheairport.caption": "Artwork at the airport",
+      "gallery.item.mountfujifromairplane.caption": "Mount Fuji from airplane",
     "meta": {
       "siteName": "Japan Travel Guide",
       "tagline": "把多城市日本行程规划得更踏实"
@@ -4245,7 +4263,8 @@
       "photoUnavailable": "照片不可用",
       "loadFull": "加载原图质量",
       "loadingPhoto": "正在加载照片…",
-      "managerHint": "用本地图库管理器添加：双击 Add Photos.command，或运行 python3 tools/gallery_manager.py"
+      "managerHint": "用本地图库管理器添加：双击 Add Photos.command，或运行 python3 tools/gallery_manager.py",
+      "videoBadge": "视频"
     },
     "funFacts": {
       "eyebrow": "你知道吗？",

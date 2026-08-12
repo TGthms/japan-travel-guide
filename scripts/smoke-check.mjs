@@ -132,6 +132,21 @@ for (const page of [
 const tokyo = fs.readFileSync(path.join(root, "cities/tokyo.html"), "utf8");
 if (tokyo.includes("currency.js")) errors.push("cities/tokyo.html should not load currency.js");
 
+const gallery = fs.readFileSync(path.join(root, "gallery.html"), "utf8");
+if (!gallery.includes('id="gallery-grid"')) errors.push("gallery.html: missing #gallery-grid");
+if (!gallery.includes("GALLERY_MANAGER_INSERT")) errors.push("gallery.html: missing manager insert marker");
+if ((gallery.match(/class="gallery-item"/g) || []).length < 1) errors.push("gallery.html: no .gallery-item tiles");
+const galJs = fs.readFileSync(path.join(root, "src/js/gallery.js"), "utf8");
+if (galJs.includes("gallery-card")) errors.push("gallery.js must stay DOM-first (no .gallery-card rebuild)");
+if (!galJs.includes("gallery-item")) errors.push("gallery.js: missing .gallery-item handling");
+if (!galJs.includes("?photo") && !galJs.includes("get(\"photo\")")) errors.push("gallery.js: missing ?photo= deep link");
+
+const gm = fs.readFileSync(path.join(root, "tools/gallery_manager.py"), "utf8");
+if (!gm.includes("ORIGINALS_DIR")) errors.push("gallery_manager: missing ORIGINALS_DIR");
+if (gm.includes("US_PLACES")) errors.push("gallery_manager: leftover US_PLACES");
+if (!gm.includes("JP_PLACES")) errors.push("gallery_manager: missing JP_PLACES");
+if (!gm.includes('data-full="assets/gallery/originals/')) errors.push("gallery_manager: data-full must point at originals/");
+
 if (errors.length) {
   console.error("SMOKE FAIL", errors.length);
   errors.slice(0, 40).forEach((e) => console.error(e));

@@ -44,10 +44,14 @@
       return String(val).replace(/\{year\}/g, year).replace(/©\s*20\d{2}\b/g, "© " + year);
     }
 
+    function hasTranslation(key, val) {
+      return val != null && val !== "" && val !== key;
+    }
+
     scope.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       const val = withYear(t(key, lang));
-      if (val == null) return;
+      if (!hasTranslation(key, val)) return;
       if (el.dataset.i18nHtml === "true") el.innerHTML = val;
       else el.textContent = val;
     });
@@ -55,19 +59,19 @@
     scope.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
       const key = el.getAttribute("data-i18n-placeholder");
       const val = t(key, lang);
-      if (val != null) el.setAttribute("placeholder", val);
+      if (hasTranslation(key, val)) el.setAttribute("placeholder", val);
     });
 
     scope.querySelectorAll("[data-i18n-aria]").forEach((el) => {
       const key = el.getAttribute("data-i18n-aria");
       const val = t(key, lang);
-      if (val != null) el.setAttribute("aria-label", val);
+      if (hasTranslation(key, val)) el.setAttribute("aria-label", val);
     });
 
     scope.querySelectorAll("[data-i18n-title]").forEach((el) => {
       const key = el.getAttribute("data-i18n-title");
       const val = t(key, lang);
-      if (val != null) el.setAttribute("title", val);
+      if (hasTranslation(key, val)) el.setAttribute("title", val);
     });
 
     window.dispatchEvent(new CustomEvent("jtg:i18n", { detail: { lang } }));

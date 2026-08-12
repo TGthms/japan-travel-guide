@@ -66,9 +66,11 @@ Z-index contract (see `chrome.css`): header 200, settings overlay 12000 / panel 
 ## Gallery
 
 - USA-style **HTML items** in `#gallery-grid` + `<!-- GALLERY_MANAGER_INSERT -->`
-- `gallery.js` prefers DOM items (`file://` safe); falls back to `gallery.json`
-- Video-capable lightbox (`#lightboxVideo`)
-- Manager: `python3 tools/gallery_manager.py`
+- `gallery.js` is **DOM-first** (never rebuilds tiles). Masonry reparents `.gallery-item` only.
+- Lightbox: thumb → medium → optional full (`originals/`). Video via `data-video`.
+- Deep link: `gallery.html?photo=slug`
+- Manager (`python3 tools/gallery_manager.py`, port 8787): writes `originals/` + `medium/` + `thumbs/` (+ WebP when Pillow is available), HTML items, ja/zh-CN caption keys, and `gallery.json`
+- Japan GPS fallback places — not US cities
 
 ## Motion
 
