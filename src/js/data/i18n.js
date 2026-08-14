@@ -820,7 +820,8 @@
       "tagline": "A practical companion for multi-city Japan trips.",
       "aboutMe": "About Me",
       "aboutBlurb": "A practical companion for multi-city Japan trips.",
-      "copyright": "© 2026 Japan Travel Guide · Created by Tim G"
+      "copyright": "© 2026 Japan Travel Guide · Created by Tim G",
+      "generatedArt": "Some destination and section cards use AI-generated stills."
     },
     "cityPage": {
       "back": "← Back",
@@ -2626,7 +2627,8 @@
       "tagline": "複数都市の日本旅行を、実務目線で組み立てるガイド。",
       "aboutMe": "このサイトについて",
       "aboutBlurb": "複数都市の日本旅行を、実務目線で組み立てるガイド。",
-      "copyright": "© 2026 Japan Travel Guide · Tim G"
+      "copyright": "© 2026 Japan Travel Guide · Tim G",
+      "generatedArt": "一部の目的地・セクションカードは AI 生成の静止画です。"
     },
     "cityPage": {
       "back": "← 戻る",
@@ -4431,7 +4433,8 @@
       "tagline": "用实务视角，帮你搭好多城市日本行程。",
       "aboutMe": "关于本站",
       "aboutBlurb": "用实务视角，帮你搭好多城市日本行程。",
-      "copyright": "© 2026 Japan Travel Guide · Tim G"
+      "copyright": "© 2026 Japan Travel Guide · Tim G",
+      "generatedArt": "部分目的地与栏目卡片使用 AI 生成的配图。"
     },
     "cityPage": {
       "back": "← 返回",

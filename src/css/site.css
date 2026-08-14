@@ -4881,6 +4881,74 @@ body,
   }
 }
 
+/*
+ * Homepage section stills (food, transport, tips, seasons).
+ * Dest/about cards already use .card--with-photo; these tiles only have a
+ * leading figure.card__media inside a regular padded .card.
+ */
+.card:not(.card--with-photo):has(> .card__media) {
+  padding: 0 0 1.25rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:not(.card--with-photo):has(> .card__media) > .card__media {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 148px;
+  overflow: hidden;
+  background: #1a1210;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.card:not(.card--with-photo):has(> .card__media) > .card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.card:not(.card--with-photo):has(> .card__media) > .card__icon {
+  display: none;
+}
+
+.card:not(.card--with-photo):has(> .card__media) > :not(.card__media) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.card:not(.card--with-photo):has(> .card__media) > .card__title {
+  padding-top: 0.95rem;
+}
+
+.season-card:has(> .card__media) > .card__media {
+  max-height: 168px;
+}
+
+.site-footer-credits {
+  margin: 0.15rem 0 0;
+  max-width: 36rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: #9a938c;
+}
+
+.site-footer-credits a {
+  color: #b8b0a8;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.site-footer-credits a:hover {
+  color: var(--sakura);
+}
+
 /* Destinations grid reuses about-grid; alias for clarity */
 .destinations-grid {
   /* inherits .about-grid */

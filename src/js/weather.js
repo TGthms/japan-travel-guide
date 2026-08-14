@@ -6,7 +6,7 @@
 
    Refresh contract:
      · Manual Refresh always available (never stuck disabled; re-click cancels prior)
-     · Manual force re-fetches NWS + Open-Meteo (+ alerts)
+     · Manual force re-fetches Open-Meteo only (no NWS)
      · Auto-refresh every 10 min while document.visibilityState === 'visible'
      · Auto fully paused (timer cleared) when tab hidden/inactive; resume refreshes if stale
      · Auto/detail use quiet mode (list stays; no progress lock)
@@ -959,7 +959,11 @@
   }
 
   function isLikelyUs(c) {
-    // Japan build: Open-Meteo only (no NWS)
+    try {
+      if (window.JTG && JTG.WeatherContract && typeof JTG.WeatherContract.isLikelyUs === 'function') {
+        return !!JTG.WeatherContract.isLikelyUs(c);
+      }
+    } catch (e) { /* ignore */ }
     return false;
   }
 
@@ -1275,8 +1279,11 @@
     return out;
   }
 
-  /** Active NWS watches/warnings/advisories for a lat/lon (US only). Best-effort. */
+  /** Japan build: no NWS alert feed. Keep signature so detail UI can stay empty. */
   async function loadNwsAlerts(lat, lon, signal) {
+    return [];
+  }
+  async function loadNwsAlertsUnused(lat, lon, signal) {
     const url = NWS_BASE + '/alerts/active?point=' + lat + ',' + lon;
     const doc = await nwsFetchJson(url, signal);
     const features = (doc && doc.features) || [];

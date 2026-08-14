@@ -8,7 +8,8 @@
     "serve:node": "npx --yes serve -l 8000 .",
     "generate:cities": "python3 scripts/generate_city_pages.py",
     "build:pages": "python3 scripts/build_pages.py",
-    "smoke": "node scripts/smoke-check.mjs"
+    "smoke": "node scripts/smoke-check.mjs",
+    "test:weather": "node scripts/test-weather-contract.mjs"
   },
   "engines": {
     "node": ">=18"

@@ -23,16 +23,16 @@ CITIES: list[tuple[str, str, str, int, int, int, str | None]] = [
     ("kyoto", "Kyoto", "", 365, 5, 32, "Kyoto.jpg"),
     ("osaka", "Osaka", "", 400, 6, 33, "Osaka.jpg"),
     ("nara", "Nara", "", 390, 5, 32, "Nara.jpg"),
-    ("hiroshima", "Hiroshima", "", 700, 6, 31, None),
-    ("yokohama", "Yokohama", "", 30, 7, 30, None),
+    ("hiroshima", "Hiroshima", "", 700, 6, 31, "ai-images/dest-hiroshima.jpg"),
+    ("yokohama", "Yokohama", "", 30, 7, 30, "ai-images/dest-yokohama.jpg"),
     ("hakone", "Hakone", "", 90, 3, 26, "Hakone.jpg"),
-    ("nikko", "Nikko", "city-theme-dark", 140, 1, 25, None),
-    ("kanazawa", "Kanazawa", "", 300, 3, 30, None),
-    ("sapporo", "Sapporo", "", 830, -4, 26, None),
-    ("fukuoka", "Fukuoka", "", 890, 7, 32, None),
+    ("nikko", "Nikko", "city-theme-dark", 140, 1, 25, "ai-images/dest-nikko.jpg"),
+    ("kanazawa", "Kanazawa", "", 300, 3, 30, "ai-images/dest-kanazawa.jpg"),
+    ("sapporo", "Sapporo", "", 830, -4, 26, "ai-images/dest-sapporo.jpg"),
+    ("fukuoka", "Fukuoka", "", 890, 7, 32, "ai-images/dest-fukuoka.jpg"),
     ("kobe", "Kobe", "", 430, 6, 32, "Kobe.jpg"),
-    ("nagasaki", "Nagasaki", "", 1000, 7, 31, None),
-    ("okinawa", "Okinawa", "", 1550, 17, 32, None),
+    ("nagasaki", "Nagasaki", "", 1000, 7, 31, "ai-images/dest-nagasaki.jpg"),
+    ("okinawa", "Okinawa", "", 1550, 17, 32, "ai-images/dest-okinawa.jpg"),
 ]
 
 FONT_LINKS = """  <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -94,9 +94,10 @@ def switcher_html(current_id: str) -> str:
 def hero_media(name: str, photo: str | None) -> str:
     if not photo:
         return ""
+    src = f"../{photo}" if photo.startswith("ai-images/") else f"../assets/gallery/main/{photo}"
     return f"""          <figure class="city-hero__media reveal">
             <img
-              src="../assets/gallery/main/{photo}"
+              src="{src}"
               alt="{name}"
               width="1200"
               height="800"

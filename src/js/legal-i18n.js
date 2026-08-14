@@ -14,7 +14,7 @@
     privacy: {
       en: {
         title: "Privacy Policy",
-        updated: "Updated July 11, 2026",
+        updated: "Updated August 13, 2026",
         lead: "Your privacy matters. This Privacy Policy explains clearly how <strong>Japan Travel Guide</strong> (the “Site,” “we,” “us”) collects, uses, discloses, transfers, and stores information when you visit or use this website — including the guide, city pages, photo gallery, and travel tools. We designed the Site to work well with as little personal data as possible.",
         toc: "On this page",
         sections: [
@@ -54,9 +54,16 @@
 <li><strong>Fonts.</strong> Web fonts may be loaded from Google Fonts so Japanese, Chinese, and Latin text display correctly. That request may include technical data such as your IP address, subject to Google’s policies.</li>
 <li><strong>Exchange rates (Tools).</strong> The currency converter may request rates from a public API (for example Frankfurter). Only the currency codes needed for the conversion are sent for that request.</li>
 <li><strong>Weather (Tools).</strong> Forecasts, geocoding, and air quality are requested from Open-Meteo. Queries include a city name or coordinates for the place you look up.</li>
+<li><strong>Card stills.</strong> Some destination, season, food, transport, and tip cards use AI-generated stills served as static files (<code>ai-images/</code>). Loading them does not upload your photos or account data. See <a href="#generated-images">Generated images</a>.</li>
 <li><strong>Maps / reverse geocode (Gallery Manager only).</strong> The private local gallery manager may contact OpenStreetMap Nominatim when auto-detecting photo locations on your machine. That tool is not part of the public Site for visitors.</li>
 <li><strong>External / outbound links.</strong> For convenience, the Site includes links to third-party websites—including railways, tourism bureaus, and similar resources. Clicking such a link leaves the Site and takes you to a service we do not operate. Those operators may collect information under their own privacy policies; this policy does not cover them. We do not receive your activity on those external sites by virtue of the link alone, and a link does not mean we endorse or control that third party.</li>
 </ul>`,
+          },
+          {
+            id: "generated-images",
+            title: "Generated images",
+            html: `<p>Some destination city heroes and decorative homepage cards — destinations without a trip photograph, plus food, season, transport, and tip tiles — are <strong>AI-generated stills</strong>. They are not photographs from the Gallery and are not pictures of identifiable private individuals. They are served as ordinary static files (<code>ai-images/</code>) with the rest of the Site.</p>
+<p>The Gallery remains the author’s own travel photography. Loading these stills does not send your gallery photos, location, or account data to an image-generation service.</p>`,
           },
           {
             title: "Cookies & similar technologies",
@@ -91,7 +98,7 @@
       },
       ja: {
         title: "プライバシーポリシー",
-        updated: "更新日: 2026年7月11日",
+        updated: "更新日: 2026年8月13日",
         lead: "お客様のプライバシーを大切にしています。本プライバシーポリシーでは、<strong>Japan Travel Guide</strong>（以下「本サイト」）が、ガイド・都市ページ・フォトギャラリー・旅行ツールを含む本ウェブサイトのご利用時に、情報をどのように収集、利用、開示、移転、保存するかを明確にご説明します。本サイトは、できるだけ少ない個人データで快適にご利用いただけるよう設計されています。",
         toc: "このページの内容",
         sections: [
@@ -130,9 +137,17 @@
 <ul>
 <li><strong>フォント。</strong>日本語・中国語・ラテン文字を正しく表示するため、Google Fonts からウェブフォントを読み込むことがあります。その際、IP アドレス等の技術データが含まれる場合があり、Google の方針が適用されます。</li>
 <li><strong>為替（ツール）。</strong>通貨換算は、公開 API（例：Frankfurter）にレートを問い合わせることがあります。換算に必要な通貨コードのみを送信します。</li>
+<li><strong>天気（ツール）。</strong>予報・地名検索・大気質は Open-Meteo から取得します。照会には、選択した都市名または座標が含まれます。</li>
+<li><strong>カード配図。</strong>一部の目的地・季節・食・交通・Tips カードは、静的ファイル（<code>ai-images/</code>）として配信される AI 生成の静止画です。読み込みによって写真やアカウント情報がアップロードされることはありません。詳しくは<a href="#generated-images">生成画像</a>をご覧ください。</li>
 <li><strong>地図／逆ジオコーディング（ギャラリーマネージャのみ）。</strong>作者向けのプライベートなローカル・ギャラリーマネージャは、端末上で写真の位置を自動検出する際、OpenStreetMap Nominatim に接続する場合があります。このツールは訪問者向けの公開サイトの一部ではありません。</li>
 <li><strong>外部サイトへのリンク。</strong>便宜のため、本サイトは鉄道事業者、観光局、その他第三者ウェブサイトへのリンクを含みます。そのようなリンクをクリックすると本サイトを離れ、当方が運営していないサービスへ移動します。各運営者は独自のプライバシーポリシーに基づき情報を取り扱う場合があり、本ポリシーの対象外です。リンクがあること自体により、外部サイト上でのお客様の行動を当方が受け取ることはなく、リンクは当該第三者の推奨や管理を意味しません。</li>
 </ul>`,
+          },
+          {
+            id: "generated-images",
+            title: "生成画像",
+            html: `<p>一部の都市ヒーロー画像とホームページのカード（旅行写真がない目的地、および食・季節・交通・Tips など）は<strong>AI 生成の静止画</strong>です。ギャラリーの実写ではなく、特定できる私人の写真でもありません。他のコンテンツと同じく静的ファイル（<code>ai-images/</code>）として配信されます。</p>
+<p>ギャラリーは作者本人の旅行写真です。これらの画像の表示により、あなたの写真・位置情報・アカウント情報が画像生成サービスへ送信されることはありません。</p>`,
           },
           {
             title: "Cookie 等の技術",
@@ -167,7 +182,7 @@
       },
       "zh-CN": {
         title: "隐私政策",
-        updated: "更新日期：2026年7月11日",
+        updated: "更新日期：2026年8月13日",
         lead: "我们重视你的隐私。本《隐私政策》清楚说明<strong>Japan Travel Guide</strong>（以下简称“本网站”“我们”）在你访问或使用本网站（包括指南、城市页、相册与旅行工具）时，如何收集、使用、披露、传输与保存相关信息。我们尽量在少处理个人数据的前提下，让本网站顺畅可用。",
         toc: "本页内容",
         sections: [
@@ -206,9 +221,17 @@
 <ul>
 <li><strong>字体。</strong>为正确显示日文、中文与拉丁文字，可能从 Google Fonts 加载网络字体。相关请求可能包含 IP 地址等技术数据，并受 Google 相关政策约束。</li>
 <li><strong>汇率（工具页）。</strong>货币换算器可能向公开接口（例如 Frankfurter）请求汇率，且仅发送完成换算所需的货币代码。</li>
+<li><strong>天气（工具页）。</strong>预报、地名搜索与空气质量来自 Open-Meteo。请求会包含你选择的城市名或坐标。</li>
+<li><strong>卡片配图。</strong>部分目的地、季节、餐饮、交通与出行提示卡片使用作为静态文件（<code>ai-images/</code>）提供的 AI 生成配图。加载这些文件不会上传你的照片或账户数据。详见<a href="#generated-images">生成图像</a>。</li>
 <li><strong>地图／反向地理编码（仅图库管理工具）。</strong>面向作者的私有本地图库管理器，在本机自动识别照片位置时，可能会访问 OpenStreetMap Nominatim。该工具不是面向访客的公开网站的一部分。</li>
 <li><strong>站外链接。</strong>为方便规划行程，本网站会提供指向铁路公司、旅游局及其他第三方网站的链接。点击此类链接即离开本网站，进入我们不运营的服务。那些运营方可能按其自身隐私政策处理信息；本政策不适用于它们。链接本身并不会让我们获知你在外部网站上的活动，也不表示我们认可或控制该第三方。</li>
 </ul>`,
+          },
+          {
+            id: "generated-images",
+            title: "生成图像",
+            html: `<p>部分城市页主图以及首页卡片（尚无实拍的目的地，以及餐饮、季节、交通与出行提示等）为<strong>AI 生成的静态配图</strong>，不是相册中的实拍，也不是可识别私人的照片。它们作为本站静态文件（<code>ai-images/</code>）随站点一并提供。</p>
+<p>相册仍为作者本人的旅行摄影。加载这些配图不会把你的相册照片、位置或账户数据发送给图像生成服务。</p>`,
           },
           {
             title: "Cookie 与类似技术",
@@ -492,14 +515,19 @@
     html += `<p class="legal-lead">${data.lead}</p>`;
     html += `<nav class="legal-toc" aria-label="TOC"><strong>${data.toc}</strong><ol>`;
     data.sections.forEach((s, i) => {
-      const id = `sec-${i}`;
+      const id = s.id || `sec-${i}`;
       html += `<li><a href="#${id}">${s.title}</a></li>`;
     });
     html += `</ol></nav>`;
     data.sections.forEach((s, i) => {
-      html += `<section id="sec-${i}"><h2>${s.title}</h2>${s.html}</section>`;
+      const id = s.id || `sec-${i}`;
+      html += `<section id="${id}"><h2>${s.title}</h2>${s.html}</section>`;
     });
     root.innerHTML = html;
+    if (location.hash) {
+      const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
 
     const top = document.getElementById("legal-top-title");
     if (top) top.textContent = data.title;

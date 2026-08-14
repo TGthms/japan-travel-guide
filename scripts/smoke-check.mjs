@@ -62,6 +62,7 @@ const must = [
   "src/js/core/env.js",
   "src/js/core/nav-return.js",
   "src/js/weather.js",
+  "src/js/weather-contract.js",
   "src/css/styles.css",
   "src/css/site.css",
   "src/css/chrome.css",
@@ -95,6 +96,8 @@ const weather = fs.readFileSync(path.join(root, "tools-weather.html"), "utf8");
 if (/NWS/.test(weather)) errors.push("tools-weather.html: leftover NWS copy");
 if (!weather.includes("Open-Meteo")) errors.push("tools-weather.html: missing Open-Meteo attribution");
 if (!weather.includes('id="weatherList"')) errors.push("tools-weather.html: missing #weatherList");
+if (!weather.includes('id="weatherSearch"')) errors.push("tools-weather.html: missing #weatherSearch");
+if (!weather.includes("weather-contract.js")) errors.push("tools-weather.html: missing weather-contract.js");
 if (!weather.includes("gallery-app-back")) errors.push("tools-weather.html: missing back chrome");
 
 const currency = fs.readFileSync(path.join(root, "tools-currency.html"), "utf8");
@@ -146,6 +149,129 @@ if (!gm.includes("ORIGINALS_DIR")) errors.push("gallery_manager: missing ORIGINA
 if (gm.includes("US_PLACES")) errors.push("gallery_manager: leftover US_PLACES");
 if (!gm.includes("JP_PLACES")) errors.push("gallery_manager: missing JP_PLACES");
 if (!gm.includes("assets/gallery/originals/")) errors.push("gallery_manager: data-full must point at originals/");
+
+try {
+  execSync("node scripts/test-weather-contract.mjs", { cwd: root, stdio: "pipe" });
+} catch (e) {
+  errors.push("weather-contract unit test failed");
+}
+
+const stills = [
+  "dest-hiroshima.jpg",
+  "dest-yokohama.jpg",
+  "dest-nikko.jpg",
+  "dest-kanazawa.jpg",
+  "dest-sapporo.jpg",
+  "dest-fukuoka.jpg",
+  "dest-nagasaki.jpg",
+  "dest-okinawa.jpg",
+  "season-spring.jpg",
+  "season-summer.jpg",
+  "season-autumn.jpg",
+  "season-winter.jpg",
+  "food-sushi.jpg",
+  "food-ramen.jpg",
+  "food-street.jpg",
+  "food-kaiseki.jpg",
+  "food-wagyu.jpg",
+  "food-sweets.jpg",
+  "tip-etiquette.jpg",
+  "tip-cash.jpg",
+  "tip-transit.jpg",
+  "tip-sim.jpg",
+  "transport-shinkansen.jpg",
+  "transport-ic.jpg",
+  "transport-jrpass.jpg",
+];
+for (const s of stills) {
+  const p = path.join(root, "ai-images", s);
+  if (!fs.existsSync(p) || fs.statSync(p).size < 8000) {
+    errors.push(`ai-images/${s} missing or too small`);
+  }
+}
+
+const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
+for (const s of stills) {
+  if (!index.includes(`ai-images/${s}`)) errors.push(`index.html missing ai-images/${s}`);
+}
+if (!index.includes("privacy.html#generated-images")) {
+  errors.push("index.html footer missing generated-images credit");
+}
+if (!index.includes("footer.generatedArt")) {
+  errors.push("index.html missing footer.generatedArt");
+}
+
+for (const city of [
+  "hiroshima",
+  "yokohama",
+  "nikko",
+  "kanazawa",
+  "sapporo",
+  "fukuoka",
+  "nagasaki",
+  "okinawa",
+]) {
+  const html = fs.readFileSync(path.join(root, `cities/${city}.html`), "utf8");
+  if (!html.includes(`ai-images/dest-${city}.jpg`)) {
+    errors.push(`cities/${city}.html missing dest still`);
+  }
+  if (!html.includes("city-hero--with-photo")) {
+    errors.push(`cities/${city}.html missing with-photo hero`);
+  }
+}
+
+const realHeroes = [
+  ["tokyo", "Tokyo.jpg"],
+  ["kyoto", "Kyoto.jpg"],
+  ["osaka", "Osaka.jpg"],
+  ["nara", "Nara.jpg"],
+  ["hakone", "Hakone.jpg"],
+  ["kobe", "Kobe.jpg"],
+];
+for (const [city, file] of realHeroes) {
+  const html = fs.readFileSync(path.join(root, `cities/${city}.html`), "utf8");
+  if (!html.includes(`assets/gallery/main/${file}`)) {
+    errors.push(`cities/${city}.html must keep real hero photo`);
+  }
+  if (html.includes("ai-images/")) {
+    errors.push(`cities/${city}.html should not use generated stills`);
+  }
+}
+
+for (const [city, file] of realHeroes) {
+  const p = path.join(root, "assets/gallery/main", file);
+  if (!fs.existsSync(p)) errors.push(`missing real hero ${file}`);
+}
+
+if (gallery.includes("ai-images/")) errors.push("gallery.html must not use generated stills");
+if (!gallery.includes("assets/gallery/originals/")) {
+  errors.push("gallery.html missing originals path");
+}
+const originals = [
+  "artworkattheairport.jpeg",
+  "birdshapedcloudchasingthesettingsun.jpeg",
+  "mountfujifromairplane.jpeg",
+  "viewfromtokyoskytree.jpeg",
+  "welcome.jpeg",
+  "welcomemessage.jpeg",
+  "welcometojapan.jpeg",
+];
+for (const o of originals) {
+  const p = path.join(root, "assets/gallery/originals", o);
+  if (!fs.existsSync(p)) errors.push(`missing gallery original ${o}`);
+  if (!gallery.includes(o)) errors.push(`gallery.html missing original ${o}`);
+}
+
+const legalJs = fs.readFileSync(path.join(root, "src/js/legal-i18n.js"), "utf8");
+if (!legalJs.includes('id: "generated-images"')) {
+  errors.push("legal-i18n: missing generated-images section id");
+}
+if (!/AI-generated/i.test(legalJs)) {
+  errors.push("legal-i18n: missing AI-generated disclosure");
+}
+
+const i18nJs = fs.readFileSync(path.join(root, "src/js/data/i18n.js"), "utf8");
+if (!i18nJs.includes("generatedArt")) errors.push("i18n missing footer.generatedArt");
 
 if (errors.length) {
   console.error("SMOKE FAIL", errors.length);
